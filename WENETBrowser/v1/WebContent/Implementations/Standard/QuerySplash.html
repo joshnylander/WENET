@@ -1,0 +1,103 @@
+<html>
+<head>
+	<title> WENET Browser </title>
+	<link rel="stylesheet" type="text/css" href="" />
+	<script src="BrowserControl.js"></script>
+
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+
+	<script type="text/javascript">
+	<!--
+		var xmlhttp;
+
+		// Set the pages display CSS 
+		var xml = top.SessionDataFrame.sessionDocument;
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		var centerImage = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='QuerySplash_CenterImage']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = pageCSS.text; }
+
+		function updatePageTimer(count) {
+
+			var output =  "Time Elapsed: " + count + " seconds.";
+			document.all.Timer.innerHTML = output;
+			
+			setTimeout('updatePageTimer(' + (count+1) + ');', 1000);
+			}
+
+		function updateQueryStatus() {
+			var theQueryName = top.SessionDataFrame.queryName;
+
+			if(theQueryName != "") {
+				theURL = "../../servlet/WENETBrowserServlet?act=QueryStatus&qname=" + theQueryName;				
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				xmlhttp.onreadystatechange=driveQueryStatus;
+				xmlhttp.open("GET", theURL, true);
+				xmlhttp.send();
+				}
+
+			setTimeout('updateQueryStatus();', 5000);
+			}
+
+		function driveQueryStatus() {
+
+			if (xmlhttp.readyState==4 && xmlhttp.status == 200) {
+				var resp = xmlhttp.responseText;
+				spind1 = resp.indexOf("<ServicePoints>");
+				spind2 = resp.indexOf("</ServicePoints>");
+				rind1 = resp.indexOf("<Results>");
+				rind2 = resp.indexOf("</Results>");
+
+				var totalSPs = -1;
+				var totalResults = -1;
+				if(spind1 > -1 && spind2 > -1) { totalSPs = resp.substring(spind1, spind2); }
+				if(rind1 > -1 && rind2 > -1) { totalResults = resp.substring(rind1, rind2); }
+			
+				var theQueryName = top.SessionDataFrame.queryName;
+				output = "&nbsp &nbsp" + theQueryName + " has returned " + totalResults + " results from " + totalSPs + " service points. &nbsp &nbsp";
+				document.all.QueryStatus.innerHTML = output;
+				}
+			}
+	-->
+	</script>
+
+</head>
+<body class=QUERYSPLASH_BODY onLoad="updateSplashEffect(); updatePageTimer(0); updateQueryStatus();">
+
+<center>
+	<script type="text/javascript">
+	<!--
+		if(centerImage != null) { document.writeln("<img src='" + centerImage.text + "'>"); }
+	-->
+	</script>
+
+	<br><br><table border=5 cellspacing=5 cellpadding=10 >
+	<tr align=center><td>
+	<fieldset class=NavigationTreeSpacer>
+	<p class=QUERYSPLASH_HEADERFONT1 id=Header><u>Whatcom.Exchange.Network</u>
+	</p>
+	
+	<div  id=SplashEffect></div>
+
+	<script type="text/javascript">
+	<!--
+		splashEffect(document.all.SplashEffect);
+	-->
+	</script>
+	<br>
+	<P class=QUERYSPLASH_MESSAGEFONT id=Timer>
+	</p>
+	<b>
+	<P class=QUERYSPLASH_MESSAGEFONT id=QueryStatus>
+	</p>
+	</fieldset>
+	</td></tr>
+	</table><br>
+
+	<!-- 
+	<input type=button value="See Results NOW!" onClick="RefreshSession(false); setTimeout('ViewSummary(top.SessionDataFrame.queryRoot, top.SessionDataFrame.queryName);', 1000);">
+	-->
+
+</center>
+</body>
+</html>

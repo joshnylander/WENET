@@ -1,0 +1,208 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="" />
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+
+	<script src="../BrowserControl.js"></script>
+	<script type="text/javascript">
+	<!--
+
+	// Set the pages display CSS 
+	var xml = top.SessionDataFrame.sessionDocument;
+	var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+	if(pageCSS != null) { document.styleSheets[0].href = "../" + pageCSS.text; }
+
+	var prefixAry = new Array("j:", "y0:");
+
+	function replaceStr(inputStr, findStr, xpath) {
+
+		for(i=0; i<prefixAry.length; i++) {
+
+			xout = prefixAry[i] + xpath;
+			slashind = xout.indexOf("/");
+			while(slashind > -1) {
+				before = xout.substring(0,slashind+1);
+				after = xout.substring(slashind+1);
+				xout = before + prefixAry[i] + after;
+				slashind = xout.indexOf("/", slashind+(prefixAry[i].length+1));
+				}
+
+			var resultsDOM = top.InstanceDataFrame.instanceDocument;
+			stuffNode = resultsDOM.selectSingleNode(xout);
+	
+			var stuffStr = "";
+			if(stuffNode == null || stuffNode == undefined) { continue; } else { stuffStr = stuffNode.text; }
+			var findInd = inputStr.indexOf(findStr)
+			if(findInd == -1) { return inputStr; }
+	
+			while(findInd != -1) {
+				outputStr = inputStr.substr(0, findInd);
+				outputStr += stuffStr + inputStr.substr(findInd+(findStr.length));
+				findInd = outputStr.indexOf(findStr);
+				inputStr = outputStr;
+				}
+	
+			return outputStr;
+			}
+
+
+		// If the tag was not found, then replace it with blanks
+		var findInd = inputStr.indexOf(findStr)
+		if(findInd == -1) { return inputStr; }
+
+		while(findInd != -1) {
+			outputStr = inputStr.substr(0, findInd);
+			outputStr += " " + inputStr.substr(findInd+(findStr.length));
+			findInd = outputStr.indexOf(findStr);
+			inputStr = outputStr;
+			}
+
+		return outputStr;
+		}
+
+	function displayResultsXML() {
+		if(document.all.InstanceView.style.display == 'block') {
+			document.all.InstanceView.style.display = 'none';
+			return;
+			}
+
+		document.all.InstanceView.style.display = 'block';
+		document.all('InstanceView').innerHTML = "<textarea style='width:100%;height:300;'>" + top.InstanceDataFrame.instanceDataText + "</textarea>";
+		}
+
+	function loadPersonInstance() {
+				
+		// Fill in the token variables with the results
+		var resultsDOM = top.InstanceDataFrame.instanceDocument;
+
+		var displayHTML = document.all('GeneralContent').innerHTML;		
+
+		displayHTML = replaceStr(displayHTML, "!LICENSEID!", "Person/PersonAssignedIDDetails/PersonDriverLicenseID/ID");
+		displayHTML = replaceStr(displayHTML, "!LICENSEJURISDICTION!", "Person/PersonAssignedIDDetails/PersonDriverLicenseID/IDJurisdictionCode");
+		displayHTML = replaceStr(displayHTML, "!LICENSEEXPIRES!", "Person/PersonAssignedIDDetails/PersonDriverLicenseID/IDExpirationDate");
+
+		displayHTML = replaceStr(displayHTML, "!RESIDENCESTREET!", "Person/Residence/LocationAddress/LocationStreet/StreetFullText");
+		displayHTML = replaceStr(displayHTML, "!RESIDENCECITY!", "Person/Residence/LocationAddress/LocationCityName");
+		displayHTML = replaceStr(displayHTML, "!RESIDENCESTATE!", "Person/Residence/LocationAddress/LocationStateCode.fips5-2Alpha");
+		displayHTML = replaceStr(displayHTML, "!RESIDENCEZIP!", "Person/Residence/LocationAddress/LocationPostalCodeID/ID");
+
+		displayHTML = replaceStr(displayHTML, "!MAILINGSTREET!", "Person/PrimaryContactInformation/ContactMailingAddress/LocationStreet/StreetFullText");
+		displayHTML = replaceStr(displayHTML, "!MAILINGCITY!", "Person/PrimaryContactInformation/ContactMailingAddress/LocationCityName");
+		displayHTML = replaceStr(displayHTML, "!MAILINGSTATE!", "Person/PrimaryContactInformation/ContactMailingAddress/LocationStateCode.fips5-2Alpha");
+		displayHTML = replaceStr(displayHTML, "!MAILINGZIP!", "Person/PrimaryContactInformation/ContactMailingAddress/LocationPostalCodeID/ID");
+
+		displayHTML = replaceStr(displayHTML, "!ALTERNATEFULLNAME!", "Person/PersonAlternateName/PersonFullName");
+		displayHTML = replaceStr(displayHTML, "!PERSONFULLNAME!", "Person/PersonName/PersonFullName");
+		displayHTML = replaceStr(displayHTML, "!PERSONFIRSTNAME!", "Person/PersonName/PersonGivenName");
+		displayHTML = replaceStr(displayHTML, "!PERSONMIDDLENAME!", "Person/PersonName/PersonMiddleName");
+		displayHTML = replaceStr(displayHTML, "!PERSONLASTNAME!", "Person/PersonName/PersonSurName");
+		displayHTML = replaceStr(displayHTML, "!PERSONRACE!", "Person/PersonPhysicalDetails/PersonRaceText");
+		displayHTML = replaceStr(displayHTML, "!PERSONSEX!", "Person/PersonPhysicalDetails/PersonSexText");
+		displayHTML = replaceStr(displayHTML, "!PERSONHEIGHT!", "Person/PersonPhysicalDetails/PersonHeightMeasure");
+		displayHTML = replaceStr(displayHTML, "!PERSONWEIGHT!", "Person/PersonPhysicalDetails/PersonWeightMeasure");
+		displayHTML = replaceStr(displayHTML, "!PERSONEYECOLOR!", "Person/PersonPhysicalDetails/PersonEyeColorText");
+		displayHTML = replaceStr(displayHTML, "!PERSONHAIRCOLOR!", "Person/PersonPhysicalDetails/PersonHairColorText");
+		displayHTML = replaceStr(displayHTML, "!PERSONDOB!", "Person/PersonBirthDate");
+
+		displayHTML = replaceStr(displayHTML, "!EMPLOYERNAME!", "Person/Employment/EmploymentEmployerName");
+		displayHTML = replaceStr(displayHTML, "!PERSONOCCUPATION!", "Person/Employment/EmploymentOccupationText");
+		displayHTML = replaceStr(displayHTML, "!WORKPHONE!", "Person/PersonWorkContact/ContactTelephoneNumber/TelephoneNumberFullID");
+		displayHTML = replaceStr(displayHTML, "!SSN!", "Person/PersonAssignedIDDetails/PersonSSNID/ID");
+
+		document.all('GeneralContent').innerHTML = displayHTML;
+		}
+	-->
+	</script>
+</head>
+<body onLoad="loadPersonInstance();" id=INSTANCEBODY>
+
+<div id="GeneralContent">
+
+<fieldset class="NavigationTreeSpacer" style="width:100%;border:0;">
+<center><br><p class=DETAILHEADERFONT>!PERSONFULLNAME!</p></center>
+</fieldset>
+
+<center>	
+<br>
+
+<table border="0" width="99%">
+<tr><td>
+
+<table border=1 width=100% class="INSTANCEFONTS INSTANCEDATABLOCK">
+<tr class=INSTANCEHEADERROWS><td><b>Person Info</b></td></tr>
+<tr><td>
+
+<table border=1 class=INSTANCEFONTS height=200 width=100%>
+<tr><td> First: <p class=HIGHLIGHT>!PERSONFIRSTNAME!</p></td><td> Middle: <p class=HIGHLIGHT>!PERSONMIDDLENAME!</p></td><td colspan=50> Last: <p class=HIGHLIGHT>!PERSONLASTNAME!</p></td></tr>
+<tr><td colspan=4>Alertnate Name: <p class=HIGHLIGHT>!ALTERNATEFULLNAME!</p> </td></tr>
+<tr><td colspan=4>SSN: <p class=HIGHLIGHT>!SSN!</p> </td></tr>
+<tr><td colspan=4></td></tr>
+<tr><td>Date of Birth: <p class=HIGHLIGHT>!PERSONDOB!</p></td><td> Sex: <p class=HIGHLIGHT>!PERSONSEX!</p></td><td colspan=50> Race: <p class=HIGHLIGHT>!PERSONRACE!</p></td></tr>
+<tr><td>Height: <p class=HIGHLIGHT>!PERSONHEIGHT!</p> </td><td> Weight: <p class=HIGHLIGHT>!PERSONWEIGHT!</p></td><td> Eye Color: <p class=HIGHLIGHT>!PERSONEYECOLOR!</p></td><td> Hair Color: <p class=HIGHLIGHT>!PERSONHAIRCOLOR!</p></td></tr>
+<tr><td>Drivers License #: <p class=HIGHLIGHT>!LICENSEID!</p></td><td> Jurisdiction: <p class=HIGHLIGHT>!LICENSEJURISDICTION!</p></td><td colspan=50> Expires: <p class=HIGHLIGHT>!LICENSEEXPIRES!</p></td></tr>
+</table>
+
+</td></tr>
+</table>
+
+</td>
+<td>
+
+<table border=1 height=200 width=100% class="INSTANCEFONTS INSTANCEDATABLOCK">
+<tr class=INSTANCEHEADERROWS><td colspan=2><b>Available Photos</b></td></tr>
+<tr style="height:100%">
+<td><br><br><br><br><br><br><br><br><br><br></td>
+</tr>
+</table>
+
+
+</td></tr>
+<tr><td>
+
+<table border=1 width=100% class="INSTANCEFONTS INSTANCEDATABLOCK">
+<tr class=INSTANCEHEADERROWS><td colspan=2><b>Residence Info</b></td></tr>
+<tr><td colspan=2> Street: &nbsp<p class=HIGHLIGHT>!RESIDENCESTREET!</p> </td></tr>
+<tr><td>City: &nbsp<p class=HIGHLIGHT>!RESIDENCECITY!</p> </td><td> State: &nbsp<p class=HIGHLIGHT>!RESIDENCESTATE!</p> </td></tr>
+<tr><td> Zipcode: &nbsp<p class=HIGHLIGHT>!RESIDENCEZIP!</p> </td></tr>
+</table>
+
+</td><td id=MAILINGBLOCK>
+
+<table border=1 width=100% class="INSTANCEFONTS INSTANCEDATABLOCK">
+<tr class=INSTANCEHEADERROWS><td colspan=2><b>Mailing Info</b></td></tr>
+<tr><td colspan=2>Street: &nbsp <p class=HIGHLIGHT>!MAILINGSTREET!</p></td></tr>
+<tr><td>City: &nbsp <p class=HIGHLIGHT>!MAILINGCITY!</p> </td><td> State: &nbsp <p class=HIGHLIGHT>!MAILINGSTATE!</p> </td></tr>
+<tr><td>Zipcode: &nbsp <p class=HIGHLIGHT>!MAILINGZIP!</p></td></tr>
+</table>
+
+</td></tr>
+<tr><td colspan="2">
+
+<table border=1 width=100% class="INSTANCEFONTS INSTANCEDATABLOCK">
+<tr class=INSTANCEHEADERROWS><td colspan=2><b>Employment</b></td></tr>
+<tr><td>Employer Name: &nbsp <p class=HIGHLIGHT>!EMPLOYERNAME!</p></td><td> Occupation: &nbsp <p class=HIGHLIGHT>!PERSONOCCUPATION!</p></td></tr>
+<tr><td>Work Phone: &nbsp <p class=HIGHLIGHT>!WORKPHONE!</p></td></tr>
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+<br><br>
+
+</center>
+
+</div>
+
+<center>
+<a href="#" onClick="displayResultsXML();"> View Results XML</a>
+<div id="InstanceView" style="background:#ffffff;color:#000000;width:80%;display:none;">
+</div>
+</center>
+<br><br><br>
+
+
+</body>
+</html>

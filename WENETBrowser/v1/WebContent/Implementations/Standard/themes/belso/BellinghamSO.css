@@ -1,0 +1,71 @@
+BODY { background-image:url('images/BELSOBackImage.jpg');background-repeat:repeat;background-attachment:fixed; }
+
+/* CSS Navigation from http://unraveled.com/projects/css_tabs/css_tabs.html */
+/* tabnav is used for the query data types and vertabnav for the search parameter options */
+ul#tabnav { font: bold 11px verdana, arial, sans-serif; list-style-type: none; padding-bottom: 24px; border-bottom: 0px solid #6c6; margin: 0; }
+ul#tabnav li { float: left; height: 21px; background-color: #cfc; margin: 2px 2px 0 2px; border: 1px solid #6c6; }
+body#tab1 li.tab1, body#tab2 li.tab2, body#tab3 li.tab3, body#tab4 li.tab4 { border-bottom: 1px solid #fff; background-color: #fff; }
+body#tab1 li.tab1 a, body#tab2 li.tab2 a, body#tab3 li.tab3 a, body#tab4 li.tab4 a { color: #000; }
+#tabnav a { float: left; display: block; color: #666; text-decoration: none; padding: 4px; ;}
+#tabnav a:hover { background: #fff; }
+
+/* These are used for the verticle tabs in the query forms */
+ul#verttabnav { font: bold 11px verdana, arial, sans-serif; list-style-type: none; border-bottom: 0px; margin: 0; }
+ul#verttabnav li { width:100%; background-color: #cfc; margin: 0px 2px 0 0px; border: 1px solid #6c6; }
+body#verttab1 li.tab1, body#tab2 li.tab2, body#tab3 li.tab3, body#tab4 li.tab4 { border-bottom: 1px solid #fff; background-color: #fff; }
+body#verttab1 li.tab1 a, body#tab2 li.tab2 a, body#tab3 li.tab3 a, body#tab4 li.tab4 a { color: #000; }
+#verttabnav a { width:100%; display: block; color: #666; text-decoration: none; padding: 4px; ;}
+#verttabnav a:hover { background: #fff; }
+
+
+
+#ARRESTWARRANTQUERYHEADER { margin-left:.5cm;text-decoration:underline;font-weight:bold;font-size:22pt;font-family:Times; color:#000000; }
+#ARRESTWARRANTQUERYNAME {text-decoration:normal;font-weight:bold;font-size:14pt;font-family:Times; color:#000000; }
+P.ARRESTWARRANTQUERYLEGENDFONT { text-decoration:normal;font-weight:bold;font-size:14pt;font-family:Times; color:#000000;}
+BODY.ARRESTWARRANTQUERYBODY { font-weight:bold;font-size:12pt;font-family:Arial;color:#ffffff; }
+TABLE.ARRESTWARRANTQUERYBACKGROUNDTABLE { width:90%;background-color:#d1d2a4;font-weight:normal;font-size:14pt;font-family:Arial;color:#000000; }
+
+#PERSONQUERYNAME {text-decoration:normal;font-weight:bold;font-size:14pt;font-family:Times; color:#000000; }
+#PERSONQUERYHEADER { margin-left:.5cm;text-decoration:underline;font-weight:bold;font-size:22pt;font-family:Times; color:#000000; }
+#PERSONQUERYSEARCHPARAMETERS { text-decoration:normal;font-weight:bold; font-size:8pt;font-family:arial; background-color:#363b66; visibility:hidden; display:none;}
+INPUT.PERSONQUERYSEARCHPARAMETERSRADIO { width:15;height:15;}
+#PERSONQUERYSERVICEPOINTS { text-decoration:normal;font-weight:bold; font-size:8pt;font-family:arial; background-color:#363b66; visibility:hidden; display:none;} 
+INPUT.PERSONQUERYSERVICEPOINTSCHECK { width:15;height:15;}
+P.PERSONQUERYLEGENDFONT { text-decoration:normal;font-weight:bold;font-size:14pt;font-family:Times; color:#000000; }
+BODY.PERSONQUERYBODY { font-weight:bold;font-size:12pt;font-family:Arial;color:#ffffff; }
+TABLE.PERSONQUERYBACKGROUNDTABLE { width:90%;background-color:#d1d2a4;font-weight:normal;font-size:14pt;font-family:Arial;color:#000000; }
+
+
+P.QUERYSPLASH_MESSAGEFONT { text-decoration:italics;font-weight:bold;font-size:14pt;font-family:Arial;color:#ffffff; }
+IMG.QUERYSPLASH_IMAGE { }
+BODY.QUERYSPLASH_BODY { }
+
+
+BODY.PERSONSUMMARY_BODY {  }
+P.PERSONSUMMARY_QUERYNAMEFONT {text-decoration:underline;font-weight:bold;font-size:14pt;font-family:Arial;color:white;}
+TABLE.PERSONSUMMARY_TABLE {border-width:0;font-weight:normal;font-size:7pt;font-weight:bold;font-family:Arial;}
+TR.PERSONSUMMARY_HEADERROW { background-color:#ffffff; }
+TR.PERSONSUMMARY_SORTDETAILROW {background-color:#ffffff;}
+TR.PERSONSUMMARY_SORTEDGROUPROW1 { background-color:#cccccc;text-align:center;}
+TR.PERSONSUMMARY_SORTEDGROUPROW2 { background-color:#aaaaaa;text-align:center;}
+A.PERSONSUMMARY_HEADERFONT {color:black;text-decoration:none;font-weight:normal;font-size:12pt;font-family:Times;}
+A.PERSONSUMMARY_HEADERSELECTEDFONT {color:black;text-decoration:underline;font-weight:bold;font-size:14pt;font-family:Times;}
+A.PERSONSUMMARY_INSTANCELINK { color:black;text-decoration:normal;font-weight:bold;font-size:10pt;font-family:Arial; }
+
+
+FIELDSET.NavigationTreeSpacer { height:70; width:100%; text-decoration:none;font-weight:bold;font-size:12pt;font-family:Times;color:#000000;background-color:#d1d2a4; }
+BODY.NAVIGATIONTREEBODY { }
+A.NAVIGATIONTREEROOT {text-decoration:none;font-weight:bold;color:#ffffff;font-size:14pt;font-family:Arial;}
+A.NAVIGATIONTREEQUERY {text-decoration:none;margin-left:1.5cm;font-weight:bold;color:black;font-size:11pt;font-family:Times;}
+TABLE.NAVIGATIONTREE_TABLE { width=100%; }
+TR.NAVIGATIONTREEROOT { background-color:#363b66;}
+TR.NAVIGATIONTREEQUERY { background-color:#d1d2a4; }
+TR.NAVIGATIONTREE_SESSIONDETAILSROW { background-color:#363b66; }
+TR.NAVIGATIONTREE_WORKSPACEROW { background-color:#363b66; }
+TR.NAVIGATIONTREE_SAVEDQUERIESROW { background-color:#363b66; }
+TR.NAVIGATIONTREE_OPTIONSROW { background-color:#363b66; }
+
+P.WORKSPACE_MESSAGEFONT { font-weight:normal;font-size:16pt;font-family:Arial; }
+
+
+

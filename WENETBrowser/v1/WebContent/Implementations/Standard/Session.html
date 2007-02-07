@@ -1,0 +1,204 @@
+<html>
+<head>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+<script src="BrowserControl.js"></script>
+</head>
+
+<body onLoad="reloadSyncSession();">
+
+<script type="text/javascript">
+<!--
+var sessionWaiting = false;
+var queryWaiting = false;
+var queryRoot = "";
+var queryName = "";
+var instanceURL = "";
+var queryBackgroundCount = 0;
+
+var totalEvidenceQueries = 1;
+var totalVehicleQueries = 1;
+var totalFirearmQueries = 1;
+var totalPropertyQueries = 1;
+var totalProtectionQueries = 1;
+var totalBookingQueries = 1;
+var totalCaseQueries = 1;
+var totalArrestQueries = 1;
+var totalInfractionQueries = 1;
+var totalIncidentQueries = 1;
+var totalPersonQueries = 1;
+var totalArrestWarrantQueries = 1;
+var totalCitationQueries = 1;
+
+var personSummaryColumnAry = new Array();
+personSummaryColumnAry[0] = "J:PERSON/J:PERSONNAME/J:PERSONSURNAME";
+personSummaryColumnAry[1] = "J:PERSON/J:PERSONNAME/J:PERSONGIVENNAME";
+personSummaryColumnAry[2] = "J:PERSON/J:PERSONNAME/J:PERSONMIDDLENAME";
+personSummaryColumnAry[3] = "J:PERSON/J:PERSONBIRTHDATE";
+personSummaryColumnAry[4] = "J:PERSON/J:RESIDENCE/J:LOCATIONADDRESS/J:LOCATIONSTREET/J:STREETFULLTEXT";
+personSummaryColumnAry[5] = "J:PERSON/J:RESIDENCE/J:LOCATIONADDRESS/J:LOCATIONCITYNAME";
+personSummaryColumnAry[6] = "J:PERSON/J:PERSONPHYSICALDETAILS/J:PERSONRACETEXT";
+personSummaryColumnAry[7] = "J:PERSON/J:PERSONPHYSICALDETAILS/J:PERSONSEXTEXT";
+
+var arrestWarrantColumnAry = new Array();
+
+var citationColumnAry = new Array();
+citationColumnAry[0] = "J:CITATION/J:CITATIONSUBJECT/J:PERSONNAME/J:PERSONSURNAME";
+citationColumnAry[1] = "J:CITATION/J:CITATIONSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME";
+citationColumnAry[2] = "J:CITATION/J:CITATIONSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME";
+citationColumnAry[3] = "J:CITATION/J:CITATIONSUBJECT/J:PERSONBIRTHDATE";
+citationColumnAry[4] = "J:CITATION/J:ACTIVITYID/J:ID";
+citationColumnAry[5] = "J:CITATION/J:ACTIVITYCRIMECASE/J:ACTIVITYID/J:ID";
+citationColumnAry[6] = "J:CITATION/J:ACTIVITYDATE";
+citationColumnAry[7] = "J:CITATION/J:ACTIVITYTIME";
+citationColumnAry[8] = "J:CITATION/J:CITATIONVIOLATION/J:INCIDENTVIOLATEDSTATUTE/J:STATUTEDESCRIPTIONTEXT";
+citationColumnAry[9] = "J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTECODEID/J:ID";
+citationColumnAry[10] = "J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEOFFENSEID/J:ID";
+
+var protectionColumnAry = new Array();
+protectionColumnAry[0] = "J:PROTECTIONORDER/J:COURTORDERSTATUS";
+protectionColumnAry[1] = "J:PROTECTIONORDER/J:ACTIVITYDOCKET/J:DOCUMENTDESCRIPTIVEMETADATA/J:DOCUMENTGROUPID/J:ID";
+protectionColumnAry[2] = "J:PROTECTIONORDER/J:COURTORDERRECALLDATE";
+protectionColumnAry[3] = "J:PROTECTIONORDER/J:COURTORDERSERVICEDATE";
+protectionColumnAry[4] = "J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONFULLNAME";
+protectionColumnAry[5] = "J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONBIRTHDATE";
+protectionColumnAry[6] = "J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONNAME/J:PERSONFULLNAME";
+protectionColumnAry[7] = "J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONBIRTHDATE";
+
+var propertyColumnAry = new Array();
+
+var firearmColumnAry = new Array();
+firearmColumnAry[0] = "J:FIREARM/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME";
+firearmColumnAry[1] = "J:FIREARM/J:PROPERTYSTATUS/J:STATUSDESCRIPTIONTEXT";
+firearmColumnAry[2] = "J:FIREARM/J:PROPERTYPHYSICALDETAILS/J:PROPERTYBRANDNAME";
+firearmColumnAry[3] = "J:FIREARM/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME";
+firearmColumnAry[4] = "J:FIREARM/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYSERIALID/J:ID";
+firearmColumnAry[5] = "J:FIREARM/J:PROPERTYDESCRIPTIONTEXT";
+
+var vehicleColumnAry = new Array();
+var evidenceColumnAry = new Array();
+
+var bookingColumnAry = new Array();
+bookingColumnAry[0] = "J:BOOKING/J:BOOKINGDOCUMENTCONTROLID/J:ID";
+bookingColumnAry[1] = "J:BOOKING/J:ACTIVITYDATE";
+bookingColumnAry[2] = "J:BOOKING/J:BOOKINGRELEASE/J:ACTIVITYDATE";
+bookingColumnAry[3] = "J:BOOKING/J:BOOKINGSUBJECT/J:PERSONNAME/J:PERSONSURNAME";
+bookingColumnAry[4] = "J:BOOKING/J:BOOKINGSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME";
+bookingColumnAry[5] = "J:BOOKING/J:BOOKINGSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME";
+bookingColumnAry[6] = "J:BOOKING/J:BOOKINGSUBJECT/J:PERSONBIRTHDATE";
+
+var caseColumnAry = new Array();
+caseColumnAry[0] = "J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONFULLNAME";
+caseColumnAry[1] = "J:CASE/J:ACTIVITYSUSPECT/J:PERSONBIRTHDATE";
+caseColumnAry[2] = "J:CASE/J:CASEOTHERID/J:ID";
+caseColumnAry[3] = "J:CASE/J:CASEDOCKETID/J:ID";
+caseColumnAry[4] = "J:CASE/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGEDESCRIPTIONTEXT";
+caseColumnAry[5] = "J:CASE/J:ACTIVITYDATE";
+caseColumnAry[6] = "J:CASE/J:CASEPARTICIPANTS/J:CASEPROSECUTIONATTORNEY/J:PERSONNAME/J:PERSONFULLNAME";
+
+var arrestColumnAry = new Array();
+arrestColumnAry[0] = "J:ARREST/J:ACTIVITYDATE";
+arrestColumnAry[1] = "J:ARREST/J:ARRESTSUBJECT/J:PERSONNAME/J:PERSONSURNAME";
+arrestColumnAry[2] = "J:ARREST/J:ARRESTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME";
+arrestColumnAry[3] = "J:ARREST/J:ARRESTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME";
+arrestColumnAry[4] = "J:ARREST/J:ARRESTSUBJECT/J:PERSONBIRTHDATE";
+arrestColumnAry[5] = "J:ARREST/J:ARRESTAGENCYRECORDID/J:ID";
+arrestColumnAry[6] = "J:ARREST/J:ARRESTCHARGE/J:CHARGESEQUENCEID/J:ID";
+arrestColumnAry[7] = "J:ARREST/J:ARRESTCHARGE/J:CHARGESTATUTE/J:STATUTEDESCRIPTIONTEXT";
+arrestColumnAry[8] = "J:ARREST/J:ARRESTCHARGE/J:CHARGESTATUTE/J:STATUTEOFFENSEID/J:ID";
+
+
+var infractionColumnAry = new Array();
+infractionColumnAry[0] = "J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME";
+infractionColumnAry[1] = "J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME";
+infractionColumnAry[2] = "J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME";
+infractionColumnAry[3] = "J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONBIRTHDATE";
+infractionColumnAry[4] = "J:INFRACTION/J:ACTIVITYID/J:ID";
+infractionColumnAry[5] = "J:INFRACTION/J:ACTIVITYCRIMECASE/J:ACTIVITYID/J:ID";
+infractionColumnAry[6] = "J:INFRACTION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEDESCRIPTIONTEXT";
+infractionColumnAry[7] = "J:INFRACTION/J:ACTIVITYDATE";
+infractionColumnAry[8] = "J:INFRACTION/J:ACTIVITYTIME";
+infractionColumnAry[9] = "J:INFRACTION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTECODEID/J:ID";
+infractionColumnAry[10] = "J:INFRACTION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEOFFENSEID/J:ID";
+
+var incidentColumnAry = new Array();
+incidentColumnAry[0] = "J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME";
+incidentColumnAry[1] = "J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME";
+incidentColumnAry[2] = "J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME";
+incidentColumnAry[3] = "J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONBIRTHDATE";
+incidentColumnAry[4] = "J:INCIDENT/J:ACTIVITYID/J:ID";
+incidentColumnAry[5] = "J:INCIDENT/J:ACTIVITYDATE";
+incidentColumnAry[6] = "J:INCIDENT/J:ACTIVITYTIME";
+
+var sessionLoaded = false;
+var sessionURL = "../../servlet/WENETBrowserServlet?act=GetSession";
+var sessionDataText;
+var sessionDocument;
+var xmlhttp;
+
+function reloadSyncSession()
+{
+	top.NavigationFrame.SessionMessage.innerHTML = "<img src='images/progressbar.gif'>";
+
+	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	xmlhttp.open("GET", sessionURL, false);
+	xmlhttp.send();
+
+	xmlhttpChange();
+}
+
+function reloadSession()
+{
+	top.NavigationFrame.SessionMessage.innerHTML = "<img src='images/progressbar.gif'>";
+
+	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	xmlhttp.onreadystatechange=xmlhttpChange;
+	xmlhttp.open("GET", sessionURL, true);
+	xmlhttp.send();
+}
+
+function xmlhttpChange()
+{
+	
+
+	if (xmlhttp.readyState==4 && xmlhttp.status == 200) {
+		sessionLoaded = true;
+		sessionDataText = xmlhttp.responseText;
+		sessionDocument = xmlhttp.responseXML;
+
+		if(top.NavigationFrame.StateInfoForm == undefined) { top.NavigationFrame.writeStateForm(); }
+	 	
+		// If this session was reloaded due to a pending query, then display the results
+		if(queryWaiting == true) {
+			alert("Current queryBackgroundCount = " + queryBackgroundCount + ", will show " + queryName);
+			queryBackgroundCount = queryBackgroundCount - 1;
+			if (queryBackgroundCount > 0) {
+					setTimeout('reloadSession();', 30000);
+				} else {
+					queryWaiting = false;
+					ViewSummary(queryRoot, queryName, 'Presentation/');
+				}
+			}
+
+		top.NavigationFrame.driveTree();
+
+		if(sessionWaiting == true) {
+			sessionWaiting = false;
+			}
+		if (queryWaiting == false) {
+			top.NavigationFrame.SessionMessage.innerHTML = '';
+			}
+		}
+
+	if(xmlhttp.readyState==4 && xmlhttp.status != 200) {
+		alert("Communications error, http status code: " + xmlhttp.status);
+		top.WorkspaceFrame.location = "Workspace.html";
+		setTimeout("top.WorkspaceFrame.document.all('WorkspaceContent').innerHTML = xmlhttp.responseText", 1000);
+		}
+
+}
+
+-->
+</script>
+</body>
+</html>

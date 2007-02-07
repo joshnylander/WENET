@@ -1,0 +1,88 @@
+<html>
+<head>
+
+	<script src="BrowserControl.js"></script>
+	<script type="text/javascript">
+	<!--
+	var resultsDOM = null;
+
+	function loadArrestWarrentInstance(docURL) {
+
+		// Make a call to the browser servlet and request the file
+		var theURL = "servlet/WENETBrowserServlet?act=GetInstance&URL=" + docURL;
+		var xmlhttp = new ActiveXObject("Msxml2.XMLHTTP.3.0");
+		xmlhttp.open("GET", theURL, false);
+		xmlhttp.send();
+		if(xmlhttp.status != 200) {
+			pageError = "Error retrieving instance document, status code: " + xmlhttp.status;
+			return;
+			}
+
+		// Get a list of the browser supported namespaces 
+		var xml = top.SessionDataFrame.sessionDocument;		
+		var browserNSAry = new Array();
+		var browserPrefixAry = new Array();
+		var browserNamespaces = xml.selectNodes("session/browserNamespaces/supportedNamespace");
+		for(i=0; i<browserNamespaces.length; i++) {
+			browserNSAry.push( browserNamespaces[i].selectSingleNode("location").text );
+			browserPrefixAry.push( browserNamespaces[i].selectSingleNode("prefix").text );		
+			}
+
+		// Scan through the document and extract the namespaces they are using
+		var resultsDoc = xmlhttp.responseText;
+		var namespaceAry = new Array();
+		var prefixAry = new Array();
+		var nsInd = resultsDoc.indexOf("xmlns:");
+		while(nsInd != -1) {
+			var eqlInd = resultsDoc.indexOf("=\"", nsInd);
+			var quoteInd = resultsDoc.indexOf("\"", eqlInd+2);
+			namespaceAry.push(resultsDoc.substring(eqlInd+2, quoteInd));
+			prefixAry.push(resultsDoc.substring(nsInd, eqlInd));
+			}
+
+		// Translate the prefixes to our own
+		for(i=0; i<browserNSAry.length; i++) {
+			var browserNamespace = browserNSAry[i];
+			var browserPrefix = browserPrefixAry[i];
+			
+			for(i=0; i<namespaceAry.length; i++) {
+				if(namespaceAry[i] == browserNamespace) {
+					resultsDoc.replace(prefixAry[i] + ":", browserPrefix);
+					resultsDoc.replace(prefixAry[i] + "=", browserPrefix);
+					}
+				}
+			}
+		
+		// Make an XML document out of our now namespace mangled xml text
+		resultsDOM = new ActiveXObject("Microsoft.XMLDOM");
+		resultsDOM.async = false;
+		resultsDOM.load(resultsDoc);
+
+		// Fill in the token variables with the results
+		var displayHTML = document.all('GeneralContent').innerHTML;
+		displayHTML.replace('', resultsDOM.selectSingleNode("j:Person/j:PersonName/j:PersonGivenName").text);
+		document.all('GeneralContent').innerHTML = displayHTML;
+		}
+	-->
+	</script>
+</head>
+<body>
+
+<div id="GeneralContent">
+<center>	
+
+<table border="75%">
+<tr><td>
+<fieldset>
+<legend></legend>
+
+
+</fieldset>
+</td></tr>
+</table>
+</center>
+</div>
+
+
+</body>
+</html>

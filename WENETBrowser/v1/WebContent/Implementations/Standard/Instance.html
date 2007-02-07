@@ -1,0 +1,155 @@
+<html>
+<head>
+<title> WENET Browser </title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+<script src="BrowserControl.js"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+<!--
+var instanceLoaded = false;
+var instanceWaiting = false;
+var instanceRoot = "";
+var instanceURL = "";
+
+var instanceDocument;
+var instanceDataText;
+
+var personInstanceText = null;
+var arrestInstanceText = null;
+var arrestWarrantInstanceText = null;
+var bookingInstanceText = null;
+var caseInstanceText = null;
+var citationInstanceText = null;
+var evidenceInstanceText = null;
+var firearmInstanceText = null;
+var incidentInstanceText = null;
+var infractionInstanceText = null;
+var propertyInstanceText = null;
+var protectionInstanceText = null;
+var vehicleInstanceText = null;
+
+var personInstanceDocument = null;
+var arrestInstanceDocument = null;
+var arrestWarrantInstanceDocument = null;
+var bookingInstanceDocument = null;
+var caseInstanceDocument = null;
+var citationInstanceDocument = null;
+var evidenceInstanceDocument = null;
+var firearmInstanceDocument = null;
+var incidentInstanceDocument = null;
+var infractionInstanceDocument = null;
+var propertyInstanceDocument = null;
+var protectionInstanceDocument = null;
+var vehicleInstanceDocument = null;
+
+var xmlhttp;
+
+function reloadSyncInstance()
+{
+	top.NavigationFrame.DetailMessage.innerHTML = "<img src='images/progressbar.gif'>";
+	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	xmlhttp.open("GET", instanceURL, false);
+	xmlhttp.send();	
+	xmlhttpChange();
+}
+
+function reloadInstance()
+{
+	top.NavigationFrame.DetailMessage.innerHTML = "<img src='images/progressbar.gif'>";
+	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	xmlhttp.onreadystatechange=xmlhttpChange;
+	xmlhttp.open("GET", instanceURL, true);
+	xmlhttp.send();
+}
+
+function xmlhttpChange()
+{
+
+	if (xmlhttp.readyState==4 && xmlhttp.status == 200) {
+		instanceLoaded = true;
+
+		// Figure out which type of instance document it is, and put it in the proper cubby hole
+		for(var i=0; i<xmlhttp.responseXML.childNodes.length; i++) {
+			var node = xmlhttp.responseXML.childNodes.item(i);
+			if(node.nodeType == 1) { 
+				var theNode = node.nodeName.substr(node.nodeName.indexOf(":")+1);
+				if(theNode == 'Person') { personInstanceDocument = xmlhttp.responseXML; personInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Arrest') { arrestInstanceDocument = xmlhttp.responseXML; arrestInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'ArrestWarrant') { arrestWarrantInstanceDocument = xmlhttp.responseXML; arrestWarrantInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Booking') { bookingInstanceDocument = xmlhttp.responseXML; bookingInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Case') { caseInstanceDocument = xmlhttp.responseXML; caseInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Citation') { citationInstanceDocument = xmlhttp.responseXML; citationInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Evidence') { evidenceInstanceDocument = xmlhttp.responseXML; evidenceInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Firearm') { firearmInstanceDocument = xmlhttp.responseXML; firearmInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Incident') { incidentInstanceDocument = xmlhttp.responseXML; incidentInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Infraction') { infractionInstanceDocument = xmlhttp.responseXML; infractionInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Property') { propertyInstanceDocument = xmlhttp.responseXML; propertyInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'ProtectionOrder') { protectionInstanceDocument = xmlhttp.responseXML; protectionInstanceText = xmlhttp.responseText; break; }
+				if(theNode == 'Vehicle') { vehicleInstanceDocument = xmlhttp.responseXML; vehicleInstanceText = xmlhttp.responseText; break; }
+				break;
+				}
+			}
+
+		instanceDataText = xmlhttp.responseText;
+		instanceDocument = xmlhttp.responseXML;
+		ViewInstance(instanceRoot);
+		instanceWaiting = false;
+
+		top.NavigationFrame.DetailMessage.innerHTML = '';
+		return;
+		}
+
+	if(xmlhttp.readyState==4 && xmlhttp.status != 200) {
+		alert("Communications error, http status code: " + xmlhttp.status);
+		top.WorkspaceFrame.location = "Workspace.html";
+		setTimeout("top.WorkspaceFrame.document.all('WorkspaceContent').innerHTML = xmlhttp.responseText", 1000);
+		return;
+		}
+
+}
+
+
+function loadInstanceDoc(RootType) 
+{
+	if(RootType == 'Person') { instanceDocument = personInstanceDocument; instanceDataText = personInstanceText; }
+	if(RootType == 'Arrest') { instanceDocument = arrestInstanceDocument; instanceDataText = arrestInstanceText; }
+	if(RootType == 'ArrestWarrant') { instanceDocument = arrestWarrantInstanceDocument; instanceDataText = arrestWarrantInstanceText; }
+	if(RootType == 'Booking') { instanceDocument = bookingInstanceDocument;  instanceDataText = bookingInstanceText; }
+	if(RootType == 'Case') { instanceDocument = caseInstanceDocument;  instanceDataText = caseInstanceText; }
+	if(RootType == 'Citation') { instanceDocument = citationInstanceDocument;  instanceDataText = citationInstanceText; }
+	if(RootType == 'Evidence') { instanceDocument = evidenceInstanceDocument; instanceDataText = evidenceInstanceText; }
+	if(RootType == 'Firearm') { instanceDocument = firearmInstanceDocument; instanceDataText = firearmInstanceText; }
+	if(RootType == 'Incident') { instanceDocument = incidentInstanceDocument; instanceDataText = incidentInstanceText; }
+	if(RootType == 'Infraction') { instanceDocument = infractionInstanceDocument; instanceDataText = infractionInstanceText; }
+	if(RootType == 'Property') { instanceDocument = propertyInstanceDocument; instanceDataText = propertyInstanceText; }
+	if(RootType == 'ProtectionOrder') { instanceDocument = protectionInstanceDocument; instanceDataText = protectionInstanceText; }
+	if(RootType == 'Vehicle') { instanceDocument = vehicleInstanceDocument; instanceDataText = vehicleInstanceText; }
+	return;		
+}
+
+function availableInstance(RootType) 
+{
+	if(RootType == 'Person' && personInstanceDocument != null) { return true; } 
+	if(RootType == 'Arrest' && arrestInstanceDocument != null) { return true; }
+	if(RootType == 'ArrestWarrant' && arrestWarrantInstanceDocument != null) { return true; }
+	if(RootType == 'Booking' && bookingInstanceDocument != null ) { return true; }
+	if(RootType == 'Case' && caseInstanceDocument != null) { return true; }
+	if(RootType == 'Citation' && citationInstanceDocument != null) { return true; }
+	if(RootType == 'Evidence' && evidenceInstanceDocument != null) { return true; }
+	if(RootType == 'Firearm' && firearmInstanceDocument != null) { return true; }
+	if(RootType == 'Incident' && incidentInstanceDocument != null) { return true; }
+	if(RootType == 'Infraction' && infractionInstanceDocument != null) { return true; }
+	if(RootType == 'Property' && propertyInstanceDocument != null) { return true; }
+	if(RootType == 'ProtectionOrder' && protectionInstanceDocument != null) { return true; }
+	if(RootType == 'Vehicle' && vehicleInstanceDocument != null) { return true; }
+	return false;		
+}
+
+-->
+</script>
+</body>
+</html>

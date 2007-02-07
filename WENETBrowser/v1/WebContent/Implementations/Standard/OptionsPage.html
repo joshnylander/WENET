@@ -1,0 +1,41 @@
+<html>
+<head>
+<title> WENET Browser </title>
+<link rel="stylesheet" type="text/css" href="" />
+
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+<script src="BrowserControl.js"></script>
+
+	<script type="text/javascript">
+	<!--	
+		// Set the pages display CSS 
+		var xml = top.SessionDataFrame.sessionDocument;
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = pageCSS.text; }
+
+		function waitTimer() { }
+
+		function setTheme(theme) {
+
+			SetDisplayTheme(theme);
+			RefreshSession(false);
+
+			top.WorkspaceFrame.location = 'Workspace.html';
+			top.WorkspaceFrame.reload();
+			}
+	-->
+	</script>
+</head>
+<body>
+
+<center>
+<br><br>
+	<center><font size=+3>Available Themes</font></center>
+	<table class=QUERYFONTS border=5 width=50%>
+	<tr class=NAVIGATIONTREEROOT><td><a href='#' class=NAVIGATIONTREEROOT onClick="setTheme('Default');"> Default Theme </a></td></tr>
+	<tr class=NAVIGATIONTREEROOT><td><a href='#' class=NAVIGATIONTREEROOT onClick="setTheme('MountainBlue');"> Mountain Blue Theme</a></td></tr>
+	<tr class=NAVIGATIONTREEROOT><td><a href='#' class=NAVIGATIONTREEROOT onClick="setTheme('GreenTheme');"> Green Theme 1 </a></td></tr>
+	</table>
+</body>
+</html>

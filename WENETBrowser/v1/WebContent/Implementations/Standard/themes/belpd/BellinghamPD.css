@@ -1,0 +1,66 @@
+BODY { background-color: #000000; }
+
+ul.HoverButton { border-bottom: 0px solid #000; margin: 0; list-style-type: none; border-width:1;background-color: #8DB89B;border: 1px solid #000; }
+li.HoverButton { }
+
+a.HoverButton { display: block; width:100%; height:100%; text-decoration:none; color:#000000; font: bold 11px verdana, arial, sans-serif; padding: 4px; }
+a.HoverButton:hover { background:#fff; } 
+
+
+a.NAVHoverButton { margin-left:0px; display:block; width:100%; height:100%; }
+a.NAVHoverButton:hover { background:#d1d2a4; } 
+
+
+#QUERYBODY { font-weight:bold; font-size:15px/1; }
+#QUERYHEADER { margin-left:.5cm; text-decoration:underline; font-weight:bold; font-size:150%; font-family:Times; color:#000000; }
+#QUERYNAME { text-decoration:normal; font-weight:bold; font-size:100%; font-family:Times; color:#000000; }
+#QUERYSEARCHPARAMETERS { text-decoration:normal; font-weight:bold; font-size:80%; font-family:arial; background-color:#363b66; visibility:hidden; display:none; color:#ffffff;}
+#QUERYSERVICEPOINTSTABLE { text-decoration:normal; font-weight:bold; font-size:80%; font-family:arial; background-color:#363b66; visibility:hidden; display:none; color:#ffffff;} 
+INPUT.QUERYSEARCHPARAMETERSRADIO { width:15;height:15;}
+#QUERYSERVICEPOINTSCHECK { width:15;height:15;}
+TABLE.QUERYFONTS { font-weight:bold; font-size:90%; font-family:Arial; color:#000000; }
+TABLE.QUERYBACKGROUNDTABLE { width:90%; background-color:#497F5B; }
+INPUT.QUERYINPUTS { background-color:#9ec9ac; color:#000000;font-weight:bold;}
+
+
+P.QUERYSPLASH_HEADERFONT1 { font-size:30pt;font-weight:bold;font-family:Times;color:#f3f4d6;}
+P.QUERYSPLASH_HEADERFONT2 { font-size:30pt;font-family:Times;color:#e2e3c5;}
+TABLE.QUERYSPLASH_HEADERFONT3 { font-size:16pt;font-family:Arial;color:#000000; background:#f3f4d6;}
+P.QUERYSPLASH_MESSAGEFONT { text-decoration:italics;font-weight:bold;font-size:14pt;font-family:Arial;color:#ffffff; }
+IMG.QUERYSPLASH_IMAGE { }
+BODY.QUERYSPLASH_BODY { }
+
+
+#SUMMARY_BODY { font-family:arial; color:black; font-size:x-small;}
+#SUMMARY_QUERYNAMEFONT { margin-left:10px;margin-top:10px;text-decoration:none;font-weight:normal;font-size:100%; }
+TABLE.SUMMARY_TABLE {border-width:0; font-weight:normal; font-size:100%; margin-left:1%; margin-top:1%;}
+TR.SUMMARY_HEADERROW { background-color:#ffffff; margin-left:0%;}
+TR.SUMMARY_SORTDETAILROW {background-color:#ffffff;}
+TR.SUMMARY_SORTEDGROUPROW1 { background-color:#cccccc;text-align:center;}
+TR.SUMMARY_SORTEDGROUPROW2 { background-color:#aaaaaa;text-align:center;}
+A.SUMMARY_HEADERFONT {color:black;text-decoration:none;font-weight:normal;font-size:100%;font-family:Times;}
+A.SUMMARY_HEADERSELECTEDFONT {color:black;text-decoration:underline;font-weight:bold;font-size:120%;font-family:Times;}
+A.SUMMARY_INSTANCELINK { color:black;text-decoration:normal;font-weight:bold;font-size:100%;font-family:Arial; }
+TABLE.SUMMARY_OPTIONS { background:ffffff;} 
+
+#ContentSpacer { height:15px; border:0; }
+.NAVIGATIONFONTS { font-size:15px/1; color:#000000; font-face:veranda; text-decoration:none;}
+#NAVIGATIONTREEBODY { background-color:#000000;  }
+FIELDSET.NavigationTreeSpacer { height:70; width:100%; font-size:120%; background-color:#d1d2a4; border-width:0;}
+A.NAVIGATIONTREEROOT { width:100%; font-weight:bold; font-size:90%; color:#000000; font-face:Times; text-decoration:none; }
+A.NAVIGATIONTREEROOT:hover { background:#cccccc; color:#000000; font-weight:bold; text-decoration:underline;} 
+A.NAVIGATIONTREEQUERY { width:100%; letter-spacing:3px; font-weight:bold; font-size:100%; color:#000000; font-face:Arial; text-decoration:none;}
+A.NAVIGATIONTREEQUERY:hover { background:#e2e3b5; } 
+
+TABLE.NAVIGATIONTREE_TABLE { width=100%; }
+TR.NAVIGATIONTREEROOT { background-color:#ffffff;}
+TR.NAVIGATIONTREEQUERY { background-color:#d1d2a4; }
+TR.NAVIGATIONTREE_SESSIONDETAILSROW { background-color:#d1d2a4; }
+TR.NAVIGATIONTREE_WORKSPACEROW { background-color:#d1d2a4; }
+TR.NAVIGATIONTREE_SAVEDQUERIESROW { background-color:#d1d2a4; }
+TR.NAVIGATIONTREE_OPTIONSROW { background-color:#d1d2a4; }
+
+P.WORKSPACE_MESSAGEFONT { font-weight:normal;font-size:16pt;font-family:Arial; }
+#WORKSPACEBODY { background-color:#ffffff;}
+
+

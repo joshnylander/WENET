@@ -1,0 +1,425 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="" />
+	<link rel="stylesheet" type="text/css" media="all" href="../JSCalendar/calendar-win2k-cold-1.css" title="win2k-cold-1" />
+	<script src="../BrowserControl.js"></script>
+	<script src="../JSCalendar/calendar.js"></script>
+  	<script src="../JSCalendar/calendar-en.js"></script>
+	<script src="../JSCalendar/calendar-setup.js"></script>
+
+</head>
+<body id=QUERYBODY>
+	<script type="text/javascript">
+	<!--
+		// Wait until the session document is completely loaded
+		var xml = top.SessionDataFrame.sessionDocument;
+		if(xml == undefined) { setTimeout("top.WorkspaceFrame.location='CitationQueryForm.html'", 100); }
+
+		// Set the pages display CSS 
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = "../" + pageCSS.text; }
+
+		function showPanel(thePanel) {
+			thePanel.style.visibility = 'visible';
+			thePanel.style.display = 'block';
+			focusCtl('');
+			}
+
+		function hideQueryPanels() {
+			hidePanel(document.all.CitationPanel);
+			hidePanel(document.all.SubjectPanel);
+			}
+		
+		function hidePanel(thePanel) {
+			thePanel.style.visibility = 'hidden';
+			thePanel.style.display = 'none';
+			}
+
+		function showSearchParameters() {
+
+			if(document.all.QUERYSEARCHPARAMETERS.style.visibility != 'visible') {
+				document.all.QUERYSEARCHPARAMETERS.style.visibility = 'visible';
+				document.all.QUERYSEARCHPARAMETERS.style.display = 'block';
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			else
+				{
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			}
+		
+		function showServicePoints() {
+			if(document.all.QUERYSERVICEPOINTSTABLE.style.visibility != 'visible') {
+				document.all.QUERYSERVICEPOINTSTABLE.style.visibility = 'visible';
+				document.all.QUERYSERVICEPOINTSTABLE.style.display = 'block';
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				}
+			else
+				{
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			}
+
+		//----------------------------------------------------------
+		// This is the list of fields that allow wildcard searches
+		
+		var wildcardAry = new Array();
+		wildcardAry[0] = new Array('tnumber', "Ticket Number");
+		wildcardAry[1] = new Array('sdesc', "Statute Description");
+		wildcardAry[2] = new Array('middle', "Middle Name");
+		wildcardAry[3] = new Array('last', "Last Name");
+		wildcardAry[4] = new Array('first', "First Name");
+		wildcardAry[5] = new Array('enumber', "Event Number");
+
+		var selectedCtl = 0;
+		var wildcardValues = new Array();
+		for(i=0; i<wildcardAry.length; i++) { wildcardValues[i] = 0; }
+	
+		function focusCtl(theCtl) {
+			hidePanel(document.all.QUERYSEARCHPARAMETERS);
+			selectedCtl = -1;
+
+			for(i=0; i<wildcardAry.length; i++) {
+				if(wildcardAry[i][0] == theCtl) {
+					selectedCtl = i;
+					document.ControlForm.Namesearch[wildcardValues[i]].checked = true;
+					showSearchParameters();
+					document.all.CardName.innerHTML = "<u>" + wildcardAry[i][1] + "</u>";
+					return;
+					}
+				}
+
+			return;
+			}
+
+
+		function makeXPath() {
+
+			// Construct the xpath query
+			var xpath = "j:Citation[";
+			
+			if(document.all.tnumber.value.trim() != '') { xpath += makeXPathString("j:ActivityID/j:ID", document.all.tnumber.value.trim(), wildcardValues[0]); }
+			
+			if(document.all.tnumber.value.trim() != '') { xpath += makeXPathString("j:ActivityCrimeCase/j:ActivityID/j:ID", document.all.enumber.value.trim(), wildcardValues[5]); }
+
+			if(document.all.tdate.value.trim() != '') { 
+				xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.tdate.value.trim())) + "' and "; 
+				}
+			else
+				{
+				if(document.all.tdatestart.value.trim() != '' && document.all.tdateend.value.trim() != '') {
+					xpath += "j:ActivityDate >= '" + makeTimestamp(convertDate(document.all.tdatestart.value.trim())) + "' and "; 
+					xpath += "j:ActivityDate <= '" + makeTimestamp(convertDate(document.all.tdatestart.value.trim())) + "' and "; 
+					}
+				}
+
+			if(document.all.code.value.trim() != '') { xpath += "j:CitationViolation/j:IncidentViolatedStatute/j:StatuteOffenseID='" + document.all.code.value.trim() + "' and "; }
+			if(document.all.sdesc.value.trim() != '') { xpath += makeXPathString("j:CitationViolation/j:IncidentViolatedStatute/j:StatuteDescriptionText", document.all.sdesc.value.trim(), wildcardValues[1]); }
+
+			if(document.all.last.value.trim() != '') { xpath += makeXPathString("j:CitationSubject/j:PersonName/j:PersonSurName", document.all.last.value.trim(), wildcardValues[3]); }
+			if(document.all.middle.value.trim() != '') { xpath += makeXPathString("j:CitationSubject/j:PersonName/j:PersonMiddleName", document.all.middle.value.trim(), wildcardValues[2]); }
+			if(document.all.first.value.trim() != '') { xpath += makeXPathString("j:CitationSubject/j:PersonName/j:PersonGivenName", document.all.first.value.trim(), wildcardValues[4]); }
+
+			if(document.all.dob.value.trim() != '') {
+				xpath += "j:CitationSubject/j:PersonBirthDate='" + makeTimestamp(convertDate(document.all.dob.value.trim())) + "' and ";
+				}
+			else
+				{
+				if(document.all.dobstart.value.trim() != '' && document.all.dobend.value.trim() != '') {
+					xpath += "j:CitationSubject/j:PersonBirthDate >= '" + makeTimestamp(convertDate(document.all.dobstart.value.trim())) + "' and ";
+					xpath += "j:CitationSubject/j:PersonBirthDate <= '" + makeTimestamp(convertDate(document.all.dobstart.value.trim())) + "' and ";
+					}
+				}
+
+			// Strip off the last 'and' and end the xpath node test
+			var lastAnd = xpath.lastIndexOf('and');
+			if(lastAnd != -1) { xpath = xpath.substr(0, lastAnd); }
+			xpath += "]";
+			return xpath;
+			}
+
+		function callQuery() {
+	
+			var ary = new Array();
+			if(document.ControlForm.Sheriff.checked == true) { ary.push('http://wenet-wcso.co.whatcom.wa.us/'); }
+			if(document.ControlForm.Jail.checked == true) { ary.push('http://wenet-wcsojl.co.whatcom.wa.us/'); }
+			if(document.ControlForm.Prosecutor.checked == true) { ary.push('http://wenet-wcpa.co.whatcom.wa.us/'); }	
+			if(document.ControlForm.BPD.checked == true) { ary.push('http://wenet.cob.org/'); }
+			
+			var strXPath = makeXPath();
+			strXPath = prompt("XPath: ", strXPath);
+			AddQuery('Citation', document.HeaderForm.qname.value, makeXPath(), document.HeaderForm.timeout.value, ary);
+
+			top.SessionDataFrame.totalCitationQueries += 1;
+			}
+
+		function highlightQueryButton(thebutton) {
+			document.all.ViolatorButton.style.background = '';
+			document.all.CitationButton.style.background = '';
+			thebutton.style.background = '#fff';
+			}
+
+		function clearForm() {
+			document.CitationInfo.reset();
+			document.SubjectInfo.reset();
+			}
+	-->
+	</script>
+
+
+<form name=HeaderForm>
+<fieldset class="NavigationTreeSpacer" style="width:100%;border:0;">
+<br>
+	<table border=0 width=100%>
+	<tr>
+	<td><p id=QUERYHEADER> Citation </p></td>
+
+	<td align=right>
+	<p id=QUERYNAME>
+	<script type="text/javascript">
+	<!--
+	var xml = top.SessionDataFrame.sessionDocument;
+	if(xml == undefined) { exit; }
+	document.writeln("Query Name: <input type=text name=qname value=Citation" + top.SessionDataFrame.totalCitationQueries + ">");
+	-->
+	</script> &nbsp&nbsp
+
+	Timeout: <select name="timeout">
+		<option value="90">90 Seconds</option>
+		<option value="30">30 Seconds</option>
+		<option value="60">60 Seconds</option>
+		<option value="120">120 Seconds</option>
+		<option value="600">10 Minutes</option>
+		</select>
+
+	&nbsp&nbsp
+	</p>
+	</td>
+	</tr>
+	</table>
+
+</fieldset>
+</form>
+
+<fieldset id="ContentSpacer"></fieldset>
+<center>
+<table border=1 class="QUERYBACKGROUNDTABLE QUERYFONTS">
+<tr>
+	<td colspan=2>
+
+		
+		<Table border=0>
+		<tr>
+		<td>
+			<ul class="HoverButton"><li class="HoverButton"><a class="HoverButton" id=ViolatorButton onClick="hideQueryPanels(); showPanel(document.all.SubjectPanel); highlightQueryButton(document.all.ViolatorButton);" href="#">Person</a></li></ul>
+		</td>
+		<td>
+			<ul class="HoverButton"><li class="HoverButton"><a class="HoverButton" id=CitationButton onClick="hideQueryPanels(); showPanel(document.all.CitationPanel); highlightQueryButton(document.all.CitationButton);" href="#">Citation Info</a></li></ul>
+		</td>
+		</tr>
+		</table>
+
+	</td>
+</tr>
+<tr>
+
+<td id=CitationPanel style="visibility:hidden;display:none;" align=center width=75% height=200>
+<br>
+<form name=CitationInfo>
+&nbsp&nbsp  Ticket Number: <input class=QUERYINPUTS type="text" id="tnumber" size="15" onClick="focusCtl('tnumber');">
+<br />
+&nbsp&nbsp  Event Number: <input class=QUERYINPUTS type="text" id="enumber" size="15" onClick="focusCtl('enumber');">
+<br />
+&nbsp&nbsp Code: <input class=QUERYINPUTS type=text id=code size=10 onClick="focusCtl('');"><br><br>
+
+&nbsp&nbsp Statute Description: <input class=QUERYINPUTS type=text onClick="focusCtl('sdesc');" id=sdesc size=25><br><br>
+
+<font size=-1><i>Please enter dates in mm/dd/yyyy format</i></font><br>
+
+<table border=0 class="QUERYFONTS">
+<tr><td> Exact Ticket Date: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="tdate" size="10"><button type="reset" id="trigger1"> ... </button> </td></tr>
+<tr><td> Ticket Date Start: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="tdatestart" size=10><button type="reset" id="trigger2"> ... </button> </td></tr>
+<tr><td> Ticket Date End: </td><td> <input type=text class=QUERYINPUTS onClick="focusCtl('');" id="tdateend" size=10><button type="reset" id="trigger3"> ... </button></td></tr>
+</table>
+<br><br>
+
+<script type="text/javascript">
+    Calendar.setup({
+        inputField     :    "tdate",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger1",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+    Calendar.setup({
+        inputField     :    "tdatestart",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger2",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+    Calendar.setup({
+        inputField     :    "tdateend",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger3",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+</script>
+
+</form>
+</td>
+
+<td id=SubjectPanel style="visibility:visible;display:block;" align=center width=75% height=200>
+<br>
+	<form name=SubjectInfo>
+
+	&nbsp&nbsp Last: <input class=QUERYINPUTS onClick="focusCtl('last');" type=text id=last size=10> 
+	&nbsp&nbsp First: <input class=QUERYINPUTS onClick="focusCtl('first');" type=text id=first size=10>
+	&nbsp&nbsp Middle: <input class=QUERYINPUTS onClick="focusCtl('middle');" type=text id=middle size=10><br><br><br>
+
+	<i>Please enter dates in mm/dd/yyyy format</i><br>
+	<table border=0 class="QUERYFONTS">
+	<tr><td> Exact Date of Birth: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="dob" size="10"><button type="reset" id="trigger4"> ... </button> </td></tr>
+	<tr><td> Date of Birth Start: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="dobstart" size=10><button type="reset" id="trigger5"> ... </button> </td></tr>
+	<tr><td> Date of Birth End: </td><td> <input type=text onClick="focusCtl('');" class=QUERYINPUTS id="dobend" size=10><button type="reset" id="trigger6"> ... </button></td></tr>
+	</table>
+	<br><br>
+
+	<script type="text/javascript">
+	    Calendar.setup({
+	        inputField     :    "dob",      
+	        ifFormat       :    "%m/%d/%Y", 
+	        showsTime      :    false,            
+	        button         :    "trigger4",   
+	        singleClick    :    false,           
+	        step           :    1                
+	    });
+	
+	    Calendar.setup({
+	        inputField     :    "dobstart",      
+	        ifFormat       :    "%m/%d/%Y", 
+	        showsTime      :    false,            
+	        button         :    "trigger5",   
+	        singleClick    :    false,           
+	        step           :    1                
+	    });
+	
+	    Calendar.setup({
+	        inputField     :    "dobend",      
+	        ifFormat       :    "%m/%d/%Y", 
+	        showsTime      :    false,            
+	        button         :    "trigger6",   
+	        singleClick    :    false,           
+	        step           :    1                
+	    });
+	
+	</script>
+
+
+	</form>
+</td>
+
+<td valign=top>
+	<center>
+	<form name=ControlForm>
+		<Table border=0 width=100%>
+		<tr>
+		<td align=center>
+			<ul class="HoverButton"><li class="HoverButton"><a class="HoverButton" onClick="showServicePoints();" href="#">Agency RMS</a></li></ul>
+		</td>
+		</tr>
+		</table>
+
+
+	<table border=0 width=100% id=QUERYSEARCHPARAMETERS>
+	<tr><td><div id=CardName></div></td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=0;" type=radio name=Namesearch value=Exact checked> &nbsp&nbsp Exact Text</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=1;" type=radio name=Namesearch value=Contains> &nbsp&nbsp Contains</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=2;" type=radio name=Namesearch value=Starts> &nbsp&nbsp Starts With</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=3;" type=radio name=Namesearch value=Ends> &nbsp&nbsp Ends With</td></tr>	
+	</table>
+
+
+	<script type="text/javascript">
+	<!--
+	//-----------------------------------------------------------------------------------------
+	// Write out the SERVICE POINTS table
+
+	document.write("<table width=100% id=QUERYSERVICEPOINTSTABLE cellspacing=0 cellpadding=0>");
+	document.write("<tr><td> <input class=QUERYSERVICEPOINTSCHECK type=checkbox name=Sheriff "); 
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcso.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Sheriff</font></td></tr>");
+	else
+		document.write(" checked> &nbsp&nbsp Sheriff</tr></tr>");
+
+
+	document.write("<tr><td> <input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck2 name=Prosecutor ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcpa.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Prosecutor</font></td></tr>");
+	else
+		document.write(" > &nbsp&nbsp Prosecutor</td></tr>");
+
+
+	document.write("<tr><td><input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck3 name=Jail ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcsojl.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Jail</font></td></tr>");
+	else
+		document.write(" > &nbsp&nbsp Jail</td></tr>");
+
+
+	document.write("<tr><td><input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck4 name=BPD ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet.cob.org/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">BPD</font></td></tr>");
+	else
+		document.write(" checked> &nbsp&nbsp BPD</td></tr>");
+
+	-->
+	</script>
+	<tr><td align=center><br>
+	<input type=button name=CheckAll value="Check All" style="width:2cm;font-size:8pt;font-family:Arial;">
+	<input type=button name=UncheckAll value="Uncheck All" style="width:2cm;font-size:8pt;font-family:Arial;">
+	</td></tr>
+	</table>
+
+	</center>
+</td>
+</tr>
+</table>
+<br>
+
+	<table border=0 cellspacing=10>
+	<tr>
+	<td align=center width=50%>
+		<ul class=HoverButton style="width:100%;">
+		<li class=HoverButton><a class="HoverButton" onClick="callQuery();" href="#">Query!</a></li>
+		</ul>
+	</td>
+
+	<td align=center width=25%>
+	<ul class=HoverButton style="width:100%;">
+		<li class=HoverButton><a class="HoverButton" onClick="clearForm();" href="#">Clear Form</a></li>
+	</ul>
+	</td>
+	</tr>
+	</table>
+
+
+<script type="text/javascript">
+<!--
+// If the page is first loaded, then set the initial buttons highlighted
+highlightQueryButton(document.all.ViolatorButton);
+-->
+</script>
+
+</center>
+</body>
+</html>

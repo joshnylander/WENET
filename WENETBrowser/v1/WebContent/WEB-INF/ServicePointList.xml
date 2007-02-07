@@ -1,0 +1,6 @@
+<ServicePointList>
+<ServicePointURL>https://wenet-wcso.co.whatcom.wa.us/wenet-whcosh/service</ServicePointURL>
+<ServicePointURL>https://wenet-wcsojl.co.whatcom.wa.us/wenet-whcojl/service</ServicePointURL>
+<ServicePointURL>https://wenet-wcpa.co.whatcom.wa.us/wenet-whcoat/service</ServicePointURL>
+<ServicePointURL>https://wenet.cob.org:2443/wenet-cobpd/discover.aspx</ServicePointURL>
+</ServicePointList>

@@ -1,0 +1,47 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="" />
+	<title> WENET Browser </title>
+
+	<script type="text/javascript">
+	<!--
+		// Set the pages display CSS 
+		var xml = top.SessionDataFrame.sessionDocument;
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = pageCSS.text; }
+	-->
+	</script>
+
+</head>
+<body>
+
+	<script type="text/javascript">
+	<!--
+		var xml = top.SessionDataFrame.sessionDocument;
+		var statusMsgs = xml.selectNodes("session/browserStatus/status");
+		var errorMsgs = xml.selectNodes("session/browserErrors/error");
+
+		htmlOUT = "";
+		for(var k=0; k<errorMsgs.length; k++) {
+			msg = errorMsgs.item(k);
+			htmlOUT += "Error: " + msg.text + "<br>";
+			}
+
+		for(k=0; k<statusMsgs.length; k++) {
+			msg = statusMsgs.item(k);
+			htmlOUT += "Status: " + msg.text + "<br>";
+			}
+		htmlOUT += "<br><br> ----------------------------------------------------------- <br><br><textarea rows=20 cols=65>";
+		htmlOUT += top.SessionDataFrame.sessionDataText;
+		htmlOUT += "</textarea>";
+		htmlOUT += "<br><br> ----------------------------------------------------------- <br><br><textarea rows=20 cols=65>";
+		htmlOUT += top.InstanceDataFrame.instanceDataText;
+		htmlOUT += "</textarea>";
+
+		document.writeln(htmlOUT);
+
+	-->
+	</script>
+</table>
+</body>
+</html>

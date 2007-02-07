@@ -1,0 +1,1064 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="" />
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+<script src="../BrowserControl.js"></script>
+</head>
+
+<body onLoad="work();" id=INSTANCEBODY>
+<fieldset class="NavigationTreeSpacer" style="width:100%;border:0;"><div id=InstanceBanner></div></fieldset>
+
+<div id=DisplayDIV>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=EvidenceDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+
+<table border=1 width=95% cellspacing=0 cellpadding=10>
+<tr><td width=33%> Evidence ID: <p class=Highlight>[!EvidenceNumberID/ID!]</p> </td><td width=33%> Status: <p class=Highlight>[!EvidenceItem.Property/PropertyPhysicalDetails/PropertyStatus/StatusText!]</p> </td><td width=33%> Value: <p class=Highlight>[!EvidenceItem.Property/PropertyValueDetails/PropertyOwnerPurchasedValue/PropertyValueAmount!]</p> </td></tr>
+<tr><td colspan=3> Type: <p class=Highlight>[!EvidenceItem.Property/PropertyTypeText!]</p> </td></tr>
+<tr><td colspan=3> Action: <p class=Highlight>[!EvidenceItem.Property/PropertyActionText!]</p> </td></tr>
+<tr><td colspan=3> Description: <p class=Highlight>[!EvidenceItem.Property/PropertyDescriptionText!]</p><p class=Highlight>[!EvidenceItem.Property/PropertyPhysicalDetails/PropertyDetail/PropertyDetailDescription!]</p> </td></tr>
+</table>
+<br>
+
+<table border=0 width=48% cellpadding=0 cellspacing=0 bgcolor="#000000">
+<tr><td align=right width=40%> Serial Number: &nbsp </td> <td align=left> <p class=Highlight style="width:100%"> &nbsp [!EvidenceItem.Property/PropertyAssignedIDDetails/PropertySerialID!]</p> </td></tr>
+<tr><td align=right> Owner Applied ID: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> &nbsp [!EvidenceItem.Property/PropertyAssignedIDDetails/PropertyOwnerAppliedID!]</p> </td></tr>
+<tr><td align=right> Receipt ID: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> &nbsp [!EvidenceItem.Property/PropertyAssignedIDDetails/PropertyReceiptID!]</p> </td></tr>
+<tr><td align=right> Other ID: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> &nbsp [!EvidenceItem.Property/PropertyAssignedIDDetails/PropertyOtherID!]</p> </td></tr>
+<tr><td align=right> Barcode: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> [!EvidenceItem.Property/PropertyAssignedIDDetails/PropertyBarCodeID!]</p></td></tr>
+</table><br>
+</center>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=FirearmDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+
+<font size=+1>
+	Agency: <p class=Highlight>[!PropertyPossessor.Organization/OrganizationName!] [!PropertyPossessor.Person/PersonName/PersonFullName!]</p> &nbsp&nbsp
+	Event/Case #: <p class=Highlight>[!PropertyHolding/ActivityID!]</p>
+</font>
+<br><br>
+<div style="width:95%">
+<table border=1 width=48% cellpadding=0 cellspacing=0 style="float:left" bgcolor="#000000">
+<tr><td align=right width=40%> Serial Number: &nbsp </td> <td align=left> <p class=Highlight style="width:100%"> &nbsp [!PropertyAssignedIDDetails/PropertySerialID!]</p> </td></tr>
+<tr><td align=right> Owner Applied ID: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> &nbsp [!PropertyAssignedIDDetails/PropertyOwnerAppliedID!]</p> </td></tr>
+<tr><td align=right> Receipt ID: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> &nbsp [!PropertyAssignedIDDetails/PropertyReceiptID!]</p> </td></tr>
+<tr><td align=right> Other ID: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> &nbsp [!PropertyAssignedIDDetails/PropertyOtherID!]</p> </td></tr>
+<tr><td align=right> Barcode: &nbsp </td><td align=left> <p class=Highlight style="width:100%"> [!PropertyAssignedIDDetails/PropertyReceiptID!]</p></td></tr>
+</table>
+
+<table width=48% border=1 cellpadding=0 cellspacing=0 style="float:right" bgColor="#000000">
+<tr><td align=right> Make: &nbsp</td><td align=left> <p class=Highlight style="width:100%"> [!PropertyPhysicalDetails/PropertyMakeName!]</p> </td></tr>
+<tr><td align=right> Model: &nbsp</td><td align=left> <p class=Highlight style="width:100%">[!PropertyPhysicalDetails/PropertyModelName!]</p> </td></tr>
+<tr><td align=right> Style: &nbsp</td><td align=left> <p class=Highlight style="width:100%">[!PropertyPhysicalDetails/PropertyStyleText!]</p> </td></tr>
+<tr><td align=right> Value: &nbsp</td><td align=left> <p class=Highlight style="width:100%">[!PropertyValueDetails/PropertyOwnerPurchasedValue/PropertyValueAmount!]</p></td></tr>
+</table>
+</div>
+<br>
+
+<table border=0 width=100%>
+<tr>
+<td width=33%> Disposition Code: <p class=Highlight>[!PropertyDisposition/PropertyDispositionCode!]</p> </td>
+<td width=33%> Type Code: <p class=Highlight>[!PropertyTypeCode!]</p> </td>
+<td width=33%> Status: <p class=Highlight>[!PropertyStatus/StatusDescriptionText!]</p> </td>
+</tr>
+</table>
+<br>
+</center>
+
+<fieldset><legend>Description</legend>
+<p class=Highlight style="width:100%">[!PropertyDescriptionText!]</p><br>
+</fieldset>
+<br>
+</center>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=VehicleDetails style="display:none;visibility:hidden;">
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+
+<table border=0 cellpadding=3 cellspacing=3>
+<tr><td>Possesor Organization: </td><td> <p class=Highlight>[!PropertyPossessor.Organization!]</p></td></tr>
+<tr><td>Disposition Code:</td><td> <p class=Highlight>[!PropertyDisposition/PropertyDispositionCode!]</p></td></tr>
+<tr><td>Type Code: </td><td> <p class=Highlight>[!PropertyTypeCode!]</p></td></tr>
+<tr><td>Serial ID: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertySerialID!]</p></td></tr>
+<tr><td>Status: </td><td> <p class=Highlight>[!PropertyStatus/StatusText!]</p></td></tr>
+<tr><td>Item Number/Barcode: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertyReceiptID!]</p></td></tr>
+<tr><td>Event Number: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertyOtherID!]</p></td></tr>
+<tr><td>Brand: </td><td> <p class=Highlight>[!PropertyPhysicalDetails/PropertyBrandName!]</p></td></tr>
+<tr><td>Make: </td><td> <p class=Highlight>[!PropertyPhysicalDetails/PropertyMakeName!]</p></td></tr>
+<tr><td>Model: </td><td> <p class=Highlight>[!PropertyPhysicalDetails/PropertyModelName!]</p></td></tr>
+<tr><td>Description: </td><td> <p class=Highlight>[!PropertyDescriptionText!]</p></td></tr>
+</table>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=IncidentDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+</center>
+
+Date: <p class=Highlight>[!ActivityDate!]</p> &nbsp&nbsp
+Time: <p class=Highlight>[!ActivityTime!]</p><br><br>
+
+Event Number: <p class=Highlight>[!ActivityID/ID!]</p> &nbsp&nbsp
+Category Type: <p class=Highlight>[!IncidentCategory/IncidentCategoryTypeText!]</p><br><br>
+
+<center>
+<fieldset style='width:90%;text-align:left;'>
+<legend>Description</legend> 
+<br>
+<p class=Highlight>[!ActivityDescriptionText!]</p><br><br>
+</fieldset>
+<br><br>
+<table border=0 width=75%>
+<tr><td width=25%> Disposition Date: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDisposition/ChargeDispositionDate!]</p> </td></tr>
+<tr><td> Disposition Text: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDisposition/ChargeDispositionDescriptionText!]</p> </td></tr>
+<tr><td> Code Book: </td><td> <p class=Highlight>[!IncidentViolatedStatute/StatuteCodeID/ID!]</p> </td></tr>
+<tr><td> Statute: </td><td> <p class=Highlight>[!IncidentViolatedStatute/StatuteOffenseID/ID!]</p> </td></tr>
+<tr><td> Description: </td><td> <p class=Highlight>[!IncidentViolatedStatute/StatuteDescriptionText!]</p> </td></tr>
+</table>
+</center>
+<br><br>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=InfractionDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+</center>
+
+<table border=0 width=80%>
+<tr>
+<td> Ticket Number: <p class=Highlight>[!ActivityID/ID!]</p> </td>
+<td> Ticket Date: <p class=Highlight>[!ActivityDate!]</p> </td>
+<td> Ticket Time: <p class=Highlight>[!ActivityTime!]</p> </td>
+</tr>
+</table>
+
+<br>
+Primary Organization: <p class=Highlight>[!ActivityPrimaryOrganization/OrganizationName!]</p><br>
+<br>
+
+Event Number: <p class=Highlight>[!ActivityCrimeCase/ActivityID/ID!]</p><br><br>
+Code Book: <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteCodeID!]</p><br><br>
+Statute Offense: <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteOffenseID!]</p><br><br>
+Statute Description: <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteDescriptionText!]</p><br><br>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=CaseDetails style="display:none;visibility:hidden;">
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+
+<table border=0 cellspacing=3 cellpadding=3>
+<tr><td> Initiation Date: </td><td> <p class=Highlight>[!ActivityDate!]</p></td></tr>
+<tr><td> Log ID: </td><td> <p class=Highlight>[!CaseTrackingID/ID!]</p></td></tr>
+<tr><td> Category: </td><td> <p class=Highlight>[!CaseClassification/CaseCategoryText!]</p></td></tr>
+<tr><td> Event Number: </td><td> <p class=Highlight>[!CaseOtherID/ID!]</p></td></tr>
+<tr><td> Cause Number: </td><td> <p class=Highlight>[!CaseDocketID!]</p></td></tr>
+<tr><td> Assigned Prosecutor: </td><td> <p class=Highlight>[!CaseParticipants/CaseProsecutionAttorney/PersonName/PersonFullName!]</p></td></tr>
+<tr><td> Potential Charge: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDescriptionText!]</p></td></tr>
+<tr><td> Reporting Organization: </td><td> <p class=Highlight>[!ActivityReportingOrganization/OrganizationLocalID!] [!ActivityReportingOrganization/OrganizationName!]</p></td></tr>
+<tr><td> Court: </td><td> <p class=Highlight>[!CaseCourt/OrganizationLocalID!] [!CaseCourt/CourtName!] [!CaseCourt/CourtTypeCode!]</p></td></tr>
+<tr><td> Domestic Violence: </td><td> <p class=Highlight>[!CaseDetails/CaseDomesticViolenceIndicator!]</p></td></tr>
+</table>
+
+</div>
+
+<div id=CaseChargeDetails style="display:none;visibility:hidden;">
+Sequence ID: <p class=Highlight>[!ChargeSequenceID!]</p><br>
+Charge Description: <p class=Highlight>[!ChargeDescriptionText!]</p><br>
+Disposition Date: <p class=Highlight>[!ChargeDisposition/ChargeDispositionDate!] [!ChargeDisposition/ChargeDispositionDescriptionText!]</p><br>
+Charge Filing Date: <p class=Highlight>[!ChargeFilingDate!]</p><br>
+Defense Attorney: <p class=Highlight>[!ChargePlea/ActivityDefenseAttorney/PersonName/PersonFullName!]</p><br>
+Bail Amount: <p class=Highlight>[!ChargeRecommendedBailAmount!]</p><br><br>
+
+<b>-Sanctions-</b><br>
+SanctionCreditedObligation/ObligationExemption: <p class=Highlight>[!ChargeSanction/SanctionCreditedObligation/ObligationExemption/ObligationExemptionDescriptionText!]</p><br>
+SanctionSetObligation/Description: <p class=Highlight>[!ChargeSanction/SanctionSetObligation/ObligationRequirementDescriptionText!]</p><br>
+SanctionSetObligation/ObligationTypeText: <p class=Highlight>[!ChargeSanction/SanctionSetObligation/ObligationTypeText!]</p><br>
+SanctionDisciplinaryAction/DisciplinaryActionCommunityService: <p class=Highlight>[!ChargeSanction/SanctionDisciplinaryAction/SanctionDisciplinaryAction/DisciplinaryActionCommunityService/ActivityDescriptionText!]</p><br>
+DisciplinaryActionFee/ObligationRequirementDescriptionText: <p class=Highlight>[!ChargeSanction/SanctionDisciplinaryAction/DisciplinaryActionFee/ObligationRequirementDescriptionText!]</p><br>
+DisciplinaryActionRestitution/ObligationRequirementDescriptionText: <p class=Highlight>[!ChargeSanction/SanctionDisciplinaryAction/DisciplinaryActionRestitution/ObligationRequirementDescriptionText!]</p><br>
+<br><br>
+
+<b>-Sentence-</b><br>
+Deferred Term Duration: <p class=Highlight>[!ChargeSentence/SentenceDetails/SentenceDeferredTerm/TermDuration!]</p><br>
+Deferred Term Sentence: <p class=Highlight>[!ChargeSentence/SentenceDetails/SentenceDeferredTerm/SentenceDeferredTerm!]</p><br>
+Sentence Suspended Term: <p class=Highlight>[!ChargeSentence/SentenceDeferredTerm/SentenceSuspendedTerm/TermDuration!]</p><br>
+Charge Status: <p class=Highlight>[!ChargeStatus/StatusDescriptionText!] [!ChargeStatute/StatuteCodeID!]</p><br>
+<br><br>
+</div>
+
+
+<div id=CaseEventDetails style="display:none;visibility:hidden;">
+Event Date/Time: <p class=Highlight>[!EventDate!] [!EventTime!]</p><br>
+Prosecution Attorney: <p class=Highlight>[!ActivityCrimeCase/CaseParticipants/CaseProsecutionAttorney/PersonName/PersonFullName!]</p> <br>
+Court Event Sequence ID: <p class=Highlight>[!CourtEventSequenceID!]</p><br>
+Event Action: <p class=Highlight>[!CourtEventAction/ActivityDescriptionText!]</p><br>
+Comments: <p class=Highlight>[!ActivityCommentText!]</p><br><br>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=BookingDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+</center>
+
+Agency: <p class=Highlight>[!BookingAgency!]</p> &nbsp&nbsp Booking #: <p class=Highlight>[!BookingDocumentControlID!]</p> <br><br>
+
+Arresting Agency: <p class=Highlight>[!Arrest/ArrestAgency!]</p><br><br>
+Booking Agency: <p class=Highlight>[!BookingAgencyRecordID!]</p><br><br>
+
+Booking Date: <p class=Highlight>[!ActivityDate!]</p> &nbsp&nbsp
+Time: <p class=Highlight>[!ActivityTime!]</p><br><br>
+
+Release Date: <p class=Highlight>[!BookingRelease/ActivityDate!]</p> &nbsp&nbsp
+Time: <p class=Highlight>[!BookingRelease/ActivityTime!]</p><br><br>
+
+Charge Description: <p class=Highlight>[!Arrest/ArrestCharge/ChargeDescriptionText!]</p><br><br>
+Court Name: <p class=Highlight>[!ActivityCourt/CourtName!]</p><br><br>
+<img src="/mugshotwebservicebeta/getimage?size=full&perspective=front&booking=[!BookingAgencyRecordID!]" width="100" height="120" />
+</center>
+</div>
+
+<div id=ChargeDetails style="display:none;visibility:hidden;">
+Sequence ID: <p class=Highlight>[!ChargeSequenceID/ID!]</p> &nbsp
+<p class=Highlight>[!ChargeDescriptionText!]</p><br>
+Description: <p class=Highlight>[!ChargeStatute/StatuteDescriptionText!]</p><br>
+Comments: <p class=Highlight>[!ChargeDisposition/ChargeDispositionDescriptionText!]</p><br>
+Disposition: <p class=Highlight>[!ChargeDisposition/@commentText!]</p><br>
+Originator Name: <p class=Highlight>[!ChargeOriginator.Organization/OrganizationName!]</p><br><br>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=ProtectionOrderDetails style="display:none;visibility:hidden;">
+<center>Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br></center>
+
+<table border=0 width=100%>
+<tr><td width=25%> Status: </td><td> <p class=Highlight>[!CourtOrderStatus/StatusText!]</p></td></tr>
+<tr><td> Issuing Date: </td><td> <p class=Highlight>[!CourtOrderIssuingDate!]</p> </td></tr>
+<tr><td> Received Date: </td><td> <p class=Highlight>[!CourtOrderServiceReceivedDate!]</p> </td></tr>
+<tr><td> Service Date: </td><td> <p class=Highlight>[!CourtOrderServiceDate!]</p> </td></tr>
+<tr><td> Expiration Date: </td><td> <p class=Highlight>[!DocumentType/DocumentDescriptiveMetadataType/DocumentExpirationDate!]</p></td></tr>
+<tr><td> Recall Date: </td><td> <p class=Highlight>[!CourtOrderRecallDate!]</p> </td></tr>
+</table>
+<br><br>
+
+Condition Violation Text: <p class=Highlight>[!CourtOrderCondition/ConditionViolationText!]</p> <br><br>
+</p>
+	<center>
+	<fieldset style='border-width:1px;width:95%;text-align:left;'><legend style="color:#ffffff"></b>Order Comments</b></legend>
+	<br>
+		<p class=Highlight>[!@commentText!]</p>
+	</fieldset>
+	<br><br>
+
+	<fieldset style='padding-left:10px;border-width:1px;width:95%;text-align:left;'><legend style="color:#ffffff"><b>Special Instructions</b></legend>
+	<br>
+		<p class=Highlight>[!CourtOrderSpecialInstructionText!]</p>
+	</fieldset>
+	</center>
+	<br><br>
+
+<table border=0 width=80%>
+<tr><td>Enforcement Agency: </td><td> <p class=Highlight>[!CourtOrderEnforcementAgency/OrganizationName!]</p> </td></tr>
+<tr><td> Issuing Court: </td><td> <p class=Highlight>[!CourtOrderIssuingCourt/CourtName!]</p> </td></tr>
+<tr><td> Issuing Organization: </td><td> <p class=Highlight>[!CourtOrderIssuingCourt/OrganizationName!]</p> </td></tr>
+<tr><td> Court Case Number: </td><td> <p class=Highlight>[!ActivityDocket/DocumentDescriptiveMetadata/DocumentGroupID/ID!]</p> </td></tr>
+<tr><td> Serving Agency: </td><td> <p class=Highlight>[!ActivityDocumentServer.Organization/OrganizationAbbreviationText!] &nbsp [!ActivityDocumentServer.Organization/OrganizationName!] </p></td></tr>
+</table>
+
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=ArrestDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+</center>
+
+Arresting Agency: <p class=Highlight>[!ArrestAgency/OrganizationName!]</p> &nbsp &nbsp 
+Event Number: <p class=Highlight>[!ArrestAgencyRecordID/ID!]</p><br><br>
+
+Court Name: <p class=Highlight>[!ActivityCourt/CourtName!]</p> &nbsp Organization ID: <p class=Highlight>[!ActivityCourt/OrganizationID/ID!]</p>  <br><br>
+
+Booking ID: <p class=Highlight>[!Booking/BookingFileID/ID!]</p>  &nbsp&nbsp
+Arrest Type Code: <p class=Highlight>[!ArrestTypeCode!]</p>&nbsp&nbsp
+Enforcement Official Badge ID: <p class=Highlight>[!ArrestOfficial/EnforcementOfficialBadgeID/ID!]</p><br><br>
+Disposition: <p class=Highlight>[!ArrestCharge/ChargeDisposition/ChargeDispositionDescriptionText!]</p><br>
+</center>
+</div>
+  
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=CitationDetails style="display:none;visibility:hidden;">
+<br>
+<center>
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+
+Organization Name: <p class=Highlight><font size=+1>[!CitationAgency/OrganizationName!]</font></p><br><br>
+Criminial Indicator: <p class=Highlight>[!CitationViolation/IncidentCategory/IncidentCriminalIndicator!]</p> &nbsp&nbsp
+Traffic Accident Indicator: <p class=Highlight>[!CitationViolation/IncidentCategory/IncidentTrafficAccidentInvolvedIndicator!]</p><br>
+Activity Date: <p class=Highlight>[!ActivityDate!]</p> &nbsp
+Activity Time: <p class=Highlight>[!ActivityTime!]</p> &nbsp&nbsp 
+Activity ID: <p class=Highlight>[!ActivityID!]</p> <br>
+<br><br>
+
+</center>
+
+Event Number: <font size=+1><p class=Highlight>[!ActivityCrimeCase/ActivityID/ID!]</p></font><br><br>
+Event Description: <p class=Highlight>[!IncidentEvent/EventDescriptionText!]</p><br><br>
+
+<center>
+<table border=0 width=70%>
+<tr><td width=40%> Statute Codebook: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeStatute/StatuteCodeID/ID!]</p></td></tr>
+<tr><td> Statute Offended: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeStatute/StatuteOffenseID/ID!]</p></td></tr>
+<tr><td> Statute Description: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeStatute/StatuteDescriptionText!]</p></td></tr>
+<tr><td> Recommended Bail Amount: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeRecommendedBailAmount!]</p><br></td></tr>
+<tr><td> Fine Amount: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/CitationFineAmount!]</p></td></tr>
+<tr><td> Sentence Term: </td><td> <p class=Highlight>[!ChargeSentence/SentenceTerm!]</p></td></tr>
+</table>
+<br>
+</center>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=ArrestWarrantDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+</center>
+
+
+Warrant Status: <p class=Highlight>[!CourtOrderStatus/StatusDescriptionText!][!CourtOrderStatus/StatusText!]</p> &nbsp&nbsp
+Misdemeanor / Felony: <p class=Highlight>[!WarrantLevelText!]</p> &nbsp&nbsp
+Warrant Level: <p class=Highlight>[!WarrantLevelText!]</p>
+<br><br>
+
+Issuing Date: <p class=Highlight>[!CourtOrderIssuingDate!]</p> &nbsp &nbsp
+Effective Date: <p class=Highlight>[!@effectiveDate!]</p> &nbsp &nbsp
+Expiration Date: <p class=Highlight>[!@expirationDate!]</p><br><br>
+
+Comments: <p class=Highlight>[!@commentText!]</p> &nbsp&nbsp
+Data Entry Person: <p class=Highlight>[!@reportingPersonText!]</p><br><br>
+
+Originating Agency: <p class=Highlight>[!ActivityDocumentIssuerOrganization/OrganizationName!]</p> &nbsp&nbsp
+Criminial Charge: <p class=Highlight>[!ActivityCrimeCase/CaseCharge/ChargeDescriptionText!]</p><br><br>
+
+<fieldset>
+<br>
+Arresting Agency: <p class=Highlight>[!ActivityDocumentServer.Organization/OrganizationName!]</p> &nbsp&nbsp
+Arrest Date: <p class=Highlight>[!CourtOrderServiceDate!]</p><br><br>
+Event Number: <p class=Highlight>[!ActivityCrimeCase/ActivityID/ID!]</p> &nbsp&nbsp
+Arresting Officer: <p class=Highlight>[!CourtOrderServiceOfficial.Enforcement/EnforcementOfficialBadgeID/ID!]</p><br><br>
+Subject Detained Location: <p class=Highlight>[!ActivityDetainedLocation/LocationDescriptionText!]</p><br><br>
+</fieldset>
+<br>
+
+<fieldset>
+Issuing Court: <p class=Highlight>[!CourtOrderIssuingCourt/CourtName!]</p> &nbsp&nbsp
+Warrant Cause Number: <p class=Highlight>[!ActivityDocket/DocumentDescriptiveMetadata/DocumentGroupID/ID!]</p><br><br>
+
+Court Abbreviation: <p class=Highlight>[!CourtOrderIssuingCourt/OrganizationAbbreviationText!]</p>&nbsp&nbsp
+Warrant Issuing Judge: <p class=Highlight>[!CourtOrderIssuingJudicialOfficial/PersonName/PersonSurName!]</p><br><br>
+Date Received: <p class=Highlight>[!CourtOrderServiceReceivedDate!]</p><br><br>
+</fieldset>
+
+Bail Appearance Date: <p class=Highlight>[!WarrantAppearanceBail/ActivityDate!]</p> &nbsp&nbsp
+Bail Notes: <p class=Highlight>[!WarrantAppearanceBail/BailConditionDescriptionText!]</p> <br><br>
+Bail Amount: <p class=Highlight>[!WarrantAppearanceBail/BailSetAmount!]</p> &nbsp&nbsp
+Bail Requirements: <p class=Highlight>[!WarrantAppearanceBail/BailRequirementText!]</p><br><br>
+
+Special Instructions: <p class=Highlight>[!CourtOrderSpecialInstructionText!]</p><br><br>
+Probable Cause: <p class=Highlight>[!WarrantProbableCauseText!]</p><br><br>
+</center>
+</div>
+
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=PropertyDetails style="display:none;visibility:hidden;">
+<center> 
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+</center>
+
+Posessing Agency: <p class=Highlight> [!PropertyPossessor.Organization/OrganizationName!]</p><br><br>
+Property Type: <p class=Highlight> [!PropertyTypeText!] </p><br><br>
+Description: <p class=Highlight> [!PropertyDescriptionText!] </p><br><br>
+
+Action Text: <p class=Highlight> [!PropertyActionText!]</p> &nbsp&nbsp
+Property Value: <p class=Highlight> [!PropertyValueDetails/PropertyOwnerPurchasedValue/PropertyValueAmount!] </p>&nbsp&nbsp
+Status: <p class=Highlight>[!PropertyStatus/StatusText!]</p><br><br>
+</div>
+
+
+<div id=PropertyPhysicals style="display:none;visibility:hidden;">
+<br>
+Make: <p class=Highlight> [!PropertyMakeName!] </p> &nbsp&nbsp
+Model: <p class=Highlight> [!PropertyModelName!] </p> &nbsp&nbsp
+Year: <p class=Highlight> [!PropertyYearDate!] </p> <br><br>
+
+Style: <p class=Highlight> [!PropertyStyleText!] </p> &nbsp&nbsp
+Color: <p class=Highlight> [!PropertyColorDescriptionText!] </p> <br><br>
+
+Detail: <p class=Highlight> [!PropertyDetail/PropertyDetailDescription!] </p> <br>
+</div>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=AddressLocationFullText style="display:none;visibility:hidden;">
+<br>
+<p class=Highlight>[!LocationAddress/AddressFullText!]</p> &nbsp&nbsp Grid: <p class=Highlight>[!LocationAddressGrid/AddressGridText!]</p><br>
+</div>
+
+<div id=AddressLocation style="display:none;visibility:hidden;">
+<br>
+	<div style="margin-left:5%">	
+	Street: <p class=Highlight>[!LocationStreet/StreetFullText!]</p> <br><br>
+	City: <p class=Highlight>[!LocationCityName!]</p> &nbsp&nbsp&nbsp
+	State: <p class=Highlight>[!LocationStateCode.fips5-2Alpha!]</p>  &nbsp&nbsp&nbsp
+	Zip: <p class=Highlight>[!LocationPostalCodeID/ID!]</p> &nbsp&nbsp&nbsp
+	</div><br>
+</div>
+
+
+<div id=Employment style="display:none;visibility:hidden;">
+<br> Employer Name: <p class=Highlight>[!EmploymentEmployerName!]</p><br><br>
+</div>
+
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+<div id=LastUpdated style="display:none;visibility:hidden;">
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p>  Comments: <p class=Highlight>[!@commentText!]</p><br><br>
+</div>
+
+
+<div id=Person_Name style="display:none;visibility:hidden;">
+<center>
+<input type=button value="Person" onClick="crossPageQuery('Person', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
+<input type=button value="Booking" onClick="crossPageQuery('Booking', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
+<input type=button value="Arrest" onClick="crossPageQuery('Arrest', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
+<input type=button value="Case" onClick="crossPageQuery('Case', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
+<input type=button value="Citation" onClick="crossPageQuery('Citation', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
+<input type=button value="ArrestWarrants" onClick="crossPageQuery('ArrestWarrant', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
+<input type=button value="Incident" onClick="crossPageQuery('Incident', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
+<input type=button value="Infraction" onClick="crossPageQuery('Infraction', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"><br><br>
+</center>
+
+Last: <p class=Highlight> [!PersonName/PersonSurName!] </p> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+First: <p class=Highlight> [!PersonName/PersonGivenName!] </p> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+Middle: <p class=Highlight> [!PersonName/PersonMiddleName!] </p> <br><br>
+</div>
+
+<div id=Person_FullName style="display:none;visibility:hidden;">
+<p class=Highlight> [!PersonName/PersonFullName!] </p> <br><br>
+</div>
+
+<div id=Person_LastUpdated style="display:none;visibility:hidden;">
+Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br>
+</div>
+
+<div id=Person_DOB style="display:none;visibility:hidden;">
+DOB: &nbsp&nbsp&nbsp&nbsp&nbsp <p class=Highlight> [!PersonBirthDate!] </p> <br><br>
+</div>
+
+<div id=Person_PersonDescriptionText style="display:none;visibility:hidden;">
+Alerts and Description: &nbsp&nbsp&nbsp&nbsp&nbsp <p class=ALERTS> [!PersonDescriptionText!] </p> <br><br>
+</div>
+
+<div id=Person_Physicals style="display:none;visibility:hidden;">
+	<br>
+	<table border=0 width=100% bgColor="#000000">
+<!--	<tr><td align=right> Scars Marks Tattoos: </td><td colspan=3 class=Highlight></td></tr> -->
+	<tr><td align=right width=13%> Sex: &nbsp</td><td class=Highlight> [!PersonSexText!] </td> <td align=right width=15%> Race: &nbsp</td><td class=Highlight> [!PersonRaceText!]  </td></tr>
+	<tr><td align=right> Height: &nbsp </td><td class=Highlight> [!PersonHeightMeasure!] </td><td align=right> Weight: &nbsp</td><td class=Highlight> [!PersonWeightMeasure!] </td></tr>
+	<tr><td align=right> Build: &nbsp</td><td class=Highlight> [!PersonBuildText!] </td><td align=right> Complexion: &nbsp</td><td class=Highlight> [!PersonComplexionText!] </td></tr>
+	<tr><td align=right> Hair Color: &nbsp </td><td class=Highlight> [!PersonHairColorText!] </td><td align=right> Eye Color: &nbsp</td><td class=Highlight> [!PersonEyeColorText!] </td></tr>
+	<tr><td align=right> Eyewear: &nbsp </td><td class=Highlight> [!PersonEyewearDescriptionText!] </td> <td align=right> Speech: &nbsp</td><td class=Highlight> [!PersonSpeechDescriptionText!]  </td></tr>
+	<tr><td align=right> Dental: &nbsp</td><td class=Highlight> [!PersonDental/PersonDentalCharacteristicGeneralText!] </td><td align=right> Facial Hair: &nbsp</td><td class=Highlight> [!PersonHairFacialText!] </td></tr>
+	<tr><td align=right> Clothing: &nbsp </td><td class=Highlight> [!PersonClothing/ClothingDescriptionText!] </td> </tr>
+	</table>
+<br>
+</div>
+
+<div id=Person_ID style="display:none;visibility:hidden;">
+<br>
+<table border=0 width=100%>
+<tr>
+	<td width=15%> License #: </td><td class=Highlight> [!PersonDriverLicenseID/ID!] </td>
+	<td width=15%> &nbsp&nbsp State: </td><td class=Highlight> [!PersonDriverLicenseID/IDJurisdictionCode!] </td>
+	<td width=15%> &nbsp&nbsp Expires: </td><td class=Highlight> [!PersonDriverLicenseID/IDExpirationDate!] </td>
+</tr>
+<tr>	
+	<td> SSN: </td><td class=Highlight> [!PersonSSNID/ID!] </td>
+	<td> &nbsp&nbsp FBI: </td><td class=Highlight> [!PersonFBIID/ID!] </td>
+	<td> &nbsp&nbsp State ID: </td><td class=Highlight> [!PersonStateID/ID!] </td>
+</tr>
+<tr>
+	<td>AFIS ID: </td><td class=Highlight> [!PersonAFISID/ID!] </td>
+	<td>&nbsp&nbsp Other ID Type: </td><td class=Highlight> [!PersonOtherID/ID!] </td>
+	<td>&nbsp&nbsp Other ID: </td><td class=Highlight>[!PersonOtherID/ID!] </td>
+</tr>
+</table>
+</div>
+
+
+<div id=Person_Contact style="display:none;visibility:hidden;">
+<br>
+<table border=0 width=100%>
+<tr><td width=10%>Telephone:</td><td class=Highlight width=40%> [!ContactTelephoneNumber/TelephoneNumberFullID!] </td><td width=10%> &nbsp&nbsp Fax: </td><td class=Highlight width=40%> [!ContactFacsimileNumber/TelephoneNumberFullID!] </td></tr>
+<tr><td>Cell: </td><td class=Highlight> [!ContactMobileTelephoneNumber/TelephoneNumberFullID!] </td><td> &nbsp&nbsp Email: </td><td class=Highlight> [!ContactEmailID/ID!] </td></tr>
+</table>
+<br>
+</div>
+
+<div id=Person_Victim style="display:none;visibility:hidden;">
+Victim ID: <p class=Highlight>[!IncidentVictim/VictimID/ID!]</p><br>
+Victim Organization: <p class=Highlight>[!Victim.Organization/OrganizationName!]</p><br>
+</div>
+
+<div id=Person_Witness style="display:none;visibility:hidden;">
+Witness Account Description: <p class=Highlight>[!WitnessAccountDescriptionText!]</p><br>
+</div>
+
+<div id=Person_Subject style="display:none;visibility:hidden;">
+Subject ID: <p class=Highlight>[!SubjectID/ID!]</p> &nbsp&nbsp Subject Status: <p class=Highlight>[!SubjectStatus/StatusText!]</p><br>
+</div>
+
+<div id=Person_IncidentSubject style="display:none;visibility:hidden;">
+<br>
+Charge: <p class=Highlight>[!PersonCharge/ChargeDescriptionText!]</p><br><br>
+Disposition: <p class=Highlight>[!PersonCharge/ChargeDisposition/ChargeDispositionDescriptionText!]</p><br>
+</div>
+
+<div id=Person_EnforcementOfficial style="display:none;visibility:hidden;">
+Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/ID!]</p><br>
+</div>
+
+<script type='text/javascript'>
+<!--
+
+	var prefixAry = new Array();
+	var namespaceAry = new Array();
+
+	//--------------------------------------------------------------------------------------------------------
+	// Root element array
+	// root[x][0] = First level xpath - This xpath is the parent node for the div element xpaths 
+	// root[x][1] = Display DIV 
+	// root[x][2] = Banner text - If banner text is available, print a horizontal seperation banner
+	// root[x][3] = Embedded Root Banner - If not null, then process a root element is embedded within the data
+	// root[x][4] = Embedded Root Banner text XPath
+
+	var personRoot = new Array();
+//	personRoot.push(new Array("", document.all.Person_LastUpdated, null, null, null));
+	personRoot.push(new Array("", document.all.LastUpdated, null, null, null));
+	personRoot.push(new Array("", document.all.Person_Name, null, null, null));
+	personRoot.push(new Array("", document.all.Person_DOB, null, null, null));
+	personRoot.push(new Array("", document.all.Person_PersonDescriptionText, null, null, null));
+	personRoot.push(new Array("PersonPhysicalDetails", document.all.Person_Physicals, "Physical Details", null, null));
+	personRoot.push(new Array("Residence/LocationAddress", document.all.AddressLocationFullText, "Residence", null, null));
+	personRoot.push(new Array("Residence/LocationAddress", document.all.AddressLocation, "Residence", null, null));
+	personRoot.push(new Array("PrimaryContactInformation", document.all.Person_Contact, "Contact Information", null, null));
+	personRoot.push(new Array("Employment", document.all.Employment, "Employment", null, null));
+	personRoot.push(new Array("Employment/EmploymentLocation/LocationAddress", document.all.AddressLocation, null, null));
+	personRoot.push(new Array("PersonBirthLocation/LocationAddress", document.all.AddressLocation, "Birth Location", null, null));
+	personRoot.push(new Array("PersonAssignedIDDetails", document.all.Person_ID, "Identification", null, null));
+	personRoot.push(new Array("PersonAlias", null, null, "Alias Information", null));
+	personRoot.push(new Array("", document.all.Person_Subject, null, null, null));
+	personRoot.push(new Array("", document.all.Person_Witness, null, null, null));	
+	personRoot.push(new Array("", document.all.Person_EnforcementOfficial, "", null, null));
+	personRoot.push(new Array("", document.all.Person_IncidentSubject, null, null, null));
+
+	var propertyRoot = new Array();
+	propertyRoot[0] = new Array("", document.all.PropertyDetails, null, null, null);
+	propertyRoot[1] = new Array("PropertyPhysicalDetails", document.all.PropertyPhysicals, "Physical Description", null, null);
+	propertyRoot[2] = new Array("PropertySeizer.Person", null, null, "Seizing Officer", "PersonName/PersonFullName");
+	propertyRoot[3] = new Array("PropertyOwner.Person", null, null, "Property Owner", "PersonName/PersonFullName");	
+
+	var arrestWarrantRoot = new Array();
+	arrestWarrantRoot[0] = new Array("", document.all.ArrestWarrantDetails, null, null, null);
+	arrestWarrantRoot[1] = new Array("CourtOrderDesignatedSubject", null, null, "Warrant Subject", "PersonName/PersonFullName");
+	arrestWarrantRoot[2] = new Array("CourtOrderIssuingJudicialOfficial", null, null, "Issuing Judge", "PersonName/PersonFullName");
+	arrestWarrantRoot[3] = new Array("CourtOrderServiceOfficial.Enforcement", null, null, "Servicing Official", "PersonName/PersonFullName");
+
+	var citationRoot = new Array();
+	citationRoot[0] = new Array("", document.all.CitationDetails, null, null, null);
+	citationRoot[1] = new Array("CitationViolation/IncidentLocation", document.all.AddressLocationFullText, "Citation Location", null, null);
+	citationRoot[2] = new Array("CitationViolation/IncidentLocation", document.all.AddressLocation, null, null, null);
+	citationRoot[3] = new Array("CitationIssuedLocation", document.all.AddressLocationFullText, "Citation Location", null, null);
+	citationRoot[4] = new Array("CitationSubject", null, null, "Citation Subject", "PersonName/PersonFullName");
+	citationRoot[5] = new Array("CitationIssuingOfficial", null, null, "Issuing Official", "PersonName/PersonFullName");
+
+	var arrestRoot = new Array();
+	arrestRoot[0] = new Array("", document.all.ArrestDetails, null, null, null);
+	arrestRoot[1] = new Array("ArrestSubject", null, null, "Arrest Subject", "PersonName/PersonFullName");
+	arrestRoot[2] = new Array("ArrestOfficial", null, null, "Arrest Official", "PersonName/PersonFullName");
+	arrestRoot[3] = new Array("ArrestLocation", document.all.AddressLocationFullText, "Arrest Location", null, null);
+	arrestRoot[4] = new Array("ArrestLocation", document.all.AddressLocation, null, null, null);
+	arrestRoot[5] = new Array("ArrestCharge", document.all.ChargeDetails, "Charge", null, null);
+
+	var protectionOrderRoot = new Array();
+	protectionOrderRoot[0] = new Array("", document.all.ProtectionOrderDetails, null, null, null);
+	protectionOrderRoot[1] = new Array("CourtOrderIssuingJudicialOfficial", null, null, "Issuing Judge", "PersonName/PersonFullName");
+	protectionOrderRoot[2] = new Array("CourtOrderRequestActor.Person", null, null, "Petitioner", "PersonName/PersonFullName");
+	protectionOrderRoot[3] = new Array("CourtOrderServiceOfficial.Enforcement", null, null, "Service Official", "PersonName/PersonFullName");
+	protectionOrderRoot[4] = new Array("CourtOrderDesignatedSubject", null, null, "Respondent", "PersonName/PersonFullName");
+	protectionOrderRoot[5] = new Array("ProtectionOrderRestrictedPerson", null, null, "Petitioner", "PersonName/PersonFullName");
+
+	var bookingRoot = new Array();
+	bookingRoot[0] = new Array("", document.all.BookingDetails, null, null, null);
+	bookingRoot[1] = new Array("BookingSubject", null, null, "Booking Subject", "PersonName/PersonFullName");
+	bookingRoot[2] = new Array("Arrest/ArrestCharge", document.all.ChargeDetails, "Charge", null, null);
+
+	var caseRoot = new Array();
+	caseRoot.push( new Array("", document.all.CaseDetails, null, null, null));
+	caseRoot.push( new Array("CaseCharge", document.all.CaseChargeDetails, "Charge", null, null));
+	caseRoot.push( new Array("CaseCourtEvent", document.all.CaseEventDetails, "Case Event", null, null));
+	caseRoot.push( new Array("ActivitySuspect", null, null, "Suspect", "PersonName/PersonFullName"));
+	caseRoot.push( new Array("ActivityVictim/Victim.Person", null, null, "Victim", "PersonName/PersonFullName"));
+	caseRoot.push( new Array("ActivityWitness", null, null, "Witness", "PersonName/PersonFullName"));
+	caseRoot.push( new Array("CaseParticipants/CaseDefendantParty.Person", null, null, "Defendant", "PersonName/PersonFullName"));
+	caseRoot.push( new Array("CaseParticipants/CaseProsecutionAttorney", null, null, "Prosecution Attorney", "PersonName/PersonFullName"));
+
+
+	var infractionRoot = new Array();
+	infractionRoot.push(new Array("", document.all.InfractionDetails, null, null, null));
+	infractionRoot.push(new Array("IncidentLocation", document.all.AddressLocation, "Incident Location", null, null));
+	infractionRoot.push(new Array("IncidentLocation", document.all.AddressLocationFullText, "Incident Location", null, null));
+	infractionRoot.push(new Array("IncidentSubject", null, null, "Subject", "PersonName/PersonFullName"));
+	infractionRoot.push(new Array("ActivityOfficial.Enforcement", null, null, "Officer", "PersonName/PersonFullName"));
+
+	var incidentRoot = new Array();
+	incidentRoot.push(new Array("", document.all.IncidentDetails, null, null, null));
+	incidentRoot.push(new Array("IncidentLocation", document.all.AddressLocationFullText, "Incident Location", null, null));
+	incidentRoot.push(new Array("IncidentLocation", document.all.AddressLocation, null, null, null));	
+	incidentRoot.push(new Array("IncidentSubject", null, null, "Subject", "PersonName/PersonFullName"));
+	incidentRoot.push(new Array("IncidentVictim/Victim.Person", null, null, "Victim", "PersonName/PersonFullName"));
+	incidentRoot.push(new Array("IncidentWitness", null, null, "Witness", "PersonName/PersonFullName"));
+	incidentRoot.push(new Array("ActivityOfficial.Enforcement", null, null, "Officer", "PersonName/PersonFullName"));
+	incidentRoot.push(new Array("IncidentInvolvedProperty", null, null, "Involved Property", null));
+
+	var vehicleRoot = new Array();
+	vehicleRoot[0] = new Array("", document.all.VehicleDetails, null, null, null);
+
+	var firearmRoot = new Array();
+	firearmRoot[0] = new Array("", document.all.FirearmDetails, null, null, null);
+	firearmRoot[1] = new Array("PropertyOwner.Person", null, null, "Property Owner", "PersonName/PersonFullName");
+	firearmRoot[2] = new Array("PropertySeizer.Person", null, null, "Property Seizer Person", "PersonName/PersonFullName");
+
+	var evidenceRoot = new Array();
+	evidenceRoot.push(new Array("", document.all.EvidenceDetails, null, null, null));
+	evidenceRoot.push(new Array("EvidenceItem.Property/PropertySeizer.Person", null, null, "Evidence Seizer", "PersonName/PersonFullName"));
+	evidenceRoot.push(new Array("EvidenceItem.Property/PropertyOwner.Person", null, null, "Property Owner", "PersonName/PersonFullName"));
+	evidenceRoot.push(new Array("EvidenceTakenFrom.Person", null, null, "Property Taken From", "PersonName/PersonFullName"));
+
+	//--------------------------------------------------------------------------------------------------------
+	// Master root names list and the associated list of root scripts
+	// rootNames[x][0] = Root node text
+	// rootNames[x][1] = Javascript String of text name of the display script array above, this is used 
+	//		     because javascripts support of arrays embedded in arrays is poor 
+
+	var rootNames = new Array();
+	rootNames.push(new Array("Evidence", "evidenceRoot"));
+	rootNames.push(new Array("Person", "personRoot"));		
+	rootNames.push(new Array("PropertySeizer.Person", "personRoot"));	
+	rootNames.push(new Array("PropertyOwner.Person", "personRoot"));	
+	rootNames.push(new Array("ProtectionOrderRestrictedPerson", "personRoot"));
+	rootNames.push(new Array("CourtOrderServiceOfficial.Enforcement", "personRoot"));
+	rootNames.push(new Array("CourtOrderRequestActor.Person", "personRoot"));
+	rootNames.push(new Array("CourtOrderIssuingJudicialOfficial", "personRoot"));
+	rootNames.push(new Array("ArrestSubject", "personRoot"));
+	rootNames.push(new Array("CitationSubject", "personRoot"));
+	rootNames.push(new Array("CitationIssuingOfficial", "personRoot"));
+	rootNames.push(new Array("CourtOrderServiceOfficial.Enforcement", "personRoot"));
+	rootNames.push(new Array("CourtOrderIssuingJudicialOfficial", "personRoot"));
+	rootNames.push(new Array("SubjectInvolvementPerson", "personRoot"));
+	rootNames.push(new Array("PersonAlias", "personRoot"));
+	rootNames.push(new Array("Property", "propertyRoot"));
+	rootNames.push(new Array("ArrestWarrant", "arrestWarrantRoot"));
+	rootNames.push(new Array("Citation", "citationRoot"));
+	rootNames.push(new Array("Arrest", "arrestRoot"));
+	rootNames.push(new Array("ProtectionOrder", "protectionOrderRoot"));
+	rootNames.push(new Array("BookingSubject", "personRoot"));
+	rootNames.push(new Array("Booking", "bookingRoot"));
+	rootNames.push(new Array("Case", "caseRoot"));
+	rootNames.push(new Array("ActivitySuspect", "personRoot"));
+	rootNames.push(new Array("Infraction", "infractionRoot"));
+	rootNames.push(new Array("IncidentSubject", "personRoot"));
+	rootNames.push(new Array("Victim.Person", "personRoot"));
+	rootNames.push(new Array("IncidentWitness", "personRoot"));
+	rootNames.push(new Array("Vehicle", "vehicleRoot"));
+	rootNames.push(new Array("Firearm", "firearmRoot"));
+	rootNames.push(new Array("CourtOrderDesignatedSubject", "personRoot"));
+	rootNames.push(new Array("Incident", "incidentRoot"));
+	rootNames.push(new Array("ActivityOfficial.Enforcement", "personRoot"));
+	rootNames.push(new Array("IncidentInvolvedProperty", "propertyRoot"));
+	rootNames.push(new Array("ArrestOfficial", "personRoot"));
+	rootNames.push(new Array("EvidenceTakenFrom.Person", "personRoot"));
+	rootNames.push(new Array("PropertySeizer.Person", "personRoot"));
+	rootNames.push(new Array("ActivityWitness", "personRoot"));
+	rootNames.push(new Array("CaseProsecutionAttorney","personRoot"));
+	rootNames.push(new Array("SupervisionOfficial", "personRoot"));
+	rootNames.push(new Array("CaseDefendantParty.Person", "personRoot"));
+
+	var totalDisplayDIVS = 0;
+
+	function doesDataExist(resultsDOM) {
+
+		if(resultsDOM.nodeValue != null && resultsDOM.nodeValue.length > 0) { return true; }
+
+		// Scan the resultsDOM and make sure there is at least 1 text value
+		var kidList = resultsDOM.childNodes;
+		for(var r=0; r<kidList.length; r++) {
+			n = kidList.item(r);
+			if(n.nodeValue != null && n.nodeValue.length > 0) { return true; }
+			if(n.childNodes.length > 0) { return doesDataExist(n); }
+			}
+
+		return false;
+		}
+
+	function driveDisplay(resultsDOM, bannerTitle, bannerXPath) {
+
+		var outputHTML = "<br><div style='margin:10px;'>"
+
+		//----------------------------------------------------------------------------------
+
+		if(bannerTitle != null) { 
+
+			var xpathVal = "";
+			if(bannerXPath != null) {
+				for(var k=0; k<prefixAry.length; k++) {
+					var xp = prefixXPath(prefixAry[k], bannerXPath);
+					if(bannerXPath != null && resultsDOM.selectSingleNode(xp) != null) {
+						xpathVal = resultsDOM.selectSingleNode(xp).text;
+						break;
+						}
+					}
+				}
+
+			outputHTML += "<fieldset><table id=EMBEDDEDROOTBANNER width=100% border=0><tr align=center><td width=33%><b>" + bannerTitle + "</b></td><td width=33%><p class=BANNERXPATHTITLE> " + xpathVal + "</p></td><td>";
+			outputHTML += "&nbsp&nbsp&nbsp&nbsp&nbsp <input type=button value=Show onClick=\"document.all.DisplayDIV" + totalDisplayDIVS + ".style.display='block';\"> ";
+			outputHTML += "<input type=button value=Hide onClick=\"document.all.DisplayDIV" + totalDisplayDIVS + ".style.display='none';\"></td></tr></table> ";
+			outputHTML += "</fieldset>"; 
+			}
+
+		//--------------------------------------------------------------------------------		
+		// See if this node represents a root node...
+		// The break flag is needed because a single break inside of a double nested for
+		// loop will only breakout to the upper for loop, we need to break out of both
+
+		var breakFlag = false;
+		for(var i=0; i<rootNames.length; i++) {
+			for(var k=0; k<prefixAry.length; k++) {
+				var nodeName = prefixAry[k] + ":" + rootNames[i][0];						
+				if(resultsDOM.nodeName == nodeName) {
+
+					if(totalDisplayDIVS > 0) 
+						outputHTML += "<fieldset style='border-top:0px;padding:5px' id=DisplayDIV" + totalDisplayDIVS + ">";
+					else
+						outputHTML += "<fieldset style='padding:5px' id=DisplayDIV" + totalDisplayDIVS + ">";
+
+					var displayScript = eval(rootNames[i][1]);
+					outputHTML += buildDisplayDIV(resultsDOM, displayScript, prefixAry[k]);
+
+					outputHTML += "</fieldset>";
+					breakFlag = true;
+					break;
+					}
+				}
+
+			if(breakFlag == true) { breakFlag = false; break; }
+			}		
+
+		outputHTML += "</div>";
+		return outputHTML;
+		}
+
+
+	function buildDisplayDIV(resultsDOM, displayList, prefix) {
+		if(resultsDOM == null || displayList == null) { alert("Err"); return; }
+		var outputHTML = "<div style='width:99%;padding:0px;'>";
+		
+		for(var j=0; j<displayList.length; j++) {
+			var xpath = displayList[j][0];
+			var displayDIV = displayList[j][1];
+			var headerText = displayList[j][2];
+			var rootAlias = displayList[j][3];
+			var rootBannerXPath = displayList[j][4];
+
+			//----------------------------------------------------------------------------
+			// If there is a rootAlias available, then pass it back through this method
+
+			if(rootAlias != null && rootAlias.length > 0) {
+				if(xpath != null && xpath.length > 0) {
+					var nodeList = resultsDOM.selectNodes(prefixXPath(prefix, xpath));
+					for(var w=0; w<nodeList.length; w++) {
+						totalDisplayDIVS++;
+						
+						if(doesDataExist(nodeList.item(w)) == false) { continue; }
+						outputHTML += driveDisplay(nodeList.item(w), rootAlias, rootBannerXPath);
+						}
+					}
+				else
+					{
+					totalDisplayDIVS++;
+					if(doesDataExist(resultsDOM) == false) { continue; }
+					outputHTML += driveDisplay(resultsDOM, rootAlias, rootBannerXPath);
+					}
+
+				continue;
+				}
+
+			//-----------------------------------------------------------
+			// If there is no form to display then just cycle through
+			if(displayDIV == null) { continue; }
+			
+			// If there is an initial xpath to get the node to fill the form
+			if(xpath != null && xpath.length > 0) {
+				xpath = prefixXPath(prefix, xpath);
+				var nodeList = resultsDOM.selectNodes(xpath);
+				for(var w=0; w<nodeList.length; w++) {
+					outputHTML += fillDIV(nodeList.item(w), displayDIV, headerText);
+					}
+				}
+			else
+				{								
+				outputHTML += fillDIV(resultsDOM, displayDIV, headerText);
+				}
+			}
+			
+		outputHTML += "</div>";	
+		return outputHTML;
+		}
+
+
+	function work() {
+	
+		// Set the pages display CSS 
+		var xml = top.SessionDataFrame.sessionDocument;
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = "../" + pageCSS.text;  }
+
+		//---------------------------------------------------------------------------------------------------
+		// The calls to setProperty are needed because the default query language in MSXML3.0 is XSLPattern
+		// We have to explicitly tell it to use XPATH and point out our namespaces. To do this, we have to
+		// scan through the instance document looking for the xmlns: tag, and then do text manipulation 
+
+		var doc = top.InstanceDataFrame.instanceDocument;
+		doc.setProperty("SelectionLanguage", "XPath");
+
+		var doctext = top.InstanceDataFrame.instanceDataText;
+		if(doctext.indexOf("xmlns:") >= 0) { 
+			var ind1 = doctext.indexOf("xmlns:");
+			var ind2 = doctext.indexOf("=\"", ind1);
+			var ind3 = doctext.indexOf("\"", ind2+2);
+			var prefix = doctext.substring(ind1+6, ind2);
+			var namespace = doctext.substring(ind2+2, ind3);
+
+			prefixAry.push(prefix);
+			namespaceAry.push(namespace);
+
+			namespaceString = "xmlns:" + prefix + "='" + namespace + "'";
+			doc.setProperty("SelectionNamespaces", namespaceString);
+			}
+
+
+		// Run the document node's ELEMENT typed children through the processor
+		var outText = "<br>";
+		for(var i=0; i<doc.childNodes.length; i++) {
+			var node = doc.childNodes.item(i);
+			if(node.nodeType == 1) { 
+
+				// Extract the banner (very top of instance pages) name from the document root node
+				var bannerName = node.nodeName;
+				if(node.nodeName.indexOf(":") >= 0) { 
+					bannerName = node.nodeName.substr(node.nodeName.indexOf(":")+1); 
+					}
+
+				document.all.InstanceBanner.innerHTML = bannerName;
+				outText += driveDisplay(node, null, null); 
+				totalDisplayDIVS++;
+				}
+			}	
+
+		outText += "<br><center><a <a href='#showxml' onClick=\"if(document.all.xmldetail) { document.all.xmldetail.style.display='block'; } \">Show XML</a><textarea id='xmldetail' style='display:none' rows=30 cols=80>";
+		outText += top.InstanceDataFrame.instanceDataText;
+		outText += "</textarea>";
+
+		// Send the output to the display
+		document.all.DisplayDIV.innerHTML = outText;
+		}
+
+
+
+	function fillDIV(resultsDOM, displayDIV, headerText) { 
+		if(displayDIV == null) { alert("errdiv"); return; }
+
+		//---------------------------------------------------
+		// Print out the row header text if there is any
+
+		var headerHTML = "";
+		if(headerText != null && headerText.length > 0) {
+			headerHTML = "<fieldset class=BANNER> " + headerText + "</fieldset>";
+			}
+				
+		var totalChanges = 0;
+		var input = displayDIV.innerHTML;
+		var ind1 = input.indexOf("[!");
+		var ind2 = input.indexOf("!]");
+
+		while(ind1 != -1 && ind2 != -1)  {
+			var xpath = input.substring(ind1+2, ind2);
+			var result = "";
+
+			for(var k=0; k<prefixAry.length; k++) {
+				var prefix = prefixAry[k];
+				var qualifiedName = prefixXPath(prefix, xpath);
+
+				if(resultsDOM.selectSingleNode(qualifiedName) != null) { 
+					result = resultsDOM.selectSingleNode(qualifiedName).text;
+
+					// Dont increment the counter if it returns a blank value
+					if(result.trim().length == 0) { break; }
+					
+					// Increment the data counter when there are values available
+					totalChanges++;
+					}
+				}
+
+			input2 = input.substring(0, ind1);
+			input2 += result;
+			input2 += input.substring(ind2+2, input.length);
+						
+			input = input2;
+			ind1 = input.indexOf("[!");
+			ind2 = input.indexOf("!]");
+			}
+
+		if(totalChanges == 0) { return ""; }
+		return (headerHTML + input); 
+		}
+
+
+	function prefixXPath(prefix, xpath) {
+		if(prefix == null || xpath == null || prefix.length == 0 || xpath.length == 0) { return; }
+		xpath = xpath.trim();
+
+		if(xpath.indexOf("::") >= 0) { return xpath; }
+
+		// Find every forward slash and add on our prefix symbol
+		var index = xpath.indexOf("/", 0);
+		while(index != -1)  {
+			if(xpath.charAt(index+1) == '@') { index = index+1; }
+
+			x1 = xpath.substring(0, index+1);
+			x2 = prefix + ":" + xpath.substring(index+1, xpath.length);
+			xpath = x1 + x2;
+
+			index = xpath.indexOf("/", index+1);
+			}
+
+		// Prefix the whole string only if it doesent start with a comment marker, else the prefix
+		// goes AFTER the comment marker and not before...
+
+		if(xpath.indexOf("@") > 0 || xpath.indexOf("@") == -1) 
+			xpath = prefix + ":" + xpath; 			
+		else
+			xpath = xpath.substring(0, 1) + prefix + ":" + xpath.substr(1); 
+			
+		return xpath;
+		}
+
+	var queryRoots = new Array();
+	queryRoots.push(new Array("Person", "j:PersonName/j:PersonSurName", "j:PersonName/j:PersonGivenName", "j:PersonBirthDate"));
+	queryRoots.push(new Array("Booking", "j:BookingSubject/j:PersonName/j:PersonSurName", "j:BookingSubject/j:PersonName/j:PersonGivenName"));
+	queryRoots.push(new Array("Arrest", "j:ArrestSubject/j:PersonName/j:PersonSurName", "j:ArrestSubject/j:PersonName/j:PersonGivenName", "j:ArrestSubject/j:PersonBirthDate"));
+	queryRoots.push(new Array("ArrestWarrant", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate"));
+	queryRoots.push(new Array("Case", "j:ActivitySuspect/j:PersonName/j:PersonSurName", "j:ActivitySuspect/j:PersonName/j:PersonGivenName", "j:ActivitySuspect/j:PersonBirthDate"));
+	queryRoots.push(new Array("Case", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonSurName", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonGivenName", "j:ActivityVictim/j:Victim.Person/j:PersonBirthDate"));
+
+	queryRoots.push(new Array("Citation", "j:CitationSubject/j:PersonName/j:PersonSurName", "j:CitationSubject/j:PersonName/j:PersonGivenName", "j:CitationSubject/j:PersonBirthDate"));
+	queryRoots.push(new Array("Incident", "j:IncidentSubject/j:PersonName/j:PersonSurName", "j:IncidentSubject/j:PersonName/j:PersonGivenName", "j:IncidentSubject/j:PersonBirthDate"));
+	queryRoots.push(new Array("Infraction", "j:IncidentSubject/j:PersonName/j:PersonSurName", "j:IncidentSubject/j:PersonName/j:PersonGivenName", "j:IncidentSubject/j:PersonBirthDate"));
+
+	function crossPageQuery(Root, firstParm, secondParm, thirdParm) {
+		var xpath = "";
+		var cntrOr = 0;
+		for(var i=0; i<queryRoots.length; i++) {
+			var rootName = queryRoots[i][0];
+			if(rootName == Root) {
+				cntrOr = cntrOr + 1;
+				
+				if(cntrOr > 1) {
+					xpath = xpath + " OR ";
+				}
+				
+				xpath = xpath + "[";
+
+				if(queryRoots[i].length > 1 && firstParm != null && firstParm.length > 0) { xpath += queryRoots[i][1] + "='" + firstParm + "' and "; }
+				if(queryRoots[i].length > 2 && secondParm != null && secondParm.length > 0) { xpath += queryRoots[i][2] + "='" + secondParm + "' and "; }
+				if(queryRoots[i].length > 3 && thirdParm != null && thirdParm.length > 0) { xpath += queryRoots[i][3] + "='" + thirdParm + "' and "; }
+				
+				// Strip off the last 'and' and end the xpath node test
+				var lastAnd = xpath.lastIndexOf('and');
+				if(lastAnd != -1) { xpath = xpath.substr(0, lastAnd); }
+				xpath += "]";
+			}
+		}
+
+		if(cntrOr > 1) {
+				xpath = "[" + xpath + "]";
+			}
+		
+		xpath = "j:" + Root + xpath;
+
+		/* var queryName = Root; */
+		var queryName = firstParm + " ";
+		if(Root == 'Person') { queryName += top.SessionDataFrame.totalPersonQueries; top.SessionDataFrame.totalPersonQueries++; }
+		if(Root == 'Arrest') { queryName += top.SessionDataFrame.totalArrestQueries; top.SessionDataFrame.totalArrestQueries++; }
+		if(Root == 'ArrestWarrant') { queryName += top.SessionDataFrame.totalArrestWarrantQueries; top.SessionDataFrame.totalArrestWarrantQueries++; }
+		if(Root == 'Booking') { queryName += top.SessionDataFrame.totalBookingQueries; top.SessionDataFrame.totalBookingQueries++; }
+		if(Root == 'Case') { queryName += top.SessionDataFrame.totalCaseQueries; top.SessionDataFrame.totalCaseQueries++; }
+		if(Root == 'Citation') { queryName += top.SessionDataFrame.totalCitationQueries; top.SessionDataFrame.totalCitationQueries++; }
+		if(Root == 'Evidence') { queryName += top.SessionDataFrame.totalEvidenceQueries; top.SessionDataFrame.totalEvidenceQueries++; }
+		if(Root == 'Firearm') { queryName += top.SessionDataFrame.totalFirearmQueries; top.SessionDataFrame.totalFirearmQueries++; }
+		if(Root == 'Incident') { queryName += top.SessionDataFrame.totalIncidentQueries; top.SessionDataFrame.totalIncidentQueries++; }
+		if(Root == 'Infraction') { queryName += top.SessionDataFrame.totalInfractionQueries; top.SessionDataFrame.totalInfractionQueries++; }
+		if(Root == 'Property') { queryName += top.SessionDataFrame.totalPropertyQueries; top.SessionDataFrame.totalPropertyQueries++; }
+		if(Root == 'ProtectionOrder') { queryName += top.SessionDataFrame.totalProtectionQueries; top.SessionDataFrame.totalProtectionQueries++; }
+		if(Root == 'Vehicle') { queryName += top.SessionDataFrame.totalVehicleQueries; top.SessionDataFrame.totalVehicleQueries++; }
+
+		var ary = new Array();
+		ary.push('http://wenet-wcso.co.whatcom.wa.us/'); 
+		ary.push('http://wenet-wcsojl.co.whatcom.wa.us/');
+		ary.push('http://wenet-wcpa.co.whatcom.wa.us/'); 
+		ary.push('http://wenet.cob.org/'); 
+
+		AddBackgroundQuery(Root, queryName, xpath, 90, ary);
+		// alert("" + Root + " query is processing, please wait.");
+		return;
+
+	}
+-->
+</script>
+
+</body>
+</html>

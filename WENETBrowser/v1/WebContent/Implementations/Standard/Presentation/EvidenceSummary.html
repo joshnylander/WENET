@@ -1,0 +1,512 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="" />
+	<script src="../BrowserControl.js"></script>
+	<script type="text/javascript">
+	<!--
+
+		var xml = top.SessionDataFrame.sessionDocument;
+		var queryName = top.SessionDataFrame.queryName;
+		var sortAscending = true;
+		var previousSortColumn = null;
+		var detailDisplay = false;
+
+		// Set the pages display CSS 
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = "../" + pageCSS.text; }
+
+		// Query the data
+		var query = null;
+		var resultLists; 
+		var resultListErrors; 
+		var queryErrors; 
+		var queryStatus; 
+		var displayColumns;
+
+		// This nasty bit of code is necessary because MSXML is very arbitrary about how it stores
+		// its text strings, when a query is freshly returned the queryName has an extra space appended
+		// to it, but then on subsequent clicks on the navigation menu it works... this is a patch.
+
+		query = xml.selectNodes("session/results/query[queryName='" + queryName + "']");
+		if(query.length == 0) { 
+			queryName += " ";
+			query = xml.selectNodes("session/results/query[queryName='" + queryName + "']");
+			if(query.length == 0) { alert("Nope2"); } 
+			}
+
+		resultLists = xml.selectNodes("session/results/query[queryName='" + queryName + "']/resultList");
+		resultListErrors = xml.selectNodes("session/results/query[queryName='" + queryName + "']/resultList/resultError");
+		queryErrors = xml.selectNodes("session/results/query[queryName='" + queryName + "']/queryErrors/error/description");
+		queryStatus = xml.selectNodes("session/results/query[queryName='" + queryName + "']/queryStatus/status");
+		displayColumns = xml.selectNodes("session/theRoots/root[rootName='Evidence']/summaryColumn");
+
+
+		//---------------------------------------------------------------------------------	
+		// Make a list of all the unique column headers for all the results
+
+		var colHeaderNames = xml.selectNodes("session/results/query[queryName='" + queryName + "']/resultList/result/summary/name");
+		var uniqueColumns = new Array();
+		var displayOrderColumns = new Array();
+
+		for(i=0; i<colHeaderNames.length; i++) {
+			colName = colHeaderNames[i].text.trim();
+
+			foundCol = false;
+			for(k=0; k<uniqueColumns.length; k++) {
+				if(uniqueColumns[k] == colName) {
+					foundCol = true;
+					break;
+					}
+				}
+
+			if(foundCol == false) {
+				uniqueColumns.push(colName);
+				displayOrderColumns.push(colName);
+				}			
+			}
+
+		//---------------------------------------------------------------------------------
+		// See if the user has any saved column profiles on record
+
+		if(top.SessionDataFrame.evidenceColumnAry.length > 0) {
+			displayOrderColumns.length = 0;
+			for(i=0; i<top.SessionDataFrame.evidenceColumnAry.length; i++) {
+				displayOrderColumns.push(top.SessionDataFrame.evidenceColumnAry[i].trim());
+				}
+			}
+		
+		//---------------------------------------------------------------------------------	
+		// Extract the data from the session XML and put it into a javascript array
+
+		var totalResultRows = 0;
+		var totalServicePoints = 0;
+		var resultData = new Array();
+		for(i=0; i<resultLists.length; i++) {
+			
+			var results = resultLists[i].selectNodes("result");
+			var serviceURI = resultLists[i].selectSingleNode("serviceURI").text;
+			if(results.length > 0) { totalServicePoints++; }
+
+			for(k=0; k<results.length; k++) {
+				
+				var ary = new Array();
+				ary.push(serviceURI);
+				ary.push(results[k].selectSingleNode("instanceURL").text);
+
+				// Compile the various sort columns into a single field
+				var col = "";
+				var full = results[k].selectSingleNode("summary[name='J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYOWNER.PERSON/J:PERSONNAME/J:PERSONFULLNAME']/value");
+				var dob = results[k].selectSingleNode("summary[name='J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYOWNER.PERSON/J:PERSONBIRTHDATE']/value");
+				if(full != undefined) { col += " " + full.text; }
+				if(dob != undefined) { col += " " + dob.text; }
+				ary.push(col);
+
+				for(j=0; j<uniqueColumns.length; j++) {						
+					var val = results[k].selectSingleNode("summary[name='" + uniqueColumns[j] + "']/value");
+					if(val != null) { ary.push(val.text); } else { ary.push("&nbsp"); }
+					}
+
+				resultData.push(ary);
+				totalResultRows++;
+				}
+			}
+
+		//*********************************************************************************
+
+		function swapValues(theArray, ind1, ind2) {
+			col1 = theArray[ind1];
+			theArray[ind1] = theArray[ind2];
+			theArray[ind2] = col1;
+			}
+
+		//*********************************************************************************
+
+		function moveColumn(colName, movement) {
+			for(i=0; i<displayOrderColumns.length; i++) {
+				if(displayOrderColumns[i] == colName) {
+					if(i == 0 && movement < 0) { return; }
+					if(i == (displayOrderColumns.length-1) && movement > 0) { return; }
+					
+					var toInd = i + movement;
+					var tmp = displayOrderColumns[toInd];
+					displayOrderColumns[toInd] = colName;
+					displayOrderColumns[i] = tmp;
+					break;
+					}
+				}
+
+			if(previousSortColumn != null)
+				driveDisplay(previousSortColumn);
+			else
+				driveDisplay();
+			}
+
+
+		//*********************************************************************************
+
+		function saveDisplayColumns() {
+			top.SessionDataFrame.evidenceColumnAry = new Array();
+			for(i=0; i<displayOrderColumns.length; i++) {
+				top.SessionDataFrame.evidenceColumnAry.push(displayOrderColumns[i]);
+				}			
+			}
+
+		//*********************************************************************************
+
+		function hideColumn(colName) {
+			var colAry = new Array();
+			for(i=0; i<displayOrderColumns.length; i++) {
+				if(displayOrderColumns[i] != colName) { colAry.push(displayOrderColumns[i]); }
+				}
+
+			displayOrderColumns = colAry;
+			}
+
+		//*********************************************************************************
+
+		var savedColumnAliasAry = null;
+		var savedColumnNameAry = null;
+
+		function findColumnAlias(col) {
+
+			// There is only need to do this initialization one time
+			if(savedColumnAliasAry == null) {
+				savedColumnAliasAry = new Array();
+				savedColumnNameAry = new Array();
+
+				var colMappings = xml.selectNodes("session/implementation/columnAliasMappings/mapping");
+				for(t=0; t<colMappings.length; t++) {
+					savedColumnNameAry.push(colMappings[t].selectSingleNode("xpath").text.trim());
+					savedColumnAliasAry.push(colMappings[t].selectSingleNode("alias").text.trim());
+					}
+				}
+
+
+			// Transform the column name into its alias, if available
+			for(t=0; t<savedColumnNameAry.length; t++) { 
+				if(savedColumnNameAry[t] == col) { 
+					return savedColumnAliasAry[t];
+					}
+				}
+
+			return col;
+			}
+
+		//*********************************************************************************
+
+		function writeColumnHeaders(sortColumn) {
+		
+			txt = "<tbody><tr align=center id=HeaderRow class=SUMMARY_HEADERROW><td>Agency</td>";
+
+			for(i=0; i<displayOrderColumns.length; i++) {
+				var col = displayOrderColumns[i];
+				col = findColumnAlias(col);
+
+				if(displayOrderColumns[i] == sortColumn) 
+					txt += "<td><i><b><a href='#' class=SUMMARY_HEADERSELECTEDFONT onClick=\"driveDisplay('" + displayOrderColumns[i] + "');\"> " + col + "</a></b></i></td>";
+				else
+					txt += "<td><a href='#' class=SUMMARY_HEADERFONT onClick=\"driveDisplay('" + displayOrderColumns[i] + "');\"> " + col + "</a><br></td>";
+				}
+
+			txt += "</tr></tbody>";
+			return txt;
+			}
+
+		//*********************************************************************************
+
+		function jumpForm(index) {
+			location.href = '#' + document.JumpForm.JumpField.value;
+			}
+
+		//*********************************************************************************
+
+		var origHeaderY = 75;
+		function floatHeaders() {
+
+			if(document.body.scrollTop == 0) {
+				document.all.HeaderRow.style.position = 'absolute';
+				document.all.HeaderRow.style.pixelTop = origHeaderY;
+				setTimeout("floatHeaders()", 2000);
+				return;
+				}
+
+			document.all.HeaderRow.style.position = 'absolute';
+			document.all.HeaderRow.style.pixelTop = document.body.scrollTop;
+			setTimeout("floatHeaders()", 2000);
+			}
+
+		//*********************************************************************************
+
+		function showOptions() {
+			document.all.Content.style.display = 'none';
+			document.all.Options.style.display = 'block';
+			}
+
+		//*********************************************************************************
+
+		function hideOptions() {
+			document.all.Content.style.display = 'block';
+			document.all.Options.style.display = 'none';
+			}
+
+		//*********************************************************************************
+
+		function driveDisplay(sortColumn) {
+
+			if(sortColumn == undefined) { sortColumn = "Composite"; }
+			if(sortColumn == 'AGENCY') { sortColumn = undefined; }
+
+			//---------------------------------------------------------------------------------	
+			// Make an array representing the indexes into the results ary of the ordered columns
+
+			var disOrder = new Array();
+			var bFoundCol = false;
+			for(j=0; j<displayOrderColumns.length; j++) {
+
+				for(k=0; k<uniqueColumns.length; k++) {
+					if(uniqueColumns[k] == displayOrderColumns[j]) {
+						disOrder.push(k+3);
+						bFoundCol = true;
+						break;			
+						}
+					}
+
+				// Pushing a value of -1 indicates the display column is not found in the list of unique columns
+				if(bFoundCol == false) { disOrder.push(-1); }
+				bFoundCol = false;
+				}
+
+			//---------------------------------------------------------------------------------	
+			// See if we need to do any sorting
+
+			var sortColumnID = -1;
+			if(sortColumn != undefined) {
+				
+				// Attach the result comparetor 
+				if(sortAscending == true) {
+					 resultData.sortOn = function(i) { 
+					    return this.sort(function(a,b) {return a[i]<b[i]?-1:a[i]>b[i]?i:0;}); 
+					    } 
+
+					sortAscending = false;
+					}
+				else
+					{
+					 resultData.sortOn = function(i) { 
+					    return this.sort(function(a,b) {return b[i]<a[i]?-1:b[i]>a[i]?i:0;}); 
+					    } 
+
+					sortAscending = true;
+					}
+
+				if(sortColumn == 'Composite') {
+					resultData.sortOn(2);
+					previousSortColumn = sortColumn;
+					sortColumnID = 2;											
+					}
+				else
+					{
+					// Find the column they want sorted on
+					for(i=0; i<uniqueColumns.length; i++) {
+						if(uniqueColumns[i] == sortColumn) {
+	
+							// We have to increment the column because we add extra columns into
+							// the beginning of the results array, so we have to compensate
+							i += 3;
+							resultData.sortOn(i);
+							previousSortColumn = sortColumn;
+							sortColumnID = i;						
+							break;
+							}
+						}
+					}				
+				}
+	
+			//---------------------------------------------------------------------------------
+			// Write out the column headers
+
+			var txt = "<center><table border=1 width=98% class=SUMMARY_TABLE id=SUMMARY_TABLE>";			
+			txt += writeColumnHeaders(sortColumn);
+			txt += "<tr id=SpacerRow><td colspan=30>&nbsp</tr>";
+
+			//---------------------------------------------------------------------------------
+			// ... and now the data...
+
+			// If there is no sort selected, then group up by the service point column
+			if(sortColumnID == -1) { sortColumnID = 0; }
+
+			var groupBlockText = null;
+			var groupColor = "#ffffff";
+			var grpCtr = 0;
+			var linetxt;
+
+			// Go through all the result data and write it out
+			var groupedElements = new Array();
+			for(i=0; i<resultData.length; i++) {
+				ary = resultData[i];
+
+				linetxt = "";
+				if(groupBlockText != ary[sortColumnID]) {
+					if(i > 0) { linetxt += "</tbody>"; }
+					linetxt += "<tbody>";
+
+					linetxt += "<tr class=SUMMARY_SORTDETAILROW>"; 
+
+					linetxt += "<td colspan=40 align=left><a name='" + grpCtr + "'></a>&nbsp" + ary[sortColumnID] + "</td></tr>"; 
+
+					groupBlockText = ary[sortColumnID];
+					groupedElements.push(groupBlockText);
+					grpCtr++;
+					}
+
+
+				var sp = ary[0];
+				var alias = xml.selectSingleNode("session/services/service[serviceURI='" + sp + "']/alias");
+				if(alias == undefined) { alias = sp; } else { alias = alias.text; }
+
+				if((grpCtr % 2) == 0)
+					linetxt += "<tr class=SUMMARY_SORTEDGROUPROW1>"; 
+				else
+					linetxt += "<tr class=SUMMARY_SORTEDGROUPROW2>"; 
+
+				linetxt += "<td><a href='#' class=SUMMARY_INSTANCELINK onClick=\"RetrieveInstance('Evidence', '" + ary[1] + "');\">" + alias + "</a></td>";	
+	
+
+				for(k=0; k<disOrder.length; k++) {
+					var ind = disOrder[k];
+					if(ind != -1)
+						linetxt += "<td><p>" + ary[ind] + "</p></td>";
+					else
+						linetxt += "<td>&nbsp</td>";
+					}
+
+				linetxt += "</tr>";
+
+				txt += linetxt;
+				}
+
+			txt += "</tbody>";
+			txt += "</table><br><br> <a name=Status> <a href=#Status onClick=\"if(document.all.StatusTable) { document.all.StatusTable.style.display='block'; } if(document.all.ErrorTable) { document.all.ErrorTable.style.display='block'; } \"> - Status Messages - </a> ";
+	
+			if(queryStatus.length > 0) { 
+				txt += "<center><table style='display:none;' id=StatusTable bgColor=#eeeeee border=0 width=95%><tr><td><fieldset><legend>Status Msgs</legend>";
+				for(i=0; i<queryStatus.length; i++) {
+					txt +=  queryStatus[i].text + "<br><br>";
+					}
+	
+				txt += "</fieldset></td></td></table></center><br>";
+				}
+	
+			if(queryErrors.length > 0 || resultListErrors.length > 0) { 
+				txt += "<center><table style='display:none;' id=ErrorTable bgColor=#eeeeee border=0 width=95%><tr><td><fieldset><legend>Error Msgs</legend>";
+				for(i=0; i<queryErrors.length; i++) {
+					txt += queryErrors[i].text + "<br><br>";
+					}
+	
+				for(i=0; i<resultLists.length; i++) {
+					var serviceURI = resultLists[i].selectSingleNode("serviceURI");
+					var errors = resultLists[i].selectNodes("resultError");
+					txt += "<br><br><u>" + serviceURI + "</u><br>";
+					for(k=0; k<errors.length; k++) {
+						txt += errors[k].text + "<br><br>";
+						}
+					}
+	
+				txt += "</fieldset></td></td></table></center><br><br>";
+				}
+
+			var groupAutoSelectTxt = "<form name='JumpForm'><select name=JumpField>";
+			for(z=0; z<groupedElements.length; z++) {
+				groupAutoSelectTxt += "<option value='" + z + "'> " + groupedElements[z] + "</option>";
+				}
+
+			groupAutoSelectTxt += "</select>&nbsp  <input type='Button' value='Go!' onClick=\"jumpForm(document.JumpForm.JumpField.value)\"> &nbsp&nbsp "; 
+			groupAutoSelectTxt += "<input type='Button' value='Options' onClick=\"showOptions();\"> &nbsp&nbsp";
+//			groupAutoSelectTxt += "Table Display <input type=radio onClick=\"detailDisplay=false; driveDisplay();\"";
+//			if(detailDisplay == false) { groupAutoSelectTxt += " checked>"; } else { groupAutoSelectTxt += ">"; }
+//			groupAutoSelectTxt += "Detail Display <input type=radio onClick=\"detailDisplay=true; driveDisplay();\"";
+//			if(detailDisplay == true) { groupAutoSelectTxt += " checked>"; } else { groupAutoSelectTxt += ">"; }
+
+			document.all.QuickJump.innerHTML = groupAutoSelectTxt;
+			document.all('Content').innerHTML =  txt;	
+
+			floatHeaders();
+			document.all.SpacerRow.height = document.all.HeaderRow.scrollHeight+1;
+			}		
+
+		//*********************************************************************************
+
+		function driveOptions() {
+	
+			// Find all the columns in the uniqueColumns that are NOT in displayOrderColumns (i.e. hidden cols)
+			var hiddenCols = new Array();
+			var foundCol = false;
+			for(i=0; i<uniqueColumns.length; i++) {
+
+				foundCol = false;
+				for(j=0; j<displayOrderColumns.length; j++) {
+					if(uniqueColumns[i] == displayOrderColumns[j]) {
+						foundCol = true;
+						break;
+						}
+					}
+				
+				if(foundCol == false) { hiddenCols.push(uniqueColumns[i]); }
+				}
+
+			// This HTML gets outputted to the options DIV tag 
+			var txt = "<center><br><br><table border=1 width=95% class=SUMMARY_OPTIONS>";
+			txt += "<tr align=center><td colspan=2>Column Options</td></tr><tr align=center>";
+			txt += "<td width=50%>Displayed Columns</td><td width=50%>Hidden Columns</td></tr>";
+
+			txt += "<tr><td> <table border=0 width=100%>";
+			for(i=0; i<displayOrderColumns.length; i++) {
+				txt += "<tr><td align=center> " + findColumnAlias(displayOrderColumns[i]) + " </td><td><a href=# onClick=\"moveColumn('" + displayOrderColumns[i] + "', -1); driveOptions();\">Up</a> &nbsp&nbsp <a href=# onClick=\"moveColumn('" + displayOrderColumns[i] + "', 1); driveOptions();\">Down</a> &nbsp&nbsp <a href=# onClick=\"hideColumn('" + displayOrderColumns[i] + "'); driveOptions();\">Hide</a></td></tr>";
+				}
+
+			txt += "</table></td><td><table border=0 width=100%>";
+			for(i=0; i<hiddenCols.length; i++) {
+				txt += "<tr><td align=center> " + findColumnAlias(hiddenCols[i]) + " </td><td> <a href=# onClick=\"displayOrderColumns.push('" + hiddenCols[i] + "'); driveOptions();\" >Unhide</a></td></tr>";
+				}
+
+			txt += "</table></td></tr></table>";
+			txt += "<br><br><input type=button value=\"Save Settings\" onClick=\"saveDisplayColumns();\"> &nbsp&nbsp";
+			txt += "<input type=button value='Return to " + queryName + "' onClick='driveDisplay(); hideOptions(); '> </center>";
+
+			document.all('Options').innerHTML =  txt;	
+
+			}
+		
+	-->
+	</script>
+
+</head>
+<body onLoad="driveDisplay(); driveOptions();" id=SUMMARY_BODY >
+
+<fieldset id=NavSpacer class="NavigationTreeSpacer" style="width:100%;">
+
+	<p id=SUMMARY_QUERYNAMEFONT>
+	<script type="text/javascript">
+	<!-- 
+		document.write("Query: <b>" + queryName + "</b> returned " + totalResultRows + " results from " + totalServicePoints + " agencies."); 
+	-->
+	</script>
+	
+	<div id="QuickJump" style="position:absolute;top:40px;left:2%"></div>
+	</p>
+
+</fieldset>
+
+	<div id="Content">
+	</div>
+
+	<div id="Options" style="display:none;">
+	</div>
+	
+	<form name="StateForm">
+	<input type="hidden" name="StatusState" value="Collapsed">
+	<input type="hidden" name="ErrorsState" value="Collapsed">
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+BODY { background-color: #014531; color:#ffffff; }
+
+ul.HoverButton { border-bottom: 0px solid #000; margin: 0; list-style-type: none; border-width:1;background-color: #8DB89B;border: 1px solid #000; }
+li.HoverButton { }
+a.HoverButton { display: block; width:100%; height:100%; text-decoration:none; color:#000000; font: bold 11px verdana, arial, sans-serif; padding: 4px; }
+a.HoverButton:hover { background:#fff; } 
+
+
+#QUERYBODY { font-weight:bold; font-size:15px/1; }
+#QUERYHEADER { margin-left:.5cm; text-decoration:underline; font-weight:bold; font-size:150%; font-family:Times; color:#ffffff; }
+#QUERYNAME { text-decoration:normal; font-weight:bold; font-size:100%; font-family:Times; color:#ffffff; }
+#QUERYSEARCHPARAMETERS { text-decoration:normal; font-weight:bold; font-size:80%; font-family:arial; background-color:#363b66; visibility:hidden; display:none; color:#ffffff;}
+#QUERYSERVICEPOINTSTABLE { text-decoration:normal; font-weight:bold; font-size:80%; font-family:arial; background-color:#363b66; visibility:hidden; display:none; color:#ffffff;} 
+INPUT.QUERYSEARCHPARAMETERSRADIO { width:15;height:15;}
+#QUERYSERVICEPOINTSCHECK { width:15;height:15;}
+TABLE.QUERYFONTS { font-weight:bold; font-size:100%; font-family:Arial; color:#ffffff; }
+TABLE.QUERYBACKGROUNDTABLE { width:90%; background-color:#028C63; }
+INPUT.QUERYINPUTS { background-color:#B9FFEA; color:#000000; font-weight:bold;}
+
+
+
+P.QUERYSPLASH_HEADERFONT1 { font-size:30pt;font-weight:bold;font-family:Times;color:#f3f4d6;}
+P.QUERYSPLASH_HEADERFONT2 { font-size:30pt;font-family:Times;color:#e2e3c5;}
+TABLE.QUERYSPLASH_HEADERFONT3 { font-size:16pt;font-family:Arial;color:#000000; background:#f3f4d6;}
+P.QUERYSPLASH_MESSAGEFONT { text-decoration:italics;font-weight:bold;font-size:14pt;font-family:Arial;color:#ffffff; }
+IMG.QUERYSPLASH_IMAGE { }
+BODY.QUERYSPLASH_BODY { }
+
+
+#SUMMARY_BODY { font-family:arial; color:#ffffff; font-size:x-small; background-color:#000000; }
+#SUMMARY_QUERYNAMEFONT { margin-left:10px;margin-top:10px;text-decoration:none;font-weight:normal;font-size:100%; }
+TABLE.SUMMARY_TABLE {border-width:0; color:#000000; font-weight:normal; font-size:100%; margin-left:1%; margin-top:1%;}
+TR.SUMMARY_HEADERROW { background-color:#B9FFEA; margin-left:0%;}
+TR.SUMMARY_SORTDETAILROW {background-color:#B9FFEA;}
+TR.SUMMARY_SORTEDGROUPROW1 { background-color:#027251;text-align:center;color:#ffffff;font-weight:bold;}
+TR.SUMMARY_SORTEDGROUPROW2 { background-color:#004F56;text-align:center;color:#ffffff;font-weight:bold;}
+A.SUMMARY_HEADERFONT {color:#000000;text-decoration:none;font-weight:bold;font-size:110%;font-family:Times;}
+A.SUMMARY_HEADERSELECTEDFONT {color:#000000;text-decoration:underline;font-weight:bold;font-size:120%;font-family:Times;}
+A.SUMMARY_INSTANCELINK { color:ffffff;font-weight:bold;font-size:110%;font-family:Arial;text-decoration:none; }
+TABLE.SUMMARY_OPTIONS { background:ffffff;} 
+
+#ContentSpacer { height:15px; border:0; }
+.NAVIGATIONFONTS { font-size:15px/1; color:#ffffff; font-face:veranda; text-decoration:none; font-weight:bold;}
+#NAVIGATIONTREEBODY { background-color:#000000;  }
+FIELDSET.NavigationTreeSpacer { height:70; width:100%; font-size:120%; background-color:#028C63; border-width:0;}
+A.NAVIGATIONTREEROOT { width:100%; font-weight:bold; font-size:90%; color:#000000; font-face:Times; text-decoration:none; }
+A.NAVIGATIONTREEROOT:hover { background:#014531; color:#ffffff; font-weight:bold; text-decoration:none;} 
+A.NAVIGATIONTREEQUERY { width:100%; letter-spacing:3px; font-weight:bold; font-size:100%; color:#000000; font-face:Arial; text-decoration:none;}
+A.NAVIGATIONTREEQUERY:hover { background:#ffffff; } 
+
+TABLE.NAVIGATIONTREE_TABLE { width=100%; }
+TR.NAVIGATIONTREEROOT { background-color:#B9FFEA;}
+TR.NAVIGATIONTREEQUERY { background-color:#CDFFB9; }
+TR.NAVIGATIONTREE_SESSIONDETAILSROW { background-color:#B9FFEA; }
+TR.NAVIGATIONTREE_WORKSPACEROW { background-color:#B9FFEA; }
+TR.NAVIGATIONTREE_SAVEDQUERIESROW { background-color:#B9FFEA; }
+TR.NAVIGATIONTREE_OPTIONSROW { background-color:#B9FFEA; }
+
+P.WORKSPACE_MESSAGEFONT { font-weight:normal;font-size:16pt;font-family:Arial; }
+#WORKSPACEBODY { background-color:#014531;}
+
+#INSTANCEBODY { background-color:#014531; color:#ffffff; }
+TABLE.INSTANCEFONTS { color:#000000; }
+TR.INSTANCEHEADERROWS { background-color:#CDFFB9;color:#000000; }
+
+TABLE.INSTANCEDATABLOCK { background-color:#B9FFEA; color:#000000; } 
+P.HIGHLIGHT { display:inline; background-color:#000077; color:#ffffff; padding-left:7px; padding-right:7px; margin-right:5px; font-weight:bold; }
+P.DETAILHEADERFONT { background-color:#CDFFB9; color:#000000; font-weight:bold; font-size:150%; font-face:arial; }

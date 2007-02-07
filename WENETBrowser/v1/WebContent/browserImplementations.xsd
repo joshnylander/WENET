@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jxdm="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:wenet="http://www.whatcomcounty.us/apps/wenet/schema/wenet/1">
+
+	<!-- for wenet result -->
+	<!--xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="http://www.whatcomcounty.us/apps/wenet/schema/3.0.2/jxdm.xsd"/-->
+	<!--xsd:import namespace="http://www.whatcomcounty.us/apps/wenet/schema/wenet/1" schemaLocation="http://www.whatcomcounty.us/apps/wenet/schema/wenet/wenet_schema_1-2-1.xsd"/-->
+
+	<xsd:element name="browserImplementations">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+				<xsd:element name="browserNamespaces">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="namespaceMapping" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+							<xsd:element name="prefix" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+							<xsd:element name="location" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+							</xsd:sequence>
+						</xsd:complexType>
+						</xsd:element>
+
+					</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element ref="implementation" minOccurs="1" maxOccurs="unbounded" />
+
+			</xsd:sequence>
+
+		</xsd:complexType>
+
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="implementation">
+	<xsd:complexType>
+		<xsd:sequence>
+
+			<xsd:element name="implementationName" type="xsd:string" />
+			<xsd:element name="description" type="xsd:string" />
+			<xsd:element name="appDirectory" type="xsd:string" />
+			<xsd:element name="largeApplicationIcon" type="xsd:string" />
+			<xsd:element name="smallApplicationIcon" type="xsd:string" />
+	
+
+			<xsd:element name="displayScheme" minOccurs="1" maxOccurs="unbounded">
+			<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="schemeName" minOccurs="1" maxOccurs="1" type="xsd:string" />
+
+				<xsd:element name="displayEntry">
+				<xsd:complexType>
+				<xsd:sequence>
+				
+					<xsd:element name="entryName" type="xsd:string" />
+					<xsd:element name="entryValue" type="xsd:string" />
+					
+				</xsd:sequence>
+				</xsd:complexType>					
+			</xsd:sequence>
+			</xsd:complexType>
+			</xsd:element>
+		
+			<xsd:element name="seedServicePoints" minOccurs="1" maxOccurs="1">
+			<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="seedURL" type="xsd:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="columnAliasMappings" minOccurs="1" maxOccurs="1">
+			<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="aliasMapping" minOccurs="1" maxOccurs="unbounded">
+				<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="xpath" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>	
+				
+			</xsd:sequence>
+			</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="theRoots" minOccurs="0" maxOccurs="1">
+			<xsd:complexType>
+			<xsd:sequence>
+	
+				<xsd:element name="root" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+				<xsd:sequence>
+		
+					<xsd:element name="rootName" minOccurs="1" maxOccurs="1" type="xsd:string" />
+					<xsd:element name="largeRootIcon" type="xsd:string" />
+					<xsd:element name="smallRootIcon" type="xsd:string" />
+	
+					<xsd:element name="columnMapping" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="columnName" type="xsd:string" />
+						<xsd:element name="columnAlias" type="xsd:string" />
+					</xsd:sequence>
+					</xsd:complexType>
+					</xsd:element>
+
+					<xsd:element name="presentation" minOccurs="1" maxOccurs="unbounded">
+						<xsd:complexType>
+						<xsd:sequence>
+	
+						<xsd:element name="type" type="xsd:string" />
+						<xsd:element name="file" type="xsd:string" />
+	
+						</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+	
+				</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+	
+			</xsd:sequence>
+			</xsd:complexType>
+			</xsd:element>
+	
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>
+
+

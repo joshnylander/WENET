@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title> WENET Browser </title>
+	<link rel="stylesheet" type="text/css" href="" />
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+	<script src="BrowserControl.js"></script>
+	
+	<script type="text/javascript">
+	<!--
+		// Wait until the session document is completely loaded
+		var xml = top.SessionDataFrame.sessionDocument;
+		if(xml == undefined) { setTimeout("top.WorkspaceFrame.location='Workspace.html'", 1000); }
+
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		var centerImage = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='Workspace_SplashImage']/entryValue");
+		var themeMessage = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='Workspace_ThemeMessage']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = pageCSS.text; }
+	-->
+	</script>
+
+</head>
+<body id=WORKSPACEBODY>
+	<div id="WorkspaceContent">
+	<center><br><br>
+	<script type="text/javascript">
+	<!--
+		if(centerImage != null) { document.writeln("<img src='" + centerImage.text + "'>"); }
+
+		if(themeMessage != null) { document.writeln("<p class=WORKSPACE_MESSAGEFONT>" + themeMessage.text + "</p>"); }
+	-->
+	</script>
+	</center>
+	</div>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jxdm="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:wenet="http://www.whatcomcounty.us/apps/wenet/schema/wenet/1">
+
+	<!-- for wenet result -->
+	<!--xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="http://www.whatcomcounty.us/apps/wenet/schema/3.0.2/jxdm.xsd"/-->
+	<!--xsd:import namespace="http://www.whatcomcounty.us/apps/wenet/schema/wenet/1" schemaLocation="http://www.whatcomcounty.us/apps/wenet/schema/wenet/wenet_schema_1-2-1.xsd"/-->
+
+	<xsd:element name="session">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+				<xsd:element name="browserNamespaces">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="supportedNamespace" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="prefix" type="xsd:string" maxOccurs="1" minOccurs="1" />
+								<xsd:element name="location" type="xsd:anyURI" maxOccurs="1" minOccurs="1" />
+							</xsd:sequence>
+						</xsd:complexType>
+						</xsd:element>
+
+					</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element ref="implementation"/>
+
+				<xsd:element ref="user"/>
+
+				<xsd:element ref="services"/>
+
+				<xsd:element ref="results"/>
+
+				<xsd:element ref="savedQueries"/>
+
+				<xsd:element ref="workspace" />
+
+				<xsd:element name="browserStatus">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="status" type="xsd:string" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element name="browserErrors">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="error" maxOccurs="unbounded" />
+					</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+
+			</xsd:sequence>
+
+		</xsd:complexType>
+
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="user">
+	<xsd:complexType>
+		<xsd:sequence>
+
+			<xsd:element name="userFullName" type="xsd:string" />
+			<xsd:element name="userEmail" type="xsd:string" />
+			<xsd:element name="loginTime" type="xsd:dateTime" />
+			<xsd:element name="lastLogin" type="xsd:dateTime" />
+			<xsd:element name="lastAccess" type="xsd:dateTime" />
+		</xsd:sequence>
+	</xsd:complexType>
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="implementation">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="implementationName" type="xsd:string" />
+				<xsd:element name="largeApplicationIcon" type="xsd:string" />
+				<xsd:element name="smallApplicationIcon" type="xsd:string" />
+
+				<xsd:element name="colorScheme" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+				<xsd:sequence>				
+					<xsd:element name="colorEntry">
+					<xsd:complexType>
+					<xsd:sequence>
+					
+						<xsd:element name="itemName" type="xsd:string" />
+						<xsd:element name="color" type="xsd:string" />
+						
+					</xsd:sequence>
+					</xsd:complexType>					
+				</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+				
+				<xsd:element name="theRoots" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+				<xsd:sequence>
+
+					<xsd:element name="root" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+					<xsd:sequence>
+			
+						<xsd:element name="rootName" minOccurs="1" maxOccurs="1" type="xsd:string" />
+						<xsd:element name="largeRootIcon" type="xsd:string" />
+						<xsd:element name="smallRootIcon" type="xsd:string" />
+						
+						<xsd:element name="columnAliasMapping" minOccurs="0" maxOccurs="unbounded" >
+						<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="columnName" type="xsd:string" />
+							<xsd:element name="columnAlias" type="xsd:string" />
+						</xsd:sequence>
+						</xsd:complexType>
+						</xsd:element>
+	
+						<xsd:element name="presentation" minOccurs="1" maxOccurs="unbounded">
+							<xsd:complexType>
+							<xsd:sequence>
+		
+							<xsd:element name="type" type="xsd:string" />
+							<xsd:element name="file" type="xsd:string" />
+		
+							</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+
+					</xsd:sequence>
+					</xsd:complexType>
+					</xsd:element>
+
+				</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="services">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+				<xsd:element ref="servicePoint" minOccurs="0" maxOccurs="unbounded"/>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="servicePoint">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+				<xsd:element name="orgURI" type="xsd:anyURI"/>
+
+				<xsd:element name="serviceURI" type="xsd:anyURI"/>
+
+				<xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1" />
+
+				<xsd:element name="supportedXPaths" minOccurs="0" maxOccurs="1">
+					<xsd:complexType>	
+					<xsd:sequence>
+
+					<xsd:element name="xPath" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+
+					</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="error" minOccurs="0" maxOccurs="unbounded">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+				<xsd:element name="description" type="xsd:string" minOccurs="1"/>
+				<xsd:element name="timeOccured" type="xsd:dateTime" minOccurs="0"/>
+			</xsd:sequence>
+
+		</xsd:complexType>
+
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="results">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+				<xsd:element ref="query" minOccurs="0" maxOccurs="unbounded" />
+
+			</xsd:sequence>
+
+		</xsd:complexType>
+
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="query">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+				<xsd:element name="xPath" type="xsd:string"/>
+
+				<xsd:element name="rootType" type="xsd:string"/>
+
+				<xsd:element name="queryName" type="xsd:string"/>
+
+				<xsd:element name="lastRan" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+
+				<xsd:element ref="services" minOccurs="1" maxOccurs="1">
+
+				<xsd:element name="queryStatus" minOccurs="0" maxOccurs="1">
+					<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
+					</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element name="queryErrors" minOccurs="0" maxOccurs="1">
+					<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="error" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
+					</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element ref="resultList" minOccurs="0" maxOccurs="unbounded" />
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="resultList" minOccurs="0" maxOccurs="unbounded">
+		<xsd:complexType>
+			<xsd:sequence>
+				
+				<xsd:element ref="serviceURI" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="resultError" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="result" minOccurs="0" maxOccurs="unbounded" />
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="result">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+
+				<xsd:element name="instanceURL" type="xsd:anyURI"/>
+
+				<xsd:element name="summary">
+
+					<xsd:complexType>
+						<xsd:sequence>
+
+							<xsd:element name="value" minOccurs="0" maxOccurs="unbounded"/>
+
+						</xsd:sequence>
+					</xsd:complexType>
+
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="savedQuerys">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="query" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<xsd:element name="workspace">
+
+		<xsd:complexType>
+
+			<xsd:sequence>
+		
+			<xsd:element name="workspaceEntry" minOccurs="1" maxOccurs="unbounded">
+	
+				<xsd:complexType>
+	
+				<xsd:sequence>
+
+				<xsd:element name="instanceURL" type="xsd:anyURI" />
+				<xsd:element name="orgURI" type="xsd:anyURI" />
+				<xsd:element name="serviceURI" type="xsd:anyURI" />
+				<xsd:element name="entryName" type="xsd:string" />
+				<xsd:element name="lastAccess" type="xsd:dateTime" />
+
+				<xsd:complexType>
+
+				<xsd:sequence>
+
+			</xsd:element>
+
+			</xsd:sequence>
+
+		</xsd:complexType>
+	</xsd:element>
+
+
+</xsd:schema>
+
+

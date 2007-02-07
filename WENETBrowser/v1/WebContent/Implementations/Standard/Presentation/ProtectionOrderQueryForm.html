@@ -1,0 +1,427 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="" />
+	<link rel="stylesheet" type="text/css" media="all" href="../JSCalendar/calendar-win2k-cold-1.css" title="win2k-cold-1" />
+	<script src="../JSCalendar/calendar.js"></script>
+  	<script src="../JSCalendar/calendar-en.js"></script>
+	<script src="../JSCalendar/calendar-setup.js"></script>
+	<script src="../BrowserControl.js"></script>
+</head>
+<body id=QUERYBODY>
+	<script type="text/javascript">
+	<!--
+		// Wait until the session document is completely loaded
+		var xml = top.SessionDataFrame.sessionDocument;
+		if(xml == undefined) { setTimeout("top.WorkspaceFrame.location='ProtectionOrderQueryForm.html'", 100); }
+
+		// Set the pages display CSS 
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = "../" + pageCSS.text; }
+
+		function showPanel(thePanel) {
+			thePanel.style.visibility = 'visible';
+			thePanel.style.display = 'block';
+			focusCtl('');
+			}
+
+		function hideQueryPanels() {
+			hidePanel(document.all.CourtOrderPanel);
+			hidePanel(document.all.SubjectPanel);
+			}
+		
+		function hidePanel(thePanel) {
+			thePanel.style.visibility = 'hidden';
+			thePanel.style.display = 'none';
+			}
+
+		function showSearchParameters() {
+
+			if(document.all.QUERYSEARCHPARAMETERS.style.visibility != 'visible') {
+				document.all.QUERYSEARCHPARAMETERS.style.visibility = 'visible';
+				document.all.QUERYSEARCHPARAMETERS.style.display = 'block';
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			else
+				{
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			}
+		
+		function showServicePoints() {
+			if(document.all.QUERYSERVICEPOINTSTABLE.style.visibility != 'visible') {
+				document.all.QUERYSERVICEPOINTSTABLE.style.visibility = 'visible';
+				document.all.QUERYSERVICEPOINTSTABLE.style.display = 'block';
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				}
+			else
+				{
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			}
+
+		//----------------------------------------------------------
+		// This is the list of fields that allow wildcard searches
+		
+		var wildcardAry = new Array();
+		wildcardAry[0] = new Array('protectedname', "Protected Name");
+		wildcardAry[1] = new Array('subfirst', "Person First");
+		wildcardAry[2] = new Array('submiddle', "Person Middle");
+		wildcardAry[3] = new Array('sublast', "Person Last");
+		wildcardAry[4] = new Array('causenum', "Cause Number");
+		wildcardAry[5] = new Array('issuing', "Issuing Court");
+
+		var selectedCtl = 0;
+		var wildcardValues = new Array();
+		for(i=0; i<wildcardAry.length; i++) { wildcardValues[i] = 0; }
+	
+		function focusCtl(theCtl) {
+			hidePanel(document.all.QUERYSEARCHPARAMETERS);
+			selectedCtl = -1;
+
+			for(i=0; i<wildcardAry.length; i++) {
+				if(wildcardAry[i][0] == theCtl) {
+					selectedCtl = i;
+					document.ControlForm.Namesearch[wildcardValues[i]].checked = true;
+					showSearchParameters();
+					document.all.CardName.innerHTML = "<u>" + wildcardAry[i][1] + "</u>";
+					return;
+					}
+				}
+
+			return;
+			}
+
+		function makeXPath() {
+
+			// Construct the xpath query
+			var xpath = "j:ProtectionOrder[";
+
+			if(document.all.activeorder[0].checked == true) { xpath += "contains(j:CourtOrderStatus/j:StatusText, 'A') and ";}
+
+			if(document.all.protectedname.value.trim() != '') { xpath += makeXPathString("j:ProtectionOrderRestrictedPerson/j:PersonName/j:PersonFullName", document.all.protectedname.value.trim(), wildcardValues[0]); }
+			if(document.all.subfirst.value.trim() != '') { xpath += makeXPathString("j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", document.all.subfirst.value.trim(), wildcardValues[1]); }
+			if(document.all.submiddle.value.trim() != '') { xpath += makeXPathString("j:CourtOrderDesignatedSubject/j:PersonName/j:PersonMiddleName", document.all.submiddle.value.trim(), wildcardValues[2]); }
+			if(document.all.sublast.value.trim() != '') { xpath += makeXPathString("j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", document.all.sublast.value.trim(), wildcardValues[3]); }
+
+			if(document.all.subdob.value.trim() != '') {
+				xpath += "j:CourtOrderDesignatedSubject/j:PersonBirthDate='" + makeTimestamp(convertDate(document.all.subdob.value.trim())) + "' and ";
+				}
+			else
+				{
+				if(document.all.substartdob.value.trim() != '' && document.all.subenddob.value.trim() != '') {
+					xpath += "j:CourtOrderDesignatedSubject/j:PersonBirthDate>='" + makeTimestamp(convertDate(document.all.substartdob.value.trim())) + "' and ";
+					xpath += "j:CourtOrderDesignatedSubject/j:PersonBirthDate<='" + makeTimestamp(convertDate(document.all.subenddob.value.trim())) + "' and ";
+					}
+				}
+
+			if(document.all.causenum.value.trim() != '') { xpath += makeXPathString("j:ArrestWarrant/j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentGroupID", document.all.causenum.value.trim(), wildcardValues[4]); }
+			if(document.all.issuing.value.trim() != '') { xpath += makeXPathString("j:CourtOrderIssuingCourt/j:CourtName", document.all.issuing.value.trim(), wildcardValues[5]); }
+
+			if(document.all.issuedate.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.servicedate.value.trim())) + "' and "; }
+			if(document.all.datestart.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.datestart.value.trim())) + "' and "; }
+			if(document.all.dateend.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.dateend.value.trim())) + "' and "; }
+		
+			// Strip off the last 'and' and end the xpath node test
+			var lastAnd = xpath.lastIndexOf('and');
+			if(lastAnd != -1) { xpath = xpath.substr(0, lastAnd); }
+			xpath += "]";
+			return xpath;
+			}
+
+		function callQuery() {
+	
+			var ary = new Array();
+			if(document.ControlForm.Sheriff.checked == true) { ary.push('http://wenet-wcso.co.whatcom.wa.us/'); }
+			if(document.ControlForm.Jail.checked == true) { ary.push('http://wenet-wcsojl.co.whatcom.wa.us/'); }
+			if(document.ControlForm.Prosecutor.checked == true) { ary.push('http://wenet-wcpa.co.whatcom.wa.us/'); }	
+			if(document.ControlForm.BPD.checked == true) { ary.push('http://wenet.cob.org/'); }
+
+			AddQuery('ProtectionOrder', document.HeaderForm.qname.value, makeXPath(), document.HeaderForm.timeout.value, ary);
+
+			top.SessionDataFrame.totalProtectionQueries += 1;
+			}
+
+		function highlightQueryButton(thebutton) {
+			document.all.ProtectionButton.style.background = '';
+			document.all.SubjectButton.style.background = '';
+			thebutton.style.background = '#fff';
+			}
+
+		function clearForm() {
+			document.OrderForm.reset();
+			document.SubjectForm.reset();
+			}
+	-->
+	</script>
+
+
+<form name=HeaderForm>
+<fieldset class="NavigationTreeSpacer" style="width:100%;border:0;">
+<br>
+	<table border=0 width=100%>
+	<tr>
+	<td><p id=QUERYHEADER> Protection Order </p></td>
+
+	<td align=right>
+	<p id=QUERYNAME>
+	<script type="text/javascript">
+	<!--
+	var xml = top.SessionDataFrame.sessionDocument;
+	if(xml == undefined) { exit; }
+	document.writeln("Query Name: <input type=text name=qname value=ProtectionOrder" + top.SessionDataFrame.totalProtectionQueries + ">");
+	-->
+	</script> &nbsp&nbsp
+
+	Timeout: <select name="timeout">
+		<option value="90">90 Seconds</option>
+		<option value="30">30 Seconds</option>
+		<option value="60">60 Seconds</option>
+		<option value="120">120 Seconds</option>
+		<option value="600">10 Minutes</option>
+		</select>
+
+	&nbsp&nbsp
+	</p>
+	</td>
+	</tr>
+	</table>
+
+</fieldset>
+</form>
+
+<fieldset id="ContentSpacer"></fieldset>
+<center>
+<table border=1 class="QUERYBACKGROUNDTABLE QUERYFONTS">
+<tr>
+	<td colspan=2>
+
+		
+		<Table border=0>
+		<tr>
+		<td>
+			<ul class="HoverButton"><li class="HoverButton"><a class="HoverButton" id=SubjectButton onClick="hideQueryPanels(); showPanel(document.all.SubjectPanel); highlightQueryButton(document.all.SubjectButton);" href="#">Person</a></li></ul>
+		</td>
+		<td>
+			<ul class="HoverButton"><li class="HoverButton"><a class="HoverButton" id=ProtectionButton onClick="hideQueryPanels(); showPanel(document.all.CourtOrderPanel); highlightQueryButton(document.all.ProtectionButton);" href="#">Protection Order</a></li></ul>
+		</td>
+		</tr>
+		</table>
+
+	</td>
+</tr>
+<tr>
+
+<td id=CourtOrderPanel style="visibility:hidden;display:none;" align=center width=75% height=200>
+<br>
+<form name=OrderForm>
+<input type=radio name=activeorder checked> Active Orders &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Orders<br><br>
+<table border=0 class="QUERYFONTS">
+<tr><td>Issuing Court:</td><td><input class=QUERYINPUTS type=text size=10 onClick="focusCtl('issuing');" id=issuing></td></tr>
+<tr><td>Court Cause Number:</td><td> <input class=QUERYINPUTS onClick="focusCtl('causenum');" type=text id=causenum> </td></tr>
+<tr><td colspan=2><br><br><font size=-1><i>Please enter dates in mm/dd/yyyy format</i></font><br></td></tr>
+<tr><td> Exact Issue Date: </td><td> <input type="text" class=QUERYINPUTS id="issuedate" onClick="focusCtl('');" size="10"> &nbsp <button type="reset" id="trigger1"> ... </button> </td></tr>
+<tr><td> Date Start Range: </td><td> <input type="text" class=QUERYINPUTS id="datestart" onClick="focusCtl('');" size=10> &nbsp <button type="reset" id="trigger2"> ... </button> </td></tr>
+<tr><td> Date End Range: </td><td> <input type=text class=QUERYINPUTS id="dateend" onClick="focusCtl('');" size=10> &nbsp <button type="reset" id="trigger3"> ... </button></td></tr>
+</table>
+
+
+<script type="text/javascript">
+    Calendar.setup({
+        inputField     :    "issuedate",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger1",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+    Calendar.setup({
+        inputField     :    "datestart",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger2",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+    Calendar.setup({
+        inputField     :    "dateend",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger3",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+</script>
+
+
+</form>
+</td>
+
+<td id=SubjectPanel style="visibility:visible;display:block;" align=center width=75% height=200>
+<br>
+<form name=SubjectForm>
+
+<input type=radio name=activeorder checked> Active Orders &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Orders<br><br>
+
+&nbsp&nbsp Petitioner Name: <input type=text class=QUERYINPUTS id=protectedname onClick="focusCtl('protectedname');" size=30><br><br>
+
+
+<fieldset>
+<legend>Respondent</legend>
+<br>
+Last: <input class=QUERYINPUTS onClick="focusCtl('sublast');" type=text id=sublast size=10> &nbsp&nbsp  First: <input class=QUERYINPUTS type=text id=subfirst onClick="focusCtl('subfirst');" size=10> &nbsp&nbsp Middle: <input class=QUERYINPUTS onClick="focusCtl('submiddle');" type=text id=submiddle size=10><br>
+
+<table border=0 class="QUERYFONTS">
+<tr><td colspan=2><br><br><font size=-1><i>Please enter dates in mm/dd/yyyy format</i></font><br></td></tr>
+<tr><td> Respondent DOB: </td><td> <input class=QUERYINPUTS type="text" id="subdob" onClick="focusCtl('');" size="10">  &nbsp <button type="reset" id="trigger4"> ... </button></td></tr>
+<tr><td> DOB Range-Start: </td><td> <input class=QUERYINPUTS type="text" id="substartdob" onClick="focusCtl('');" size=10> &nbsp <button type="reset" id="trigger5"> ... </button></td></tr>
+<tr><td> DOB Range-End: </td><td> <input class=QUERYINPUTS type=text id="subenddob" onClick="focusCtl('');" size=10> &nbsp <button type="reset" id="trigger6"> ... </button></td></tr>
+</table>
+</fieldset>
+
+<script type="text/javascript">
+    Calendar.setup({
+        inputField     :    "subdob",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger4",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+    Calendar.setup({
+        inputField     :    "substartdob",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger5",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+    Calendar.setup({
+        inputField     :    "subenddob",      
+        ifFormat       :    "%m/%d/%Y", 
+        showsTime      :    false,            
+        button         :    "trigger6",   
+        singleClick    :    false,           
+        step           :    1                
+    });
+
+</script>
+
+</form>
+</td>
+
+<td valign=top>
+	<center>
+	<form name=ControlForm>
+
+		<Table border=0 width=100%>
+		<tr>
+		<td align=center>
+			<ul class="HoverButton"><li class="HoverButton"><a class="HoverButton" onClick="showServicePoints();" href="#">Agency RMS</a></li></ul>
+		</td>
+		</tr>
+		</table>
+
+
+	<table border=0 width=100% id=QUERYSEARCHPARAMETERS>
+	<tr><td><div id=CardName></div></td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=0;" type=radio name=Namesearch value=Exact checked> &nbsp&nbsp Exact Text</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=1;" type=radio name=Namesearch value=Contains> &nbsp&nbsp Contains</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=2;" type=radio name=Namesearch value=Starts> &nbsp&nbsp Starts With</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=3;" type=radio name=Namesearch value=Ends> &nbsp&nbsp Ends With</td></tr>	
+	</table>
+
+	<script type="text/javascript">
+	<!--
+	//-----------------------------------------------------------------------------------------
+	// Write out the SERVICE POINTS table
+
+	document.write("<table  width=100% id=QUERYSERVICEPOINTSTABLE cellspacing=0 cellpadding=0>");
+	document.write("<tr><td> <input id=SPCheck1 class=QUERYSERVICEPOINTSCHECK type=checkbox name=Sheriff "); 
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcso.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color='#ff0000'>Sheriff</font></td></tr>");
+	else
+		document.write(" checked> &nbsp&nbsp Sheriff</tr></tr>");
+
+
+	document.write("<tr><td> <input id=SPCheck2 class=QUERYSERVICEPOINTSCHECK type=checkbox name=Prosecutor ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcpa.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color='#ff0000'>Prosecutor</font></td></tr>");
+	else
+		document.write(" > &nbsp&nbsp Prosecutor</td></tr>");
+
+
+	document.write("<tr><td><input id=SPCheck3 class=QUERYSERVICEPOINTSCHECK type=checkbox name=Jail ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcsojl.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color='#ff0000'>Jail</font></td></tr>");
+	else
+		document.write(" > &nbsp&nbsp Jail</td></tr>");
+
+
+	document.write("<tr><td><input id=SPCheck4 class=QUERYSERVICEPOINTSCHECK type=checkbox name=BPD ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet.cob.org/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\"> BPD </font></td></tr>");
+	else
+		document.write(" checked> &nbsp&nbsp BPD</td></tr>");
+
+	function checkAllSP() { 
+		if(document.all.SPCheck1.disabled == false) { document.all.SPCheck1.checked=true; }
+		if(document.all.SPCheck2.disabled == false) { document.all.SPCheck2.checked=true; }
+		if(document.all.SPCheck3.disabled == false) { document.all.SPCheck3.checked=true; }
+		if(document.all.SPCheck4.disabled == false) { document.all.SPCheck4.checked=true; }
+		}
+
+	function uncheckAllSP() {
+		document.all.SPCheck1.checked=false;
+		document.all.SPCheck2.checked=false;
+		document.all.SPCheck3.checked=false;
+		document.all.SPCheck4.checked=false;
+		}
+
+	-->
+	</script>
+	<tr><td align=center><br>
+	<input type=button name=CheckAll value="Check All" style="width:2cm;font-size:8pt;font-family:Arial;">
+	<input type=button name=UncheckAll value="Uncheck All" style="width:2cm;font-size:8pt;font-family:Arial;">
+	</td></tr>
+	</table>
+	</form>
+	</center>
+</td>
+</tr>
+</table>
+<br>
+	
+
+	<table border=0 cellspacing=10>
+	<tr>
+	<td align=center width=50%>
+		<ul class=HoverButton style="width:100%;">
+		<li class=HoverButton><a class="HoverButton" onClick="callQuery();" href="#">Query!</a></li>
+		</ul>
+	</td>
+
+	<td align=center width=25%>
+	<ul class=HoverButton style="width:100%;">
+		<li class=HoverButton><a class="HoverButton" onClick="clearForm();" href="#">Clear Form</a></li>
+	</ul>
+	</td>
+	</tr>
+	</table>
+
+<script type="text/javascript">
+<!--
+// If the page is first loaded, then set the initial buttons highlighted
+highlightQueryButton(document.all.SubjectButton);
+-->
+</script>
+
+</center>
+</body>
+</html>

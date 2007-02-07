@@ -1,0 +1,291 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="" />
+
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+<script src="BrowserControl.js"></script>
+</head>
+
+<body onLoad="driveTree(); showNavigation(); driveNavigationTime();" id=NAVIGATIONTREEBODY class="NAVIGATIONFONTS">
+<script type="text/javascript">
+<!--
+
+
+	function driveNavigationTime() {
+		var date = new Date();
+		var d  = date.getDate();
+		var day = (d < 10) ? '0' + d : d;
+		var m = date.getMonth() + 1;
+		var month = (m < 10) ? '0' + m : m;
+		var yy = date.getYear();
+		var year = (yy < 1000) ? yy + 1900 : yy;
+
+		var pmMarker = false;
+		var monthary = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+		var hrs = date.getHours();
+		var hours = "";
+		if(hrs > 12) { hrs -= 12; pmMarker = true; }
+		if(hrs < 10) { hours = "0" + hrs; } else { hours = "" + hrs; }
+
+		var mns = date.getMinutes();
+		var minutes = "";
+		if(mns < 10) { minutes = "0" + mns; } else { minutes = "" + mns; }
+
+		var outline = "<fieldset><font size=-1>" + monthary[month-1] + " " + day + ", " + year + " " + hours + ":" + minutes;
+		if(pmMarker == true) { outline += " PM</font></fieldset>"; }
+
+		document.all.TimePanel.innerHTML = outline;
+		setTimeout('driveNavigationTime();', 55000);
+		}
+
+	function expandAll() { setStateForm('Expanded'); }
+	function collapseAll() { setStateForm('Collapsed'); }
+
+	function showNavigation() { 
+		document.all.NavigationTree.style.display = 'block';
+		document.all.ToolsPanel.style.display = 'none';
+		document.all.QueryButton.style.background = '#fff';
+		document.all.ToolsButton.style.background = '';
+		}
+
+	function showTools() { 
+		document.all.NavigationTree.style.display = 'none';
+		document.all.ToolsPanel.style.display = 'block';
+		document.all.ToolsButton.style.background = '#fff';
+		document.all.QueryButton.style.background = '';
+		}
+
+	function setStateForm(theState) {
+		var xml = top.SessionDataFrame.sessionDocument;
+		var rootNames = xml.selectNodes("session/implementation/theRoots/root/rootName");
+		for(var i=0; i<rootNames.length; i++) {
+			var rootName = rootNames.item(i).text;
+			eval("document.StateInfoForm." + rootName + "State.value='" + theState + "'");
+			}
+	
+
+		document.StateInfoForm.WorkspaceState.value = theState;
+		document.StateInfoForm.SavedQueriesState.value = theState;
+
+		driveTree();
+		}
+
+
+	function expandTreeNode(NodeName) {
+		eval("document.StateInfoForm." + NodeName + "State.value='Expanded'");
+		driveTree();
+		}
+
+	function collapseTreeNode(NodeName) {
+		eval("document.StateInfoForm." + NodeName + "State.value='Collapsed'");
+		driveTree();
+		}
+
+	function writeStateForm() {
+		var htmlOUT = "<form name='StateInfoForm'>";
+		var xml = top.SessionDataFrame.sessionDocument;
+		if(xml == undefined) { return; }
+
+		var rootTypes = xml.selectNodes("session/implementation/theRoots/root");
+		for(var i=0; i<rootTypes.length; i++) {
+			var root = rootTypes.item(i);
+			var rootName = root.selectSingleNode("rootName").text;
+			htmlOUT += "<input type='hidden' name='" + rootName + "State' value='Expanded'>";
+			}
+	
+		htmlOUT += "<input type='hidden' name='WorkspaceState' value='Expanded'>";
+		htmlOUT += "<input type='hidden' name='SavedQueriesState' value='Expanded'>";
+		htmlOUT += "</form>";
+		document.all('StateInfo').innerHTML = htmlOUT;
+		}	
+
+	function driveTree() {
+
+		
+		if(document.StateInfoForm == null) { writeStateForm(); }
+
+		var xml = top.SessionDataFrame.sessionDocument;
+		if(xml == undefined) { return; }
+		var rootTypes = xml.selectNodes("session/implementation/theRoots/root");
+		var htmlOUT = "<table border=1 width=100%><tr><td align=right><table class=\"NAVIGATIONTREE_TABLE NAVIGATIONFONTS\">";
+		
+		//------------------------------------------------------------------
+		// Write out each of the root types and its available query results
+
+		for(var i=0; i<rootTypes.length; i++) {
+			var root = rootTypes.item(i);
+			var rootName = root.selectSingleNode("rootName").text;
+			var queryXSLT = root.selectSingleNode("presentation[type='Query']/file").text;
+			var rootResults = xml.selectNodes("session/results/query[rootType='" + rootName + "']");
+
+
+			htmlOUT += "<tr class=NAVIGATIONTREEROOT><td>";
+
+			var nodeState;
+			if(document.StateInfoForm != undefined) {
+				if(eval("document.StateInfoForm." + rootName + "State") != undefined) {
+					nodeState = eval("document.StateInfoForm." + rootName + "State.value");
+					if(nodeState == "Expanded") { htmlOUT += "<a href='#' onClick=\"collapseTreeNode('" + rootName + "');\"></a>"; }
+					if(nodeState == "Collapsed") { htmlOUT += "<a href='#' onClick=\"expandTreeNode('" + rootName + "');\"></a>"; }
+					} else { htmlOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('" + rootName + "');\"></a>"; }
+				} else { htmlOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('" + rootName + "');\"></a>"; }
+
+			htmlOUT += "<a href='#' class='NAVIGATIONTREEROOT NAVIGATIONFONTS' onClick=\"QueryForm('Presentation/" + queryXSLT + "');\">&nbsp&nbsp" + rootName + "</a>";
+
+			if(top.InstanceDataFrame.availableInstance(rootName) == true) {
+				htmlOUT += "<img alt=\"Last Instance\" onclick=\"ViewRootInstance('" + rootName + "');\" style='position:absolute;left:86%;' src=\"images/magglass.jpg\" width=15 height=15>";
+				}
+
+			htmlOUT += "</td></tr>";
+
+			// If the tree state is expanded, then write out links to each of the queries results
+			if(nodeState != undefined && nodeState == "Expanded") {
+				var resultNames = new Array();
+				for(var k=0; k<rootResults.length; k++) {
+					var resultBlock = rootResults.item(k);
+					resultNames[k] = resultBlock.selectSingleNode("queryName").text;
+					}
+
+				resultNames.sort();
+
+				for(var k=0; k<resultNames.length; k++) {
+					var queryName = resultNames[k];
+					htmlOUT += "<tr class=NAVIGATIONTREEQUERY><td>";
+					htmlOUT += "<a href='#' class='NAVIGATIONTREEQUERY' onClick=\"ViewSummary('" + rootName + "', '" + queryName + "', 'Presentation/');\">&nbsp&nbsp&nbsp&nbsp" + queryName + "</a>"; 
+					htmlOUT += "<img alt=\"Remove Query\" onclick=\"RemoveQuery('" + queryName + "');\" style='position:absolute;left:6%;' src=\"images/red-x.gif\" width=15 height=15>";
+					htmlOUT += "</td></tr>";
+					}
+				}
+			}
+
+		//------------------------------------------------------------------
+		// Write out the workspace entries
+
+		var workspaceEntries = xml.selectNodes("session/workspace/workspaceEntry");
+		var toolsOUT = "<table border=1 width=100%><tr><td align=right><table class=\"NAVIGATIONTREE_TABLE NAVIGATIONFONTS\">";
+		toolsOUT += "<tr class=NAVIGATIONTREE_WORKSPACEROW><td>";
+
+		if(document.StateInfoForm != undefined) {
+			if(document.StateInfoForm.WorkspaceState != undefined) {
+				nodeState = document.StateInfoForm.WorkspaceState.value;
+				if(nodeState == "Expanded") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\">&nbsp&nbsp Workspace </a>"; }
+				if(nodeState == "Collapsed") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('Workspace');\">&nbsp&nbsp Workspace  </a>"; }					
+				} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\"> Workspace </a>"; }
+			} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\"> Workspace </a>"; }
+
+//		if(nodeState == "Expanded") {
+//			for(i=0; i<workspaceEntries.length; i++) {
+//				var instanceURL = workspaceEntries.selectSingleNode("instanceURL").text;
+//				var entryName = workspaceEntries.selectSingleNode("entryName").text;
+//				toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"ViewInstance('" + rootName + "', '" + instanceURL + "');\">" + entryName + "</a><br>";
+//				}
+//			}
+
+		toolsOUT += "</td></tr>";
+
+		//------------------------------------------------------------------
+		// And then the saved query entries
+
+		var queryEntries = xml.selectNodes("session/savedQueries/query");
+
+		toolsOUT += "<tr class=NAVIGATIONTREE_SAVEDQUERIESROW><td>";
+
+		if(document.StateInfoForm != undefined) {
+			if(document.StateInfoForm.SavedQueriesState != undefined) {
+				nodeState = document.StateInfoForm.SavedQueriesState.value;
+				if(nodeState == "Expanded") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp  Saved Queries </a>"; }
+				if(nodeState == "Collapsed") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('SavedQueries');\">&nbsp&nbsp  Saved Queries </a>"; }					
+				} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp Saved Queries</a>"; }
+			} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp Saved Queries</a>"; }
+
+		toolsOUT += "</td></tr>";
+
+		for(i=0; i<queryEntries.length; i++) {
+			var queryName = queryEntries.item(i).selectSingleNode("queryName").text;
+			toolsOUT += "<tr class=NAVIGATIONTREEQUERY><td>";
+			toolsOUT += "<a href='#' class=NAVIGATIONTREEQUERY style='margin-left:5px;'>" + queryName + "</a>";
+			toolsOUT += "</td></tr>";
+			}
+
+
+		//------------------------------------------------------------------
+		// Open up the browser session details window
+		var errorMsgsLen = xml.selectNodes("session/browserErrors/error").length;
+		var statusMsgsLen = xml.selectNodes("session/browserStatus/status").length;
+
+		toolsOUT += "<tr class=NAVIGATIONTREE_SESSIONDETAILSROW><td>";
+		toolsOUT += "<a href='SessionDetails.html' class=NAVIGATIONTREEROOT target='WorkspaceFrame'>&nbsp&nbsp Session Details </a>"; 
+		toolsOUT += "</td></tr>";
+
+
+		//------------------------------------------------------------------
+		// Write out the entry for the options page
+		toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
+		toolsOUT += "<a href='OptionsPage.html' class=NAVIGATIONTREEROOT target='WorkspaceFrame'>&nbsp&nbsp Color Options</a>";
+		toolsOUT += "</td></tr>";
+
+		toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
+		toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"RefreshSession();\"> &nbsp&nbsp Refresh Session </a>";
+		toolsOUT += "</td></tr>";
+
+		toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
+		toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"ViewLastInstance();\"> &nbsp&nbsp View Last Detail </a>";
+		toolsOUT += "</td></tr>";
+
+		toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
+		toolsOUT += "<a href='Presentation/query.html' class=NAVIGATIONTREEROOT target='WorkspaceFrame'\"> &nbsp&nbsp Custom Query </a>";
+		toolsOUT += "</td></tr>";
+
+		toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
+		toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"ClearSession();\"> &nbsp&nbsp Logout </a>";
+		toolsOUT += "</td></tr>";
+
+		toolsOUT += "</table></td></tr></table>";
+		htmlOUT += "</table></td></tr></table>";
+	
+		//------------------------------------------------------------------
+
+		document.all('NavigationTree').innerHTML = htmlOUT;
+		document.all('ToolsPanel').innerHTML = toolsOUT;
+
+		// Set the pages display CSS 
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = pageCSS.text; }
+		}
+
+
+-->
+</script>
+
+<fieldset class="NavigationTreeSpacer NAVIGATIONFONTS">
+<table border=0 width=100% height=100%><tr valign=center><td align=center><font size="+2"><b>WENET</b></font><br><font size="-1">Whatcom Exchange Network</font></td></tr></table>
+</fieldset>
+
+<table border=0 width=100%>
+	<tr align=center>
+	<td width=50%><ul class="HoverButton" ><li class="HoverButton"><a id=QueryButton class="HoverButton"  onClick="showNavigation();" href="#">Queries</a></li></ul></td>
+	<td width=50%><ul class="HoverButton" ><li class="HoverButton"><a id=ToolsButton class="HoverButton" onClick="showTools();" href="#">Tools</a></li></ul></td>
+	</tr>
+</table>
+
+<div id="NavigationTree">
+</div>
+
+<div id="ToolsPanel" style="display:none;">
+</div>
+
+<fieldset class="NavigationTreeSpacer NAVIGATIONFONTS" style="height:1600px;">
+<center>
+<div id=TimePanel></div>
+<div id="SessionMessage"></div>
+<div id="DetailMessage"></div>
+</center>
+</fieldset>
+
+<div id="StateInfo" style="display:none;">
+</div>
+
+</body>
+</html>

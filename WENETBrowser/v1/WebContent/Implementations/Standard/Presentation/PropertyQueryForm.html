@@ -1,0 +1,347 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="" />
+	<script src="../BrowserControl.js"></script>
+</head>
+<body id=QUERYBODY>
+	<script type="text/javascript">
+	<!--
+		// Wait until the session document is completely loaded
+		var xml = top.SessionDataFrame.sessionDocument;
+		if(xml == undefined) { setTimeout("top.WorkspaceFrame.location='PropertyQueryForm.html'", 100); }
+
+		// Set the pages display CSS 
+		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+		if(pageCSS != null) { document.styleSheets[0].href = "../" + pageCSS.text; }
+
+
+		function highlightQueryButton(thebutton) {
+			document.all.PropertyButton.style.background = '';
+			thebutton.style.background = '#fff';
+			}
+
+		function showPanel(thePanel) {
+			thePanel.style.visibility = 'visible';
+			thePanel.style.display = 'block';
+			}
+
+		function hideQueryPanels() {
+			hidePanel(document.all.PropertyPanel);
+			}
+		
+		function hidePanel(thePanel) {
+			thePanel.style.visibility = 'hidden';
+			thePanel.style.display = 'none';
+			}
+
+		function showSearchParameters() {
+
+			if(document.all.QUERYSEARCHPARAMETERS.style.visibility != 'visible') {
+				document.all.QUERYSEARCHPARAMETERS.style.visibility = 'visible';
+				document.all.QUERYSEARCHPARAMETERS.style.display = 'block';
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			else
+				{
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			}
+		
+		function showServicePoints() {
+			if(document.all.QUERYSERVICEPOINTSTABLE.style.visibility != 'visible') {
+				document.all.QUERYSERVICEPOINTSTABLE.style.visibility = 'visible';
+				document.all.QUERYSERVICEPOINTSTABLE.style.display = 'block';
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				}
+			else
+				{
+				hidePanel(document.all.QUERYSEARCHPARAMETERS);
+				hidePanel(document.all.QUERYSERVICEPOINTSTABLE);
+				}
+			}
+
+
+
+		//----------------------------------------------------------
+		// This is the list of fields that allow wildcard searches
+		
+		var wildcardAry = new Array();
+		wildcardAry[0] = new Array('serialid', "Serial ID");
+		wildcardAry[1] = new Array('status', "Status");
+		wildcardAry[2] = new Array('desc', "Description");
+		wildcardAry[3] = new Array('tagnum', "Tag Number");
+		wildcardAry[4] = new Array('brand', "Brand");
+		wildcardAry[5] = new Array('model', "Model");
+
+		var selectedCtl = 0;
+		var wildcardValues = new Array();
+		for(i=0; i<wildcardAry.length; i++) { wildcardValues[i] = 0; }
+	
+		function focusCtl(theCtl) {
+			hidePanel(document.all.QUERYSEARCHPARAMETERS);
+			selectedCtl = -1;
+
+			for(i=0; i<wildcardAry.length; i++) {
+				if(wildcardAry[i][0] == theCtl) {
+					selectedCtl = i;
+					document.ControlForm.Namesearch[wildcardValues[i]].checked = true;
+					showSearchParameters();
+					document.all.CardName.innerHTML = "<u>" + wildcardAry[i][1] + "</u>";
+					return;
+					}
+				}
+
+			return;
+			}
+
+		function makeXPath() {
+			// Construct the xpath query
+			var xpath = "j:Property[";
+
+			if(document.all.eventnum.value.trim() != '') { xpath += "j:PropertyAssignedIDDetails/j:PropertyOtherID=" + document.all.eventnum.value.trim() + " and "; }
+			if(document.all.dispcode.value.trim() != '') { xpath += "j:PropertyDisposition/j:PropertyDispositionCode='" + document.all.dispcode.value.trim() + "' and "; }
+			if(document.all.serialid.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertySerialID", document.all.serialid.value.trim(), wildcardValues[0]); }
+			if(document.all.status.value.trim() != '') { xpath += makeXPathString("j:PropertyStatus/j:StatusText", document.all.status.value.trim(), wildcardValues[1]); }
+			if(document.all.desc.value.trim() != '') { xpath += makeXPathString("j:PropertyDescriptionText", document.all.desc.value.trim(), wildcardValues[2]); }
+			if(document.all.tagnum.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertyReceiptID", document.all.tagnum.value.trim(), wildcardValues[3]); }
+		
+			// Brand / make query is the logical OR between Brand and Make 
+			if(document.all.brand.value.trim() != '') { 
+				xpath += makeXPathString("j:PropertyPhysicalDetails/j:PropertyBrandName", document.all.brand.value.trim(), wildcardValues[4]);				
+				xpath = xpath.substr(0, xpath.lastIndexOf('and')); 
+				xpath += " or ";
+				xpath += makeXPathString("j:PropertyPhysicalDetails/j:PropertyMakeName", document.all.brand.value.trim(), wildcardValues[4]);
+				}
+
+			if(document.all.model.value.trim() != '') { xpath += makeXPathString("j:PropertyPhysicalDetails/j:PropertyModelName", document.all.model.value.trim(), wildcardValues[5]); }
+
+			// Strip off the last 'and' and end the xpath node test
+			var lastAnd = xpath.lastIndexOf('and');
+			if(lastAnd != -1) { xpath = xpath.substr(0, lastAnd); }
+			xpath += "]";
+			return xpath;
+			}
+
+		function callQuery() {
+	
+			var ary = new Array();
+			if(document.ControlForm.Sheriff.checked == true) { ary.push('http://wenet-wcso.co.whatcom.wa.us/'); }
+			if(document.ControlForm.Jail.checked == true) { ary.push('http://wenet-wcsojl.co.whatcom.wa.us/'); }
+			if(document.ControlForm.Prosecutor.checked == true) { ary.push('http://wenet-wcpa.co.whatcom.wa.us/'); }	
+			if(document.ControlForm.BPD.checked == true) { ary.push('http://wenet.cob.org/'); }
+
+			AddQuery('Property', document.HeaderForm.qname.value, makeXPath(), document.HeaderForm.timeout.value, ary);
+
+			top.SessionDataFrame.totalPropertyQueries += 1;
+			}
+
+		function clearForm() {
+			document.PropertyForm.reset();
+			document.TrackingForm.reset();
+			}
+	-->
+	</script>
+
+
+<form name=HeaderForm>
+<fieldset class="NavigationTreeSpacer" style="width:100%;border:0;">
+<br>
+	<table border=0 width=100%>
+	<tr>
+	<td><p id=QUERYHEADER> Property </p></td>
+
+	<td align=right>
+	<p id=QUERYNAME>
+
+	<script type="text/javascript">
+	<!--
+	var xml = top.SessionDataFrame.sessionDocument;
+	if(xml == undefined) { exit; }
+	document.writeln("Query Name: <input type=text name=qname value=Property" + top.SessionDataFrame.totalPropertyQueries + ">");
+	-->
+	</script> &nbsp&nbsp
+
+	Timeout: <select name="timeout">
+		<option value="90">90 Seconds</option>
+		<option value="30">30 Seconds</option>
+		<option value="60">60 Seconds</option>
+		<option value="120">120 Seconds</option>
+		<option value="600">10 Minutes</option>
+		</select>
+
+	&nbsp&nbsp
+	</p>
+	</td>
+	</tr>
+	</table>
+
+</fieldset>
+</form>
+
+<fieldset id="ContentSpacer"></fieldset>
+<center>
+<table border=1 class="QUERYBACKGROUNDTABLE QUERYFONTS">
+<tr>
+	<td colspan=2>
+
+		
+		<Table border=0>
+		<tr>
+		<td>
+			<ul class="HoverButton"><li class="HoverButton"><a id=PropertyButton class="HoverButton" onClick="highlightQueryButton(document.all.PropertyButton); hideQueryPanels(); showPanel(document.all.PropertyPanel);" href="#">Property</a></li></ul>
+		</td>
+		</tr>
+		</table>
+
+	</td>
+</tr>
+<tr>
+
+<td id=PropertyPanel style="visibility:visible;display:block;" align=center width=75% height=200>
+<br>
+<form name=PropertyForm>
+
+	Brand / Make: <input class=QUERYINPUTS type=text style="width:15%" onClick="focusCtl('brand');" id=brand>  &nbsp&nbsp
+	Model: <input class=QUERYINPUTS type=text style="width:15%" onClick="focusCtl('model');" id=model> <br><br>
+
+	 Event Number: <input class=QUERYINPUTS type=text style="width:15%" onClick="focusCtl('');" id=eventnum> &nbsp&nbsp
+
+	 Serial ID: <input type=text class=QUERYINPUTS id=serialid style="width:15%" onClick="focusCtl('serialid');" ><br><br>
+
+	 Description: <input type=text class=QUERYINPUTS id=desc style="width:60%" onClick="focusCtl('desc');" ><br><br>
+
+	 Barcode Number: <input type=text class=QUERYINPUTS id=tagnum style="width:60%" onClick="focusCtl('tagnum');" ><br><br>
+
+	 Status: <input type=text class=QUERYINPUTS id=status style="width:54%" onClick="focusCtl('status');" ><br><br>
+
+	 Disposition Code: <select onClick="focusCtl('');"  class=QUERYINPUTS id=dispcode>
+				<option></option>
+				<option value="None">None</option>
+				<option value="Burned">Burned</option>
+				<option value="Counterfeited">Counterfeited</option>
+				<option value="Destroyed">Destroyed</option>
+				<option value="Recovered">Recovered</option>
+				<option value="Seized">Seized</option>
+				<option value="Stolen">Stolen</option>
+				<option value="Unknown">Unknown</option>
+				<option value="Returned">Returned</option>
+				</select><br>
+	
+</form>
+</td>
+
+<td id=TrackingPanel style="visibility:hidden;display:none;" align=center width=75% height=200>
+<br>
+<form name=TrackingForm>
+
+
+</form>
+</td>
+
+
+<td valign=top>
+	<center>
+	<form name=ControlForm>
+
+		<Table border=0 width=100%>
+		<tr>
+		<td align=center>
+			<ul class="HoverButton"><li class="HoverButton"><a class="HoverButton" onClick="showServicePoints();" href="#">Agency RMS</a></li></ul>
+		</td>
+		</tr>
+		</table>
+
+
+	<table border=0 width=100% id=QUERYSEARCHPARAMETERS>
+	<tr><td><div id=CardName></div></td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=0;" type=radio name=Namesearch value=Exact checked> &nbsp&nbsp Exact Text</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=1;" type=radio name=Namesearch value=Contains> &nbsp&nbsp Contains</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=2;" type=radio name=Namesearch value=Starts> &nbsp&nbsp Starts With</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=3;" type=radio name=Namesearch value=Ends> &nbsp&nbsp Ends With</td></tr>	
+	</table>
+
+	<script type="text/javascript">
+	<!--
+	//-----------------------------------------------------------------------------------------
+	// Write out the SERVICE POINTS table
+
+	document.write("<table width=100% id=QUERYSERVICEPOINTSTABLE cellspacing=0 cellpadding=0>");
+	document.write("<tr><td> <input class=QUERYSERVICEPOINTSCHECK type=checkbox name=Sheriff "); 
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcso.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Sheriff</font></td></tr>");
+	else
+		document.write(" > &nbsp&nbsp Sheriff</tr></tr>");
+
+
+	document.write("<tr><td> <input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck2 name=Prosecutor ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcpa.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Prosecutor</font></td></tr>");
+	else
+		document.write(" > &nbsp&nbsp Prosecutor</td></tr>");
+
+
+	document.write("<tr><td><input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck3 name=Jail ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcsojl.co.whatcom.wa.us/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Jail</font></td></tr>");
+	else
+		document.write(" checked> &nbsp&nbsp Jail</td></tr>");
+
+
+	document.write("<tr><td><input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck4 name=BPD ");
+	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet.cob.org/']") == null)
+		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">BPD</font></td></tr>");
+	else
+		document.write(" checked> &nbsp&nbsp BPD</td></tr>");
+
+	function checkAllSP() { 
+		if(document.all.SPCheck1.disabled == false) { document.all.SPCheck1.checked=true; }
+		if(document.all.SPCheck2.disabled == false) { document.all.SPCheck2.checked=true; }
+		if(document.all.SPCheck3.disabled == false) { document.all.SPCheck3.checked=true; }
+		if(document.all.SPCheck4.disabled == false) { document.all.SPCheck4.checked=true; }
+		}
+
+	function uncheckAllSP() {
+		document.all.SPCheck1.checked=false;
+		document.all.SPCheck2.checked=false;
+		document.all.SPCheck3.checked=false;
+		document.all.SPCheck4.checked=false;
+		}
+	-->
+	</script>
+	<tr><td align=center><br>
+	<input type=button name=CheckAll value="Check All" style="width:2cm;font-size:8pt;font-family:Arial;">
+	<input type=button name=UncheckAll value="Uncheck All" style="width:2cm;font-size:8pt;font-family:Arial;">
+	</td></tr>
+	</table>
+	</form>
+	</center>
+</td>
+</tr>
+</table>
+<br>
+	<table border=0 cellspacing=10>
+	<tr>
+	<td align=center width=50%>
+		<ul class=HoverButton style="width:100%;">
+		<li class=HoverButton><a class="HoverButton" onClick="callQuery();" href="#">Query!</a></li>
+		</ul>
+	</td>
+
+	<td align=center width=25%>
+	<ul class=HoverButton style="width:100%;">
+		<li class=HoverButton><a class="HoverButton" onClick="clearForm();" href="#">Clear Form</a></li>
+	</ul>
+	</td>
+	</tr>
+	</table>
+
+</center>
+
+<script type='text/javascript'>
+<!--
+	highlightQueryButton(document.all.PropertyButton);
+-->
+</script>
+</body>
+</html>
