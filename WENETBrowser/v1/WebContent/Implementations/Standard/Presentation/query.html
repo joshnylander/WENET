@@ -13,6 +13,15 @@
 <body id=QUERYBODY rightmargin=0 leftmargin=0 topmargin=0 bottommargin=0>
 	<script type="text/javascript">
 	<!--
+		function supportEnterKey(evt) {
+		   var evt = (evt) ? evt : ((event) ? event : null);
+		   if (evt.keyCode == 13) {
+		   	callQuery();
+		   	}
+		}
+		
+		document.onkeypress = supportEnterKey; 
+		
 		// Wait until the session document is completely loaded
 		var xml = top.SessionDataFrame.sessionDocument;
 		if(xml == undefined) { 

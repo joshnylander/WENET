@@ -10,6 +10,15 @@
 <body id=QUERYBODY>
 	<script type="text/javascript">
 	<!--
+		function supportEnterKey(evt) {
+		   var evt = (evt) ? evt : ((event) ? event : null);
+		   if (evt.keyCode == 13) {
+		   	callQuery();
+		   	}
+		}
+		
+		document.onkeypress = supportEnterKey; 
+		
 		// Wait until the session document is completely loaded
 		var xml = top.SessionDataFrame.sessionDocument;
 		if(xml == undefined) { setTimeout("top.WorkspaceFrame.location='InfractionQueryForm.html'", 100); }
