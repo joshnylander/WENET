@@ -1031,7 +1031,9 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 		xpath = "j:" + Root + xpath;
 
 		/* var queryName = Root; */
-		var queryName = firstParm + " ";
+		var queryName = firstParm + " " + top.SessionDataFrame.totalSubQueries;
+		top.SessionDataFrame.totalSubQueries++;
+		/*
 		if(Root == 'Person') { queryName += top.SessionDataFrame.totalPersonQueries; top.SessionDataFrame.totalPersonQueries++; }
 		if(Root == 'Arrest') { queryName += top.SessionDataFrame.totalArrestQueries; top.SessionDataFrame.totalArrestQueries++; }
 		if(Root == 'ArrestWarrant') { queryName += top.SessionDataFrame.totalArrestWarrantQueries; top.SessionDataFrame.totalArrestWarrantQueries++; }
@@ -1045,6 +1047,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 		if(Root == 'Property') { queryName += top.SessionDataFrame.totalPropertyQueries; top.SessionDataFrame.totalPropertyQueries++; }
 		if(Root == 'ProtectionOrder') { queryName += top.SessionDataFrame.totalProtectionQueries; top.SessionDataFrame.totalProtectionQueries++; }
 		if(Root == 'Vehicle') { queryName += top.SessionDataFrame.totalVehicleQueries; top.SessionDataFrame.totalVehicleQueries++; }
+		*/
 
 		var ary = new Array();
 		ary.push('http://wenet-wcso.co.whatcom.wa.us/'); 

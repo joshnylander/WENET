@@ -530,14 +530,13 @@
 
 		// Give the URL for the session data frame to actually retrieve
 		
-		alert("Adding query: " + QueryName);
+		// alert("Adding query: " + QueryName + " with root: " + RootType);
 		
 		top.SessionDataFrame.queryRoot = RootType;
 		top.SessionDataFrame.queryName = QueryName;
 		top.SessionDataFrame.queryWaiting = true;
 		top.SessionDataFrame.sessionLoaded = false;
 		top.SessionDataFrame.sessionURL = theURL;
-		top.SessionDataFrame.queryBackgroundCount = top.SessionDataFrame.queryBackgroundCount + 1;
 		top.SessionDataFrame.reloadSession();		
 		}
 				

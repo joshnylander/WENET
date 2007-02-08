@@ -14,7 +14,8 @@ var queryWaiting = false;
 var queryRoot = "";
 var queryName = "";
 var instanceURL = "";
-var queryBackgroundCount = 0;
+
+var totalSubQueries = 1;
 
 var totalEvidenceQueries = 1;
 var totalVehicleQueries = 1;
@@ -167,24 +168,25 @@ function xmlhttpChange()
 		sessionDocument = xmlhttp.responseXML;
 
 		if(top.NavigationFrame.StateInfoForm == undefined) { top.NavigationFrame.writeStateForm(); }
+
+		top.NavigationFrame.driveTree();
 	 	
 		// If this session was reloaded due to a pending query, then display the results
 		if(queryWaiting == true) {
-			alert("Current queryBackgroundCount = " + queryBackgroundCount + ", will show " + queryName);
-			queryBackgroundCount = queryBackgroundCount - 1;
-			if (queryBackgroundCount > 0) {
-					setTimeout('reloadSession();', 30000);
-				} else {
+			
+			var x=sessionDocument.getElementsByTagName('queryName');
+			for (i=0;i<x.length;i++) {
+				if (x[i].childNodes[0].nodeValue.trim() == queryName) {
 					queryWaiting = false;
 					ViewSummary(queryRoot, queryName, 'Presentation/');
+			 		}
 				}
 			}
-
-		top.NavigationFrame.driveTree();
 
 		if(sessionWaiting == true) {
 			sessionWaiting = false;
 			}
+			
 		if (queryWaiting == false) {
 			top.NavigationFrame.SessionMessage.innerHTML = '';
 			}
