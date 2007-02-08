@@ -259,6 +259,23 @@
 		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYSTATUS/J:STATUSTEXT]]> </xpath></aliasMapping>				
 		<aliasMapping><columnName> Evidence ID </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCENUMBERID/J:ID]]> </xpath></aliasMapping>				
 		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]> </xpath></aliasMapping>				
+		
+		<aliasMapping><columnName> Brand </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYBRANDNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEMODELCODETEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Year </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEMODELYEARDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Color </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLECOLORPRIMARYTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> State </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEREGISTRATIONLOCATION/J:LOCATIONADDRESS/J:LOCATIONSTATENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Plate # </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLELICENSEPLATEID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> VIN # </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Property Type </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYTYPETEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Description </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYDESCRIPTIONTEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Updated Date </columnName><xpath><![CDATA[j:lastUpdatedDate]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Updated Time </columnName><xpath><![CDATA[j:lastUpdatedTime]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Property Tag </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYRECEIPTID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Possessor </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Unique ID </columnName><xpath><![CDATA[j:sourceIDText]]></xpath></aliasMapping>		
 
 	</columnAliasMappings>
 
