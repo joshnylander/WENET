@@ -253,12 +253,14 @@
 		<aliasMapping><columnName> Serial </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYSERIALID/J:ID]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Other ID </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYOTHERID/J:ID]]></xpath></aliasMapping>		
 		
-		<aliasMapping><columnName> FullName </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYOWNER.PERSON/J:PERSONNAME/J:PERSONFULLNAME]]> </xpath></aliasMapping>
+		<aliasMapping><columnName> Owner </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYOWNER.PERSON/J:PERSONNAME/J:PERSONFULLNAME]]> </xpath></aliasMapping>
 		<aliasMapping><columnName> Description </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYDESCRIPTIONTEXT]]> </xpath></aliasMapping>
 		<aliasMapping><columnName> Type </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYTYPETEXT]]> </xpath></aliasMapping>		
 		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYSTATUS/J:STATUSTEXT]]> </xpath></aliasMapping>				
 		<aliasMapping><columnName> Evidence ID </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCENUMBERID/J:ID]]> </xpath></aliasMapping>				
-		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]> </xpath></aliasMapping>				
+		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]> </xpath></aliasMapping>
+		<aliasMapping><columnName> Taken From </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCETAKENFROM.PERSON/J:PERSONNAME/J:PERSONFULLNAME]]> </xpath></aliasMapping>
+		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME]]> </xpath></aliasMapping>			
 		
 		<aliasMapping><columnName> Brand </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYBRANDNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEMODELCODETEXT]]></xpath></aliasMapping>
