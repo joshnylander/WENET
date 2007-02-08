@@ -108,12 +108,12 @@
 			// Construct the xpath query
 			var xpath = "j:Property[";
 
-			if(document.all.eventnum.value.trim() != '') { xpath += "j:PropertyAssignedIDDetails/j:PropertyOtherID=" + document.all.eventnum.value.trim() + " and "; }
+			if(document.all.eventnum.value.trim() != '') { xpath += "j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID=" + document.all.eventnum.value.trim() + " and "; }
 			if(document.all.dispcode.value.trim() != '') { xpath += "j:PropertyDisposition/j:PropertyDispositionCode='" + document.all.dispcode.value.trim() + "' and "; }
-			if(document.all.serialid.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertySerialID", document.all.serialid.value.trim(), wildcardValues[0]); }
+			if(document.all.serialid.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertySerialID/j:ID", document.all.serialid.value.trim(), wildcardValues[0]); }
 			if(document.all.status.value.trim() != '') { xpath += makeXPathString("j:PropertyStatus/j:StatusText", document.all.status.value.trim(), wildcardValues[1]); }
 			if(document.all.desc.value.trim() != '') { xpath += makeXPathString("j:PropertyDescriptionText", document.all.desc.value.trim(), wildcardValues[2]); }
-			if(document.all.tagnum.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertyReceiptID", document.all.tagnum.value.trim(), wildcardValues[3]); }
+			if(document.all.tagnum.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertyReceiptID/j:ID", document.all.tagnum.value.trim(), wildcardValues[3]); }
 		
 			// Brand / make query is the logical OR between Brand and Make 
 			if(document.all.brand.value.trim() != '') { 
