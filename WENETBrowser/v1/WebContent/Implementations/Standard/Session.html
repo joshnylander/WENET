@@ -80,10 +80,10 @@ var vehicleColumnAry = new Array();
 vehicleColumnAry[0] = "J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME";
 vehicleColumnAry[1] = "J:VEHICLE/J:VEHICLEMODELCODETEXT";
 vehicleColumnAry[2] = "J:VEHICLE/J:VEHICLEMODELYEARDATE";
-// vehicleColumnAry[3] = "J:VEHICLE/J:VEHICLECOLORPRIMARYTEXT";
-vehicleColumnAry[3] = "J:VEHICLE/J:VEHICLEREGISTRATIONLOCATION/J:LOCATIONADDRESS/J:LOCATIONSTATENAME";
-vehicleColumnAry[4] = "J:VEHICLE/J:VEHICLELICENSEPLATEID/J:ID";
-vehicleColumnAry[5] = "J:VEHICLE/J:VEHICLEID/J:ID";
+vehicleColumnAry[3] = "J:VEHICLE/J:VEHICLECOLORPRIMARYTEXT";
+vehicleColumnAry[4] = "J:VEHICLE/J:VEHICLEREGISTRATIONLOCATION/J:LOCATIONADDRESS/J:LOCATIONSTATENAME";
+vehicleColumnAry[5] = "J:VEHICLE/J:VEHICLELICENSEPLATEID/J:ID";
+vehicleColumnAry[6] = "J:VEHICLE/J:VEHICLEID/J:ID";
 
 var evidenceColumnAry = new Array();
 
@@ -184,7 +184,7 @@ function xmlhttpChange()
 			
 			var x=sessionDocument.getElementsByTagName('queryName');
 			for (i=0;i<x.length;i++) {
-				if (x[i].childNodes[0].nodeValue.trim() == queryName) {
+				if (x[i].childNodes[0].nodeValue.trim() == queryName) {					
 					queryWaiting = false;
 					ViewSummary(queryRoot, queryName, 'Presentation/');
 			 		}
