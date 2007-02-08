@@ -29,7 +29,7 @@ INPUT.QUERYINPUTS { background-color:#9ec9ac; color:#000000;font-weight:bold;}
 P.QUERYSPLASH_HEADERFONT1 { font-size:30pt;font-weight:bold;font-family:Times;color:#f3f4d6;}
 P.QUERYSPLASH_HEADERFONT2 { font-size:30pt;font-family:Times;color:#e2e3c5;}
 TABLE.QUERYSPLASH_HEADERFONT3 { font-size:16pt;font-family:Arial;color:#000000; background:#f3f4d6;}
-P.QUERYSPLASH_MESSAGEFONT { text-decoration:italics;font-weight:bold;font-size:14pt;font-family:Arial;color:#ffffff; }
+P.QUERYSPLASH_MESSAGEFONT { text-decoration:italics;font-weight:bold;font-size:14pt;font-family:Arial;color:#000000; }
 IMG.QUERYSPLASH_IMAGE { }
 BODY.QUERYSPLASH_BODY { }
 

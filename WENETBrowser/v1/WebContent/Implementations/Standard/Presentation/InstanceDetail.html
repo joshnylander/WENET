@@ -215,25 +215,58 @@ Comments: <p class=Highlight>[!ActivityCommentText!]</p><br><br>
 <!-- --------------------------------------------------------------------------------------------------- -->
 
 <div id=BookingDetails style="display:none;visibility:hidden;">
-<center> 
-Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
-</center>
-
-Agency: <p class=Highlight>[!BookingAgency!]</p> &nbsp&nbsp Booking #: <p class=Highlight>[!BookingDocumentControlID!]</p> <br><br>
-
-Arresting Agency: <p class=Highlight>[!Arrest/ArrestAgency!]</p><br><br>
-Booking Agency: <p class=Highlight>[!BookingAgencyRecordID!]</p><br><br>
-
-Booking Date: <p class=Highlight>[!ActivityDate!]</p> &nbsp&nbsp
-Time: <p class=Highlight>[!ActivityTime!]</p><br><br>
-
-Release Date: <p class=Highlight>[!BookingRelease/ActivityDate!]</p> &nbsp&nbsp
-Time: <p class=Highlight>[!BookingRelease/ActivityTime!]</p><br><br>
-
-Charge Description: <p class=Highlight>[!Arrest/ArrestCharge/ChargeDescriptionText!]</p><br><br>
-Court Name: <p class=Highlight>[!ActivityCourt/CourtName!]</p><br><br>
-<img src="/mugshotwebservicebeta/getimage?size=full&perspective=front&booking=[!BookingAgencyRecordID!]" width="100" height="120" />
-</center>
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="2" class="HIGHLIGHT"><div align="right">Last Updated </div></td>
+    <td colspan="2" class="HIGHLIGHT">[!@lastUpdatedDate!] [!@lastUpdatedTime!]</td>
+  </tr>
+  <tr>
+    <td>Booking</td>
+    <td>Agency:</td>
+    <td colspan="3" class="HIGHLIGHT">[!BookingAgency!]</td>
+    <td rowspan="7"><img src="/mugshotwebservicebeta/getimage?size=full&perspective=front&booking=[!BookingAgencyRecordID!]" width="100" height="120" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Number:</td>
+    <td class="HIGHLIGHT">[!BookingDocumentControlID!]</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Date:</td>
+    <td class="HIGHLIGHT">[!ActivityDate!]</td>
+    <td>Time:</td>
+    <td class="HIGHLIGHT">[!ActivityTime!]</td>
+  </tr>
+  <tr>
+    <td>Release</td>
+    <td>Date:</td>
+    <td class="HIGHLIGHT">[!BookingRelease/ActivityDate!]</td>
+    <td>Time:</td>
+    <td class="HIGHLIGHT">[!BookingRelease/ActivityTime!]</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Arresting</td>
+    <td>Agency:</td>
+    <td colspan="3" class="HIGHLIGHT">[!Arrest/ArrestAgency/OrganizationName!]</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Officer:</td>
+    <td colspan="3" class="HIGHLIGHT">[!Arrest/ArrestOfficial/PersonName/PersonFullName!] [!Arrest/ArrestOfficial/EnforcementOfficialBadgeID/ID!]</td>
+  </tr>
+</table>
 </div>
 
 <div id=ChargeDetails style="display:none;visibility:hidden;">
@@ -452,14 +485,16 @@ Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p>  
 
 <div id=Person_Name style="display:none;visibility:hidden;">
 <center>
+<input type=button value="ALL" onClick="crossPageQuery('Person', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', ''); crossPageQuery('Booking', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', ''); crossPageQuery('Arrest', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', ''); crossPageQuery('Case', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', ''); crossPageQuery('Citation', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', ''); crossPageQuery('ArrestWarrant', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A'); crossPageQuery('Incident', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', ''); crossPageQuery('ProtectionOrder', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A'); crossPageQuery('Infraction', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"><br><br>
+
 <input type=button value="Persons" onClick="crossPageQuery('Person', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
 <input type=button value="Bookings" onClick="crossPageQuery('Booking', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
 <input type=button value="Arrests" onClick="crossPageQuery('Arrest', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
 <input type=button value="Cases" onClick="crossPageQuery('Case', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
 <input type=button value="Citations" onClick="crossPageQuery('Citation', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
-<input type=button value="Arrest Warrants" onClick="crossPageQuery('ArrestWarrant', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A');"> &nbsp
+<input type=button value="Active Arrest Warrants" onClick="crossPageQuery('ArrestWarrant', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A');"> &nbsp
 <input type=button value="Incidents" onClick="crossPageQuery('Incident', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
-<input type=button value="Protection Orders" onClick="crossPageQuery('ProtectionOrder', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A');"> &nbsp
+<input type=button value="Active Protection Orders" onClick="crossPageQuery('ProtectionOrder', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A');"> &nbsp
 <input type=button value="Infractions" onClick="crossPageQuery('Infraction', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"><br><br>
 </center>
 
@@ -995,7 +1030,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	queryRoots.push(new Array("ArrestWarrant", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
 	queryRoots.push(new Array("Case", "j:ActivitySuspect/j:PersonName/j:PersonSurName", "j:ActivitySuspect/j:PersonName/j:PersonGivenName", "j:ActivitySuspect/j:PersonBirthDate"));
 	queryRoots.push(new Array("Case", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonSurName", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonGivenName", "j:ActivityVictim/j:Victim.Person/j:PersonBirthDate"));
-	queryRoots.push(new Array("Case", "j:ActivityWitness/j:PersonName/j:PersonSurName", "j:ActivityWitness/j:PersonName/j:PersonGivenName", "j:ActivityWitness/j:PersonBirthDate"));
+	// queryRoots.push(new Array("Case", "j:ActivityWitness/j:PersonName/j:PersonSurName", "j:ActivityWitness/j:PersonName/j:PersonGivenName", "j:ActivityWitness/j:PersonBirthDate"));
 	queryRoots.push(new Array("ProtectionOrder", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
 	queryRoots.push(new Array("Citation", "j:CitationSubject/j:PersonName/j:PersonSurName", "j:CitationSubject/j:PersonName/j:PersonGivenName", "j:CitationSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("Incident", "j:IncidentSubject/j:PersonName/j:PersonSurName", "j:IncidentSubject/j:PersonName/j:PersonGivenName", "j:IncidentSubject/j:PersonBirthDate"));
