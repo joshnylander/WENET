@@ -59,6 +59,7 @@ public ArrayList spPollingList;
 public ArrayList spErrors;
 public HashMap servicePointsMap;
 public javax.swing.Timer servicePointPoller;
+private String strWebInf;
 
 	//*****************************************************************************************
 
@@ -71,6 +72,9 @@ public javax.swing.Timer servicePointPoller;
 
 		// Load up the WENET Browser public/private key pairs 		
 try {		ServletContext sc = getServletContext();
+
+		// build the path to the WEB-INF for later use
+		strWebInf = sc.getRealPath("/WEB-INF/") + File.separator;
 			
 		// Create the mapping for the browser cores    		
 		sc.setAttribute("BrowserCoreMap", new HashMap());
@@ -89,7 +93,7 @@ try {		ServletContext sc = getServletContext();
 		configXML += "<ConnectionTimeout> 90 </ConnectionTimeout>\n";
 		configXML += "<ResultsDocTimeout> 90 </ResultsDocTimeout>\n";
 		configXML += "<InstanceDocTimeout> 90 </InstanceDocTimeout>\n";		
-		configXML += "<PublicTruststoreFile>" + getInitParameter("WENETPublicCertificatesStore") + "</PublicTruststoreFile>\n";				
+		configXML += "<PublicTruststoreFile>" + strWebInf + getInitParameter("WENETPublicCertificatesStore") + "</PublicTruststoreFile>\n";				
 		configXML += "<KeyManagerType>SunX509</KeyManagerType>\n";
 		configXML += "<KeyManagerProvider>SunJSSE</KeyManagerProvider>\n";
 		configXML += "<TrustManagementAlgorithm> SunX509 </TrustManagementAlgorithm>\n";
@@ -101,7 +105,7 @@ try {		ServletContext sc = getServletContext();
 		spPollingToolkit.exeManager.addServiceDocListener(this);
 		
 		// Load and interpret the list of service points the servlet is monitoring
-		String spListFile = getInitParameter("ServicePointListXMLFile");
+		String spListFile = strWebInf + getInitParameter("ServicePointListXMLFile");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
    		Document document = builder.parse( new File(spListFile) );
@@ -132,8 +136,8 @@ try {		ServletContext sc = getServletContext();
 
 	public WENETBrowserCore createUserCore(String implName, String userName, String path) throws Exception {
 
-		String publicTruststoreFile = getInitParameter("WENETPublicCertificatesStore");
-		String browserCAFile = getInitParameter("BrowserCAFile");
+		String publicTruststoreFile = strWebInf + getInitParameter("WENETPublicCertificatesStore");
+		String browserCAFile = strWebInf + getInitParameter("BrowserCAFile");
 		String browserCAType = getInitParameter("BrowserCAType");
 		String browserCAProvider = getInitParameter("BrowserCAProvider");
 		String browserCAPassword = getInitParameter("BrowserCAPassword");
@@ -141,11 +145,11 @@ try {		ServletContext sc = getServletContext();
 
 		String browserCAPrivateKeyAlias = getInitParameter("BrowserCAPrivateKeyAlias");
 		String browserCAPrivateKeyPassword = getInitParameter("BrowserCAPrivateKeyPassword");
-		String browserPrivateKeyFile = getInitParameter("BrowserCAPrivateKeyFile");
+		String browserPrivateKeyFile = strWebInf + getInitParameter("BrowserCAPrivateKeyFile");
 		String browserPrivateKeyType = getInitParameter("BrowserCAPrivateKeyType");				
 		String browserPrivateKeyProvider = getInitParameter("BrowserCAPrivateKeyProvider");				
 	
-		String saveProxyCertsDirectory = getInitParameter("SaveProxyCertificatesDirectory");
+		String saveProxyCertsDirectory = strWebInf + getInitParameter("SaveProxyCertificatesDirectory");
 		String saveProxyCertsPassword = getInitParameter("SaveProxyCertificatesPassword");
 		
 		//--------------------------------------------------------------------------------
@@ -253,7 +257,7 @@ try {		ServletContext sc = getServletContext();
 				userName = request.getParameter("uname");
 			}
 
-		try {	String path = getInitParameter("UserSessionDataPath");		
+		try {	String path = strWebInf + getInitParameter("UserSessionDataPath");		
 			if(coreMap.get(userName) != null) {
 				userCore = (WENETBrowserCore)coreMap.get(userName);
 

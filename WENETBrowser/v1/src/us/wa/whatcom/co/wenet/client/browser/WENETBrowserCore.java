@@ -142,7 +142,7 @@ public String selectedDisplayScheme = "Default";
 	
 	public void RestoreSession()  {
 	try {	String dataPath = sessionDataPath;
-		if(dataPath.endsWith("\\") == false) { dataPath += "\\"; }
+		if(dataPath.endsWith(File.separator) == false) { dataPath += File.separator; }
 		
 		File dir = new File(dataPath);
 		if(dir.exists() == false) { browserErrors.add("Session directory not found, can not restore user session."); return; }
@@ -177,7 +177,10 @@ public String selectedDisplayScheme = "Default";
 
 	public void SaveSession() {
 	
-	try {	File dir = new File(sessionDataPath);
+	try {
+		String dataPath = sessionDataPath;
+		if(dataPath.endsWith(File.separator) == false) { dataPath += File.separator; }
+		File dir = new File(dataPath);
 		if(dir.exists() == false) { browserErrors.add("Session directory not found, can not restore user session."); return; }
 		
 		// Find the users work directory
@@ -185,10 +188,8 @@ public String selectedDisplayScheme = "Default";
 		String email = userEmailAddy.toUpperCase();
 		for(int i=0; i<fAry.length; i++) {
 			if(fAry[i].toUpperCase().endsWith(email) == true) {
-				
-				String dataPath = sessionDataPath;
-				if(dataPath.endsWith("\\") == false) { dataPath += "\\"; }				
-				File workSessionFile = new File(dataPath + fAry[i] + "\\sessionData.xml");				
+								
+				File workSessionFile = new File(dataPath + fAry[i] + File.separator + "sessionData.xml");				
 				if(workSessionFile.exists() == true) { workSessionFile.delete(); }
 				
 				FileWriter fw = new FileWriter(workSessionFile);
