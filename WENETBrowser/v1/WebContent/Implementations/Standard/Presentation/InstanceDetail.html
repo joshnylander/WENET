@@ -1054,7 +1054,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 				if(queryRoots[i].length > 2 && secondParm != null && secondParm.length > 0) { xpath += queryRoots[i][2] + "='" + secondParm + "' and "; }
 				if(queryRoots[i].length > 3 && thirdParm != null && thirdParm.length > 0) { xpath += queryRoots[i][3] + "='" + thirdParm + "' and "; }
 //contains(j:CourtOrderStatus/j:StatusText, 'A')
-				if(queryRoots[i].length > 4 && fourthParm != null && fourthParm.length > 0) { xpath += "contains(" + queryRoots[i][3] + ", '" + fourthParm + "') and "; }
+				if(queryRoots[i].length > 4 && fourthParm != null && fourthParm.length > 0) { xpath += "contains(" + queryRoots[i][4] + ", '" + fourthParm + "') and "; }
 				
 				// Strip off the last 'and' and end the xpath node test
 				var lastAnd = xpath.lastIndexOf('and');
