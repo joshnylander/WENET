@@ -135,7 +135,6 @@
 		<aliasMapping><columnName> Charge Desc</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEDESCRIPTIONTEXT]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Statute Code</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTECODEID/J:ID]]></xpath></aliasMapping>		
 		
-
 		<aliasMapping><columnName> Status</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERSTATUS]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Status</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Court Order #</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:ACTIVITYDOCKET/J:DOCUMENTDESCRIPTIVEMETADATA/J:DOCUMENTGROUPID/J:ID]]></xpath></aliasMapping>
