@@ -127,7 +127,7 @@
 			if(document.all.rdatestart.value.trim() != '' && document.all.rdateend.value.trim() != '') { 
 				var bstart = convertDate(document.all.rdatestart.value.trim());
 				var bend = convertDate(document.all.rdateend.value.trim());
-				if(bstart != null && bend != null) { xpath += "j:BookingRelease/j:ActivityDate >='" + makeTimestamp(rdatestart) + "' and j:BookingRelease/j:ActivityDate <='" + makeTimestamp(rdateend) + "' and "; }
+				if(bstart != null && bend != null) { xpath += "j:BookingRelease/j:ActivityDate >='" + makeTimestamp(bstart) + "' and j:BookingRelease/j:ActivityDate <='" + makeTimestamp(bend) + "' and "; }
 				}
 				
 			if(document.all.bookingdate.value.trim() != '') { 
