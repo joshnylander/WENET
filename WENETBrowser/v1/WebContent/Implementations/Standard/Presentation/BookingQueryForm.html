@@ -395,10 +395,10 @@ Race: <input type=text size=6 id=race onClick="focusCtl('race');" class=QUERYINP
 
 	<table border=0 width=100% id=QUERYSEARCHPARAMETERS>
 	<tr><td><div id=CardName></div></td></tr>
-	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO type=radio name=Namesearch value=Exact checked> &nbsp&nbsp Exact Text</td></tr>
-	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO type=radio name=Namesearch value=Contains> &nbsp&nbsp Contains</td></tr>
-	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO type=radio name=Namesearch value=Starts> &nbsp&nbsp Starts With</td></tr>
-	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO type=radio name=Namesearch value=Ends> &nbsp&nbsp Ends With</td></tr>	
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=0;" type=radio name=Namesearch value=Exact checked> &nbsp&nbsp Exact Text</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=1;" type=radio name=Namesearch value=Contains> &nbsp&nbsp Contains</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=2;" type=radio name=Namesearch value=Starts> &nbsp&nbsp Starts With</td></tr>
+	<tr><td><input class=QUERYSEARCHPARAMETERSRADIO onClick="wildcardValues[selectedCtl]=3;" type=radio name=Namesearch value=Ends> &nbsp&nbsp Ends With</td></tr>	
 	</table>
 
 	<script type="text/javascript">
