@@ -109,7 +109,7 @@
 	
 			if(document.all.booking.value.trim() != '') { xpath += "j:BookingDocumentControlID/j:ID='" + document.all.booking.value.trim() + "' and "; }
 			if(document.all.eventnum.value.trim() != '') { xpath += "j:Arrest/j:ArrestAgencyRecordID/j:ID='" + document.all.eventnum.value.trim() + "' and "; }
-			if(document.all.arrestagency.value.trim() != '') { xpath += makeXPathString("j:Arrest/j:ArrestAgency", document.all.arrestagency.value.trim(), wildcardValues[1]); }
+			if(document.all.arrestagency.value.trim() != '') { xpath += makeXPathString("j:Arrest/j:ArrestAgency/j:OrganizationName", document.all.arrestagency.value.trim(), wildcardValues[1]); }
 
 			if(document.all.lname.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonName/j:PersonSurName", document.all.lname.value.trim(), wildcardValues[2]); }
 			if(document.all.mname.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonName/j:PersonMiddleName", document.all.mname.value.trim(), wildcardValues[3]); }
