@@ -129,8 +129,13 @@
 			if(document.all.issuing.value.trim() != '') { xpath += makeXPathString("j:CourtOrderIssuingCourt/j:CourtName", document.all.issuing.value.trim(), wildcardValues[5]); }
 
 			if(document.all.issuedate.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.servicedate.value.trim())) + "' and "; }
-			if(document.all.datestart.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.datestart.value.trim())) + "' and "; }
-			if(document.all.dateend.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.dateend.value.trim())) + "' and "; }
+			//	if(document.all.datestart.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.datestart.value.trim())) + "' and "; }
+			//	if(document.all.dateend.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.dateend.value.trim())) + "' and "; }
+			if(document.all.datestart.value.trim() != '' && document.all.dateend.value.trim() != '') { 
+				var bstart = convertDate(document.all.datestart.value.trim());
+				var bend = convertDate(document.all.dateend.value.trim());
+				if(bstart != null && bend != null) { xpath += "j:ActivityDate >='" + makeTimestamp(bstart) + "' and j:ActivityDate <='" + makeTimestamp(bend) + "' and "; }
+				}
 		
 			// Strip off the last 'and' and end the xpath node test
 			var lastAnd = xpath.lastIndexOf('and');
