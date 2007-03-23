@@ -96,28 +96,18 @@
 
 				// Compile the various sort columns into a single field
 				var col = "";
-				var first = "";
-				var last = "";
-				var dob = "";
-
-				// If the user querys the protection order based on the respondent, then create the
-				// composite column based on the respondent information
-				if(xpath.toUpperCase().indexOf('J:COURTORDERDESIGNATEDSUBJECT') > -1) {
-					first = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME']/value");
-					last = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONSURNAME']/value");
-					dob = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONBIRTHDATE']/value");
-					}
+				var full = "";
 
 				// And if the user queries based on the petitioner, then use that info
 				if(xpath.toUpperCase().indexOf('J:PROTECTIONORDERRESTRICTEDPERSON') > -1) { 
-					first = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONNAME/J:PERSONGIVENNAME']/value");
-					last = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONNAME/J:PERSONSURNAME']/value");
-					dob = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONBIRTHDATE']/value");
-					}		
+					full = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONNAME/J:PERSONFULLNAME']/value");
+					} else {
+					//default sort collumn
+					full = results[k].selectSingleNode("summary[name='J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONFULLNAME']/value");
+					}
+					
 
-				if(last != undefined) { col += " " + last.text; }
-				if(first != undefined) { col += " " + first.text; }
-				if(dob != undefined) { col += " " + dob.text; }
+				if(full != undefined) { col += " " + full.text; }
 				ary.push(col);
 
 				// Now add the rest of the data to the results array
