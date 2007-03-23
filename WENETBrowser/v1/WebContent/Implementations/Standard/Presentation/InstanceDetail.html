@@ -273,7 +273,7 @@ Comments: <p class=Highlight>[!ActivityCommentText!]</p><br><br>
 Charge: <p class=Highlight>[!ChargeSequenceID/ID!]</p> &nbsp
 <p class=Highlight>[!ChargeDescriptionText!]</p><br>
 Originating Agency: <p class=Highlight>[!ChargeOriginator.Organization/OrganizationName!]</p><br>
-LEA Event #: <p class=Highlight>[!ChargeTrackingID!]</p>  &nbsp
+LEA Event #: <p class=Highlight>[!ChargeTrackingID/ID!]</p>  &nbsp
 Warrant/Cit #:<p class=Highlight>[!ChargeID/ID!]</p><br>
 Court: <p class=Highlight>[!ChargeModifier.Organization/OrganizationName!]</p><br>
 Bail $: <p class=Highlight>[!ChargeRecommendedBailAmount!]</p><br>
@@ -1031,8 +1031,8 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	queryRoots.push(new Array("Arrest", "j:ArrestSubject/j:PersonName/j:PersonSurName", "j:ArrestSubject/j:PersonName/j:PersonGivenName", "j:ArrestSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("ArrestWarrant", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
 	queryRoots.push(new Array("Case", "j:ActivitySuspect/j:PersonName/j:PersonSurName", "j:ActivitySuspect/j:PersonName/j:PersonGivenName", "j:ActivitySuspect/j:PersonBirthDate"));
-	// queryRoots.push(new Array("Case", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonSurName", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonGivenName", "j:ActivityVictim/j:Victim.Person/j:PersonBirthDate"));
-	// queryRoots.push(new Array("Case", "j:ActivityWitness/j:PersonName/j:PersonSurName", "j:ActivityWitness/j:PersonName/j:PersonGivenName", "j:ActivityWitness/j:PersonBirthDate"));
+	queryRoots.push(new Array("Case", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonSurName", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonGivenName", "j:ActivityVictim/j:Victim.Person/j:PersonBirthDate"));
+	queryRoots.push(new Array("Case", "j:ActivityWitness/j:PersonName/j:PersonSurName", "j:ActivityWitness/j:PersonName/j:PersonGivenName", "j:ActivityWitness/j:PersonBirthDate"));
 	queryRoots.push(new Array("ProtectionOrder", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
 	queryRoots.push(new Array("Citation", "j:CitationSubject/j:PersonName/j:PersonSurName", "j:CitationSubject/j:PersonName/j:PersonGivenName", "j:CitationSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("Incident", "j:IncidentSubject/j:PersonName/j:PersonSurName", "j:IncidentSubject/j:PersonName/j:PersonGivenName", "j:IncidentSubject/j:PersonBirthDate"));
@@ -1050,7 +1050,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 					xpath = xpath + " OR ";
 				}
 				
-				xpath = xpath + "[";
+				xpath = xpath + "(";
 
 				if(queryRoots[i].length > 1 && firstParm != null && firstParm.length > 0) { xpath += queryRoots[i][1] + "='" + firstParm + "' and "; }
 				if(queryRoots[i].length > 2 && secondParm != null && secondParm.length > 0) { xpath += queryRoots[i][2] + "='" + secondParm + "' and "; }
@@ -1061,15 +1061,19 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 				// Strip off the last 'and' and end the xpath node test
 				var lastAnd = xpath.lastIndexOf('and');
 				if(lastAnd != -1) { xpath = xpath.substr(0, lastAnd); }
-				xpath += "]";
+				xpath += ")";
 			}
 		}
 
 		if(cntrOr > 1) {
 				xpath = "[" + xpath + "]";
+			}else {
+				xpath = xpath.replace("(", "[");
+				xpath = xpath.replace(")", "]");
 			}
 		
 		xpath = "j:" + Root + xpath;
+		// alert (xpath);
 
 		/* var queryName = Root; */
 		var queryName = firstParm + " " + top.SessionDataFrame.totalSubQueries;
