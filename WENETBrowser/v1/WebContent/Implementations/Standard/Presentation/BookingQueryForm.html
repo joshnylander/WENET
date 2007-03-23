@@ -108,7 +108,7 @@
 			var xpath = "j:Booking[";
 	
 			if(document.all.booking.value.trim() != '') { xpath += "j:BookingDocumentControlID/j:ID='" + document.all.booking.value.trim() + "' and "; }
-			if(document.all.eventnum.value.trim() != '') { xpath += "j:Arrest/j:ArrestAgencyRecordID/j:ID='" + document.all.eventnum.value.trim() + "' and "; }
+			if(document.all.eventnum.value.trim() != '') { xpath += "j:Arrest/j:ArrestCharge/j:ChargeTrackingID/j:ID='" + document.all.eventnum.value.trim() + "' and "; }
 			if(document.all.arrestagency.value.trim() != '') { xpath += makeXPathString("j:Arrest/j:ArrestAgency/j:OrganizationName", document.all.arrestagency.value.trim(), wildcardValues[1]); }
 
 			if(document.all.lname.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonName/j:PersonSurName", document.all.lname.value.trim(), wildcardValues[2]); }
