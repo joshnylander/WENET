@@ -227,7 +227,7 @@
 <td id=InfractionPanel style="visibility:hidden;display:none;" align=center width=75% height=200>
 <br><br>
 	<form name=InfractionForm>
-	Event Number: <input class=QUERYINPUTS type=text id=eventnum style="width:15%" onClick="focusCtl('');"> <br><br>
+	Ticket #: <input class=QUERYINPUTS type=text id=eventnum style="width:15%" onClick="focusCtl('');"> <br><br>
 
 	Code Book: <select class=QUERYINPUTS onClick="focusCtl('');" id=codebook style="width:15%"><option></option><option>RCW</option><option>BMC</option><option>WAC</option><option>WCC</option></select>&nbsp&nbsp Offense Code: <input onClick="focusCtl('offcode');" class=QUERYINPUTS type=text id=offcode style="width:15%"><br><br>
 	Offense Description: <input class=QUERYINPUTS onClick="focusCtl('offdesc');" type=text id=offdesc style="width:50%"><br><br><br>
@@ -235,7 +235,7 @@
 <font size=-1><i>Enter dates in mm/dd/yyyy format</i></font><br>
 
 <table border=0 class=QUERYFONTS>
-<tr><td>Exact Event Date: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="date" onBlur="formatTextDate(document.InfractionForm.date);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger4"> ... </button> </td></tr>
+<tr><td>Event Date: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="date" onBlur="formatTextDate(document.InfractionForm.date);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger4"> ... </button> </td></tr>
 <tr><td>Event Date Start: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="datestart" size="20" maxlength="10" onBlur="formatTextDate(document.InfractionForm.datestart);">&nbsp <button type="reset" id="trigger5"> ... </button> </td></tr>
 <tr><td>Event Date End: &nbsp </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="dateend" size="20" maxlength="10" onBlur="formatTextDate(document.InfractionForm.dateend);">&nbsp <button type="reset" id="trigger6"> ... </button> </td></tr>
 </table>
