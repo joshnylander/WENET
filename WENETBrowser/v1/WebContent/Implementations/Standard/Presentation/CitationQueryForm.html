@@ -125,7 +125,7 @@
 				}
 
 			if(document.all.code.value.trim() != '') { xpath += "j:CitationViolation/j:IncidentViolatedStatute/j:StatuteOffenseID='" + document.all.code.value.trim() + "' and "; }
-			if(document.all.sdesc.value.trim() != '') { xpath += makeXPathString("j:CitationViolation/j:IncidentViolatedStatute/j:StatuteDescriptionText", document.all.sdesc.value.trim(), wildcardValues[1]); }
+			// if(document.all.sdesc.value.trim() != '') { xpath += makeXPathString("j:CitationViolation/j:IncidentViolatedStatute/j:StatuteDescriptionText", document.all.sdesc.value.trim(), wildcardValues[1]); }
 
 			if(document.all.last.value.trim() != '') { xpath += makeXPathString("j:CitationSubject/j:PersonName/j:PersonSurName", document.all.last.value.trim(), wildcardValues[3]); }
 			if(document.all.middle.value.trim() != '') { xpath += makeXPathString("j:CitationSubject/j:PersonName/j:PersonMiddleName", document.all.middle.value.trim(), wildcardValues[2]); }
@@ -241,14 +241,12 @@
 <br />
 &nbsp&nbsp  Event Number: <input class=QUERYINPUTS type="text" id="enumber" size="15" onClick="focusCtl('enumber');">
 <br />
-&nbsp&nbsp Code: <input class=QUERYINPUTS type=text id=code size=10 onClick="focusCtl('');"><br><br>
-
-&nbsp&nbsp Statute Description: <input class=QUERYINPUTS type=text onClick="focusCtl('sdesc');" id=sdesc size=25><br><br>
+&nbsp&nbsp Statute: <input class=QUERYINPUTS type=text id=code size=10 onClick="focusCtl('');"><br><br>
 
 <font size=-1><i>Please enter dates in mm/dd/yyyy format</i></font><br>
 
 <table border=0 class="QUERYFONTS">
-<tr><td> Exact Ticket Date: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="tdate" size="10"><button type="reset" id="trigger1"> ... </button> </td></tr>
+<tr><td> Ticket Date: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="tdate" size="10"><button type="reset" id="trigger1"> ... </button> </td></tr>
 <tr><td> Ticket Date Start: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="tdatestart" size=10><button type="reset" id="trigger2"> ... </button> </td></tr>
 <tr><td> Ticket Date End: </td><td> <input type=text class=QUERYINPUTS onClick="focusCtl('');" id="tdateend" size=10><button type="reset" id="trigger3"> ... </button></td></tr>
 </table>
@@ -297,7 +295,7 @@
 
 	<i>Please enter dates in mm/dd/yyyy format</i><br>
 	<table border=0 class="QUERYFONTS">
-	<tr><td> Exact Date of Birth: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="dob" size="10"><button type="reset" id="trigger4"> ... </button> </td></tr>
+	<tr><td> Date of Birth: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="dob" size="10"><button type="reset" id="trigger4"> ... </button> </td></tr>
 	<tr><td> Date of Birth Start: </td><td> <input type="text" onClick="focusCtl('');" class=QUERYINPUTS id="dobstart" size=10><button type="reset" id="trigger5"> ... </button> </td></tr>
 	<tr><td> Date of Birth End: </td><td> <input type=text onClick="focusCtl('');" class=QUERYINPUTS id="dobend" size=10><button type="reset" id="trigger6"> ... </button></td></tr>
 	</table>
