@@ -142,7 +142,8 @@
 		<aliasMapping><columnName> Status</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Court Order #</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:ACTIVITYDOCKET/J:DOCUMENTDESCRIPTIVEMETADATA/J:DOCUMENTGROUPID/J:ID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Date Served </columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERSERVICEDATE]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Expiration Date</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERRECALLDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Recall Date</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERRECALLDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Expiration Date</columnName><xpath><![CDATA[j:ProtectionOrder/j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentExpirationDate]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Activity Date</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:ACTIVITYDATE]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Court Name</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERISSUINGCOURT/J:COURTNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Respondent DOB</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
