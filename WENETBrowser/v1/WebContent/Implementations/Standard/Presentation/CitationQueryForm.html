@@ -158,7 +158,7 @@
 			if(document.ControlForm.BPD.checked == true) { ary.push('http://wenet.cob.org/'); }
 			
 			var strXPath = makeXPath();
-			strXPath = prompt("XPath: ", strXPath);
+			//strXPath = prompt("XPath: ", strXPath);
 			AddQuery('Citation', document.HeaderForm.qname.value, makeXPath(), document.HeaderForm.timeout.value, ary);
 
 			top.SessionDataFrame.totalCitationQueries += 1;
