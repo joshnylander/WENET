@@ -115,8 +115,11 @@
 		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Court Name</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERISSUINGCOURT/J:COURTNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Issuing Date</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERISSUINGDATE]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Arresting Agency</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:ACTIVITYDOCUMENTSERVER.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Level</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:WARRANTLEVELTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Status</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>
 		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Charge Description </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:ACTIVITYCRIMECASE/J:CASECHARGE/J:CHARGEDESCRIPTIONTEXT]]></xpath></aliasMapping> 
+		<aliasMapping><columnName> Reason </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERREQUESTREASONTEXT]]></xpath></aliasMapping>
 
 		<aliasMapping><columnName> Ticket #</columnName><xpath><![CDATA[J:CITATION/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Date </columnName><xpath><![CDATA[J:CITATION/J:ACTIVITYDATE]]></xpath></aliasMapping>

@@ -93,21 +93,11 @@
 				ary.push(serviceURI);
 				ary.push(results[k].selectSingleNode("instanceURL").text);
 
-
-
-
-				// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVvv
-				// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVvv
-				// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVvv
-				// REMOVE SUBJECTINVOLVEMENTPERSON WHEN CT REMOVES IT FROM ITS RETURNS
-
-
-
 				// Compile the various sort columns into a single field
 				var col = "";
-				var first = results[k].selectSingleNode("summary[name='J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:SUBJECTINVOLVEMENTPERSON/J:PERSONNAME/J:PERSONGIVENNAME']/value");
-				var last = results[k].selectSingleNode("summary[name='J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:SUBJECTINVOLVEMENTPERSON/J:PERSONNAME/J:PERSONSURNAME']/value");
-				var dob = results[k].selectSingleNode("summary[name='J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:SUBJECTINVOLVEMENTPERSON/J:PERSONBIRTHDATE']/value");
+				var first = results[k].selectSingleNode("summary[name='J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME']/value");
+				var last = results[k].selectSingleNode("summary[name='J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONSURNAME']/value");
+				var dob = results[k].selectSingleNode("summary[name='J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONBIRTHDATE']/value");
 
 				if(last != undefined) { col += " " + last.text; }
 				if(first != undefined) { col += " " + first.text; }
@@ -117,7 +107,13 @@
 
 				for(j=0; j<uniqueColumns.length; j++) {						
 					var val = results[k].selectSingleNode("summary[name='" + uniqueColumns[j] + "']/value");
-					if(val != null) { ary.push(val.text); } else { ary.push("&nbsp"); }
+					if(val != null) {
+						if (val.text == "HAS ALERTS") {
+									ary.push("<img src=\"../images/siren.gif\" width=\"24\" height=\"24\" />");
+								}else {
+									ary.push(val.text);
+								}
+						} else { ary.push("&nbsp"); }
 					}
 
 				resultData.push(ary);
