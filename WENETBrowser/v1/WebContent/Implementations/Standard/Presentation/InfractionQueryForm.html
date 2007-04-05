@@ -134,7 +134,6 @@
 				xpath += "j:ActivityDate <= '" + makeTimestamp(convertDate(document.all.dateend.value.trim())) + "' and "; 
 				}
 
-			if(document.all.codebook.value.trim() != '') { xpath += "j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteCodeID='" + document.all.codebook.value.trim() + "' and "; }
 			if(document.all.eventnum.value.trim() != '') { xpath += "j:ActivityCrimeCase/j:ActivityID/j:ID='" + document.all.eventnum.value.trim() + "' and "; } 
 
 
@@ -229,7 +228,7 @@
 	<form name=InfractionForm>
 	Ticket #: <input class=QUERYINPUTS type=text id=eventnum style="width:15%" onClick="focusCtl('');"> <br><br>
 
-	Code Book: <select class=QUERYINPUTS onClick="focusCtl('');" id=codebook style="width:15%"><option></option><option>RCW</option><option>BMC</option><option>WAC</option><option>WCC</option></select>&nbsp&nbsp Offense Code: <input onClick="focusCtl('offcode');" class=QUERYINPUTS type=text id=offcode style="width:15%"><br><br>
+	Offense Code: <input onClick="focusCtl('offcode');" class=QUERYINPUTS type=text id=offcode style="width:15%"><br><br>
 	Offense Description: <input class=QUERYINPUTS onClick="focusCtl('offdesc');" type=text id=offdesc style="width:50%"><br><br><br>
 
 <font size=-1><i>Enter dates in mm/dd/yyyy format</i></font><br>
@@ -252,7 +251,7 @@
 <font size=-1><i>Enter dates in mm/dd/yyyy format</i></font><br>
 
 <table border=0 class=QUERYFONTS>
-<tr><td>Person Exact DOB: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="subdob" onBlur="formatTextDate(document.SubjectForm.subdob);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger1"> ... </button> </td></tr>
+<tr><td>Person DOB: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="subdob" onBlur="formatTextDate(document.SubjectForm.subdob);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger1"> ... </button> </td></tr>
 <tr><td>DOB Range Start: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="dobstart" size="20" maxlength="10" onBlur="formatTextDate(document.SubjectForm.dobstart);">&nbsp <button type="reset" id="trigger2"> ... </button> </td></tr>
 <tr><td>DOB Range End: &nbsp </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="dobend" size="20" maxlength="10" onBlur="formatTextDate(document.SubjectForm.dobend);">&nbsp <button type="reset" id="trigger3"> ... </button> </td></tr>
 </table>
