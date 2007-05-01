@@ -17,7 +17,8 @@
 		   	}
 		}
 		
-		document.onkeypress = supportEnterKey; 
+		document.onkeypress = supportEnterKey;
+		
 		
 		// Wait until the session document is completely loaded
 		var xml = top.SessionDataFrame.sessionDocument;
@@ -205,7 +206,7 @@
 
 </fieldset>
 </form>
-
+<p align="center"><input type=radio name=activeorder checked> Active Warrants &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Warrants</p>
 <fieldset id="ContentSpacer"></fieldset>
 <center>
 <table border=1 class="QUERYBACKGROUNDTABLE QUERYFONTS">
@@ -231,7 +232,6 @@
 <td id=SubjectPanel style="visibility:visible;display:block;" align=center width=75% height=200>
 <br>
 <form name=SubjectForm>
-<input type=radio name=activeorder checked> Active Warrants &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Warrants<br><br>
 
 &nbsp&nbsp Last: <input class=QUERYINPUTS onFocus="focusCtl('lname');" type="text" name="lname" size="8"> &nbsp&nbsp  First: <input onFocus="focusCtl('fname');" class=QUERYINPUTS type="text" name="fname" size="8"> &nbsp&nbsp Middle: <input class=QUERYINPUTS type="text" name="mname" size="8" onFocus="focusCtl('mname');"><br><br>
 <font size=-1><i>Enter dates in mm/dd/yyyy format</i></font><br>
@@ -280,8 +280,6 @@
 	<form name=WarrantForm>
 
 	<fieldset style="border-width:0;text-align:right;margin-right:20%;">
-
-	<input type=radio name=activeorder checked> Active Warrants &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Warrants<br><br>
 
 	Event Number: <input style="" class=QUERYINPUTS type="text" name="enumber" size="25" onFocus="focusCtl('enumber');"><br><br>
 	Court Cause Number:  <input type="text" class=QUERYINPUTS name="cause" size="25" onFocus="focusCtl('cause');"><br><br>
