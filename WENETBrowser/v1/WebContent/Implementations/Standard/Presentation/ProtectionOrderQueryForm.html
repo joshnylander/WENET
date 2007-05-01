@@ -205,6 +205,7 @@
 
 <fieldset id="ContentSpacer"></fieldset>
 <center>
+<p align="center"><input type=radio name=activeorder checked> Active Orders &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Orders</p>
 <table border=1 class="QUERYBACKGROUNDTABLE QUERYFONTS">
 <tr>
 	<td colspan=2>
@@ -228,7 +229,6 @@
 <td id=CourtOrderPanel style="visibility:hidden;display:none;" align=center width=75% height=200>
 <br>
 <form name=OrderForm>
-<input type=radio name=activeorder checked> Active Orders &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Orders<br><br>
 <table border=0 class="QUERYFONTS">
 <tr><td>Issuing Court:</td><td><input class=QUERYINPUTS type=text size=10 onClick="focusCtl('issuing');" id=issuing></td></tr>
 <tr><td>Court Cause Number:</td><td> <input class=QUERYINPUTS onClick="focusCtl('causenum');" type=text id=causenum> </td></tr>
@@ -276,9 +276,6 @@
 <td id=SubjectPanel style="visibility:visible;display:block;" align=center width=75% height=200>
 <br>
 <form name=SubjectForm>
-
-<input type=radio name=activeorder checked> Active Orders &nbsp&nbsp&nbsp <input type=radio name=activeorder> All Orders<br><br>
-
 &nbsp&nbsp Petitioner Name: <input type=text class=QUERYINPUTS id=protectedname onClick="focusCtl('protectedname');" size=30><br><br>
 
 
