@@ -203,7 +203,7 @@
 				xpath += "j:PersonBirthDate = '" + makeTimestamp(dob) + "' and ";
 				}			
 
-			if(document.all.race.value.trim() != '') { xpath += "j:PersonPhysicalDetails/j:PersonRaceText=" + document.all.race.value.trim() + "' and "; }
+			if(document.all.race.value.trim() != '') { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonRaceText, " + document.all.race.value.trim() + "') and "; }
 			if(document.all.MaleFemale[0].checked == true) { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonSexText, 'M') and "; }
 			if(document.all.MaleFemale[1].checked == true) { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonSexText, 'F') and "; }
 			if(document.all.Height.value.trim() != '') { xpath += "j:PersonPhysicalDetails/j:PersonHeightMeasure='" + document.all.Height.value.trim() + "' and "; }
@@ -359,9 +359,12 @@ Alias Name: <input class=QUERYINPUTS type="text" id="alias" onFocus="focusCtl('a
 
 &nbsp Race <select class=QUERYINPUTS id=race onFocus="focusCtl('');">
 	<option></option>
-	<option>White</option>
-	<option>Native American</option>
-	<option>Hispanic</option>
+	<option value="A">ASIAN</option>
+	<option value="B">BLACK</option>
+	<option value="H">HISPANIC</option>
+	<option value="I">AMERICAN INDIAN</option>
+	<option value="U">UNKNOWN</option>
+	<option value="W">WHITE</option>
 	</select>
 <br><br>
 &nbsp Height <input class=QUERYINPUTS type=text onFocus="focusCtl('');" id=Height size="5"> (fii, ex. 507) &nbsp&nbsp Weight <input class=QUERYINPUTS type=text onFocus="focusCtl('');" id=Weight size="5"> (ex. 190)<br><br>
