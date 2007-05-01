@@ -203,9 +203,9 @@
 				xpath += "j:PersonBirthDate = '" + makeTimestamp(dob) + "' and ";
 				}			
 
-			if(document.all.race.value.trim() != '') { xpath += "j:PersonPhysicalDetails/j:PersonRaceText='" + document.all.race.value.trim() + "' and "; }
-			if(document.all.MaleFemale[0].checked == true) { xpath += "j:PersonPhysicalDetails/j:PersonSexText='m' and "; }
-			if(document.all.MaleFemale[1].checked == true) { xpath += "j:PersonPhysicalDetails/j:PersonSexText='f' and "; }
+			if(document.all.race.value.trim() != '') { xpath += "j:PersonPhysicalDetails/j:PersonRaceText=" + document.all.race.value.trim() + "' and "; }
+			if(document.all.MaleFemale[0].checked == true) { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonSexText, 'M') and "; }
+			if(document.all.MaleFemale[1].checked == true) { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonSexText, 'F') and "; }
 			if(document.all.Height.value.trim() != '') { xpath += "j:PersonPhysicalDetails/j:PersonHeightMeasure='" + document.all.Height.value.trim() + "' and "; }
 			if(document.all.Weight.value.trim() != '') { xpath += "j:PersonPhysicalDetails/j:PersonWeightMeasure ='" + document.all.Weight.value.trim() + "' and "; }
 			xpath += makeXPathString("j:PersonPhysicalDetails/j:PersonHairColorText", document.all.HairColor.value.trim(), wildcardValues[11]);
