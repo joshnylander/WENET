@@ -196,7 +196,7 @@
 		<aliasMapping><columnName> Log ID</columnName><xpath><![CDATA[J:CASE/J:CASEOTHERID/J:ID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> LEO Event #</columnName><xpath><![CDATA[J:CASE/J:CASEOTHERID/J:ID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Assigned Prosecutor</columnName><xpath><![CDATA[J:CASE/J:CASEPARTICIPANTS/J:CASEPROSECUTIONATTORNEY/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Charge </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Referral Charge </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGEDESCRIPTIONTEXT]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> First Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Middle Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
@@ -238,10 +238,10 @@
 		<aliasMapping><columnName> Date </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYDATE]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Time </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYTIME]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Category </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTCATEGORY/J:INCIDENTCATEGORYTYPETEXT]]></xpath></aliasMapping>		
-		<aliasMapping><columnName> Subject Full </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>		
-		<aliasMapping><columnName> Subject Last </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>		
-		<aliasMapping><columnName> Subject Given </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>		
-		<aliasMapping><columnName> Subject Middle </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Event # </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>		
 		
 		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYSTATUS/J:STATUSDESCRIPTIONTEXT]]></xpath></aliasMapping>		
