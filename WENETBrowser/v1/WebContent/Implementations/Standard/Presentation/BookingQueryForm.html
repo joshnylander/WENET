@@ -78,12 +78,13 @@
 		wildcardAry[2] = new Array('lname', "Last Name");
 		wildcardAry[3] = new Array('mname', "Middle Name");
 		wildcardAry[4] = new Array('fname', "First Name");
-		wildcardAry[5] = new Array('race', "Race");
-		wildcardAry[6] = new Array('sex', "Sex");
+		//wildcardAry[5] = new Array('race', "Race");
+		// wildcardAry[6] = new Array('sex', "Sex");
 
 		var selectedCtl = 0;
 		var wildcardValues = new Array();
 		for(i=0; i<wildcardAry.length; i++) { wildcardValues[i] = 0; }
+		
 	
 		function focusCtl(theCtl) {
 			hidePanel(document.all.QUERYSEARCHPARAMETERS);
@@ -115,9 +116,10 @@
 			if(document.all.mname.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonName/j:PersonMiddleName", document.all.mname.value.trim(), wildcardValues[3]); }
 			if(document.all.fname.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonName/j:PersonGivenName", document.all.fname.value.trim(), wildcardValues[4]); }
 
-			if(document.all.sex.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonPhysicalDetails/j:PersonSexText", document.all.sex.value.trim(), wildcardValues[6]); }
-			if(document.all.race.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonPhysicalDetails/j:PersonRaceText", document.all.race.value.trim(), wildcardValues[5]); }
-			
+			// if(document.all.sex.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonPhysicalDetails/j:PersonSexText", document.all.sex.value.trim(), wildcardValues[6]); }
+			//if(document.all.race.value.trim() != '') { xpath += makeXPathString("j:BookingSubject/j:PersonPhysicalDetails/j:PersonRaceText", document.all.race.value.trim(), wildcardValues[5]); }
+			if(document.all.sex.value.trim() != '') { xpath += "j:BookingSubject/j:PersonPhysicalDetails/j:PersonSexText='" + document.all.sex.value.trim() + "' and "; }
+			if(document.all.race.value.trim() != '') { xpath += "j:BookingSubject/j:PersonPhysicalDetails/j:PersonRaceText='" + document.all.race.value.trim() + "' and "; }
 
 			if(document.all.releasedate.value.trim() != '') { 
 				var releasedate = convertDate(document.all.releasedate.value.trim());
@@ -260,15 +262,15 @@ Event Number: <input onClick="focusCtl('eventnum');" class=QUERYINPUTS type=text
 <font size=-1><i>Enter dates in mm/dd/yyyy format</i></font><br>
 
 <table border=0 class=QUERYFONTS>
-<tr><td>Exact Booking Date: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type=text id=bookingdate size=10> &nbsp <button type="reset" id="trigger4">...</button></td></tr>
-<tr><td>Booking Date Start: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=bdatestart size=10> &nbsp <button type="reset" id="trigger5">...</button></td></tr>
-<tr><td>Booking Date End: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=bdateend size=10> &nbsp <button type="reset" id="trigger6">...</button></td></tr>
+<tr><td>Booking Date: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type=text id=bookingdate size=10> &nbsp <button type="reset" id="trigger4">...</button></td></tr>
+<tr><td>Booking Range Start: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=bdatestart size=10> &nbsp <button type="reset" id="trigger5">...</button></td></tr>
+<tr><td>Booking Range End: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=bdateend size=10> &nbsp <button type="reset" id="trigger6">...</button></td></tr>
 </table>
 <br>
 <table border=0 class=QUERYFONTS>
-<tr><td> Exact Release Date: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=releasedate size=10> &nbsp <button type="reset" id="trigger7">...</button> </td></tr>
-<tr><td> Release Date Start: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=rdatestart size=10> &nbsp <button type="reset" id="trigger8">...</button> </td></tr>
-<tr><td> Release Date End: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=rdateend size=10> &nbsp <button type="reset" id="trigger9">...</button> </td></tr>
+<tr><td>Release Date: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=releasedate size=10> &nbsp <button type="reset" id="trigger7">...</button> </td></tr>
+<tr><td>Release Range Start: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=rdatestart size=10> &nbsp <button type="reset" id="trigger8">...</button> </td></tr>
+<tr><td>Release Range End: </td><td> <input onClick="focusCtl('');"  class=QUERYINPUTS type=text id=rdateend size=10> &nbsp <button type="reset" id="trigger9">...</button> </td></tr>
 </table>
 
 <script type="text/javascript">
@@ -336,7 +338,14 @@ Event Number: <input onClick="focusCtl('eventnum');" class=QUERYINPUTS type=text
 <br>
 <form name=SubjectForm>
 &nbsp&nbsp Last: <input onClick="focusCtl('lname');" class=QUERYINPUTS type="text" name="lname" size="8"> &nbsp&nbsp  First: <input onClick="focusCtl('fname');"  class=QUERYINPUTS type="text" name="fname" size="8"> &nbsp&nbsp Middle: <input onClick="focusCtl('mname');"  class=QUERYINPUTS type="text" name="mname" size="8"><br><br>
-Race: <input type=text size=6 id=race onClick="focusCtl('race');" class=QUERYINPUTS> &nbsp&nbsp Sex: <input type=text  id=sex onClick="focusCtl('sex');" class=QUERYINPUTS size=10><br><br>
+Race: <select size=1 id=race onClick="focusCtl('race');" class=QUERYINPUTS>
+<option></option>
+<option value="W">White</option>
+<option value="B">Black</option>
+<option value="H">Hispanic</option>
+<option value="A">Asian</option>
+<option value="I">Native American</option>
+</select> &nbsp&nbsp Sex: <select  id=sex onClick="focusCtl('sex');" class=QUERYINPUTS size=1><option></option><option>M</option><option>F</option></select><br><br>
 <br>
 <font size=-1><i>Enter dates in mm/dd/yyyy format</i></font><br>
 
