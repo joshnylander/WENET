@@ -113,24 +113,9 @@ Date: <p class=Highlight>[!ActivityDate!]</p> &nbsp&nbsp
 Time: <p class=Highlight>[!ActivityTime!]</p><br><br>
 
 Event Number: <p class=Highlight>[!ActivityID/ID!]</p> &nbsp&nbsp
-Category Type: <p class=Highlight>[!IncidentCategory/IncidentCategoryTypeText!]</p><br><br>
+Incident Description: <p class=Highlight>[!IncidentCategory/IncidentCategoryTypeText!]</p><br><br>
 
-<center>
-<fieldset style='width:90%;text-align:left;'>
-<legend>Description</legend> 
-<br>
 <p class=Highlight>[!ActivityDescriptionText!]</p><br><br>
-</fieldset>
-<br><br>
-<table border=0 width=75%>
-<tr><td width=25%> Disposition Date: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDisposition/ChargeDispositionDate!]</p> </td></tr>
-<tr><td> Disposition Text: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDisposition/ChargeDispositionDescriptionText!]</p> </td></tr>
-<tr><td> Code Book: </td><td> <p class=Highlight>[!IncidentViolatedStatute/StatuteCodeID/ID!]</p> </td></tr>
-<tr><td> Statute: </td><td> <p class=Highlight>[!IncidentViolatedStatute/StatuteOffenseID/ID!]</p> </td></tr>
-<tr><td> Description: </td><td> <p class=Highlight>[!IncidentViolatedStatute/StatuteDescriptionText!]</p> </td></tr>
-</table>
-</center>
-<br><br>
 </div>
 
 <!-- --------------------------------------------------------------------------------------------------- -->
@@ -170,7 +155,7 @@ Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><b
 <tr><td> Event Number: </td><td> <p class=Highlight>[!CaseOtherID/ID!]</p></td></tr>
 <tr><td> Cause Number: </td><td> <p class=Highlight>[!CaseDocketID!]</p></td></tr>
 <tr><td> Assigned Prosecutor: </td><td> <p class=Highlight>[!CaseParticipants/CaseProsecutionAttorney/PersonName/PersonFullName!]</p></td></tr>
-<tr><td> Referal Charge: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDescriptionText!]</p></td></tr>
+<tr><td> Referral Charge: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDescriptionText!]</p></td></tr>
 <tr><td> LEA: </td><td> <p class=Highlight>[!ActivityReportingOrganization/OrganizationName!]</p></td></tr>
 <tr><td> Court: </td><td> <p class=Highlight>[!CaseCourt/CourtName!]</p></td></tr>
 <tr><td> Domestic Violence: </td><td> <p class=Highlight>[!CaseDetails/CaseDomesticViolenceIndicator!]</p></td></tr>
@@ -282,7 +267,7 @@ Disposition: <p class=Highlight>[!ChargeDisposition/ChargeDispositionDescription
 </table>
 <br><br>
 
-Condition Violation Text: <p class=Highlight>[!CourtOrderCondition/ConditionViolationText!]</p> <br><br>
+Order Type: <p class=Highlight>[!CourtOrderCondition/ConditionViolationText!]</p> <br><br>
 </p>
 	<center>
 	<fieldset style='border-width:1px;width:95%;text-align:left;'><legend style="color:#ffffff"></b>Order Comments</b></legend>
@@ -299,9 +284,8 @@ Condition Violation Text: <p class=Highlight>[!CourtOrderCondition/ConditionViol
 	<br><br>
 
 <table border=0 width=80%>
-<tr><td>Enforcement Agency: </td><td> <p class=Highlight>[!CourtOrderEnforcementAgency/OrganizationName!]</p> </td></tr>
+<tr><td> Originating Agency: </td><td> <p class=Highlight>[!CourtOrderEnforcementAgency/OrganizationName!]</p> </td></tr>
 <tr><td> Issuing Court: </td><td> <p class=Highlight>[!CourtOrderIssuingCourt/CourtName!]</p> </td></tr>
-<tr><td> Issuing Organization: </td><td> <p class=Highlight>[!CourtOrderIssuingCourt/OrganizationName!]</p> </td></tr>
 <tr><td> Court Case Number: </td><td> <p class=Highlight>[!ActivityDocket/DocumentDescriptiveMetadata/DocumentGroupID/ID!]</p> </td></tr>
 <tr><td> Serving Agency: </td><td> <p class=Highlight>[!ActivityDocumentServer.Organization/OrganizationAbbreviationText!] &nbsp [!ActivityDocumentServer.Organization/OrganizationName!] </p></td></tr>
 </table>
@@ -331,33 +315,26 @@ Disposition: <p class=Highlight>[!ArrestCharge/ChargeDisposition/ChargeDispositi
 
 <div id=CitationDetails style="display:none;visibility:hidden;">
 <br>
-<center>
-Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
-
-Organization Name: <p class=Highlight><font size=+1>[!CitationAgency/OrganizationName!]</font></p><br><br>
-Criminial Indicator: <p class=Highlight>[!CitationViolation/IncidentCategory/IncidentCriminalIndicator!]</p> &nbsp&nbsp
-Traffic Accident Indicator: <p class=Highlight>[!CitationViolation/IncidentCategory/IncidentTrafficAccidentInvolvedIndicator!]</p><br>
-Activity Date: <p class=Highlight>[!ActivityDate!]</p> &nbsp
-Activity Time: <p class=Highlight>[!ActivityTime!]</p> &nbsp&nbsp 
-Activity ID: <p class=Highlight>[!ActivityID!]</p> <br>
-<br><br>
-
-</center>
-
-Event Number: <font size=+1><p class=Highlight>[!ActivityCrimeCase/ActivityID/ID!]</p></font><br><br>
-Event Description: <p class=Highlight>[!IncidentEvent/EventDescriptionText!]</p><br><br>
-
-<center>
-<table border=0 width=70%>
-<tr><td width=40%> Statute Codebook: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeStatute/StatuteCodeID/ID!]</p></td></tr>
-<tr><td> Statute Offended: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeStatute/StatuteOffenseID/ID!]</p></td></tr>
-<tr><td> Statute Description: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeStatute/StatuteDescriptionText!]</p></td></tr>
-<tr><td> Recommended Bail Amount: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/ChargeRecommendedBailAmount!]</p><br></td></tr>
-<tr><td> Fine Amount: </td><td> <p class=Highlight>[!CitationViolation/ActivityCrimePotentialCharge/CitationFineAmount!]</p></td></tr>
-<tr><td> Sentence Term: </td><td> <p class=Highlight>[!ChargeSentence/SentenceTerm!]</p></td></tr>
-</table>
+Record Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
+Citation #: <p class=Highlight>[!ActivityID!]</p> <br>
+Violation Date: <p class=Highlight>[!ActivityDate!]</p> &nbsp
+Violation Time: <p class=Highlight>[!ActivityTime!]</p> &nbsp&nbsp <br>
+Organization: <p class=Highlight><font size=+1>[!CitationAgency/OrganizationName!]</font></p><br><br>
 <br>
-</center>
+Event Number: <font size=+1><p class=Highlight>[!ActivityCrimeCase/ActivityID/ID!]</p></font><br><br>
+Traffic Accident: <p class=Highlight>[!CitationViolation/IncidentCategory/IncidentTrafficAccidentInvolvedIndicator!]</p><br>
+<br>
+</div>
+
+<div id=CitationActivityCrimePotentialCharge style="display:none;visibility:hidden;">
+<table border=0 width=70%>
+<tr><td width=40%> Statute/Code: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteCodeID/ID!]</p></td></tr>
+<tr><td> Statute/Code Violated: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteOffenseID/ID!]</p></td></tr>
+<tr><td> Statute/Code Description: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteDescriptionText!]</p></td></tr>
+<tr><td> Recommended Bail Amount: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeRecommendedBailAmount!]</p><br></td></tr>
+<tr><td> Fine Amount: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/CitationFineAmount!]</p></td></tr>
+<tr><td> Sentence Term: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeSentence/SentenceTerm!]</p></td></tr>
+</table>
 </div>
 
 <!-- --------------------------------------------------------------------------------------------------- -->
@@ -554,7 +531,7 @@ Witness Account Description: <p class=Highlight>[!WitnessAccountDescriptionText!
 </div>
 
 <div id=Person_Subject style="display:none;visibility:hidden;">
-Subject ID: <p class=Highlight>[!SubjectID/ID!]</p> &nbsp&nbsp Subject Status: <p class=Highlight>[!SubjectStatus/StatusText!]</p><br>
+Associate: <p class=Highlight>[!SubjectID/ID!]</p><br>
 </div>
 
 <div id=Person_IncidentSubject style="display:none;visibility:hidden;">
@@ -618,6 +595,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	citationRoot[3] = new Array("CitationIssuedLocation", document.all.AddressLocationFullText, "Citation Location", null, null);
 	citationRoot[4] = new Array("CitationSubject", null, null, "Citation Subject", "PersonName/PersonFullName");
 	citationRoot[5] = new Array("CitationIssuingOfficial", null, null, "Issuing Official", "PersonName/PersonFullName");
+	citationRoot[6] = new Array("CitationViolation/ActivityCrimePotentialCharge", document.all.CitationActivityCrimePotentialCharge, "Charge", null, null);
 
 	var arrestRoot = new Array();
 	arrestRoot[0] = new Array("", document.all.ArrestDetails, null, null, null);

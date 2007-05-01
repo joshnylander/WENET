@@ -95,12 +95,10 @@
 
 				// Compile the various sort columns into a single field
 				var col = "";
-				var full = results[k].selectSingleNode("summary[name='J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONFULLNAME']/value");
 				var first = results[k].selectSingleNode("summary[name='J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME']/value");
 				var last = results[k].selectSingleNode("summary[name='J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME']/value");
 				var dob = results[k].selectSingleNode("summary[name='J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONBIRTHDATE']/value");
 
-				if(full != undefined) { col += " " + full.text; }
 				if(last != undefined) { col += " " + last.text; }
 				if(first != undefined) { col += " " + first.text; }
 				if(dob != undefined) { col += " " + dob.text; }

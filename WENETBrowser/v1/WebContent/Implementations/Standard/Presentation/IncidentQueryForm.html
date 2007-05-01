@@ -169,10 +169,6 @@
 				xpath += ") and";
 				}
 
-			if(document.all.witid.value.trim() != '') { xpath += "j:IncidentWitness/j:WitnessID/j:ID='" + document.all.witid.value.trim() + "' and "; }
-			if(document.all.subid.value.trim() != '') { xpath += "j:IncidentSubject/j:SubjectID/j:ID='" + document.all.subid.value.trim() + "' and "; }
-			if(document.all.vicid.value.trim() != '') { xpath += "j:IncidentVictim/j:VictimID/j:ID='" + document.all.subid.value.trim() + "' and "; }
-
 			if(document.all.subdob.value.trim() != '') {
 				xpath += "( j:IncidentSubject/j:PersonBirthDate='" + makeTimestamp(convertDate(document.all.subdob.value.trim())) + "' OR "; 
 				xpath += "j:IncidentVictim/j:Victim.Person/j:PersonBirthDate='" + makeTimestamp(convertDate(document.all.subdob.value.trim())) + "' OR "; 
@@ -292,13 +288,13 @@
 <form name=IncidentForm>
 <br><br>
 &nbsp&nbsp&nbsp&nbsp&nbsp Event Number: <input onClick="focusCtl('');" class=QUERYINPUTS type=text id=eventnum style="width:15%">  &nbsp&nbsp
-Incident Category: <input onClick="focusCtl('category');" class=QUERYINPUTS type=text id=category style="width:15%"><br><br>
+Incident Description: <input onClick="focusCtl('category');" class=QUERYINPUTS type=text id=category style="width:15%"><br><br>
 
 <br><br>
 <font size=-1><i><p class=Highlight>Enter dates in mm/dd/yyyy format</p></i></font><br><br>
 
 <table border=0 class=QUERYFONTS>
-<tr><td>Incident Exact Date: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="date" onBlur="formatTextDate(document.all.date);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger4"> ... </button> </td></tr>
+<tr><td>Incident Date: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="date" onBlur="formatTextDate(document.all.date);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger4"> ... </button> </td></tr>
 <tr><td>Incident Date Start: </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="datestart" size="20" maxlength="10" onBlur="formatTextDate(document.all.datestart);">&nbsp <button type="reset" id="trigger5"> ... </button> </td></tr>
 <tr><td>Incident Date End: &nbsp </td><td> <input onClick="focusCtl('');" class=QUERYINPUTS type="text" id="dateend" size="20" maxlength="10" onBlur="formatTextDate(document.all.dateend);">&nbsp <button type="reset" id="trigger6"> ... </button> </td></tr>
 </table>
@@ -310,7 +306,7 @@ Incident Category: <input onClick="focusCtl('category');" class=QUERYINPUTS type
 <td id=LocationPanel style="visibility:hidden;display:none;" align=center width=75% height=200>
 <br>
 <form name=LocationForm>
-Full Address: <input type=text class=QUERYINPUTS onClick="focusCtl('fulladdy');" id=fulladdy style="width:60%"><br><br>
+Address: <input type=text class=QUERYINPUTS onClick="focusCtl('fulladdy');" id=fulladdy style="width:60%"><br><br>
 Street: <input type=text class=QUERYINPUTS onClick="focusCtl('');" id=street style="width:60%"><br><br>
 City: <input type=text class=QUERYINPUTS onClick="focusCtl('');" id=city style="width:20%"> &nbsp&nbsp
 
@@ -388,14 +384,10 @@ State: <select onClick="focusCtl('');" id=state style="width:35%">
 <form name=PersonForm>
 &nbsp&nbsp Last: <input onClick="focusCtl('last');" class=QUERYINPUTS type="text" id="last" size="8"> &nbsp&nbsp  First: <input onClick="focusCtl('first');" class=QUERYINPUTS type="text" id="first" size="8"> &nbsp&nbsp Middle: <input onClick="focusCtl('mid');" class=QUERYINPUTS type="text" id="mid" size="8"><br><br>
 
-Witness ID: <input class=QUERYINPUTS type=text id=witid style="width:10%"> &nbsp
-Victim ID: <input onClick="focusCtl('');" class=QUERYINPUTS type=text id=vicid style="width:10%"> &nbsp
-Subject ID: <input onClick="focusCtl('');" class=QUERYINPUTS type=text id=subid style="width:10%"><br><br><br>
-
 <font size=-1><i><p class=Highlight>Enter dates in mm/dd/yyyy format</p></i></font><br><br>
 
 <table border=0 class=QUERYFONTS>
-<tr><td>Subect Exact DOB: </td><td> <input class=QUERYINPUTS type="text" id="subdob" onBlur="formatTextDate(document.all.subdob);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger1"> ... </button> </td></tr>
+<tr><td>Subect DOB: </td><td> <input class=QUERYINPUTS type="text" id="subdob" onBlur="formatTextDate(document.all.subdob);" size="20" maxlength="10">&nbsp <button type="reset" id="trigger1"> ... </button> </td></tr>
 <tr><td>DOB Range Start: </td><td> <input class=QUERYINPUTS type="text" id="dobstart" size="20" maxlength="10" onBlur="formatTextDate(document.all.dobstart);">&nbsp <button type="reset" id="trigger2"> ... </button> </td></tr>
 <tr><td>DOB Range End: &nbsp </td><td> <input class=QUERYINPUTS type="text" id="dobend" size="20" maxlength="10" onBlur="formatTextDate(document.all.dobend);">&nbsp <button type="reset" id="trigger3"> ... </button> </td></tr>
 </table>
