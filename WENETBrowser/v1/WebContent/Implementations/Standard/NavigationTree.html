@@ -165,16 +165,16 @@
 
 		var workspaceEntries = xml.selectNodes("session/workspace/workspaceEntry");
 		var toolsOUT = "<table border=1 width=100%><tr><td align=right><table class=\"NAVIGATIONTREE_TABLE NAVIGATIONFONTS\">";
-		toolsOUT += "<tr class=NAVIGATIONTREE_WORKSPACEROW><td>";
-
-		if(document.StateInfoForm != undefined) {
-			if(document.StateInfoForm.WorkspaceState != undefined) {
-				nodeState = document.StateInfoForm.WorkspaceState.value;
-				if(nodeState == "Expanded") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\">&nbsp&nbsp Workspace </a>"; }
-				if(nodeState == "Collapsed") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('Workspace');\">&nbsp&nbsp Workspace  </a>"; }					
-				} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\"> Workspace </a>"; }
-			} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\"> Workspace </a>"; }
-
+		//toolsOUT += "<tr class=NAVIGATIONTREE_WORKSPACEROW><td>";
+		
+		//if(document.StateInfoForm != undefined) {
+		//	if(document.StateInfoForm.WorkspaceState != undefined) {
+		//		nodeState = document.StateInfoForm.WorkspaceState.value;
+		//		if(nodeState == "Expanded") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\">&nbsp&nbsp Workspace </a>"; }
+		//		if(nodeState == "Collapsed") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('Workspace');\">&nbsp&nbsp Workspace  </a>"; }					
+		//		} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\"> Workspace </a>"; }
+		//	} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('Workspace');\"> Workspace </a>"; }
+		
 //		if(nodeState == "Expanded") {
 //			for(i=0; i<workspaceEntries.length; i++) {
 //				var instanceURL = workspaceEntries.selectSingleNode("instanceURL").text;
@@ -183,31 +183,31 @@
 //				}
 //			}
 
-		toolsOUT += "</td></tr>";
+		//toolsOUT += "</td></tr>";
 
 		//------------------------------------------------------------------
 		// And then the saved query entries
 
 		var queryEntries = xml.selectNodes("session/savedQueries/query");
 
-		toolsOUT += "<tr class=NAVIGATIONTREE_SAVEDQUERIESROW><td>";
+		//toolsOUT += "<tr class=NAVIGATIONTREE_SAVEDQUERIESROW><td>";
 
-		if(document.StateInfoForm != undefined) {
-			if(document.StateInfoForm.SavedQueriesState != undefined) {
-				nodeState = document.StateInfoForm.SavedQueriesState.value;
-				if(nodeState == "Expanded") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp  Saved Queries </a>"; }
-				if(nodeState == "Collapsed") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('SavedQueries');\">&nbsp&nbsp  Saved Queries </a>"; }					
-				} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp Saved Queries</a>"; }
-			} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp Saved Queries</a>"; }
+		//if(document.StateInfoForm != undefined) {
+		//	if(document.StateInfoForm.SavedQueriesState != undefined) {
+		//		nodeState = document.StateInfoForm.SavedQueriesState.value;
+		//		if(nodeState == "Expanded") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp  Saved Queries </a>"; }
+		//		if(nodeState == "Collapsed") { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"expandTreeNode('SavedQueries');\">&nbsp&nbsp  Saved Queries </a>"; }					
+		//		} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp Saved Queries</a>"; }
+		//	} else { toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"collapseTreeNode('SavedQueries');\">&nbsp&nbsp Saved Queries</a>"; }
 
-		toolsOUT += "</td></tr>";
+		//toolsOUT += "</td></tr>";
 
-		for(i=0; i<queryEntries.length; i++) {
-			var queryName = queryEntries.item(i).selectSingleNode("queryName").text;
-			toolsOUT += "<tr class=NAVIGATIONTREEQUERY><td>";
-			toolsOUT += "<a href='#' class=NAVIGATIONTREEQUERY style='margin-left:5px;'>" + queryName + "</a>";
-			toolsOUT += "</td></tr>";
-			}
+		//for(i=0; i<queryEntries.length; i++) {
+		//	var queryName = queryEntries.item(i).selectSingleNode("queryName").text;
+		//	toolsOUT += "<tr class=NAVIGATIONTREEQUERY><td>";
+		//	toolsOUT += "<a href='#' class=NAVIGATIONTREEQUERY style='margin-left:5px;'>" + queryName + "</a>";
+		//	toolsOUT += "</td></tr>";
+		//	}
 
 
 		//------------------------------------------------------------------
@@ -215,16 +215,16 @@
 		var errorMsgsLen = xml.selectNodes("session/browserErrors/error").length;
 		var statusMsgsLen = xml.selectNodes("session/browserStatus/status").length;
 
-		toolsOUT += "<tr class=NAVIGATIONTREE_SESSIONDETAILSROW><td>";
-		toolsOUT += "<a href='SessionDetails.html' class=NAVIGATIONTREEROOT target='WorkspaceFrame'>&nbsp&nbsp Session Details </a>"; 
-		toolsOUT += "</td></tr>";
+		//toolsOUT += "<tr class=NAVIGATIONTREE_SESSIONDETAILSROW><td>";
+		//toolsOUT += "<a href='SessionDetails.html' class=NAVIGATIONTREEROOT target='WorkspaceFrame'>&nbsp&nbsp Session Details </a>"; 
+		//toolsOUT += "</td></tr>";
 
 
 		//------------------------------------------------------------------
 		// Write out the entry for the options page
-		toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
-		toolsOUT += "<a href='OptionsPage.html' class=NAVIGATIONTREEROOT target='WorkspaceFrame'>&nbsp&nbsp Color Options</a>";
-		toolsOUT += "</td></tr>";
+		//toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
+		//toolsOUT += "<a href='OptionsPage.html' class=NAVIGATIONTREEROOT target='WorkspaceFrame'>&nbsp&nbsp Color Options</a>";
+		//toolsOUT += "</td></tr>";
 
 		toolsOUT += "<tr class=NAVIGATIONTREE_OPTIONSROW><td>";
 		toolsOUT += "<a href='#' class=NAVIGATIONTREEROOT onClick=\"RefreshSession();\"> &nbsp&nbsp Refresh Session </a>";
