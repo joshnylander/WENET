@@ -1,0 +1,503 @@
+<browserImplementations>
+
+<browserNamespaces>
+	<namespaceMapping>
+	<prefix>j</prefix>
+	<location>http://www.it.ojp.gov/jxdm/3.0.2</location>
+	</namespaceMapping>
+</browserNamespaces>
+
+<implementation>
+
+	<implementationName>Standard</implementationName>
+	<description><![CDATA[Internet Explorer and Firefox version]]></description>
+	<appDirectory><![CDATA[Implementations/Standard/index.html]]></appDirectory>
+	<largeApplicationIcon> </largeApplicationIcon>
+	<smallApplicationIcon> </smallApplicationIcon>
+
+	<displayScheme>
+		<schemeName>GreenTheme</schemeName>
+		
+		<displayEntry>
+			<entryName>ThemeCSS</entryName>
+			<entryValue>themes/GreenTheme/GreenTheme.css</entryValue>
+		</displayEntry>
+		<displayEntry>
+			<entryName>Workspace_SplashImage</entryName>
+			<entryValue></entryValue>
+		</displayEntry>		
+		<displayEntry>
+			<entryName>Workspace_ThemeMessage</entryName>
+			<entryValue></entryValue>
+		</displayEntry>	
+	</displayScheme>
+	<displayScheme>
+		<schemeName>Default</schemeName>
+		
+		<displayEntry>
+			<entryName>ThemeCSS</entryName>
+			<entryValue>themes\default\DefaultTheme.css</entryValue>
+		</displayEntry>
+		<displayEntry>
+			<entryName>Workspace_ThemeMessage</entryName>
+			<entryValue><![CDATA[]]></entryValue>
+		</displayEntry>	
+		<displayEntry>
+			<entryName>Workspace_SplashImage</entryName>
+			<entryValue>themes/default/images/SplashLogo.jpg</entryValue>
+		</displayEntry>		
+	</displayScheme>
+	<displayScheme>
+		<schemeName>MountainBlue</schemeName>
+		
+		<displayEntry>
+			<entryName>ThemeCSS</entryName>
+			<entryValue>themes/mountain/MountainBlue.css</entryValue>
+		</displayEntry>
+		<displayEntry>
+			<entryName>Workspace_SplashImage</entryName>
+			<entryValue></entryValue>
+		</displayEntry>		
+		<displayEntry>
+			<entryName>Workspace_ThemeMessage</entryName>
+			<entryValue></entryValue>
+		</displayEntry>	
+	</displayScheme>
+		
+	<servicePointAliases>
+		<alias>
+			<serviceURI>http://wenet-wcso.co.whatcom.wa.us/</serviceURI>
+			<friendlyName>BELSO</friendlyName>
+		</alias>
+		<alias>
+			<serviceURI>http://wenet-wcsojl.co.whatcom.wa.us/</serviceURI>
+			<friendlyName>BELCJ</friendlyName>
+		</alias>
+		<alias>
+			<serviceURI>http://wenet-wcpa.co.whatcom.wa.us/</serviceURI>
+			<friendlyName>BELPA</friendlyName>
+		</alias>
+		<alias>
+			<serviceURI>http://wenet.cob.org/</serviceURI>
+			<friendlyName>BELPD</friendlyName>
+		</alias>
+	</servicePointAliases>
+	
+	<seedServicePoints>
+		<seedURL>https://wenet-wcso.co.whatcom.wa.us/wenet-whcosh/service</seedURL>
+		<seedURL>https://wenet-wcsojl.co.whatcom.wa.us/wenet-whcojl/service </seedURL>
+		<seedURL>https://wenet-wcpa.co.whatcom.wa.us/wenet-whcoat/service</seedURL>
+		<seedURL>https://wenet.cob.org:2443/wenet-cobpd/discover.aspx</seedURL>
+	</seedServicePoints>
+	
+	<columnAliasMappings>
+	
+		<aliasMapping><columnName> Alerts </columnName><xpath><![CDATA[j:sensitivityText]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Residence-City </columnName><xpath><![CDATA[J:PERSON/J:RESIDENCE/J:LOCATIONADDRESS/J:LOCATIONCITYNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:PERSON/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Residence-Street </columnName><xpath><![CDATA[J:PERSON/J:RESIDENCE/J:LOCATIONADDRESS/J:LOCATIONSTREET/J:STREETFULLTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:PERSON/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:PERSON/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Race </columnName><xpath><![CDATA[J:PERSON/J:PERSONPHYSICALDETAILS/J:PERSONRACETEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Sex </columnName><xpath><![CDATA[J:PERSON/J:PERSONPHYSICALDETAILS/J:PERSONSEXTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:PERSON/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:PERSON/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Alias First</columnName><xpath><![CDATA[J:PERSON/J:PERSONALIAS/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Alias Middle </columnName><xpath><![CDATA[J:PERSON/J:PERSONALIAS/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Alias Last</columnName><xpath><![CDATA[J:PERSON/J:PERSONALIAS/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Alias Full</columnName><xpath><![CDATA[J:PERSON/J:PERSONALIAS/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		
+		<aliasMapping><columnName> Incident # </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:ACTIVITYCRIMECASE/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Cause #</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:ACTIVITYDOCKET/J:DOCUMENTDESCRIPTIVEMETADATA/J:DOCUMENTGROUPID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Full Name</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Court Name</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERISSUINGCOURT/J:COURTNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Issuing Date</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERISSUINGDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Level</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:WARRANTLEVELTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Status</columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Charge Description </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:ACTIVITYCRIMECASE/J:CASECHARGE/J:CHARGEDESCRIPTIONTEXT]]></xpath></aliasMapping> 
+		<aliasMapping><columnName> Reason </columnName><xpath><![CDATA[J:ARRESTWARRANT/J:COURTORDERREQUESTREASONTEXT]]></xpath></aliasMapping>
+
+		<aliasMapping><columnName> Ticket #</columnName><xpath><![CDATA[J:CITATION/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Date </columnName><xpath><![CDATA[J:CITATION/J:ACTIVITYDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Time </columnName><xpath><![CDATA[J:CITATION/J:ACTIVITYTIME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Full Name</columnName><xpath><![CDATA[J:CITATION/J:CITATIONSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> First</columnName><xpath><![CDATA[J:CITATION/J:CITATIONSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:CITATION/J:CITATIONSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:CITATION/J:CITATIONSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:CITATION/J:CITATIONSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Code Book</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:INCIDENTVIOLATEDSTATUTE/J:STATUTECODEID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Code </columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:INCIDENTVIOLATEDSTATUTE/J:STATUTEOFFENSEID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Description</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:INCIDENTVIOLATEDSTATUTE/J:STATUTEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Citing Agency</columnName><xpath><![CDATA[J:CITATION/J:CITATIONAGENCY/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Statute </columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEOFFENSEID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Event #</columnName><xpath><![CDATA[J:CITATION/J:ACTIVITYCRIMECASE/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Charge Desc</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Statute Code</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTECODEID/J:ID]]></xpath></aliasMapping>		
+		
+		<aliasMapping><columnName> Status</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERSTATUS]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Status</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Court Order #</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:ACTIVITYDOCKET/J:DOCUMENTDESCRIPTIVEMETADATA/J:DOCUMENTGROUPID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Date Served </columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERSERVICEDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Recall Date</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERRECALLDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Expiration Date</columnName><xpath><![CDATA[j:ProtectionOrder/j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentExpirationDate]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Activity Date</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:ACTIVITYDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Court Name</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERISSUINGCOURT/J:COURTNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Respondent DOB</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Respondent Last </columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Respondent Middle</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Respondent Given</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Respondent Full</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:COURTORDERDESIGNATEDSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Petitioner FullName</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Petitioner DOB</columnName><xpath><![CDATA[J:PROTECTIONORDER/J:PROTECTIONORDERRESTRICTEDPERSON/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		
+		<aliasMapping><columnName> Description </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Disposition Code</columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYDISPOSITION/J:PROPERTYDISPOSITIONCODE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Type Code</columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYTYPECODE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Serial ID</columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYSERIALID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Tag #</columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYRECEIPTID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> LEO Event #</columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYOTHERID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Brand </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYBRANDNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Receipt ID </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYRECEIPTID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Type </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYTYPETEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Possessor </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Property Other ID </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYOTHERID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Property Serial ID </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYSERIALID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Property Model Name </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME]]></xpath></aliasMapping>
+
+		<aliasMapping><columnName> Booking Agency</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGAGENCY]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Event #</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGAGENCYRECORDID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Arresting Agency</columnName><xpath><![CDATA[J:BOOKING/J:ARREST/J:ARRESTAGENCY]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Booking Date</columnName><xpath><![CDATA[J:BOOKING/J:ACTIVITYDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Booking Time</columnName><xpath><![CDATA[J:BOOKING/J:ACTIVITYTIME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Charge Description</columnName><xpath><![CDATA[J:BOOKING/J:ARREST/J:ARRESTCHARGE/J:CHARGEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Court Name</columnName><xpath><![CDATA[J:BOOKING/J:ACTIVITYCOURT/J:COURTNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Full Name</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Sex </columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGSUBJECT/J:PERSONPHYSICALDETAILS/J:PERSONSEXTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Race </columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGSUBJECT/J:PERSONPHYSICALDETAILS/J:PERSONRACETEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Release Date</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGRELEASE/J:ACTIVITYDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Release Time</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGRELEASE/J:ACTIVITYTIME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Arresting Agency</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGAGENCYRECORDID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Booking #</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGDOCUMENTCONTROLID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Arrest Agency </columnName><xpath><![CDATA[J:BOOKING/J:ARREST/J:ARRESTAGENCYRECORDID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Booking Agency</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGAGENCY/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Arrest Agency</columnName><xpath><![CDATA[J:BOOKING/J:ARREST/J:ARRESTAGENCY/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
+		
+		<aliasMapping><columnName> Filling Date</columnName><xpath><![CDATA[J:CASE/J:ACTIVITYDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Log ID</columnName><xpath><![CDATA[J:CASE/J:CASEOTHERID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> LEO Event #</columnName><xpath><![CDATA[J:CASE/J:CASEOTHERID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Assigned Prosecutor</columnName><xpath><![CDATA[J:CASE/J:CASEPARTICIPANTS/J:CASEPROSECUTIONATTORNEY/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Referral Charge </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> First Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Middle Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Case # </columnName><xpath><![CDATA[J:CASE/J:CASEDOCKETID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+				
+		<aliasMapping><columnName> Arrest Date </columnName><xpath><![CDATA[J:ARREST/J:ACTIVITYDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:ARREST/J:ARRESTSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:ARREST/J:ARRESTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:ARREST/J:ARRESTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:ARREST/J:ARRESTSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Time </columnName><xpath><![CDATA[J:ARREST/J:ACTIVITYTIME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> NCIC Code</columnName><xpath><![CDATA[J:ARREST/J:ARRESTCHARGE/J:CHARGESTATUTE/J:STATUTEOFFENSEID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> LEO Event #</columnName><xpath><![CDATA[J:ARREST/J:ARRESTAGENCYRECORDID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Charge</columnName><xpath><![CDATA[J:ARREST/J:ARRESTCHARGE/J:CHARGESTATUTE/J:STATUTEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Code Book</columnName><xpath><![CDATA[J:ARREST/J:ARRESTCHARGE/J:CHARGESTATUTE/J:STATUTECODEID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Charge #</columnName><xpath><![CDATA[J:ARREST/J:ARRESTCHARGE/J:CHARGESEQUENCEID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:ARREST/J:ARRESTSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Date</columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Time</columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYTIME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Event #</columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYCRIMECASE/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Code Book </columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTECODEID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Charge</columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Ticket # </columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:INFRACTION/J:INCIDENTSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>			
+		<aliasMapping><columnName> Agency </columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYPRIMARYORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Charge Statute </columnName><xpath><![CDATA[J:INFRACTION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEOFFENSEID/J:ID]]></xpath></aliasMapping>
+
+		<aliasMapping><columnName> Victim DOB </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTVICTIM/J:VICTIM.PERSON/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Victim Full </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTVICTIM/J:VICTIM.PERSON/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Witness Full </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTWITNESS/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Date </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYDATE]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Time </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYTIME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Category </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTCATEGORY/J:INCIDENTCATEGORYTYPETEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Event # </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>		
+		
+		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYSTATUS/J:STATUSDESCRIPTIONTEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Possessor</columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Disposition </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYDISPOSITION/J:PROPERTYDISPOSITIONCODE]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Brand </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYPHYSICALDETAILS/J:PROPERTYBRANDNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Type </columnName><xpath><![CDATA[J:FIREARM/J:FIREARMTYPEDESCRIPTIONTEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Receipt ID </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYRECEIPTID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Description </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYDESCRIPTIONTEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Serial </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYSERIALID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Other ID </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYOTHERID/J:ID]]></xpath></aliasMapping>		
+		
+		<aliasMapping><columnName> Owner </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYOWNER.PERSON/J:PERSONNAME/J:PERSONFULLNAME]]> </xpath></aliasMapping>
+		<aliasMapping><columnName> Description </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYDESCRIPTIONTEXT]]> </xpath></aliasMapping>
+		<aliasMapping><columnName> Type </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYTYPETEXT]]> </xpath></aliasMapping>		
+		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYSTATUS/J:STATUSTEXT]]> </xpath></aliasMapping>				
+		<aliasMapping><columnName> Evidence ID </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCENUMBERID/J:ID]]> </xpath></aliasMapping>				
+		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]> </xpath></aliasMapping>
+		<aliasMapping><columnName> Taken From </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCETAKENFROM.PERSON/J:PERSONNAME/J:PERSONFULLNAME]]> </xpath></aliasMapping>
+		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:EVIDENCE/J:EVIDENCEITEM.PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME]]> </xpath></aliasMapping>			
+		
+		<aliasMapping><columnName> Brand </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYBRANDNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEMODELCODETEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Year </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEMODELYEARDATE]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Color </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLECOLORPRIMARYTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> State </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEREGISTRATIONLOCATION/J:LOCATIONADDRESS/J:LOCATIONSTATENAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Plate # </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLELICENSEPLATEID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> VIN # </columnName><xpath><![CDATA[J:VEHICLE/J:VEHICLEID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYSTATUS/J:STATUSTEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Property Type </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYTYPETEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Description </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYDESCRIPTIONTEXT]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Updated Date </columnName><xpath><![CDATA[j:lastUpdatedDate]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Updated Time </columnName><xpath><![CDATA[j:lastUpdatedTime]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Property Tag </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYRECEIPTID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Possessor </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Unique ID </columnName><xpath><![CDATA[j:sourceIDText]]></xpath></aliasMapping>		
+
+	</columnAliasMappings>
+
+	<theRoots>
+		<root>
+			<rootName>Person</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>										
+			<presentation>
+				<type>Summary</type>
+				<file>PersonSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>PersonQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>
+
+		<root>
+			<rootName>Arrest</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>ArrestSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>ArrestQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+
+		</root>	
+		<root>
+			<rootName>ArrestWarrant</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>ArrestWarrantSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>ArrestWarrantQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>
+		<root>
+			<rootName>Booking</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>BookingSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>BookingQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>		
+		</root>	
+		<root>
+			<rootName>Case</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>CaseSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>CaseQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>		
+
+		<root>
+			<rootName>Citation</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>CitationSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>CitationQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>	
+		<root>
+			<rootName>Evidence</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>EvidenceSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>EvidenceQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>
+		<root>
+			<rootName>Incident</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>IncidentSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>IncidentQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>				
+
+		<root>
+			<rootName>Infraction</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>InfractionSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>InfractionQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+			
+		</root>		
+		<root>
+			<rootName>Property</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>PropertySummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>PropertyQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>			
+		</root>	
+				
+		<root>
+			<rootName>ProtectionOrder</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>ProtectionOrderSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>ProtectionOrderQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>	
+		
+		<root>
+			<rootName>Vehicle</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>VehicleSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>VehicleQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+
+		</root>				
+
+	</theRoots>
+</implementation>
+</browserImplementations>
