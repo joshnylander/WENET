@@ -113,7 +113,7 @@
 			if(document.all.serialid.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertySerialID/j:ID", document.all.serialid.value.trim(), wildcardValues[0]); }
 			if(document.all.status.value.trim() != '') { xpath += makeXPathString("j:PropertyStatus/j:StatusText", document.all.status.value.trim(), wildcardValues[1]); }
 			if(document.all.desc.value.trim() != '') { xpath += makeXPathString("j:PropertyDescriptionText", document.all.desc.value.trim(), wildcardValues[2]); }
-			if(document.all.tagnum.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertyReceiptID/j:ID", document.all.tagnum.value.trim(), wildcardValues[3]); }
+			if(document.all.tagnum.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertyBarcodeID/j:ID", document.all.tagnum.value.trim(), wildcardValues[3]); }
 		
 			// Brand / make query is the logical OR between Brand and Make 
 			if(document.all.brand.value.trim() != '') { 
