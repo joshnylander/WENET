@@ -652,3 +652,14 @@
 		top.WorkspaceFrame.location = DisplayFile; 
 		}
 	 
+	 function findPersonPhoto(objImg, strGivenName, strSurName, strDOB) {
+	 	if (strGivenName.indexOf("!") < 0) {
+		 	//alert(strSurName + ", " + strGivenName + " - " + strDOB);
+		 	aryDOB = strDOB.split("-");
+		 	strDOB = aryDOB[1] + "/" + aryDOB[2] + "/" + aryDOB[0];
+		 	//strDOB = prompt("Fix DOB:", strDOB);
+		 	var theURL = "/mugshotwebservice/getimage?size=full&perspective=front&firstname=" + strGivenName + "&lastname=" + strSurName + "&dob=" + strDOB;
+		 	//theURL = prompt("The MUGHSOT URL:", theURL);
+		 	objImg.src = theURL;
+		 }
+	 }
