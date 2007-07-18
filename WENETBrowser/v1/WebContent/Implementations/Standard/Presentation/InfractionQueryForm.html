@@ -153,7 +153,7 @@
 			if(document.ControlForm.BPD.checked == true) { ary.push('http://wenet.cob.org/'); }
 
 			var strXPath = makeXPath();
-			strXPath = prompt("XPath: ", strXPath);
+			// strXPath = prompt("XPath: ", strXPath);
 			AddQuery('Infraction', document.HeaderForm.qname.value, strXPath, document.HeaderForm.timeout.value, ary);
 
 			top.SessionDataFrame.totalInfractionQueries += 1;
