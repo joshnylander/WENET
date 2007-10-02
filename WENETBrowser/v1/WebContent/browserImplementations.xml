@@ -478,6 +478,24 @@
 				<file>InstanceDetail.html</file>
 			</presentation>
 		</root>	
+
+		<root>
+			<rootName>Vehicle</rootName>
+			<largeRootIcon></largeRootIcon>
+			<smallRootIcon></smallRootIcon>
+			<presentation>
+				<type>Summary</type>
+				<file>VehicleSummary.html</file>
+			</presentation>
+			<presentation>
+				<type>Query</type>
+				<file>VehicleQueryForm.html</file>
+			</presentation>
+			<presentation>
+				<type>Detail</type>
+				<file>InstanceDetail.html</file>
+			</presentation>
+		</root>				
 		
 	</theRoots>
 </implementation>
