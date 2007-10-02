@@ -111,7 +111,7 @@
 			
 			if(document.all.tnumber.value.trim() != '') { xpath += makeXPathString("j:ActivityID/j:ID", document.all.tnumber.value.trim(), wildcardValues[0]); }
 			
-			if(document.all.tnumber.value.trim() != '') { xpath += makeXPathString("j:ActivityCrimeCase/j:ActivityID/j:ID", document.all.enumber.value.trim(), wildcardValues[5]); }
+			if(document.all.enumber.value.trim() != '') { xpath += makeXPathString("j:ActivityCrimeCase/j:ActivityID/j:ID", document.all.enumber.value.trim(), wildcardValues[5]); }
 
 			if(document.all.tdate.value.trim() != '') { 
 				xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.tdate.value.trim())) + "' and "; 
