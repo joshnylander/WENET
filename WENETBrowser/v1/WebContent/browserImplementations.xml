@@ -166,10 +166,10 @@
 		<aliasMapping><columnName> Receipt ID </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYRECEIPTID/J:ID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Type </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYTYPETEXT]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Possessor </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Property Other ID </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYOTHERID/J:ID]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Property Serial ID </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYSERIALID/J:ID]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Property Model Name </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME]]></xpath></aliasMapping>
-
+		<aliasMapping><columnName> Other ID </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYOTHERID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Serial # </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYSERIALID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME]]></xpath></aliasMapping>
+		
 		<aliasMapping><columnName> Booking Agency</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGAGENCY]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Event #</columnName><xpath><![CDATA[J:BOOKING/J:BOOKINGAGENCYRECORDID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Arresting Agency</columnName><xpath><![CDATA[J:BOOKING/J:ARREST/J:ARRESTAGENCY]]></xpath></aliasMapping>
