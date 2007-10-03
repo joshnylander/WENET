@@ -97,6 +97,9 @@ private char authListBuffer[];
 		queryString = queryString.replaceAll("!namespaces!", URLEncoder.encode(qe.xPathNamespaces, "UTF-8"));
 		queryString = queryString.replaceAll("!xpath-esc!", URLEncoder.encode(qe.xPathQuery, "UTF-8"));
 		queryString = queryString.replaceAll("!namespaces-esc!", URLEncoder.encode(qe.xPathQuery, "UTF-8"));
+		
+		System.out.println(queryString);
+		
 		} catch(Exception exc) { }
 		
 		// Call the service point and pass the XPath query

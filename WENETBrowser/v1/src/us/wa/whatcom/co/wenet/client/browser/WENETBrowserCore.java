@@ -111,7 +111,7 @@ public String selectedDisplayScheme = "Default";
 			KeyStore store = KeyStore.getInstance("PKCS12", "BC");
 		        store.load(null, null);
 	        	store.setKeyEntry("WENET Browser Proxy Cert", proxyPrivateKey, null, newCerts);	
-			FileOutputStream fOut = new FileOutputStream(saveCertsDirectory + "\\" + userEmail + ".p12");
+			FileOutputStream fOut = new FileOutputStream(saveCertsDirectory + File.separator + userEmail + ".p12");
 	        	store.store(fOut, saveCertsPassword.toCharArray());
 			fOut.flush();
 			fOut.close();
@@ -153,7 +153,7 @@ public String selectedDisplayScheme = "Default";
 		for(int i=0; i<fAry.length; i++) {
 			if(fAry[i].toUpperCase().endsWith(email) == true) {
 			
-				File workSessionFile = new File(dataPath + fAry[i] + "\\sessionData.xml");
+				File workSessionFile = new File(dataPath + fAry[i] + File.separator + "sessionData.xml");
 				if(workSessionFile.exists() == true) {
 					SessionReader sr = new SessionReader(this);
 					sr.readXMLFile(workSessionFile.getAbsolutePath());
