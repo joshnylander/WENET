@@ -136,6 +136,8 @@
 
 			if(document.all.eventnum.value.trim() != '') { xpath += "j:ActivityCrimeCase/j:ActivityID/j:ID='" + document.all.eventnum.value.trim() + "' and "; } 
 
+			if(document.all.ticketnum.value.trim() != '') { xpath += "j:ActivityID/j:ID='" + document.all.ticketnum.value.trim() + "' and "; } 
+
 
 			// Strip off the last 'and' and end the xpath node test
 			var lastAnd = xpath.lastIndexOf('and');
@@ -226,7 +228,8 @@
 <td id=InfractionPanel style="visibility:hidden;display:none;" align=center width=75% height=200>
 <br><br>
 	<form name=InfractionForm>
-	Ticket #: <input class=QUERYINPUTS type=text id=eventnum style="width:15%" onClick="focusCtl('');"> <br><br>
+	Ticket #: <input class=QUERYINPUTS type=text id=ticketnum style="width:15%" onClick="focusCtl('');"> <br><br>
+	Event #: <input class=QUERYINPUTS type=text id=eventnum style="width:15%" onClick="focusCtl('');"> <br><br>
 
 	Offense Code: <input onClick="focusCtl('offcode');" class=QUERYINPUTS type=text id=offcode style="width:15%"><br><br>
 	Offense Description: <input class=QUERYINPUTS onClick="focusCtl('offdesc');" type=text id=offdesc style="width:50%"><br><br><br>
