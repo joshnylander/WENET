@@ -7,10 +7,22 @@
 <script src="BrowserControl.js"></script>
 </head>
 
-<body onLoad="driveTree(); showNavigation(); driveNavigationTime();" id=NAVIGATIONTREEBODY class="NAVIGATIONFONTS">
+<body onLoad="testSessionLoad();" id=NAVIGATIONTREEBODY class="NAVIGATIONFONTS">
 <script type="text/javascript">
 <!--
-
+	function testSessionLoad() {
+		//Test to see if session loaded yet or not
+		var xml = top.SessionDataFrame.sessionDocument;
+		if(xml == undefined) {
+			//If not, run this again in a 1000 millisecongs
+			setTimeout("testSessionLoad()", 1000);
+		} else {
+			//If session loaded, build nav tree
+			driveTree();
+			showNavigation();
+			driveNavigationTime();
+		}
+	}
 
 	function driveNavigationTime() {
 		var date = new Date();

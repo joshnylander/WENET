@@ -1,35 +1,47 @@
 <html>
 <head>
 	<title> WENET Browser </title>
-	<link rel="stylesheet" type="text/css" href="" />
+	<link rel="stylesheet" type="text/css" href="themes\default\DefaultTheme.css" />
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
 	<script src="BrowserControl.js"></script>
 	
 	<script type="text/javascript">
 	<!--
-		// Wait until the session document is completely loaded
-		var xml = top.SessionDataFrame.sessionDocument;
-		if(xml == undefined) { setTimeout("top.WorkspaceFrame.location='Workspace.html'", 1000); }
-
-		var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
-		var centerImage = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='Workspace_SplashImage']/entryValue");
-		var themeMessage = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='Workspace_ThemeMessage']/entryValue");
-		if(pageCSS != null) { document.styleSheets[0].href = pageCSS.text; }
+		//This code is no longer in use as of 20071010, it was causing more grief then the styles issue is worth!
+		var pageCSS;
+		var centerImage;
+		var themeMessage;
+		
+		function testSessionLoad() {
+			// Wait until the session document is completely loaded
+			var xml = top.SessionDataFrame.sessionDocument;
+			if(xml == undefined) {
+				//If not, run this again in a 1000 millisecongs
+				setTimeout("testSessionLoad()", 1000);
+				//We will use the default value for now
+			} else {
+				//Read values from session document
+				var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+				var centerImage = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='Workspace_SplashImage']/entryValue");
+				var themeMessage = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='Workspace_ThemeMessage']/entryValue");
+				if(pageCSS != null) { document.styleSheets[0].href = pageCSS.text; }
+				drawWorkspace();
+			}
+		}
+		
+		function drawWorkspace() {
+			WorkspaceContent.innerHTML = "<center><br><br><img src='" + centerImage.text + "'><p class=WORKSPACE_MESSAGEFONT>" + themeMessage.text + "</p></center>";
+		}
 	-->
 	</script>
 
 </head>
-<body id=WORKSPACEBODY>
+<body id=WORKSPACEBODY">
 	<div id="WorkspaceContent">
 	<center><br><br>
-	<script type="text/javascript">
-	<!--
-		if(centerImage != null) { document.writeln("<img src='" + centerImage.text + "'>"); }
-
-		if(themeMessage != null) { document.writeln("<p class=WORKSPACE_MESSAGEFONT>" + themeMessage.text + "</p>"); }
-	-->
-	</script>
+	<img src='themes/default/images/SplashLogo.jpg'>
+	<p class=WORKSPACE_MESSAGEFONT></p>
 	</center>
 	</div>
 </body>
