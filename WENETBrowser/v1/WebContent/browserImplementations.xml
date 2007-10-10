@@ -91,6 +91,9 @@
 	</seedServicePoints>
 	
 	<columnAliasMappings>
+		<aliasMapping><columnName> Unique ID </columnName><xpath><![CDATA[j:sourceIDText]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last Updated Time </columnName><xpath><![CDATA[j:lastUpdatedTime]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Last Updated Date </columnName><xpath><![CDATA[j:lastUpdatedDate]]></xpath></aliasMapping>
 	
 		<aliasMapping><columnName> Alerts </columnName><xpath><![CDATA[j:sensitivityText]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Residence-City </columnName><xpath><![CDATA[J:PERSON/J:RESIDENCE/J:LOCATIONADDRESS/J:LOCATIONCITYNAME]]></xpath></aliasMapping>
@@ -131,7 +134,7 @@
 		<aliasMapping><columnName> DOB </columnName><xpath><![CDATA[J:CITATION/J:CITATIONSUBJECT/J:PERSONBIRTHDATE]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Code Book</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:INCIDENTVIOLATEDSTATUTE/J:STATUTECODEID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Code </columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:INCIDENTVIOLATEDSTATUTE/J:STATUTEOFFENSEID]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Description</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:INCIDENTVIOLATEDSTATUTE/J:STATUTEDESCRIPTIONTEXT]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Description</columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:INCIDENTEVENT/J:EVENTDESCRIPTIONTEXT]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Citing Agency</columnName><xpath><![CDATA[J:CITATION/J:CITATIONAGENCY/J:ORGANIZATIONNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Statute </columnName><xpath><![CDATA[J:CITATION/J:CITATIONVIOLATION/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGESTATUTE/J:STATUTEOFFENSEID/J:ID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Event #</columnName><xpath><![CDATA[J:CITATION/J:ACTIVITYCRIMECASE/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>
@@ -279,8 +282,7 @@
 		<aliasMapping><columnName> Updated Time </columnName><xpath><![CDATA[j:lastUpdatedTime]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Property Tag </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYRECEIPTID/J:ID]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Make </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME]]></xpath></aliasMapping>		
-		<aliasMapping><columnName> Possessor </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>		
-		<aliasMapping><columnName> Unique ID </columnName><xpath><![CDATA[j:sourceIDText]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Possessor </columnName><xpath><![CDATA[J:VEHICLE/J:PROPERTYPOSSESSOR.ORGANIZATION/J:ORGANIZATIONNAME]]></xpath></aliasMapping>				
 
 	</columnAliasMappings>
 
