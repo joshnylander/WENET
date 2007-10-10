@@ -326,14 +326,14 @@ Traffic Accident: <p class=Highlight>[!CitationViolation/IncidentCategory/Incide
 <br>
 </div>
 
-<div id=CitationActivityCrimePotentialCharge style="display:none;visibility:hidden;">
+<div id=ActivityCrimePotentialCharge style="display:none;visibility:hidden;">
 <table border=0 width=70%>
-<tr><td width=40%> Statute/Code: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteCodeID/ID!]</p></td></tr>
-<tr><td> Statute/Code Violated: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteOffenseID/ID!]</p></td></tr>
-<tr><td> Statute/Code Description: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeStatute/StatuteDescriptionText!]</p></td></tr>
-<tr><td> Recommended Bail Amount: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeRecommendedBailAmount!]</p><br></td></tr>
-<tr><td> Fine Amount: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/CitationFineAmount!]</p></td></tr>
-<tr><td> Sentence Term: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeSentence/SentenceTerm!]</p></td></tr>
+<tr><td width=40%> Statute/Code: </td><td> <p class=Highlight>[!ChargeStatute/StatuteCodeID/ID!]</p></td></tr>
+<tr><td> Statute/Code Violated: </td><td> <p class=Highlight>[!ChargeStatute/StatuteOffenseID/ID!]</p></td></tr>
+<tr><td> Statute/Code Description: </td><td> <p class=Highlight>[!ChargeStatute/StatuteDescriptionText!]</p></td></tr>
+<tr><td> Recommended Bail Amount: </td><td> <p class=Highlight>[!ChargeRecommendedBailAmount!]</p><br></td></tr>
+<tr><td> Fine Amount: </td><td> <p class=Highlight>[!CitationFineAmount!]</p></td></tr>
+<tr><td> Sentence Term: </td><td> <p class=Highlight>[!ChargeSentence/SentenceTerm!]</p></td></tr>
 </table>
 </div>
 
@@ -602,7 +602,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	citationRoot[3] = new Array("CitationIssuedLocation", document.all.AddressLocationFullText, "Citation Location", null, null);
 	citationRoot[4] = new Array("CitationSubject", null, null, "Citation Subject", "PersonName/PersonFullName");
 	citationRoot[5] = new Array("CitationIssuingOfficial", null, null, "Issuing Official", "PersonName/PersonFullName");
-	citationRoot[6] = new Array("CitationViolation/ActivityCrimePotentialCharge", document.all.CitationActivityCrimePotentialCharge, "Charge", null, null);
+	citationRoot[6] = new Array("CitationViolation/ActivityCrimePotentialCharge", document.all.ActivityCrimePotentialCharge, "Charge", null, null);
 
 	var arrestRoot = new Array();
 	arrestRoot[0] = new Array("", document.all.ArrestDetails, null, null, null);
@@ -642,6 +642,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	infractionRoot.push(new Array("IncidentLocation", document.all.AddressLocationFullText, "Incident Location", null, null));
 	infractionRoot.push(new Array("IncidentSubject", null, null, "Subject", "PersonName/PersonFullName"));
 	infractionRoot.push(new Array("ActivityOfficial.Enforcement", null, null, "Officer", "PersonName/PersonFullName"));
+	infractionRoot.push(new Array("ActivityCrimePotentialCharge", document.all.ActivityCrimePotentialCharge, "Charge", null, null));
 
 	var incidentRoot = new Array();
 	incidentRoot.push(new Array("", document.all.IncidentDetails, null, null, null));
