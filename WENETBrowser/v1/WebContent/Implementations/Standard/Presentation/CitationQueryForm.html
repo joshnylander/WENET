@@ -76,7 +76,7 @@
 		
 		var wildcardAry = new Array();
 		wildcardAry[0] = new Array('tnumber', "Ticket Number");
-		wildcardAry[1] = new Array('sdesc', "Statute Description");
+		wildcardAry[1] = new Array('code', "Statute Code");
 		wildcardAry[2] = new Array('middle', "Middle Name");
 		wildcardAry[3] = new Array('last', "Last Name");
 		wildcardAry[4] = new Array('first', "First Name");
@@ -124,7 +124,7 @@
 					}
 				}
 
-			if(document.all.code.value.trim() != '') { xpath += "j:CitationViolation/j:IncidentViolatedStatute/j:StatuteOffenseID='" + document.all.code.value.trim() + "' and "; }
+			if(document.all.code.value.trim() != '') { xpath += makeXPathString("j:CitationViolation/j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteCodeID/j:ID", document.all.code.value.trim(), wildcardValues[1]); }
 			// if(document.all.sdesc.value.trim() != '') { xpath += makeXPathString("j:CitationViolation/j:IncidentViolatedStatute/j:StatuteDescriptionText", document.all.sdesc.value.trim(), wildcardValues[1]); }
 
 			if(document.all.last.value.trim() != '') { xpath += makeXPathString("j:CitationSubject/j:PersonName/j:PersonSurName", document.all.last.value.trim(), wildcardValues[3]); }
