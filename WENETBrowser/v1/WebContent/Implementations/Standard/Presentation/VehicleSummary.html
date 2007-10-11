@@ -22,14 +22,25 @@
 		var queryErrors; 
 		var queryStatus; 
 		var displayColumns;
+		var xpath = "asdf";
 
-		query = xml.selectSingleNode("session/results/query[queryName='" + queryName + "']");
+		// This nasty bit of code is necessary because MSXML is very arbitrary about how it stores
+		// its text strings, when a query is freshly returned the queryName has an extra space appended
+		// to it, but then on subsequent clicks on the navigation menu it works... this is a patch.
+
+		query = xml.selectNodes("session/results/query[queryName='" + queryName + "']");
+		if(query.length == 0) { 
+			queryName += " ";
+			query = xml.selectNodes("session/results/query[queryName='" + queryName + "']");
+			if(query.length == 0) { alert("Nope2"); } 
+			}
+
 		resultLists = xml.selectNodes("session/results/query[queryName='" + queryName + "']/resultList");
 		resultListErrors = xml.selectNodes("session/results/query[queryName='" + queryName + "']/resultList/resultError");
 		queryErrors = xml.selectNodes("session/results/query[queryName='" + queryName + "']/queryErrors/error/description");
 		queryStatus = xml.selectNodes("session/results/query[queryName='" + queryName + "']/queryStatus/status");
 		displayColumns = xml.selectNodes("session/theRoots/root[rootName='Vehicle']/summaryColumn");
-
+		xpath = xml.selectSingleNode("session/results/query[queryName='" + queryName + "']/xPath").text;
 
 		//---------------------------------------------------------------------------------	
 		// Make a list of all the unique column headers for all the results
