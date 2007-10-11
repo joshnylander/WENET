@@ -22,6 +22,7 @@
 		var queryErrors; 
 		var queryStatus; 
 		var displayColumns;
+		var xpath = "asdf";
 
 		// This nasty bit of code is necessary because MSXML is very arbitrary about how it stores
 		// its text strings, when a query is freshly returned the queryName has an extra space appended
@@ -39,7 +40,7 @@
 		queryErrors = xml.selectNodes("session/results/query[queryName='" + queryName + "']/queryErrors/error/description");
 		queryStatus = xml.selectNodes("session/results/query[queryName='" + queryName + "']/queryStatus/status");
 		displayColumns = xml.selectNodes("session/theRoots/root[rootName='Property']/summaryColumn");
-
+		xpath = xml.selectSingleNode("session/results/query[queryName='" + queryName + "']/xPath").text;
 
 		//---------------------------------------------------------------------------------	
 		// Make a list of all the unique column headers for all the results
@@ -92,6 +93,14 @@
 				var ary = new Array();
 				ary.push(serviceURI);
 				ary.push(results[k].selectSingleNode("instanceURL").text);
+
+				// Compile the various sort columns into a single field
+				var col = "";
+				var full = results[k].selectSingleNode("summary[name='J:PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME']/value");
+				var dob = results[k].selectSingleNode("summary[name='J:PROPERTY/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME']/value");
+				if(full != undefined) { col += " " + full.text; }
+				if(dob != undefined) { col += " " + dob.text; }
+				ary.push(col);
 
 				for(j=0; j<uniqueColumns.length; j++) {						
 					var val = results[k].selectSingleNode("summary[name='" + uniqueColumns[j] + "']/value");
@@ -245,7 +254,7 @@
 
 		function driveDisplay(sortColumn) {
 
-			if(sortColumn == undefined) { sortColumn = "J:PROPERTY/J:PROPERTYASSIGNEDIDDETAILS/J:PROPERTYOTHERID"; }
+			if(sortColumn == undefined) { sortColumn = "Composite"; }
 			if(sortColumn == 'AGENCY') { sortColumn = undefined; }
 
 			//---------------------------------------------------------------------------------	
@@ -291,19 +300,27 @@
 					sortAscending = true;
 					}
 
-				// Find the column they want sorted on				
-				for(i=0; i<uniqueColumns.length; i++) {
-					if(uniqueColumns[i] == sortColumn) {
-
-						// We have to increment the column because we add extra columns into
-						// the beginning of the results array, so we have to compensate
-						i += 2;
-						resultData.sortOn(i);
-						previousSortColumn = sortColumn;
-						sortColumnID = i;						
-						break;
-						}
+				if(sortColumn == 'Composite') {
+					resultData.sortOn(2);
+					previousSortColumn = sortColumn;
+					sortColumnID = 2;											
 					}
+				else
+					{
+					// Find the column they want sorted on
+					for(i=0; i<uniqueColumns.length; i++) {
+						if(uniqueColumns[i] == sortColumn) {
+	
+							// We have to increment the column because we add extra columns into
+							// the beginning of the results array, so we have to compensate
+							i += 3;
+							resultData.sortOn(i);
+							previousSortColumn = sortColumn;
+							sortColumnID = i;						
+							break;
+							}
+						}
+					}				
 				}
 
 			//---------------------------------------------------------------------------------
