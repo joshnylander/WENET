@@ -93,6 +93,14 @@
 				var ary = new Array();
 				ary.push(serviceURI);
 				ary.push(results[k].selectSingleNode("instanceURL").text);
+				
+				// Compile the various sort columns into a single field
+				var col = "";
+				var full = results[k].selectSingleNode("summary[name='J:VEHICLE/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMAKENAME']/value");
+				var dob = results[k].selectSingleNode("summary[name='J:VEHICLE/J:VEHICLEMODELCODETEXT']/value");
+				if(full != undefined) { col += " " + full.text; }
+				if(dob != undefined) { col += " " + dob.text; }
+				ary.push(col);	
 
 				for(j=0; j<uniqueColumns.length; j++) {						
 					var val = results[k].selectSingleNode("summary[name='" + uniqueColumns[j] + "']/value");
@@ -189,7 +197,7 @@
 
 		function writeColumnHeaders(sortColumn) {
 		
-			txt = "<tbody><tr align=center id=HeaderRow class=SUMMARY_HEADERROW><td>Agency</td>";
+			txt = "<tbody><tr align=center id=HeaderRow class=SUMMARY_HEADERROW><td><a href='#' class=SUMMARY_HEADERFONT onClick=\"driveDisplay('AGENCY');\"> Agency</td>";
 
 			for(i=0; i<displayOrderColumns.length; i++) {
 				var col = displayOrderColumns[i];
@@ -246,6 +254,9 @@
 
 		function driveDisplay(sortColumn) {
 
+			if(sortColumn == undefined) { sortColumn = "Composite"; }
+			if(sortColumn == 'AGENCY') { sortColumn = undefined; }
+
 			//---------------------------------------------------------------------------------	
 			// Make an array representing the indexes into the results ary of the ordered columns
 
@@ -290,19 +301,27 @@
 					sortAscending = true;
 					}
 
-				// Find the column they want sorted on				
-				for(i=0; i<uniqueColumns.length; i++) {
-					if(uniqueColumns[i] == sortColumn) {
-
-						// We have to increment the column because we add extra columns into
-						// the beginning of the results array, so we have to compensate
-						i += 2;
-						resultData.sortOn(i);
-						previousSortColumn = sortColumn;
-						sortColumnID = i;						
-						break;
-						}
+				if(sortColumn == 'Composite') {
+					resultData.sortOn(2);
+					previousSortColumn = sortColumn;
+					sortColumnID = 2;											
 					}
+				else
+					{
+					// Find the column they want sorted on
+					for(i=0; i<uniqueColumns.length; i++) {
+						if(uniqueColumns[i] == sortColumn) {
+	
+							// We have to increment the column because we add extra columns into
+							// the beginning of the results array, so we have to compensate
+							i += 3;
+							resultData.sortOn(i);
+							previousSortColumn = sortColumn;
+							sortColumnID = i;						
+							break;
+							}
+						}
+					}				
 				}
 
 			//---------------------------------------------------------------------------------
