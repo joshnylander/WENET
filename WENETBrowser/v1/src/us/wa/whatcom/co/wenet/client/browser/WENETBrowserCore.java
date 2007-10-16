@@ -307,7 +307,8 @@ public String selectedDisplayScheme = "Default";
 	        v3CertGen.setIssuerDN(PrincipalUtil.getSubjectX509Principal((X509Certificate)caCert));
 	        
 	        v3CertGen.setNotBefore(new java.util.Date(System.currentTimeMillis() - ((1000L * 60 * 60 * 24) * 5)));	        
-	        v3CertGen.setNotAfter(new java.util.Date(System.currentTimeMillis() + (1000L * 60 * 60 * 24) ));
+	        //v3CertGen.setNotAfter(new java.util.Date(System.currentTimeMillis() + (1000L * 60 * 60 * 24) ));
+	        v3CertGen.setNotAfter(new java.util.Date(System.currentTimeMillis() + (1000L * 60 * 60 * 24 * 120) ));
 	        
 	        v3CertGen.setSubjectDN(new X509Principal(order, attrs));
 	        v3CertGen.setPublicKey(proxyPublicKey);

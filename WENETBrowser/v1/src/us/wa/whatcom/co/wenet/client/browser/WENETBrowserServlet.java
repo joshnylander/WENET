@@ -408,16 +408,15 @@ try {		ServletContext sc = getServletContext();
 			if(resultList == null) {
 				out.print("<output><ServicePoints>0</ServicePoints><Results>0</Results></output>");
 				out.close();
-				}
-				
-			int totalResults = 0;
-			for(int i=0; i<resultList.size(); i++) {
-				WENETBrowserCore.ResultsMapping rm = (WENETBrowserCore.ResultsMapping)resultList.get(i);
-				totalResults += rm.totalResults;
-				}
-				
-			out.print("<output><ServicePoints>" + resultList.size() + "</ServicePoints><Results>" + totalResults + "</Results></output>");
-			out.close();
+			} else {				
+				int totalResults = 0;
+				for(int i=0; i<resultList.size(); i++) {
+					WENETBrowserCore.ResultsMapping rm = (WENETBrowserCore.ResultsMapping)resultList.get(i);
+					totalResults += rm.totalResults;
+				}				
+				out.print("<output><ServicePoints>" + resultList.size() + "</ServicePoints><Results>" + totalResults + "</Results></output>");
+				out.close();
+			}
 			return;				
 			}
 			
