@@ -1,4 +1,4 @@
-BODY { background-color: #444444; color:#ffffff; }
+BODY { background-color: #444444; color:#ffffff; font-family:Arial;}
 .ALERT {
 	color: #FF0000;
 	text-decoration: blink;
@@ -14,8 +14,8 @@ a.NAVHoverButton { margin-left:0px; display:block; width:100%; height:100%; }
 a.NAVHoverButton:hover { background:#d1d2a4; }
 
 #QUERYBODY { font-weight:bold; font-size:15px/1; }
-#QUERYHEADER { margin-left:.5cm; text-decoration:underline; font-weight:bold; font-size:150%; font-family:Times; color:#000000; }
-#QUERYNAME { text-decoration:normal; font-weight:bold; font-size:100%; font-family:Times; color:#000000; }
+#QUERYHEADER { margin-left:.5cm; text-decoration:underline; font-weight:bold; font-size:150%; font-family:Arial; color:#000000; }
+#QUERYNAME { text-decoration:normal; font-weight:bold; font-size:100%; font-family:Arial; color:#000000; }
 #QUERYSEARCHPARAMETERS { text-decoration:normal; font-weight:bold; font-size:80%; font-family:arial; background-color:#363b66; visibility:hidden; display:none; color:#ffffff;}
 #QUERYSERVICEPOINTSTABLE { text-decoration:normal; font-weight:bold; font-size:80%; font-family:arial; background-color:#363b66; visibility:hidden; display:none; color:#ffffff;} 
 INPUT.QUERYSEARCHPARAMETERSRADIO { width:15;height:15;}
@@ -26,8 +26,8 @@ TABLE.QUERYBACKGROUNDTABLE { width:90%; background-color:#d1d2a4; }
 INPUT.QUERYINPUTS { background-color:#9ec9ac; color:#000000;font-weight:bold;}
 
 
-P.QUERYSPLASH_HEADERFONT1 { font-size:30pt;font-weight:bold;font-family:Times;color:#f3f4d6;}
-P.QUERYSPLASH_HEADERFONT2 { font-size:30pt;font-family:Times;color:#e2e3c5;}
+P.QUERYSPLASH_HEADERFONT1 { font-size:30pt;font-weight:bold;font-family:Arial;color:#f3f4d6;}
+P.QUERYSPLASH_HEADERFONT2 { font-size:30pt;font-family:Arial;color:#e2e3c5;}
 TABLE.QUERYSPLASH_HEADERFONT3 { font-size:16pt;font-family:Arial;color:#000000; background:#f3f4d6;}
 P.QUERYSPLASH_MESSAGEFONT { text-decoration:italics;font-weight:bold;font-size:14pt;font-family:Arial;color:#000000; }
 IMG.QUERYSPLASH_IMAGE { }
@@ -42,8 +42,8 @@ TR.SUMMARY_SORTDETAILROW {background-color:#0066FF; font-size:130%; color:#fffff
 TR.SUMMARY_SORTEDGROUPROW1 { background-color:#ffffff;text-align:center;}
 TR.SUMMARY_SORTEDGROUPROW2 { background-color:#ffffff;text-align:center;}
 /* TR.SUMMARY_SORTEDGROUPROW2 { background-color:#aaaaaa;text-align:center;} */
-A.SUMMARY_HEADERFONT {color:black;text-decoration:none;font-weight:normal;font-size:100%;font-family:Times;}
-A.SUMMARY_HEADERSELECTEDFONT {color:black;text-decoration:underline;font-weight:bold;font-size:120%;font-family:Times;}
+A.SUMMARY_HEADERFONT {color:black;text-decoration:none;font-weight:normal;font-size:100%;font-family:Arial;}
+A.SUMMARY_HEADERSELECTEDFONT {color:black;text-decoration:underline;font-weight:bold;font-size:120%;font-family:Arial;}
 A.SUMMARY_INSTANCELINK { color:black;text-decoration:normal;font-weight:bold;font-size:100%;font-family:Arial; }
 TABLE.SUMMARY_OPTIONS { background:ffffff;} 
 
