@@ -84,6 +84,7 @@
 		var selectedCtl = 0;
 		var wildcardValues = new Array();
 		for(i=0; i<wildcardAry.length; i++) { wildcardValues[i] = 0; }
+		wildcardValues[5] = 1;
 	
 		function focusCtl(theCtl) {
 			hidePanel(document.all.QUERYSEARCHPARAMETERS);
@@ -126,7 +127,8 @@
 				}
 
 			if(document.all.causenum.value.trim() != '') { xpath += makeXPathString("j:ArrestWarrant/j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentGroupID", document.all.causenum.value.trim(), wildcardValues[4]); }
-			if(document.all.issuing.value.trim() != '') { xpath += makeXPathString("j:CourtOrderIssuingCourt/j:CourtName", document.all.issuing.value.trim(), wildcardValues[5]); }
+			issuingangy = document.all.issuing.options[document.all.issuing.selectedIndex].value;
+			if(issuingangy.trim() != '') { xpath += makeXPathString("j:CourtOrderIssuingCourt/j:CourtName", issuingangy.trim(), wildcardValues[5]); }
 
 			if(document.all.issuedate.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.issuedate.value.trim())) + "' and "; }
 			if(document.all.datestart.value.trim() != '' && document.all.dateend.value.trim() != '') { 
@@ -232,15 +234,16 @@
 <table border=0 class="QUERYFONTS">
 <tr><td>Issuing Court:</td><td><!--  <input class=QUERYINPUTS type=text size=10 onClick="focusCtl('issuing');" id=issuing> -->
 <select class=QUERYINPUTS size=1 onClick="focusCtl('issuing');" id=issuing>
-<option value="S37">Whatcom County Superior Court</option>
-<option value="WHD">Whatcom County District Court</option>
-<option value="BLM">Bellingham Municipal Court</option>
-<option value="BMN">Blaine Municipal Court</option>
-<option value="ENM">Everson Municipal Court</option>
-<option value="FEM">Ferndale Municipal Court</option>
-<option value="LUM">Lummi Tribal Court</option>
-<option value="NIT">Nooksack Tibal Municipal Court</option>
-<option value="SMM">Sumas Municipal Court</option>
+<option value=""></option>
+<option value="WHATCOM CO SUPERIOR">Whatcom County Superior Court</option>
+<option value="WHATCOM CO DISTRICT">Whatcom County District Court</option>
+<option value="bellingham">Bellingham Municipal Court</option>
+<option value="blaine">Blaine Municipal Court</option>
+<option value="everson">Everson Municipal Court</option>
+<option value="ferndale">Ferndale Municipal Court</option>
+<option value="lummi">Lummi Tribal Court</option>
+<option value="nooksack">Nooksack Tibal Municipal Court</option>
+<option value="sumas">Sumas Municipal Court</option>
 </select>
 </td></tr>
 <tr><td>Court Cause Number:</td><td> <input class=QUERYINPUTS onClick="focusCtl('causenum');" type=text id=causenum> </td></tr>
