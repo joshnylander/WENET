@@ -429,7 +429,7 @@
 	
 				for(i=0; i<resultLists.length; i++) {
 					var serviceURI = resultLists[i].selectSingleNode("serviceURI");
-					var serviceAlias = xml.selectSingleNode("session/services/service[serviceURI='" + serviceURI.text + "']/alias")
+					var serviceAlias = xml.selectSingleNode("session/services/service[serviceURI='" + serviceURI.text + "']/alias");
 					var errors = resultLists[i].selectNodes("resultError");
 					txt += "<br><br><u>" + serviceURI + "</u><br>";
 					for(k=0; k<errors.length; k++) {
