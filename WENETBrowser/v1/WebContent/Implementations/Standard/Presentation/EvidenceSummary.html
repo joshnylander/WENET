@@ -410,8 +410,18 @@
 					for(k=0; k<errors.length; k++) {
 						txt += errors[k].text + "<br><br>";
 						}
+						//Note any error code 4s and display friendly message at top of screen
+						if (errors[k].attributes.getNamedItem("code").nodeValue == "4") {
+							if (document.all('ErrorDisplay').innerHTML.length > 1) {
+								document.all('ErrorDisplay').innerHTML = document.all('ErrorDisplay').innerHTML + "; ";
+								}
+							document.all('ErrorDisplay').innerHTML = document.all('ErrorDisplay').innerHTML + serviceAlias.text;
+							}			
+						}
 					}
-	
+				if (document.all('ErrorDisplay').innerHTML.length > 1) {
+					document.all('ErrorDisplay').innerHTML = document.all('ErrorDisplay').innerHTML + " Maximum Records Reached!"
+					}
 				txt += "</fieldset></td></td></table></center><br><br>";
 				}
 
@@ -492,7 +502,7 @@
 	-->
 	</script>
 	
-	<div id="QuickJump" style="position:absolute;top:40px;left:2%"></div>
+	<div id="QuickJump" style="position:absolute;top:40px;left:2%"></div><div id="ErrorDisplay" style="position:absolute;top:40px;left:50%;text-decoration: blink;color: #FF0000"></div>
 	<img style="position:absolute;top:40px;left:90%" src="../images/print_icon.gif" onClick="window.print();" />
 	</p>
 
