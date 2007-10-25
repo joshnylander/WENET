@@ -200,7 +200,7 @@
 		<aliasMapping><columnName> LEO Event #</columnName><xpath><![CDATA[J:CASE/J:CASEOTHERID/J:ID]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Assigned Prosecutor</columnName><xpath><![CDATA[J:CASE/J:CASEPARTICIPANTS/J:CASEPROSECUTIONATTORNEY/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Referral Charge </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYCRIMEPOTENTIALCHARGE/J:CHARGEDESCRIPTIONTEXT]]></xpath></aliasMapping>
-		<aliasMapping><columnName> Full Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
+		<aliasMapping><columnName> Offender Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONFULLNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> First Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Middle Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>
 		<aliasMapping><columnName> Last Name </columnName><xpath><![CDATA[J:CASE/J:ACTIVITYSUSPECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>
