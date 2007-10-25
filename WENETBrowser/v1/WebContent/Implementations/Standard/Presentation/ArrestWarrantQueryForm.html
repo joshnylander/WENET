@@ -84,6 +84,8 @@
 		var selectedCtl = 0;
 		var wildcardValues = new Array();
 		for(i=0; i<wildcardAry.length; i++) { wildcardValues[i] = 0; }
+		wildcardValues[2] = 2;
+		wildcardValues[0] = 2;
 	
 		function focusCtl(theCtl) {
 			hidePanel(document.all.QUERYSEARCHPARAMETERS);
