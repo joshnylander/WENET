@@ -85,6 +85,7 @@
 		for(i=0; i<wildcardAry.length; i++) { wildcardValues[i] = 0; }
 		wildcardValues[3] = 2;
 		wildcardValues[4] = 2;
+		wildcardValues[2] = 1;
 
 		// The default value for the log / prosecutor ID field is "contains"
 		wildcardValues[0] = 1;
@@ -116,7 +117,7 @@
 			if(document.all.charge.value.trim() != '') { xpath += makeXPathString("j:ActivityCrimePotentialCharge/j:ChargeDescriptionText", document.all.charge.value.trim(), wildcardValues[1]); }
 			if(document.all.pros.value.trim() != '') { xpath += makeXPathString("j:CaseParticipants/j:CaseProsecutionAttorney/j:PersonName/j:PersonFullName", document.all.pros.value.trim(), wildcardValues[2]); }
 
-			if(document.all.prosid.value.trim() != '') { xpath += makeXPathString("j:CaseTrackingID/j:ID", document.all.prosid.value.trim(), wildcardValues[0]); }
+			//if(document.all.prosid.value.trim() != '') { xpath += makeXPathString("j:CaseTrackingID/j:ID", document.all.prosid.value.trim(), wildcardValues[0]); }
 
 			if(document.all.prosdate.value.trim() != '') { 
 				xpath += "j:CaseTrackingID/j:IDEffectiveDate >= '" + makeTimestamp(convertDate(document.all.prosdate.value.trim())) + "' and ";
