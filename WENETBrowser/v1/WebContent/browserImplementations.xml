@@ -245,7 +245,8 @@
 		<aliasMapping><columnName> Last </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONSURNAME]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> First </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONGIVENNAME]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Middle </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:PERSONNAME/J:PERSONMIDDLENAME]]></xpath></aliasMapping>		
-		<aliasMapping><columnName> Event # </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>		
+		<aliasMapping><columnName> Event # </columnName><xpath><![CDATA[J:INCIDENT/J:ACTIVITYID/J:ID]]></xpath></aliasMapping>
+		<aliasMapping><columnName> S# </columnName><xpath><![CDATA[J:INCIDENT/J:INCIDENTSUBJECT/J:SUBJECTID/J:ID]]></xpath></aliasMapping>		
 		
 		<aliasMapping><columnName> Status </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYSTATUS/J:STATUSDESCRIPTIONTEXT]]></xpath></aliasMapping>		
 		<aliasMapping><columnName> Model </columnName><xpath><![CDATA[J:FIREARM/J:PROPERTYPHYSICALDETAILS/J:PROPERTYMODELNAME]]></xpath></aliasMapping>		
