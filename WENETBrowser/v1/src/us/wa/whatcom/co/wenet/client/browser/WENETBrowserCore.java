@@ -1029,7 +1029,13 @@ public String selectedDisplayScheme = "Default";
 				txt.append("<serviceURI> " + rd.serviceURI + "</serviceURI>\n");			
 				
 				if(rm.error != null) { 
-					if(rm.error.errorMsg != null) { txt.append("<resultError><![CDATA[ " + rm.error.errorMsg + "]]></resultError>\n"); }
+					if(rm.error.errorMsg != null) {
+						txt.append("<resultError");
+						if (rm.error.errorCode > 0) {
+							txt.append(" code='" + rm.error.errorCode + "'");
+						}
+						txt.append("><![CDATA[ " + rm.error.errorMsg + "]]></resultError>\n");
+					}
 					if(rm.error.exc != null) { txt.append("<resultError><![CDATA[" + rm.error.exc + "]]></resultError>\n"); }
 					}
 				

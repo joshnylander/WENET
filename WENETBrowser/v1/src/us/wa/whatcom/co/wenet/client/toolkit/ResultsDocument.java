@@ -15,12 +15,11 @@ public class ResultsDocument
 public ToolkitError error = null;
 
 /** This is the list of ResultItem objects that were entries of the wenet:results document */
-public ArrayList resultItems;
 public String checkBackURL;
 public String serviceURI;
 public String orgURI;
 public String resultListURL;
-public ArrayList errorItems;
+public ArrayList resultItems;
 public String xPathQuery;
 public String xmlText;
 
@@ -39,5 +38,5 @@ public String xmlText;
 		public String summaryXML = null;
 		
 		public ResultItem() {  }
-		}
+	}
 }

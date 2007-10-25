@@ -52,6 +52,17 @@ public ArrayList summaryColumnStack;
 		qName = qName.toUpperCase();
 		
 		if(qName.endsWith("RESULT") == true) { currentItem = theDocument.new ResultItem(); return; }
+		if(qName.endsWith("ERROR") == true) {
+			theDocument.error = new ToolkitError();
+			if (attributes.getIndex("http://www.co.whatcom.wa.us/apps/wenet/schema/wenet/1", "errorNumber") > -1) {
+				theDocument.error.errorCode = Integer.parseInt(attributes.getValue(attributes.getIndex("http://www.co.whatcom.wa.us/apps/wenet/schema/wenet/1", "errorNumber")));
+			} else if (attributes.getIndex("", "errorNumber") > -1){
+				theDocument.error.errorCode = Integer.parseInt(attributes.getValue(attributes.getIndex("", "errorNumber")));
+			} else {
+				theDocument.error.errorCode = 0;
+			}
+			return;
+		}
 		//[TO DO] Need to modify this section so that we can grab the summary as is.
 		if(qName.endsWith("SUMMARY") == true) { 
 			currentItem.summaryMap = new HashMap(); 
@@ -119,6 +130,12 @@ public ArrayList summaryColumnStack;
 		if(qName.endsWith("SERVICEURI") == true) { theDocument.serviceURI = currentText; return; }
 		if(qName.endsWith("ORGURI") == true) { theDocument.orgURI = currentText; return; }
 		if(qName.endsWith("URL") == true) { theDocument.resultListURL = currentText; return; }
+		
+		if(qName.endsWith("ERROR") == true) {
+			theDocument.error.errorMsg = currentText;
+			return;
+		}
+		
 //		if(qName.endsWith("LASTMODIFIED") == true) { currentItem.lastModified = }
 
 		if(qName.endsWith("RESULT") == true) {
