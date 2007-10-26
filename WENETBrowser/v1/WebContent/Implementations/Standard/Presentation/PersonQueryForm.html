@@ -205,7 +205,7 @@
 				xpath += "j:PersonBirthDate = '" + makeTimestamp(dob) + "' and ";
 				}			
 
-			if(document.all.race.value.trim() != '') { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonRaceText, " + document.all.race.value.trim() + "') and "; }
+			if(document.all.race.value.trim() != '') { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonRaceText, '" + document.all.race.value.trim() + "') and "; }
 			if(document.all.MaleFemale[0].checked == true) { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonSexText, 'M') and "; }
 			if(document.all.MaleFemale[1].checked == true) { xpath += "starts-with(j:PersonPhysicalDetails/j:PersonSexText, 'F') and "; }
 			if(document.all.Height.value.trim() != '') { xpath += "j:PersonPhysicalDetails/j:PersonHeightMeasure='" + document.all.Height.value.trim() + "' and "; }
@@ -213,9 +213,9 @@
 			xpath += makeXPathString("j:PersonPhysicalDetails/j:PersonHairColorText", document.all.HairColor.value.trim(), wildcardValues[11]);
 			xpath += makeXPathString("j:PersonPhysicalDetails/j:PersonEyeColorText", document.all.EyeColor.value.trim(), wildcardValues[12]);
 
-			xpath += makeXPathString("j:Residence/j:LocationAddress/j:LocationStateName", document.all.resstreet.value.trim(), wildcardValues[13]);
+			xpath += makeXPathString("j:Residence/j:LocationAddress/j:LocationStreet/j:StreetFullText", document.all.resstreet.value.trim(), wildcardValues[13]);
 			xpath += makeXPathString("j:Residence/j:LocationAddress/j:LocationCityName", document.all.rescity.value.trim(), wildcardValues[14]);
-			xpath += makeXPathString("j:Residence/j:LocationAddress/j:LocationStateCode.USPostalService", document.all.resstate.value.trim(), wildcardValues[15]);
+			xpath += makeXPathString("j:Residence/j:LocationAddress/j:LocationStateCode.fips5-2Alpha", document.all.resstate.value.trim(), wildcardValues[15]);
 			xpath += makeXPathString("j:Residence/j:LocationAddress/j:LocationPostalCodeID/j:ID", document.all.reszip.value.trim(), wildcardValues[16]);
 			xpath += makeXPathString("j:PrimaryContactInformation/j:ContactTelephoneNumber/j:TelephoneNumberFullID", document.all.phone.value.trim(), wildcardValues[17]);
 			xpath += makeXPathString("j:PrimaryContactInformation/j:ContactTelephoneNumber/j:ContactMobileTelephoneNumber", document.all.cellphone.value.trim(), wildcardValues[18]);
