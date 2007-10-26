@@ -136,7 +136,7 @@
 				xpath += "j:ActivityDate <= '" + makeTimestamp(convertDate(document.all.dateend.value.trim())) + "' and "; 
 				}
 
-			if(document.all.eventnum.value.trim() != '') { xpath += "j:ActivityCrimeCase/j:ActivityID/j:ID='" + document.all.eventnum.value.trim() + "' and "; } 
+			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:ActivityCrimeCase/j:ActivityID/j:ID", document.all.eventnum.value.trim(), null); } 
 
 			if(document.all.ticketnum.value.trim() != '') { xpath += "j:ActivityID/j:ID='" + document.all.ticketnum.value.trim() + "' and "; } 
 

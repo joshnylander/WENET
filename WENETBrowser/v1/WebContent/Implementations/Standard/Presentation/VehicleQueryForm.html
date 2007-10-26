@@ -114,7 +114,7 @@
 			if(document.VehicleForm.vin.value.trim() != '') { xpath += "j:VehicleID/j:ID='" + document.VehicleForm.vin.value.trim() + "' and "; }
 			if(document.VehicleForm.typecode.value.trim() != '') { xpath += "j:PropertyTypeText=" + document.VehicleForm.typecode.value.trim() + "' and "; }
 			if(document.VehicleForm.tag.value.trim() != '') { xpath += "j:VehicleLicensePlateID/j:ID='" + document.VehicleForm.tag.value.trim() + "' and "; }
-			if(document.VehicleForm.eventnum.value.trim() != '') { xpath += "j:PropertyAssignedIDDetails/j:PropertyOtherID='" + document.VehicleForm.eventnum.value.trim() + "' and "; }
+			if(document.VehicleForm.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:PropertyAssignedIDDetails/j:PropertyOtherID", document.VehicleForm.eventnum.value.trim(), null); }
 
 			if(document.VehicleForm.year.value.trim() != '') { xpath += "j:VehicleModelYearDate='" + document.VehicleForm.year.value.trim() + "' and "; }
 			if(document.VehicleForm.make.value.trim() != '') { xpath += makeXPathString("j:PropertyPhysicalDetails/j:PropertyMakeName", document.VehicleForm.make.value.trim(), wildcardValues[0]); }

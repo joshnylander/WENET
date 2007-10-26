@@ -121,7 +121,7 @@
 			if(document.WarrantForm.cname.value.trim() != '') { xpath += makeXPathString("j:CourtOrderIssuingCourt/j:CourtName", document.WarrantForm.cname.value.trim(), wildcardValues[5]); }
 			if(document.WarrantForm.idate.value.trim() != '') { xpath += "j:CourtOrderIssuingDate='" + makeTimestamp(convertDate(document.WarrantForm.idate.value.trim())) + "' and "; }
 
-			if(document.WarrantForm.enumber.value.trim() != '') { xpath += makeXPathString("j:ActivityCrimeCase/j:ActivityID/j:ID", document.WarrantForm.enumber.value.trim(), wildcardValues[3]); }
+			if(document.WarrantForm.enumber.value.trim() != '') { xpath += makeEventXPathString("j:ActivityCrimeCase/j:ActivityID/j:ID", document.WarrantForm.enumber.value.trim(), wildcardValues[3]); }
 			if(document.WarrantForm.cause.value.trim() != '') { xpath += makeXPathString("j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentGroupID/j:ID", document.WarrantForm.cause.value.trim(), wildcardValues[4]); }
 
 			if(document.SubjectForm.fname.value.trim() != '') { xpath += makeXPathString("j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", document.SubjectForm.fname.value.trim(), wildcardValues[0]); }

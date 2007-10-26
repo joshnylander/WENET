@@ -160,7 +160,7 @@
 				}
 
 			if(document.all.ownernum.value.trim() != '') { xpath += makeXPathString("j:EvidenceItem.Property/j:PropertyAssignedIDDetails/j:PropertyOwnerAppliedID/j:ID", document.all.ownernum.value.trim(), wildcardValues[5]); }
-			if(document.all.eventnum.value.trim() != '') { xpath += "j:EvidenceItem.Property/j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID=" + document.all.eventnum.value.trim() + " and "; }
+			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:EvidenceItem.Property/j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID", document.all.eventnum.value.trim(), null); }
 			if(document.all.dispcode.value.trim() != '') { xpath += "j:EvidenceItem.Property/j:PropertyDisposition/j:PropertyDispositionCode='" + document.all.dispcode.value.trim() + "' and "; }
 			if(document.all.serialid.value.trim() != '') { xpath += makeXPathString("j:EvidenceItem.Property/j:PropertyAssignedIDDetails/j:PropertySerialID", document.all.serialid.value.trim(), wildcardValues[0]); }
 			if(document.all.status.value.trim() != '') { xpath += makeXPathString("j:EvidenceItem.Property/j:PropertyStatus/j:StatusText", document.all.status.value.trim(), wildcardValues[1]); }

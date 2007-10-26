@@ -131,8 +131,8 @@
 				xpath += "j:ArrestSubject/j:PersonBirthDate = '" + makeTimestamp(dob) + "' and ";
 				}			
 
-			if(document.all.eventnum.value.trim() != '') { xpath += makeXPathString("j:ArrestAgencyRecordID/j:ID", document.all.eventnum.value.trim(), wildcardValues[0]); }
-			if(document.all.offdesc.value.trim() != '') { xpath += makeXPathString("j:ArrestCharge/j:ChargeDisposition/j:ChargeDispositionDescriptionText", document.all.offdesc.value.trim(), wildcardValues[1]); }
+			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:ArrestAgencyRecordID/j:ID", document.all.eventnum.value.trim(), wildcardValues[0]); }
+			//if(document.all.offdesc.value.trim() != '') { xpath += makeXPathString("j:ArrestCharge/j:ChargeDisposition/j:ChargeDispositionDescriptionText", document.all.offdesc.value.trim(), wildcardValues[1]); }
 
 			// Attach the DOB date range field
 			if(document.all.datestart.value.trim() != '' && document.all.dateend.value.trim() != '' ) { 

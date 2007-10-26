@@ -108,7 +108,7 @@
 			// Construct the xpath query
 			var xpath = "j:Property[";
 
-			if(document.all.eventnum.value.trim() != '') { xpath += "j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID=" + document.all.eventnum.value.trim() + " and "; }
+			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID", document.all.eventnum.value.trim(), null); }
 			if(document.all.dispcode.value.trim() != '') { xpath += "j:PropertyDisposition/j:PropertyDispositionCode='" + document.all.dispcode.value.trim() + "' and "; }
 			if(document.all.serialid.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertySerialID/j:ID", document.all.serialid.value.trim(), wildcardValues[0]); }
 			if(document.all.status.value.trim() != '') { xpath += makeXPathString("j:PropertyStatus/j:StatusText", document.all.status.value.trim(), wildcardValues[1]); }

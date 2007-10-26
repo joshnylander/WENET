@@ -209,6 +209,14 @@
 		if(op == 3) { str = "ends-with(" + xpath + ", '" +  value + "') and "; } 
 		return str;
 		}
+	
+	//*******************************************************************************
+	// This method is a shortcut for trimming the event number and running a contains
+	
+	function makeEventXPathString(xpath, value, op) {
+		value = value.trim().slice(-8);
+		return makeXPathString(xpath, value, 1);
+		}
 
 	//*******************************************************************************
 	// Converts a date of mm/dd/yyyy

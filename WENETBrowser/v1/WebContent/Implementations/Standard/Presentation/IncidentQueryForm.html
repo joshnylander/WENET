@@ -114,7 +114,7 @@
 			// Construct the xpath query
 			var xpath = "j:Incident[";
 	
-			if(document.all.eventnum.value.trim() != '') { xpath += "j:ActivityID/j:ID='" + document.all.eventnum.value.trim() + "' and"; }
+			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:ActivityID/j:ID", document.all.eventnum.value.trim(), null); }
 			if(document.all.category.value.trim() != '') { xpath += makeXPathString("j:IncidentCategory/j:IncidentCategoryTypeText", document.all.category.value.trim(), wildcardValues[0]); }
 
 			if(document.all.date.value.trim() != '') { xpath += "j:ActivityDate='" + makeTimestamp(convertDate(document.all.date.value.trim())) + "' and "; }

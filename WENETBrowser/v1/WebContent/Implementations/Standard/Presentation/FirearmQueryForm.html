@@ -107,7 +107,7 @@
 			if(document.all.dispocode.value.trim() != '') { xpath += "j:PropertyDisposition/j:PropertyDispositionCode='" + document.all.dispocode.value.trim() + "' and "; }
 			if(document.all.typecode.value.trim() != '') { xpath += "j:PropertyTypeCode='" + document.all.typecode.value.trim() + "' and "; }
 			if(document.all.tag.value.trim() != '')  { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertyReceiptID", document.all.tag.value.trim(), wildcardValues[1]); }
-			if(document.all.eventnum.value.trim() != '') { xpath += makeXPathString("j:PropertyAssignedIDDetails/j:PropertyOtherID", document.all.eventnum.value.trim(), wildcardValues[2]); }
+			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:PropertyAssignedIDDetails/j:PropertyOtherID", document.all.eventnum.value.trim(), wildcardValues[2]); }
 
 			// Strip off the last 'and' and end the xpath node test
 			var lastAnd = xpath.lastIndexOf('and');

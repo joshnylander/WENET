@@ -113,7 +113,7 @@
 			var xpath = "j:Case[";
 	
 			if(document.all.causenum.value.trim() != '') { xpath += "j:CaseDocketID/j:ID='" + document.all.causenum.value.trim() + "' and "; }
-			if(document.all.eventnum.value.trim() != '') { xpath += "j:CaseOtherID/j:ID='" + document.all.eventnum.value.trim() + "' and "; }
+			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:CaseOtherID/j:ID", document.all.eventnum.value.trim(), null); }
 			if(document.all.charge.value.trim() != '') { xpath += makeXPathString("j:ActivityCrimePotentialCharge/j:ChargeDescriptionText", document.all.charge.value.trim(), wildcardValues[1]); }
 			if(document.all.pros.value.trim() != '') { xpath += makeXPathString("j:CaseParticipants/j:CaseProsecutionAttorney/j:PersonName/j:PersonFullName", document.all.pros.value.trim(), wildcardValues[2]); }
 
