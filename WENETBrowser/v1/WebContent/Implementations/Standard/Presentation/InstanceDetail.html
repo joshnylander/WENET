@@ -214,15 +214,15 @@ Statute Description: <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeSta
 Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
 
 <table border=0 cellspacing=3 cellpadding=3>
-<tr><td> Filing Date: </td><td> <p class=Highlight>[!ActivityDate!]</p></td></tr>
-<tr><td> Recieved Date & Seq #: </td><td> <p class=Highlight>[!CaseTrackingID/ID!]</p></td></tr>
-<tr><td> Category: </td><td> <p class=Highlight>[!CaseClassification/CaseCategoryText!]</p></td></tr>
-<tr><td> Event Number: </td><td> <p class=Highlight>[!CaseOtherID/ID!]</p></td></tr>
 <tr><td> Cause Number: </td><td> <p class=Highlight>[!CaseDocketID!]</p></td></tr>
 <tr><td> Assigned Prosecutor: </td><td> <p class=Highlight>[!CaseParticipants/CaseProsecutionAttorney/PersonName/PersonFullName!]</p></td></tr>
 <tr><td> Referral Charge: </td><td> <p class=Highlight>[!ActivityCrimePotentialCharge/ChargeDescriptionText!]</p></td></tr>
 <tr><td> LEA: </td><td> <p class=Highlight>[!ActivityReportingOrganization/OrganizationName!]</p></td></tr>
 <tr><td> Court: </td><td> <p class=Highlight>[!CaseCourt/CourtName!]</p></td></tr>
+<tr><td> Filing Date: </td><td> <p class=Highlight>[!ActivityDate!]</p></td></tr>
+<tr><td> Recieved Date & Seq #: </td><td> <p class=Highlight>[!CaseTrackingID/ID!]</p></td></tr>
+<tr><td> Category: </td><td> <p class=Highlight>[!CaseClassification/CaseCategoryText!]</p></td></tr>
+<tr><td> Event Number: </td><td> <p class=Highlight>[!CaseOtherID/ID!]</p></td></tr>
 <tr><td> Domestic Violence: </td><td> <p class=Highlight>[!CaseDetails/CaseDomesticViolenceIndicator!]</p></td></tr>
 </table>
 
@@ -235,8 +235,8 @@ RCW: <p class=Highlight>[!ChargeStatute/StatuteCodeID/ID!]</p><br><br>
 Disposition: <p class=Highlight>[!ChargeDisposition/ChargeDispositionDescriptionText!]</p> &nbsp; Date: <p class=Highlight>[!ChargeDisposition/ChargeDispositionDate!]<br>
 Defense Attorney: <p class=Highlight>[!ChargePlea/ActivityDefenseAttorney/PersonName/PersonFullName!]</p><br>
 Bail Amount: <p class=Highlight>[!ChargeRecommendedBailAmount!]</p><br><br>
-Fine $: <p class=Highlight>[!ChargeSanction/SanctionSetObligation/ObligationRequirementDescriptionText!]</p><br>
-Sentence Summary: <p class=Highlight>[!ChargeStatus/StatusDescriptionText!] [!ChargeStatute/StatuteCodeID!]</p><br>
+<!-- Fine $: <p class=Highlight>[!ChargeSanction/SanctionSetObligation/ObligationRequirementDescriptionText!]</p><br> -->
+Sentence Summary: <p class=Highlight>[!ChargeStatus/StatusDescriptionText!]<!-- [!ChargeStatute/StatuteCodeID!] --></p><br>
 <br><br>
 </div>
 
@@ -690,14 +690,13 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 
 	var caseRoot = new Array();
 	caseRoot.push( new Array("", document.all.CaseDetails, null, null, null));
+	caseRoot.push( new Array("CaseParticipants/CaseDefendantParty.Person", null, null, "Defendant", "PersonName/PersonFullName"));
 	caseRoot.push( new Array("CaseCharge", document.all.CaseChargeDetails, "Charge", null, null));
-	caseRoot.push( new Array("CaseCourtEvent", document.all.CaseEventDetails, "Case Event", null, null));
+	caseRoot.push( new Array("CaseParticipants/CaseProsecutionAttorney", null, null, "Prosecution Attorney", "PersonName/PersonFullName"));
 	caseRoot.push( new Array("ActivitySuspect", null, null, "Suspect", "PersonName/PersonFullName"));
 	caseRoot.push( new Array("ActivityVictim/Victim.Person", null, null, "Victim", "PersonName/PersonFullName"));
 	caseRoot.push( new Array("ActivityWitness", null, null, "Witness", "PersonName/PersonFullName"));
-	caseRoot.push( new Array("CaseParticipants/CaseDefendantParty.Person", null, null, "Defendant", "PersonName/PersonFullName"));
-	caseRoot.push( new Array("CaseParticipants/CaseProsecutionAttorney", null, null, "Prosecution Attorney", "PersonName/PersonFullName"));
-
+	caseRoot.push( new Array("CaseCourtEvent", document.all.CaseEventDetails, "Case Event", null, null));
 
 	var infractionRoot = new Array();
 	infractionRoot.push(new Array("", document.all.InfractionDetails, null, null, null));
