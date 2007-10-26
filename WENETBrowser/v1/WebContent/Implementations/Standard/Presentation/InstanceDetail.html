@@ -86,20 +86,85 @@ Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><b
 
 <div id=VehicleDetails style="display:none;visibility:hidden;">
 Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p><br><br>
-
-<table border=0 cellpadding=3 cellspacing=3>
-<tr><td>Possesor Organization: </td><td> <p class=Highlight>[!PropertyPossessor.Organization!]</p></td></tr>
-<tr><td>Disposition Code:</td><td> <p class=Highlight>[!PropertyDisposition/PropertyDispositionCode!]</p></td></tr>
-<tr><td>Type Code: </td><td> <p class=Highlight>[!PropertyTypeCode!]</p></td></tr>
-<tr><td>Serial ID: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertySerialID!]</p></td></tr>
-<tr><td>Status: </td><td> <p class=Highlight>[!PropertyStatus/StatusText!]</p></td></tr>
-<tr><td>Item Number/Barcode: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertyReceiptID!]</p></td></tr>
-<tr><td>Event Number: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertyOtherID!]</p></td></tr>
-<tr><td>Brand: </td><td> <p class=Highlight>[!PropertyPhysicalDetails/PropertyBrandName!]</p></td></tr>
-<tr><td>Make: </td><td> <p class=Highlight>[!PropertyPhysicalDetails/PropertyMakeName!]</p></td></tr>
-<tr><td>Model: </td><td> <p class=Highlight>[!PropertyPhysicalDetails/PropertyModelName!]</p></td></tr>
-<tr><td>Description: </td><td> <p class=Highlight>[!PropertyDescriptionText!]</p></td></tr>
+<table border=0 cellpadding=2 cellspacing=2>
+	<tr>
+		<td>Description: </td>
+		<td class="Highlight" colspan="4">[!PropertyDescriptionText!]</td>
+		
+	</tr>
+	<tr>
+		<td align=right> License Plate: &nbsp; </td>
+		<td class=Highlight> [!VehicleLicensePlateID/ID!] </td>
+		<td align=right> State: &nbsp;</td>
+		<td class=Highlight> [!VehicleRegistrationLocation/LocationAddress/LocationStateName!]  </td>
+	</tr>
+	<tr>
+		<td align=right> VIN: &nbsp; </td>
+		<td colspan="3" class=Highlight> [!VehicleID/ID!] </td>
+	</tr>
+	<tr cellspacing="6">
+	 <td colspan="5">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align=right> Year: &nbsp; </td>
+		<td class=Highlight> [!VehicleModelYearDate!] </td>
+		<td align=right> Make: &nbsp;</td>
+		<td class=Highlight> [!PropertyPhysicalDetails/PropertyMakeName!]</td>
+	</tr>
+	<tr>
+		<td align=right> Model: &nbsp; </td>
+		<td class=Highlight> [!VehicleModelCodeText!] </td>
+		<td align=right> Style: &nbsp;</td>
+		<td class=Highlight> [!PropertyPhysicalDetails/PropertyStyleText!]</td>
+	</tr>
+	<tr>
+		<td>Primary Color: </td>
+		<td class="Highlight" colspan="4">[!VehicleColorPrimaryText!]</td>
+	</tr>
+	<tr cellspacing="6">
+	 <td colspan="5">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Owner Name: </td>
+		<td class="Highlight" colspan="4">[!PropertyOwner.Person/PersonName/PersonFullName!]</td>
+	</tr>
+	<tr cellspacing="6">
+	 <td colspan="5">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Item Number: </td>
+		<td class="Highlight" colspan="4">[!PropertyAssignedIDDetails/PropertyReceiptID!]</td>
+	</tr>
+	<tr>
+		<td>Status: </td>
+		<td class="Highlight" colspan="4">[!PropertyStatus/StatusText!]</td>
+	</tr>
+	<tr>
+		<td>Features: </td>
+		<td class="Highlight" colspan="4">[!PropertyPhysicalDetails/PropertyDetail/PropertyDetailDescription!]</td>
+	</tr>
 </table>
+<!--
+<table border=0 cellpadding=3 cellspacing=3>
+<!-- <tr><td>Possesor Organization: </td><td> <p class=Highlight>[!PropertyPossessor.Organization!]</p></td></tr> -->
+<!--<tr><td>Disposition Code:</td><td> <p class=Highlight>[!PropertyDisposition/PropertyDispositionCode!]</p></td></tr>
+<tr><td>Type Code: </td><td> <p class=Highlight>[!PropertyTypeCode!]</p></td></tr>
+<tr><td>Serial ID: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertySerialID!]</p></td></tr> -->
+<!--<tr><td>Status: </td><td> <p class=Highlight>[!PropertyStatus/StatusText!]</p></td></tr>
+<tr><td>Item Number: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertyReceiptID!]</p></td></tr>
+ <tr><td>Event Number: </td><td> <p class=Highlight>[!PropertyAssignedIDDetails/PropertyOtherID!]</p></td></tr>
+
+<tr><td>Description: </td><td> <p class=Highlight>[!PropertyDescriptionText!]</p></td></tr>
+-->
+<!-- <tr style="background-color: green"><td colspan="2">&nbsp;</td> </tr> -->
+<!--
+<hr/>
+<tr><td>Features: </td><td> <p class=Highlight>[!PropertyPhysicalDetails/PropertyDetail/PropertyDetailDescription!]</p></td></tr>
+<tr style="background-color: green"><td colspan="2">&nbsp;</td> </tr>
+<tr><td>Owner Name: </td><td> <p class=Highlight>[!PropertyOwner.Person/PersonName/PersonFullName!]</p></td></tr>
+</table>-->
+
+
 </div>
 
 <!-- --------------------------------------------------------------------------------------------------- -->
