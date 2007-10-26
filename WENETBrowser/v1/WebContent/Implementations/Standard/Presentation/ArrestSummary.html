@@ -412,7 +412,7 @@
 					for(k=0; k<errors.length; k++) {
 						txt += errors[k].text + "<br><br>";
 						//Note any error code 4s and display friendly message at top of screen
-						if (errors[k].attributes.getNamedItem("code").nodeValue == "4") {
+						if (errors[k].attributes.getNamedItem("code") != null && errors[k].attributes.getNamedItem("code").nodeValue == "4") {
 							if (document.all('ErrorDisplay').innerHTML.length > 1) {
 								document.all('ErrorDisplay').innerHTML = document.all('ErrorDisplay').innerHTML + "; ";
 								}
