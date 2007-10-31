@@ -79,6 +79,7 @@
 		wildcardAry[3] = new Array('lname', "Last Name");
 		wildcardAry[4] = new Array('fname', "First Name");
 		wildcardAry[5] = new Array('mname', "Middle Name");
+		wildcardAry[6] = new Array('court', "Court");
 
 		var selectedCtl = 0;
 		var wildcardValues = new Array();
@@ -86,6 +87,7 @@
 		wildcardValues[3] = 2;
 		wildcardValues[4] = 2;
 		wildcardValues[2] = 1;
+		wildcardValues[6] = 1;
 
 		// The default value for the log / prosecutor ID field is "contains"
 		wildcardValues[0] = 1;
@@ -116,6 +118,7 @@
 			if(document.all.eventnum.value.trim() != '') { xpath += makeEventXPathString("j:CaseOtherID/j:ID", document.all.eventnum.value.trim(), null); }
 			if(document.all.charge.value.trim() != '') { xpath += makeXPathString("j:ActivityCrimePotentialCharge/j:ChargeDescriptionText", document.all.charge.value.trim(), wildcardValues[1]); }
 			if(document.all.pros.value.trim() != '') { xpath += makeXPathString("j:CaseParticipants/j:CaseProsecutionAttorney/j:PersonName/j:PersonFullName", document.all.pros.value.trim(), wildcardValues[2]); }
+			if(document.all.court.value.trim() != '') { xpath += makeXPathString("j:CaseCourt/j:CourtName", document.all.court.value.trim(), wildcardValues[6]); }
 
 			//if(document.all.prosid.value.trim() != '') { xpath += makeXPathString("j:CaseTrackingID/j:ID", document.all.prosid.value.trim(), wildcardValues[0]); }
 
@@ -288,6 +291,7 @@
 <tr><td align=right width=40%> Cause Number: </td><td width=60%> <input onClick="focusCtl('causenum');" class=QUERYINPUTS type=text id=causenum size=20> </td></tr>
 <tr><td align=right> Referral Charge: </td><td> <input onClick="focusCtl('charge');" class=QUERYINPUTS type=text id=charge size=20> </td></tr>
 <tr><td align=right> Assigned Prosecutor: </td><td> <input onClick="focusCtl('pros');" class=QUERYINPUTS type=text id=pros size=20> </td></tr>
+<tr><td align=right> Court: </td><td> <input onClick="focusCtl('court');" class=QUERYINPUTS type=text id=court size=20> </td></tr>
 <!-- <tr><td align=right> Log ID: </td><td> <input onClick="focusCtl('prosid');" class=QUERYINPUTS type=text id=prosid size=20> </td></tr> -->
 <tr><td align=right> Log Date: </td><td> <input onClick="focusCtl('prosdate');" class=QUERYINPUTS type=text id=prosdate size=20> &nbsp<button type="reset" id="trigger7"> ... </button></td></tr>
 <tr><td align=right> Event Number: </td><td> <input onClick="focusCtl('eventnum');" class=QUERYINPUTS type=text id=eventnum size=20> </td></tr>
