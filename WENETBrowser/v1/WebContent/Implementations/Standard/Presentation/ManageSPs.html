@@ -1,0 +1,91 @@
+<html>
+<head>
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="expired" CONTENT="01-Mar-94 00:00:01 GMT">
+	<link rel="stylesheet" type="text/css" href="" />
+	<link rel="stylesheet" type="text/css" media="all" href="../JSCalendar/calendar-win2k-cold-1.css" title="win2k-cold-1" />
+  	<script src="../JSCalendar/calendar.js"></script>
+  	<script src="../JSCalendar/calendar-en.js"></script>
+	<script src="../JSCalendar/calendar-setup.js"></script>
+	<script src="../BrowserControl.js"></script>
+
+</head>
+<body id=QUERYBODY rightmargin=0 leftmargin=0 topmargin=0 bottommargin=0>
+<script type="text/javascript">
+<!--
+	// Wait until the session document is completely loaded
+	var xml = top.SessionDataFrame.sessionDocument;
+	if(xml == undefined) { 
+		setTimeout("top.WorkspaceFrame.location='queryhtml'", 100);
+		}
+
+	// Set the pages display CSS 
+	//var pageCSS = xml.selectSingleNode("session/implementation/displayScheme/displayEntry[entryName='ThemeCSS']/entryValue");
+	//if(pageCSS != null) { document.styleSheets[0].href = "../" + pageCSS.text; }
+
+	function saveSPManageChanges() {
+		var arySPList;
+		arySPList = top.SessionDataFrame.spChooserList;
+		var varCntr;
+		for (varCntr=0;varCntr<arySPList.length;varCntr++) 
+		{
+			if (document.getElementById("SPCheck" + varCntr).checked == true) {
+				//it is checked, add the disabled if not already
+				if (arySPList[varCntr].split(";")[3] != "disabled") {
+					arySPList[varCntr] = arySPList[varCntr] + ";disabled";
+				} 
+			} else {
+				//it is not checked, remove the disabled if not already
+				if (arySPList[varCntr].split(";")[3] == "disabled") {
+					arySPList[varCntr] = arySPList[varCntr].replace(";disabled", "");
+				}
+			}
+		}
+		alert("Changes Saved");
+	}
+-->
+</script>
+<table border=1 class="QUERYBACKGROUNDTABLE QUERYFONTS" width="100%">
+<tr><td>
+<form>
+<p>Manage Service Points</p>
+<p>Service Points Checked Below will be Disabled (useful for testing):</p>
+	<script type="text/javascript">
+	<!--
+		//-----------------------------------------------------------------------------------------
+		// Write out the SERVICE POINTS table
+		document.write("<table  width=100% id=QUERYSERVICEPOINTSTABLE cellspacing=0 cellpadding=0>");
+		var arySPListLocal;
+		arySPListLocal = top.SessionDataFrame.spChooserList;
+		var varCntr;
+		var spStatus;
+		for (varCntr=0;varCntr<arySPListLocal.length;varCntr++) 
+		{
+			//write out row
+			document.write("<tr><td> <input id=SPCheck" + varCntr + " class=QUERYSERVICEPOINTSCHECK type=checkbox name=" + arySPListLocal[varCntr].split(";")[0]); 
+				if (arySPListLocal[varCntr].split(";")[3] == "disabled") { 
+					spStatus = "checked";
+				} else {
+					spStatus = "";
+				}
+				
+				document.write(" " + spStatus + "> &nbsp&nbsp " + arySPListLocal[varCntr].split(";")[1] + "</tr></tr>");
+		}
+		
+	-->
+	</script>
+
+	<tr><td align=center><br>
+	<input type=button name=CheckAll value="Check All" style="width:2cm;font-size:8pt;font-family:Arial;" onClick="checkAllSP();" >
+	<input type=button name=UncheckAll value="Uncheck All" style="width:2cm;font-size:8pt;font-family:Arial;" onClick="uncheckAllSP();">
+	<input type=button name=Save value="Save Changes" style="width:2cm;font-size:8pt;font-family:Arial;" onClick="saveSPManageChanges();">
+	</td></tr>
+	</table>
+
+	</center>
+	</form>
+</td></tr></table>
+</body>
+</html>
+
+

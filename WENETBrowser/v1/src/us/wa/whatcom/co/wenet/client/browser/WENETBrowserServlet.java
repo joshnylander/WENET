@@ -115,8 +115,10 @@ try {		ServletContext sc = getServletContext();
 		spErrors = new ArrayList();
 		spPollingList = new ArrayList();
 		servicePointsMap = new HashMap();
+		String strSPurl = new String();
 		for(int i=0; i<nl.getLength(); i++) {
-			spPollingList.add(nl.item(i).getTextContent());
+			strSPurl = nl.item(i).getTextContent();
+			spPollingList.add(strSPurl);
 			}
 
 		// Start the polling process that keeps track of the service points

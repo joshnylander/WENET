@@ -81,6 +81,10 @@
 			<serviceURI>http://wenet.cob.org/</serviceURI>
 			<friendlyName>BELPD</friendlyName>
 		</alias>
+		<alias>
+			<serviceURI>http://wenet.cityofblaine.com/</serviceURI>
+			<friendlyName>BLAPD</friendlyName>
+		</alias>
 	</servicePointAliases>
 	
 	<seedServicePoints>
@@ -88,6 +92,7 @@
 		<seedURL>https://wenet-wcsojl.co.whatcom.wa.us/wenet-whcojl/service </seedURL>
 		<seedURL>https://wenet-wcpa.co.whatcom.wa.us/wenet-whcoat/service</seedURL>
 		<seedURL>https://wenet.cob.org:2443/wenet-cobpd/discover.aspx</seedURL>
+		<seedURL>https://wenet.cityofblaine.com:2443/wenet.blainepd/discover.aspx</seedURL>
 	</seedServicePoints>
 	
 	<columnAliasMappings>

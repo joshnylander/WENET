@@ -151,10 +151,12 @@
 		function callQuery() {
 
 			var ary = new Array();
-			if(document.ControlForm.Sheriff.checked == true) { ary.push('http://wenet-wcso.co.whatcom.wa.us/'); }
-			if(document.ControlForm.Jail.checked == true) { ary.push('http://wenet-wcsojl.co.whatcom.wa.us/'); }
-			if(document.ControlForm.Prosecutor.checked == true) { ary.push('http://wenet-wcpa.co.whatcom.wa.us/'); }	
-			if(document.ControlForm.BPD.checked == true) { ary.push('http://wenet.cob.org/'); }
+			for (varCntr=0;varCntr<top.SessionDataFrame.spChooserList.length;varCntr++) 
+			{
+				if(document.getElementById(top.SessionDataFrame.spChooserList[varCntr].split(";")[0]).checked == true) {
+					ary.push(top.SessionDataFrame.spChooserList[varCntr].split(";")[2]);
+				}
+			}
 
 			var strXPath = makeXPath();
 			// strXPath = prompt("XPath: ", strXPath);
@@ -346,47 +348,8 @@
 	//-----------------------------------------------------------------------------------------
 	// Write out the SERVICE POINTS table
 
-	document.write("<table width=100% id=QUERYSERVICEPOINTSTABLE>");
-	document.write("<tr><td> <input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck1 name=Sheriff "); 
-	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcso.co.whatcom.wa.us/']") == null)
-		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Sheriff</font></td></tr>");
-	else
-		document.write(" checked> &nbsp&nbsp Sheriff</tr></tr>");
 
-
-	document.write("<tr><td> <input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck2 name=Prosecutor ");
-	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcpa.co.whatcom.wa.us/']") == null)
-		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Prosecutor</font></td></tr>");
-	else
-		document.write(" > &nbsp&nbsp Prosecutor</td></tr>");
-
-
-	document.write("<tr><td><input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck3 name=Jail ");
-	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet-wcsojl.co.whatcom.wa.us/']") == null)
-		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">Jail</font></td></tr>");
-	else
-		document.write(" > &nbsp&nbsp Jail</td></tr>");
-
-
-	document.write("<tr><td><input class=QUERYSERVICEPOINTSCHECK type=checkbox id=SPCheck4 name=BPD ");
-	if(xml.selectSingleNode("session/services/service[serviceURI='http://wenet.cob.org/']") == null)
-		document.write(" disabled> &nbsp&nbsp <font color=\"#ff0000\">BPD</font></td></tr>");
-	else
-		document.write(" checked> &nbsp&nbsp BPD</td></tr>");
-
-	function checkAllSP() { 
-		if(document.all.SPCheck1.disabled == false) { document.all.SPCheck1.checked=true; }
-		if(document.all.SPCheck2.disabled == false) { document.all.SPCheck2.checked=true; }
-		if(document.all.SPCheck3.disabled == false) { document.all.SPCheck3.checked=true; }
-		if(document.all.SPCheck4.disabled == false) { document.all.SPCheck4.checked=true; }
-		}
-
-	function uncheckAllSP() {
-		document.all.SPCheck1.checked=false;
-		document.all.SPCheck2.checked=false;
-		document.all.SPCheck3.checked=false;
-		document.all.SPCheck4.checked=false;
-		}
+	drawServicePointChooser("", "BELPA;BELCJ");
 
 	-->
 	</script>

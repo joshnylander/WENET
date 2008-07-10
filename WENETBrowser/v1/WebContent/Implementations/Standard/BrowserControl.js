@@ -673,3 +673,60 @@
 			 }
 		 }
 	 }
+	 
+	 
+	function drawServicePointChooser(strDefChecked, strDefUnChecked) {
+		//-----------------------------------------------------------------------------------------
+		// Write out the SERVICE POINTS table
+		strDefUnChecked = ";" + strDefUnChecked + ";";
+		strDefChecked = ";" + strDefChecked + ";";
+		document.write("<table  width=100% id=QUERYSERVICEPOINTSTABLE cellspacing=0 cellpadding=0>");
+		var arySPList;
+		arySPList = top.SessionDataFrame.spChooserList;
+		var varCntr;
+		var spStatus;
+		for (varCntr=0;varCntr<arySPList.length;varCntr++) 
+		{
+			//write out row
+			document.write("<tr><td> <input id=SPCheck" + varCntr + " class=QUERYSERVICEPOINTSCHECK type=checkbox name=" + arySPList[varCntr].split(";")[0]); 
+			if(xml.selectSingleNode("session/services/service[alias='" + arySPList[varCntr].split(";")[0] + "']") == null || arySPList[varCntr].split(";")[3] == "disabled")
+				document.write(" disabled> &nbsp&nbsp <font color='#ff0000'>" + arySPList[varCntr].split(";")[1] + "</font></td></tr>");
+			else {
+				if (strDefChecked == ";;") { 
+					spStatus = "checked";
+				} else {
+					spStatus = "";
+				}
+				
+				if (strDefChecked.search(";" + arySPList[varCntr].split(";")[0] + ";") > -1) {
+					spStatus = "checked";
+				}
+					
+				if (strDefUnChecked.search(";" + arySPList[varCntr].split(";")[0] + ";") > -1) {
+					spStatus = "";
+				}
+				
+				document.write(" " + spStatus + "> &nbsp&nbsp " + arySPList[varCntr].split(";")[1] + "</tr></tr>");
+			}
+		}
+	}
+	
+	function checkAllSP() {
+		var arySPList;
+		arySPList = top.SessionDataFrame.spChooserList;
+		for (varCntr=0;varCntr<arySPList.length;varCntr++) 
+		{
+			if (document.getElementById("SPCheck" + varCntr).disabled == false) { document.getElementById("SPCheck" + varCntr).checked=true; }
+		}
+	}
+	
+	function uncheckAllSP() {
+		var arySPList;
+		arySPList = top.SessionDataFrame.spChooserList;
+		for (varCntr=0;varCntr<arySPList.length;varCntr++) 
+		{
+			document.getElementById("SPCheck" + varCntr).checked=false;
+		}
+	}
+	
+		 

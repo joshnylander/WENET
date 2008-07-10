@@ -9,6 +9,15 @@
 
 <script type="text/javascript">
 <!--
+	//List of friendlyName, displayName, and serviceUR semi-colon seperated in an array [this is a big hack!]
+	var spChooserList = new Array();
+	spChooserList[0] = "BELSO;Sheriff;http://wenet-wcso.co.whatcom.wa.us/";
+	spChooserList[1] = "BELPA;Prosecutor;http://wenet-wcpa.co.whatcom.wa.us/";
+	spChooserList[2] = "BELCJ;Jail;http://wenet-wcsojl.co.whatcom.wa.us/";
+	spChooserList[3] = "BELPD;BPD;http://wenet.cob.org/";
+	spChooserList[4] = "BLAPD;Blaine;http://wenet.cityofblaine.com/;disabled";
+
+
 var sessionWaiting = false;
 var queryWaiting = false;
 var queryRoot = "";
