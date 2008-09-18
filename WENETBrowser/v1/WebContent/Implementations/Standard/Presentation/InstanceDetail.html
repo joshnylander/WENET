@@ -306,8 +306,16 @@ Comments: <p class=Highlight>[!ActivityCommentText!]</p><br><br>
 </table>
 </div>
 
-<div id=ChargeDetails style="display:none;visibility:hidden;">
-Charge: <p class=Highlight>[!ChargeSequenceID/ID!]</p> &nbsp
+<div id=ArrestChargeDetails style="display:none;visibility:hidden;">
+Charge Sequence #: <p class=Highlight>[!ChargeSequenceID/ID!]</p> &nbsp
+<p class=Highlight>[!ChargeDescriptionText!]</p><br>
+Disposition: <p class=Highlight>[!ChargeDisposition/ChargeDispositionDescriptionText!]</p><br>
+Statute: <p class=Highlight>[!ChargeStatute/StatuteCodeID/ID!]</p>  &nbsp <p class=Highlight>[!ChargeStatute/StatuteOffenseID/ID!]</p><br>
+Statute Description: <p class=Highlight>[!ChargeStatute/StatuteDescriptionText!]</p><br>
+</div>
+
+<div id=BookingChargeDetails style="display:none;visibility:hidden;">
+Charge Sequence #: <p class=Highlight>[!ChargeSequenceID/ID!]</p> &nbsp
 <p class=Highlight>[!ChargeDescriptionText!]</p><br>
 Originating Agency: <p class=Highlight>[!ChargeOriginator.Organization/OrganizationName!]</p><br>
 LEA Event #: <p class=Highlight>[!ChargeTrackingID/ID!]</p>  &nbsp
@@ -316,7 +324,6 @@ Court: <p class=Highlight>[!ChargeModifier.Organization/OrganizationName!]</p><b
 Bail $: <p class=Highlight>[!ChargeRecommendedBailAmount!]</p><br>
 Disposition: <p class=Highlight>[!ChargeDisposition/ChargeDispositionDescriptionText!]</p><br>
 </div>
-
 <!-- --------------------------------------------------------------------------------------------------- -->
 
 <div id=ProtectionOrderDetails style="display:none;visibility:hidden;">
@@ -565,7 +572,7 @@ Alerts and Description: &nbsp&nbsp&nbsp&nbsp&nbsp <p class=ALERTS> [!PersonDescr
 <table border=0 width=100%>
 <tr>
 	<td width=15%> License #: </td><td class=Highlight> [!PersonDriverLicenseID/ID!] </td>
-	<td width=15%> &nbsp&nbsp State: </td><td class=Highlight> [!PersonDriverLicenseID/IDJurisdictionCode!] </td>
+	<td width=15%> &nbsp&nbsp State: </td><td class=Highlight> [!PersonDriverLicenseID/IDJurisdictionCode!][!PersonDriverLicenseID/DrivingJurisdictionAuthorityCode.ncicLSTA!] </td>
 	<td width=15%> &nbsp&nbsp Expires: </td><td class=Highlight> [!PersonDriverLicenseID/IDExpirationDate!] </td>
 </tr>
 <tr>	
@@ -642,7 +649,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	personRoot.push(new Array("Employment/EmploymentLocation/LocationAddress", document.all.AddressLocation, null, null));
 	personRoot.push(new Array("PersonBirthLocation/LocationAddress", document.all.AddressLocation, "Birth Location", null, null));
 	personRoot.push(new Array("PersonAssignedIDDetails", document.all.Person_ID, "Identification", null, null));
-	personRoot.push(new Array("PersonAlias", null, null, "Alias Information", null));
+	personRoot.push(new Array("PersonAlias", null, null, "Alias2 Information", null));
 	personRoot.push(new Array("", document.all.Person_Subject, null, null, null));
 	personRoot.push(new Array("", document.all.Person_Witness, null, null, null));	
 	personRoot.push(new Array("", document.all.Person_EnforcementOfficial, "", null, null));
@@ -673,7 +680,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	arrestRoot[2] = new Array("ArrestOfficial", null, null, "Arrest Official", "PersonName/PersonFullName");
 	arrestRoot[3] = new Array("ArrestLocation", document.all.AddressLocationFullText, "Arrest Location", null, null);
 	arrestRoot[4] = new Array("ArrestLocation", document.all.AddressLocation, null, null, null);
-	arrestRoot[5] = new Array("ArrestCharge", document.all.ChargeDetails, "Charge", null, null);
+	arrestRoot[5] = new Array("ArrestCharge", document.all.ArrestChargeDetails, "Charge", null, null);
 
 	var protectionOrderRoot = new Array();
 	protectionOrderRoot[0] = new Array("", document.all.ProtectionOrderDetails, null, null, null);
@@ -686,7 +693,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	var bookingRoot = new Array();
 	bookingRoot[0] = new Array("", document.all.BookingDetails, null, null, null);
 	bookingRoot[1] = new Array("BookingSubject", null, null, "Booking Subject", "PersonName/PersonFullName");
-	bookingRoot[2] = new Array("Arrest/ArrestCharge", document.all.ChargeDetails, "Charge", null, null);
+	bookingRoot[2] = new Array("Arrest/ArrestCharge", document.all.BookingChargeDetails, "Charge", null, null);
 
 	var caseRoot = new Array();
 	caseRoot.push( new Array("", document.all.CaseDetails, null, null, null));
