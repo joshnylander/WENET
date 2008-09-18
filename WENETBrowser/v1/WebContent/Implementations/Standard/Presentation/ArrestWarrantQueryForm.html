@@ -129,7 +129,7 @@
 			if(document.SubjectForm.lname.value.trim() != '') { xpath += makeXPathString("j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", document.SubjectForm.lname.value.trim(), wildcardValues[2]); }
 
 			if(document.SubjectForm.subdob.value.trim() != '') { 
-				xpath += "j:CourtOrderDesignatedSubject/j:PersonBirthDate=" + makeTimestamp(convertDate(document.SubjectForm.subdob.value.trim())) + "' and "; 
+				xpath += "j:CourtOrderDesignatedSubject/j:PersonBirthDate='" + makeTimestamp(convertDate(document.SubjectForm.subdob.value.trim())) + "' and "; 
 				}
 			else
 				{
