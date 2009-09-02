@@ -4,4 +4,5 @@
 <ServicePointURL>https://wenet-wcpa.co.whatcom.wa.us/wenet-whcoat/service</ServicePointURL>
 <ServicePointURL>https://wenet.cob.org:2443/wenet-cobpd/discover.aspx</ServicePointURL>
 <ServicePointURL>https://wenet.cityofblaine.com:2443/wenet.blainepd/discover.aspx</ServicePointURL>
+<ServicePointURL>https://wenet.ferndalepd.org/WENET.FerndalePD/discover.aspx</ServicePointURL>
 </ServicePointList>

@@ -85,6 +85,10 @@
 			<serviceURI>http://wenet.cityofblaine.com/</serviceURI>
 			<friendlyName>BLAPD</friendlyName>
 		</alias>
+		<alias>
+			<serviceURI>http://wenet.ferndalepd.org/</serviceURI>
+			<friendlyName>FPD</friendlyName>
+		</alias>
 	</servicePointAliases>
 	
 	<seedServicePoints>
@@ -93,6 +97,7 @@
 		<seedURL>https://wenet-wcpa.co.whatcom.wa.us/wenet-whcoat/service</seedURL>
 		<seedURL>https://wenet.cob.org:2443/wenet-cobpd/discover.aspx</seedURL>
 		<seedURL>https://wenet.cityofblaine.com:2443/wenet.blainepd/discover.aspx</seedURL>
+		<seedURL>https://wenet.ferndalepd.org/WENET.FerndalePD/discover.aspx</seedURL>
 	</seedServicePoints>
 	
 	<columnAliasMappings>
