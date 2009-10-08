@@ -1125,10 +1125,18 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 		*/
 
 		var ary = new Array();
-		ary.push('http://wenet-wcso.co.whatcom.wa.us/'); 
-		ary.push('http://wenet-wcsojl.co.whatcom.wa.us/');
-		ary.push('http://wenet-wcpa.co.whatcom.wa.us/'); 
-		ary.push('http://wenet.cob.org/'); 
+		//ary.push('http://wenet-wcso.co.whatcom.wa.us/'); 
+		//ary.push('http://wenet-wcsojl.co.whatcom.wa.us/');
+		//ary.push('http://wenet-wcpa.co.whatcom.wa.us/'); 
+		//ary.push('http://wenet.cob.org/');
+		var arySPListLocal;
+		arySPListLocal = top.SessionDataFrame.spChooserList;
+		var varCntr;
+		for (varCntr=0;varCntr<arySPListLocal.length;varCntr++) {	
+			if (arySPListLocal[varCntr].split(";")[3] != "disabled") { 
+				ary.push(arySPListLocal[varCntr].split(";")[2]); 
+			}
+		} 
 
 		AddBackgroundQuery(Root, queryName, xpath, 240, ary);
 		// alert("" + Root + " query is processing, please wait.");
