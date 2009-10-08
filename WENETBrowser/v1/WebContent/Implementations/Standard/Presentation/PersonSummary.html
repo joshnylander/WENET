@@ -101,8 +101,8 @@
 				var last = results[k].selectSingleNode("summary[name='J:PERSON/J:PERSONNAME/J:PERSONSURNAME']/value");
 				var dob = results[k].selectSingleNode("summary[name='J:PERSON/J:PERSONBIRTHDATE']/value");
 
-				if(last != undefined) { col += " " + last.text; }
-				if(first != undefined) { col += " " + first.text; }
+				if(last != undefined) { col += " " + last.text.toUpperCase(); }
+				if(first != undefined) { col += " " + first.text.toUpperCase(); }
 				if(dob != undefined) { col += " " + dob.text; }
 				ary.push(col);
 
