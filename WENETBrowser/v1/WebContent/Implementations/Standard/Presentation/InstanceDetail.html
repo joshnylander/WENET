@@ -518,9 +518,9 @@ Last Updated: <p class=Highlight>[!@lastUpdatedDate!] [!@lastUpdatedTime!]</p>  
 <input type=button value="Arrests" onClick="crossPageQuery('Arrest', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
 <input type=button value="Cases" onClick="crossPageQuery('Case', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
 <input type=button value="Citations" onClick="crossPageQuery('Citation', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
-<input type=button value="Active Arrest Warrants" onClick="crossPageQuery('ArrestWarrant', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A');"> &nbsp
+<input type=button value="Arrest Warrants" onClick="crossPageQuery('ArrestWarrant', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
 <input type=button value="Incidents" onClick="crossPageQuery('Incident', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"> &nbsp
-<input type=button value="Active Protection Orders" onClick="crossPageQuery('ProtectionOrder', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', 'A');"> &nbsp
+<input type=button value="Protection Orders" onClick="crossPageQuery('ProtectionOrder', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]');"> &nbsp
 <input type=button value="Infractions" onClick="crossPageQuery('Infraction', '[!PersonName/PersonSurName!]', '[!PersonName/PersonGivenName!]', '[!PersonBirthDate!]', '');"><br><br>
 </center>
 <table width="100%">
@@ -1059,11 +1059,13 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 	queryRoots.push(new Array("Person", "j:PersonName/j:PersonSurName", "j:PersonName/j:PersonGivenName", "j:PersonBirthDate"));
 	queryRoots.push(new Array("Booking", "j:BookingSubject/j:PersonName/j:PersonSurName", "j:BookingSubject/j:PersonName/j:PersonGivenName", "j:BookingSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("Arrest", "j:ArrestSubject/j:PersonName/j:PersonSurName", "j:ArrestSubject/j:PersonName/j:PersonGivenName", "j:ArrestSubject/j:PersonBirthDate"));
-	queryRoots.push(new Array("ArrestWarrant", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
+	//queryRoots.push(new Array("ArrestWarrant", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
+	queryRoots.push(new Array("ArrestWarrant", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("Case", "j:ActivitySuspect/j:PersonName/j:PersonSurName", "j:ActivitySuspect/j:PersonName/j:PersonGivenName", "j:ActivitySuspect/j:PersonBirthDate"));
 	queryRoots.push(new Array("Case", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonSurName", "j:ActivityVictim/j:Victim.Person/j:PersonName/j:PersonGivenName", "j:ActivityVictim/j:Victim.Person/j:PersonBirthDate"));
 	queryRoots.push(new Array("Case", "j:ActivityWitness/j:PersonName/j:PersonSurName", "j:ActivityWitness/j:PersonName/j:PersonGivenName", "j:ActivityWitness/j:PersonBirthDate"));
-	queryRoots.push(new Array("ProtectionOrder", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
+	//queryRoots.push(new Array("ProtectionOrder", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate", "j:CourtOrderStatus/j:StatusText"));
+	queryRoots.push(new Array("ProtectionOrder", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName", "j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName", "j:CourtOrderDesignatedSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("Citation", "j:CitationSubject/j:PersonName/j:PersonSurName", "j:CitationSubject/j:PersonName/j:PersonGivenName", "j:CitationSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("Incident", "j:IncidentSubject/j:PersonName/j:PersonSurName", "j:IncidentSubject/j:PersonName/j:PersonGivenName", "j:IncidentSubject/j:PersonBirthDate"));
 	queryRoots.push(new Array("Infraction", "j:IncidentSubject/j:PersonName/j:PersonSurName", "j:IncidentSubject/j:PersonName/j:PersonGivenName", "j:IncidentSubject/j:PersonBirthDate"));
@@ -1089,7 +1091,7 @@ Enforcement Official Badge ID: <p class=Highlight>[!EnforcementOfficialBadgeID/I
 				if(queryRoots[i].length > 4 && fourthParm != null && fourthParm.length > 0) { xpath += "contains(" + queryRoots[i][4] + ", '" + fourthParm + "') and "; }
 				
 				// Strip off the last 'and' and end the xpath node test
-				var lastAnd = xpath.lastIndexOf('and');
+				var lastAnd = xpath.lastIndexOf(' and');
 				if(lastAnd != -1) { xpath = xpath.substr(0, lastAnd); }
 				xpath += "]";
 			}
