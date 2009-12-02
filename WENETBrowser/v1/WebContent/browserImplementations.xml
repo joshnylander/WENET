@@ -68,26 +68,38 @@
 		<alias>
 			<serviceURI>http://wenet-wcso.co.whatcom.wa.us/</serviceURI>
 			<friendlyName>BELSO</friendlyName>
+			<displayName>Sheriff</displayName>
+			<defaultStatus></defaultStatus>
 		</alias>
 		<alias>
 			<serviceURI>http://wenet-wcsojl.co.whatcom.wa.us/</serviceURI>
 			<friendlyName>BELCJ</friendlyName>
+			<displayName>Jail</displayName>
+			<defaultStatus></defaultStatus>
 		</alias>
 		<alias>
 			<serviceURI>http://wenet-wcpa.co.whatcom.wa.us/</serviceURI>
 			<friendlyName>BELPA</friendlyName>
+			<displayName>Prosecutor</displayName>
+			<defaultStatus></defaultStatus>
 		</alias>
 		<alias>
 			<serviceURI>http://wenet.cob.org/</serviceURI>
 			<friendlyName>BELPD</friendlyName>
+			<displayName>BPD</displayName>
+			<defaultStatus></defaultStatus>
 		</alias>
 		<alias>
 			<serviceURI>http://wenet.cityofblaine.com/</serviceURI>
 			<friendlyName>BLAPD</friendlyName>
+			<displayName>Blaine</displayName>
+			<defaultStatus></defaultStatus>
 		</alias>
 		<alias>
 			<serviceURI>http://wenet.ferndalepd.org/</serviceURI>
 			<friendlyName>FPD</friendlyName>
+			<displayName>Ferndale</displayName>
+			<defaultStatus>disabled</defaultStatus>
 		</alias>
 	</servicePointAliases>
 	
