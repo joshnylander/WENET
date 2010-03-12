@@ -1,0 +1,83 @@
+<%@include file="/common/utils.jsp"%>
+<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+
+   <head>
+   
+   <title>WENET Memo 19</title>
+   
+   <link rel="stylesheet" href="/styles/masterstyle_fonts.css" type="text/css" />
+   </head>
+   <body bgcolor="#ffffff" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" >
+   
+  <table width="100%" border="0" cellspacing="1">
+    <tr valign="top">
+      <td colspan="2" width="64%"><font size="-1">WENET Working Group,<br />
+MIS Committee,<br />
+Whatcom County Law and Justice Council</font></td>
+      <td width="33%" rowspan="3" align="right"><font size="-1"><font size="-1">R.
+              Josh Nylander</font></font></td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Memo: 26</font></td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td><font size="-1">Status: FINAL </font></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Obsoletes: <a href="19.htm">Memo
+            19, WENET Schema 1.2.2</a></font></td>
+      <td width="33%">&nbsp;</td>
+      <td width="33%"><div align="right"><font size="-1">June 22nd, 2009</font></div></td>
+    </tr>
+    <tr valign="top">
+      <td colspan="3" width="100%"><div align="center"><strong>WENET
+      Schema 1.2.3</strong></div></td>
+    </tr>
+  </table>
+  
+  <p>The WENET project has defined
+  a schema, called WENET Schema v1.2.3 to complement the WENET Protocol.</p>
+  <p>Schema: <a href="/apps/wenet/schema/wenet/wenet_schema_1-2-3.xsd">http://www.whatcomcounty.us/apps/wenet/schema/wenet/wenet_schema_1-2-3.xsd</a></p>
+  <p>Schema Guidelines:</p>
+  <blockquote>
+    <p>In addition to the schema, implemetations MUST adhere to the following
+      guidelines in deploying the schema.</p>
+    <ul>
+      <li>use of ID/RefID for linking elements</li>
+    </ul>
+  </blockquote>
+  <p>Changes:</p>
+  <ol>
+    <li>20090615: Modified result to accomodate getchanged and getdeleted. Published as DRAFT.</li>
+	<li>20060113: Moved min/max from sequence to elements.</li>
+	<li>20050811: Replaced &quot;choice&quot; and &quot;all&quot;s with &quot;sequence&quot; elements. Added min/max to new sequence elements. Fixed <em>instanceRoot/rootNode</em> min/max values.</li>
+    <li>20050714: Replaced wenet:supportedXPaths with wenet:instanceRoots which contains wenet:supportedXPaths and added wenet:namespace element. Standardized change log with that of the protocol. </li>
+    <li>20050601: Replaced wenet:instanceRoots with wenet:supportedXPaths and added
+        the summary element to the results.</li>
+    <li>20050418: Released new schema version 1.2.1 as DRAFT with spelling changes
+        and minor structure changes including changes to the CertificateType. Removed
+        support for complex XPath by removing the statement element and related elements.</li>
+    <li>20041123: Added ID/RefID language. Marked document &quot;FINAL&quot;. Updated date.</li>
+    <li>20041101: Released new schema version 1.2 with major and incompatible
+        changes from version 1.1. Most notably, removed the requirement that instances
+        be based on the GJXDM and removed references to the GJXDM.</li>
+    <li>20040518: Released new schema version 1.1 with major and incompatible
+        changes from version 1.</li>
+    <li>Major Changes:
+        <ol>
+          <li>Made changes to support changes in the WENET Protocol.</li>
+          <li>Made changes to make it more compatible with the GJXDM v3.0.</li>
+        </ol>
+    </li>
+  </ol>
+<!-- Footer -->   
+<a href="http://www.w3.org/WAI/WCAG1A-Conformance"
+      title="Explanation of Level A Conformance">&nbsp;&nbsp;</a> 
+   </body>
+</html>
+
