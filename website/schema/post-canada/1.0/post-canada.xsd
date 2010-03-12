@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/post-canada/1.0">
+<xsd:simpleType name="CanadianProvinceCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="AB"/>
+<xsd:enumeration value="BC"/>
+<xsd:enumeration value="MB"/>
+<xsd:enumeration value="NB"/>
+<xsd:enumeration value="NL"/>
+<xsd:enumeration value="NS"/>
+<xsd:enumeration value="NT"/>
+<xsd:enumeration value="NU"/>
+<xsd:enumeration value="ON"/>
+<xsd:enumeration value="PE"/>
+<xsd:enumeration value="QC"/>
+<xsd:enumeration value="SK"/>
+<xsd:enumeration value="YT"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

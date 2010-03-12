@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/unece_rec20-misc/1.0">
+<xsd:simpleType name="LengthType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="A"/>
+<xsd:enumeration value="AU"/>
+<xsd:enumeration value="ch"/>
+<xsd:enumeration value="cm"/>
+<xsd:enumeration value="dam"/>
+<xsd:enumeration value="dm"/>
+<xsd:enumeration value="fathom"/>
+<xsd:enumeration value="fm"/>
+<xsd:enumeration value="ft"/>
+<xsd:enumeration value="hm"/>
+<xsd:enumeration value="in"/>
+<xsd:enumeration value="km"/>
+<xsd:enumeration value="l. y."/>
+<xsd:enumeration value="m"/>
+<xsd:enumeration value="mil"/>
+<xsd:enumeration value="mile"/>
+<xsd:enumeration value="mm"/>
+<xsd:enumeration value="n mile"/>
+<xsd:enumeration value="nm"/>
+<xsd:enumeration value="pc"/>
+<xsd:enumeration value="pm"/>
+<xsd:enumeration value="uin"/>
+<xsd:enumeration value="um"/>
+<xsd:enumeration value="yd"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="MassType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="Mg"/>
+<xsd:enumeration value="cg"/>
+<xsd:enumeration value="cwt (UK)"/>
+<xsd:enumeration value="cwt (US)"/>
+<xsd:enumeration value="dag"/>
+<xsd:enumeration value="dg"/>
+<xsd:enumeration value="dt"/>
+<xsd:enumeration value="g"/>
+<xsd:enumeration value="gr"/>
+<xsd:enumeration value="hg"/>
+<xsd:enumeration value="kg"/>
+<xsd:enumeration value="kt"/>
+<xsd:enumeration value="lb"/>
+<xsd:enumeration value="mg"/>
+<xsd:enumeration value="oz"/>
+<xsd:enumeration value="stone"/>
+<xsd:enumeration value="t"/>
+<xsd:enumeration value="ton (UK)"/>
+<xsd:enumeration value="ton (US)"/>
+<xsd:enumeration value="tr oz"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="TimeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="a"/>
+<xsd:enumeration value="atrop"/>
+<xsd:enumeration value="d"/>
+<xsd:enumeration value="h"/>
+<xsd:enumeration value="ks"/>
+<xsd:enumeration value="min"/>
+<xsd:enumeration value="ms"/>
+<xsd:enumeration value="ns"/>
+<xsd:enumeration value="s"/>
+<xsd:enumeration value="us"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="VelocityType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="cm/s"/>
+<xsd:enumeration value="ft/min"/>
+<xsd:enumeration value="ft/s"/>
+<xsd:enumeration value="in/s"/>
+<xsd:enumeration value="km/h"/>
+<xsd:enumeration value="kn"/>
+<xsd:enumeration value="m/min"/>
+<xsd:enumeration value="m/s"/>
+<xsd:enumeration value="mile/h"/>
+<xsd:enumeration value="mm/s"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

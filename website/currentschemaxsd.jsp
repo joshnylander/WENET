@@ -1,0 +1,1 @@
+<%@include file="/common/utils.jsp"%><jsp:include page="/apps/wenet/schema/wenet/wenet_schema_1-2-3.xsd" />

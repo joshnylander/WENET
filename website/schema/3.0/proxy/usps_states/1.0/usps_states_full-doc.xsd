@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/usps_states/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/usps_states/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:usps='http://www.it.ojp.gov/jxdm/usps_states/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+  <xsd:import schemaLocation='../../../../usps_states/1.0/usps_states_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/usps_states/1.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='USStateCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates states.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='usps:USStateCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

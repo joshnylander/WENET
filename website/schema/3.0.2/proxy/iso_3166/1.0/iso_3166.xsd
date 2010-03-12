@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:iso_3166="http://www.it.ojp.gov/jxdm/iso_3166/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/iso_3166/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/iso_3166/1.0" schemaLocation="../../../../iso_3166/1.0/iso_3166.xsd"/>
+<xsd:complexType name="CountryAlpha2CodeType">
+<xsd:simpleContent>
+<xsd:extension base="iso_3166:CountryAlpha2CodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="CountryAlpha3CodeType">
+<xsd:simpleContent>
+<xsd:extension base="iso_3166:CountryAlpha3CodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="CountryNumericCodeType">
+<xsd:simpleContent>
+<xsd:extension base="iso_3166:CountryNumericCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

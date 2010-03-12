@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/nibrs_misc/1.0">
+<xsd:simpleType name="AggravatedAssaultHomicideFactorsCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="01"/>
+<xsd:enumeration value="02"/>
+<xsd:enumeration value="03"/>
+<xsd:enumeration value="04"/>
+<xsd:enumeration value="05"/>
+<xsd:enumeration value="06"/>
+<xsd:enumeration value="07"/>
+<xsd:enumeration value="08"/>
+<xsd:enumeration value="09"/>
+<xsd:enumeration value="10"/>
+<xsd:enumeration value="20"/>
+<xsd:enumeration value="21"/>
+<xsd:enumeration value="30"/>
+<xsd:enumeration value="31"/>
+<xsd:enumeration value="32"/>
+<xsd:enumeration value="33"/>
+<xsd:enumeration value="34"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="ArrestTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="O"/>
+<xsd:enumeration value="S"/>
+<xsd:enumeration value="T"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="ArresteeWeaponCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="01"/>
+<xsd:enumeration value="11"/>
+<xsd:enumeration value="12"/>
+<xsd:enumeration value="13"/>
+<xsd:enumeration value="14"/>
+<xsd:enumeration value="15"/>
+<xsd:enumeration value="16"/>
+<xsd:enumeration value="17"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="CriminalActivityTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="B"/>
+<xsd:enumeration value="C"/>
+<xsd:enumeration value="D"/>
+<xsd:enumeration value="E"/>
+<xsd:enumeration value="G"/>
+<xsd:enumeration value="J"/>
+<xsd:enumeration value="N"/>
+<xsd:enumeration value="O"/>
+<xsd:enumeration value="P"/>
+<xsd:enumeration value="T"/>
+<xsd:enumeration value="U"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="DrugMeasurementCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="DU"/>
+<xsd:enumeration value="FO"/>
+<xsd:enumeration value="GL"/>
+<xsd:enumeration value="GM"/>
+<xsd:enumeration value="KG"/>
+<xsd:enumeration value="LB"/>
+<xsd:enumeration value="LT"/>
+<xsd:enumeration value="ML"/>
+<xsd:enumeration value="NP"/>
+<xsd:enumeration value="OZ"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="DrugTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="A"/>
+<xsd:enumeration value="B"/>
+<xsd:enumeration value="C"/>
+<xsd:enumeration value="D"/>
+<xsd:enumeration value="E"/>
+<xsd:enumeration value="F"/>
+<xsd:enumeration value="G"/>
+<xsd:enumeration value="H"/>
+<xsd:enumeration value="I"/>
+<xsd:enumeration value="J"/>
+<xsd:enumeration value="K"/>
+<xsd:enumeration value="L"/>
+<xsd:enumeration value="M"/>
+<xsd:enumeration value="N"/>
+<xsd:enumeration value="O"/>
+<xsd:enumeration value="P"/>
+<xsd:enumeration value="U"/>
+<xsd:enumeration value="X"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EthnicityCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="H"/>
+<xsd:enumeration value="N"/>
+<xsd:enumeration value="U"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="ForceTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="11"/>
+<xsd:enumeration value="11A"/>
+<xsd:enumeration value="12"/>
+<xsd:enumeration value="12A"/>
+<xsd:enumeration value="13"/>
+<xsd:enumeration value="13A"/>
+<xsd:enumeration value="14"/>
+<xsd:enumeration value="14A"/>
+<xsd:enumeration value="15"/>
+<xsd:enumeration value="15A"/>
+<xsd:enumeration value="20"/>
+<xsd:enumeration value="30"/>
+<xsd:enumeration value="35"/>
+<xsd:enumeration value="40"/>
+<xsd:enumeration value="50"/>
+<xsd:enumeration value="60"/>
+<xsd:enumeration value="65"/>
+<xsd:enumeration value="70"/>
+<xsd:enumeration value="85"/>
+<xsd:enumeration value="90"/>
+<xsd:enumeration value="95"/>
+<xsd:enumeration value="99"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="IncidentBiasMotivationCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="11"/>
+<xsd:enumeration value="12"/>
+<xsd:enumeration value="13"/>
+<xsd:enumeration value="14"/>
+<xsd:enumeration value="15"/>
+<xsd:enumeration value="21"/>
+<xsd:enumeration value="22"/>
+<xsd:enumeration value="23"/>
+<xsd:enumeration value="24"/>
+<xsd:enumeration value="25"/>
+<xsd:enumeration value="26"/>
+<xsd:enumeration value="27"/>
+<xsd:enumeration value="32"/>
+<xsd:enumeration value="33"/>
+<xsd:enumeration value="41"/>
+<xsd:enumeration value="42"/>
+<xsd:enumeration value="43"/>
+<xsd:enumeration value="44"/>
+<xsd:enumeration value="45"/>
+<xsd:enumeration value="51"/>
+<xsd:enumeration value="52"/>
+<xsd:enumeration value="88"/>
+<xsd:enumeration value="99"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="IncidentExceptionalClearanceCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="A"/>
+<xsd:enumeration value="B"/>
+<xsd:enumeration value="C"/>
+<xsd:enumeration value="D"/>
+<xsd:enumeration value="E"/>
+<xsd:enumeration value="N"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="IncidentFactorCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="A"/>
+<xsd:enumeration value="C"/>
+<xsd:enumeration value="D"/>
+<xsd:enumeration value="N"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="InjuryTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="B"/>
+<xsd:enumeration value="I"/>
+<xsd:enumeration value="L"/>
+<xsd:enumeration value="M"/>
+<xsd:enumeration value="N"/>
+<xsd:enumeration value="O"/>
+<xsd:enumeration value="T"/>
+<xsd:enumeration value="U"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="JustifiableHomicideFactorsCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="A"/>
+<xsd:enumeration value="B"/>
+<xsd:enumeration value="C"/>
+<xsd:enumeration value="D"/>
+<xsd:enumeration value="E"/>
+<xsd:enumeration value="F"/>
+<xsd:enumeration value="G"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="LocationTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="01"/>
+<xsd:enumeration value="02"/>
+<xsd:enumeration value="03"/>
+<xsd:enumeration value="04"/>
+<xsd:enumeration value="05"/>
+<xsd:enumeration value="06"/>
+<xsd:enumeration value="07"/>
+<xsd:enumeration value="08"/>
+<xsd:enumeration value="09"/>
+<xsd:enumeration value="10"/>
+<xsd:enumeration value="11"/>
+<xsd:enumeration value="12"/>
+<xsd:enumeration value="13"/>
+<xsd:enumeration value="14"/>
+<xsd:enumeration value="15"/>
+<xsd:enumeration value="16"/>
+<xsd:enumeration value="17"/>
+<xsd:enumeration value="18"/>
+<xsd:enumeration value="19"/>
+<xsd:enumeration value="20"/>
+<xsd:enumeration value="21"/>
+<xsd:enumeration value="22"/>
+<xsd:enumeration value="23"/>
+<xsd:enumeration value="24"/>
+<xsd:enumeration value="25"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="MethodOfEntryType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="F"/>
+<xsd:enumeration value="N"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="MultipleArresteeSegmentsCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="C"/>
+<xsd:enumeration value="M"/>
+<xsd:enumeration value="N"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="PropertyCategoryCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="01"/>
+<xsd:enumeration value="02"/>
+<xsd:enumeration value="03"/>
+<xsd:enumeration value="04"/>
+<xsd:enumeration value="05"/>
+<xsd:enumeration value="06"/>
+<xsd:enumeration value="07"/>
+<xsd:enumeration value="08"/>
+<xsd:enumeration value="09"/>
+<xsd:enumeration value="10"/>
+<xsd:enumeration value="11"/>
+<xsd:enumeration value="12"/>
+<xsd:enumeration value="13"/>
+<xsd:enumeration value="14"/>
+<xsd:enumeration value="15"/>
+<xsd:enumeration value="16"/>
+<xsd:enumeration value="17"/>
+<xsd:enumeration value="18"/>
+<xsd:enumeration value="19"/>
+<xsd:enumeration value="20"/>
+<xsd:enumeration value="21"/>
+<xsd:enumeration value="22"/>
+<xsd:enumeration value="23"/>
+<xsd:enumeration value="24"/>
+<xsd:enumeration value="25"/>
+<xsd:enumeration value="26"/>
+<xsd:enumeration value="27"/>
+<xsd:enumeration value="28"/>
+<xsd:enumeration value="29"/>
+<xsd:enumeration value="30"/>
+<xsd:enumeration value="31"/>
+<xsd:enumeration value="32"/>
+<xsd:enumeration value="33"/>
+<xsd:enumeration value="34"/>
+<xsd:enumeration value="35"/>
+<xsd:enumeration value="36"/>
+<xsd:enumeration value="37"/>
+<xsd:enumeration value="38"/>
+<xsd:enumeration value="39"/>
+<xsd:enumeration value="77"/>
+<xsd:enumeration value="88"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="PropertyLossCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="1"/>
+<xsd:enumeration value="2"/>
+<xsd:enumeration value="3"/>
+<xsd:enumeration value="4"/>
+<xsd:enumeration value="5"/>
+<xsd:enumeration value="6"/>
+<xsd:enumeration value="7"/>
+<xsd:enumeration value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="ResidentCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="N"/>
+<xsd:enumeration value="R"/>
+<xsd:enumeration value="U"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="VictimTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="B"/>
+<xsd:enumeration value="F"/>
+<xsd:enumeration value="G"/>
+<xsd:enumeration value="I"/>
+<xsd:enumeration value="O"/>
+<xsd:enumeration value="R"/>
+<xsd:enumeration value="S"/>
+<xsd:enumeration value="U"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

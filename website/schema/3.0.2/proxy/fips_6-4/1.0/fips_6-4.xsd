@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:fips_6-4="http://www.it.ojp.gov/jxdm/fips_6-4/1.0" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/fips_6-4/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/fips_6-4/1.0" schemaLocation="../../../../fips_6-4/1.0/fips_6-4.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="USCountyCodeType">
+<xsd:simpleContent>
+<xsd:extension base="fips_6-4:USCountyCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

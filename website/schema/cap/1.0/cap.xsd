@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/cap/1.0">
+<xsd:simpleType name="AlertCertaintyCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="High"/>
+<xsd:enumeration value="Low"/>
+<xsd:enumeration value="Minimal"/>
+<xsd:enumeration value="Moderate"/>
+<xsd:enumeration value="Unknown"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="AlertEventCategoryCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="Env"/>
+<xsd:enumeration value="Fire"/>
+<xsd:enumeration value="Geo"/>
+<xsd:enumeration value="Health"/>
+<xsd:enumeration value="Infra"/>
+<xsd:enumeration value="Met"/>
+<xsd:enumeration value="Other"/>
+<xsd:enumeration value="Rescue"/>
+<xsd:enumeration value="Safety"/>
+<xsd:enumeration value="Security"/>
+<xsd:enumeration value="Transport"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="AlertSeverityCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="Extreme"/>
+<xsd:enumeration value="Minor"/>
+<xsd:enumeration value="Moderate"/>
+<xsd:enumeration value="Severe"/>
+<xsd:enumeration value="Unknown"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="AlertUrgencyCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="Forecast"/>
+<xsd:enumeration value="Impending"/>
+<xsd:enumeration value="Ongoing"/>
+<xsd:enumeration value="Past"/>
+<xsd:enumeration value="Unknown"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

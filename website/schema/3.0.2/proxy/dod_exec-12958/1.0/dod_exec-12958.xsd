@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dod_exec-12958="http://www.it.ojp.gov/jxdm/dod_exec-12958/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/dod_exec-12958/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/dod_exec-12958/1.0" schemaLocation="../../../../dod_exec-12958/1.0/dod_exec-12958.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="SecurityClassificationCodeType">
+<xsd:simpleContent>
+<xsd:extension base="dod_exec-12958:SecurityClassificationCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

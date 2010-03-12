@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/dod_misc/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/dod_misc/1.0' 
+    xmlns:dod='http://www.it.ojp.gov/jxdm/dod_misc/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../dod_misc/1.0/dod_misc_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/dod_misc/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='SecurityLevelCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates levels of security of information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='dod:SecurityLevelCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

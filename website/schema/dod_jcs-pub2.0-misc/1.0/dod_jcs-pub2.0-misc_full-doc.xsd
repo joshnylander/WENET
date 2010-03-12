@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/dod_jcs-pub2.0-misc/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/dod_jcs-pub2.0-misc/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+>
+
+<!--Define Types-->
+    <xsd:simpleType name='DocumentIntelligenceTypeCodeType'>
+      <xsd:annotation>
+        <xsd:documentation>A code list that enumerates natures or genres of a document or resource.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base='xsd:token'>
+        <xsd:enumeration value='CI'>
+          <xsd:annotation>
+            <xsd:documentation>Classified Intelligence</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='HUMINT'>
+          <xsd:annotation>
+            <xsd:documentation>Human Intelligence</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='IMINT'>
+          <xsd:annotation>
+            <xsd:documentation>Imagery Intelligence</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='MASINT'>
+          <xsd:annotation>
+            <xsd:documentation>Measurement and Signature Intelligence</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='OSINT'>
+          <xsd:annotation>
+            <xsd:documentation>Open Source Intelligence</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='SIGINT'>
+          <xsd:annotation>
+            <xsd:documentation>Signals Intelligence</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='TECHINT'>
+          <xsd:annotation>
+            <xsd:documentation>Technical Intelligence</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+      </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

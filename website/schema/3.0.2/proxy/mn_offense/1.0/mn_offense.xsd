@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mn_off="http://www.it.ojp.gov/jxdm/mn_offense/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/mn_offense/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/mn_offense/1.0" schemaLocation="../../../../mn_offense/1.0/mn_offense.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="OffenseCodeType">
+<xsd:simpleContent>
+<xsd:extension base="mn_off:OffenseCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="OffenseLevelCodeType">
+<xsd:simpleContent>
+<xsd:extension base="mn_off:OffenseLevelCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="StatuteTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="mn_off:StatuteTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

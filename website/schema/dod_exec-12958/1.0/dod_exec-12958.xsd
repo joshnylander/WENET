@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/dod_exec-12958/1.0">
+<xsd:simpleType name="SecurityClassificationCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="01"/>
+<xsd:enumeration value="02"/>
+<xsd:enumeration value="03"/>
+<xsd:enumeration value="04"/>
+<xsd:enumeration value="05"/>
+<xsd:enumeration value="06"/>
+<xsd:enumeration value="07"/>
+<xsd:enumeration value="08"/>
+<xsd:enumeration value="09"/>
+<xsd:enumeration value="10"/>
+<xsd:enumeration value="11"/>
+<xsd:enumeration value="12"/>
+<xsd:enumeration value="13"/>
+<xsd:enumeration value="14"/>
+<xsd:enumeration value="15"/>
+<xsd:enumeration value="16"/>
+<xsd:enumeration value="17"/>
+<xsd:enumeration value="18"/>
+<xsd:enumeration value="19"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

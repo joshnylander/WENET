@@ -1,0 +1,240 @@
+ /*   WIRE Master Style, filename masterstyle_wire.css  */ 
+/*  Simple stylesheet for fonts only. */
+/*  Updated May 6, 2003 */
+
+BODY {
+	
+	background : White;
+}
+.orcabody {
+	background-color:#FFFFFF;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-width: 0px;
+	}
+
+/*     WIRE global navigation, classname wglobal    */
+/*     Whatcom County global navigation, classname wglobal    */   
+A.wglobal {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-weight : bold;
+}
+
+A:LINK.wglobal {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-weight : bold;
+	text-decoration : none;
+}
+
+A:VISITED.wglobal {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-weight : bold;
+	text-decoration : none;
+}
+
+A:HOVER.wglobal {
+	text-decoration : underline;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-weight : bold;
+	color: #FFFFCC;
+}
+
+A:ACTIVE.wglobal {
+	text-decoration : underline;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 9pt;
+	font-weight : bold;
+	color: #CCFFFF;
+}
+
+
+/*   Department Global Navigation, classname dglobal  */
+A.dglobal {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-weight : bold;
+}
+
+A:LINK.dglobal {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-weight : bold;
+	text-decoration : none;
+	color: White;
+}
+
+A:VISITED.dglobal {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-weight : bold;
+	text-decoration : none;
+	color: White;
+}
+
+A:HOVER.dglobal {
+	text-decoration : underline;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-weight : bold;
+	color: #FFFFCC;
+}
+
+A:ACTIVE.dglobal {
+	text-decoration : underline;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	font-weight : bold;
+	color: #CCFFFF;
+}
+
+/*   Left Navigation, classname leftnav  */
+A.leftnav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+
+A:LINK.leftnav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	color: Blue;
+}
+
+A:VISITED.leftnav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	color: Purple;
+}
+
+A:HOVER.leftnav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	color: Navy;
+}
+
+A:ACTIVE.leftnav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	color: Red;
+}
+
+P.leftnav, TABLE.leftnav, TR.leftnav, TD.leftnav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+
+
+/*  General font controls in main content  */
+TABLE, TR, TD {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+}
+
+H1, H2, H3, H4, H5, H6 {
+	font-family : Arial, Helvetica, sans-serif;
+	color: #000066;
+}
+
+P, DIV, SPAN, PRE,  TEXTAREA, BLOCKQUOTE, FORM, INPUT  {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+}
+
+TH {
+	font-weight : bold;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+}
+
+A:LINK, A:VISITED, A:HOVER, A:ACTIVE {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+}
+
+UL, LI {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+}
+
+OL {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+}
+HR {
+	color: #006699;
+	height: 1pt;
+}
+
+/*   Classes to highlight important information with yellow background  */
+P.important, BLOCKQUOTE.important {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+	background-color : #FFFFCC;
+}
+
+EM.important, STRONG.important {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+	background-color : #FFFF99;
+	font-weight : bold;
+}
+
+
+/*   small text  */
+.smalltext {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+/*
+P.smalltext {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+
+A:VISITED.smalltext {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	color: Purple;
+}
+
+A:LINK.smalltext {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+	color: Blue;
+}
+*/
+
+/*  red text  */
+.redtext {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+	color: #FF0000
+}
+
+/*  Class for large body of simple text desired to be size 10 font  */
+P.font10 {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+
+/* Footer specifications*/
+.footer {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+
+A.footer, A:LINK.footer, A:VISITED.footer, A:HOVER.footer, A:ACTIVE.footer {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+	
+HR.footer {
+	color: #006699;
+	height: 2pt;
+}
+
+
+

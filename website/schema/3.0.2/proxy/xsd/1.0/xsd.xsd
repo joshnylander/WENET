@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/xsd/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="base64Binary">
+<xsd:simpleContent>
+<xsd:extension base="xsd:base64Binary">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="boolean">
+<xsd:simpleContent>
+<xsd:extension base="xsd:boolean">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="date">
+<xsd:simpleContent>
+<xsd:extension base="xsd:date">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="decimal">
+<xsd:simpleContent>
+<xsd:extension base="xsd:decimal">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="duration">
+<xsd:simpleContent>
+<xsd:extension base="xsd:duration">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="gMonth">
+<xsd:simpleContent>
+<xsd:extension base="xsd:gMonth">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="gYear">
+<xsd:simpleContent>
+<xsd:extension base="xsd:gYear">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="hexBinary">
+<xsd:simpleContent>
+<xsd:extension base="xsd:hexBinary">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="integer">
+<xsd:simpleContent>
+<xsd:extension base="xsd:integer">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="nonNegativeInteger">
+<xsd:simpleContent>
+<xsd:extension base="xsd:nonNegativeInteger">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="string">
+<xsd:simpleContent>
+<xsd:extension base="xsd:string">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="time">
+<xsd:simpleContent>
+<xsd:extension base="xsd:time">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="token">
+<xsd:simpleContent>
+<xsd:extension base="xsd:token">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

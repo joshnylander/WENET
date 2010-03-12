@@ -1,0 +1,300 @@
+<?xml version="1.0" standalone="yes"?>
+<instanceRoots lastUpdatedDate="20071001">
+	<namespace prefix="j">http://www.it.ojp.gov/jxdm/3.0.2</namespace>
+
+	<instanceRoot root="Person">
+		<supportedXPath showSummary="true">j:Person@sourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Person@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Person@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Person@sensitivityText</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:PersonPhysicalDetails/j:PersonSexText</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:PersonPhysicalDetails/j:PersonRaceText</supportedXPath>
+		<supportedXPath showSummary="false">j:Person/j:PersonAlias/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="false">j:Person/j:PersonAlias/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="false">j:Person/j:PersonAlias/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="false">j:Person/j:PersonAlias/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:Residence/j:LocationAddress/j:LocationStreet/j:StreetFullText</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:Residence/j:LocationAddress/j:LocationCityName</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:Residence/j:LocationAddress/j:LocationStateCode.fips5-2Alpha</supportedXPath>
+		<supportedXPath showSummary="true">j:Person/j:Residence/j:LocationAddress/j:LocationPostalCodeID/j:ID</supportedXPath>
+	</instanceRoot>
+	
+	<instanceRoot root="ArrestWarrant">
+		<supportedXPath showSummary="true">j:ArrestWarrant@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:ArrestWarrant@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:ArrestWarrant@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true" description="">j:ArrestWarrant/j:CourtOrderIssuingCourt/j:CourtName</supportedXPath>
+		<supportedXPath showSummary="false">j:ArrestWarrant/j:CourtOrderIssuingDate</supportedXPath>
+		<supportedXPath showSummary="true">j:ArrestWarrant/j:CourtOrderStatus/j:StatusText</supportedXPath>
+		<supportedXPath showSummary="true" description="This is the text description of the statute violated that warrants the warrant.">j:ArrestWarrant/j:ActivityCrimeCase/j:CaseCharge/j:ChargeDescriptionText</supportedXPath>
+		<supportedXPath showSummary="true" description="This is the reason for the warrant, such as FTA or FTC">j:ArrestWarrant/j:CourtOrderRequestReasonText</supportedXPath>
+		<supportedXPath showSummary="true">j:ArrestWarrant/j:WarrantLevelText</supportedXPath>
+		<supportedXPath showSummary="false">j:ArrestWarrant/j:CourtOrderDesignatedSubject@sourceIDText</supportedXPath>
+		<supportedXPath showSummary="true">j:ArrestWarrant/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true">j:ArrestWarrant/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:ArrestWarrant/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="true">j:ArrestWarrant/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="true">j:ArrestWarrant/j:CourtOrderDesignatedSubject/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="false" description="Event Number">j:ArrestWarrant/j:ActivityCrimeCase/j:ActivityID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="Court Cause Number, this is to be mapped to Citation number for District Court or Municipal Court but to Cause Number for Superior Court records in LEA systems.">j:ArrestWarrant/j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentGroupID/j:ID</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Organization">
+		<supportedXPath showSummary="true">j:Organization@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Organization@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Organization@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Organization/j:OrganizationName</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Citation">
+		<supportedXPath showSummary="true">j:Citation@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Citation@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Citation@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true" description="Ticket Number">j:Citation/j:ActivityID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="LEA Event Number">j:Citation/j:ActivityCrimeCase/j:ActivityID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:ActivityDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:ActivityTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:CitationAgency/j:OrganizationName</supportedXPath>
+		<supportedXPath showSummary="false">j:Citation/j:CitationSubject@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:CitationSubject/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:CitationSubject/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:CitationSubject/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:CitationSubject/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:Citation/j:CitationSubject/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="true" description="The code book, ie. RCW, BMC, WAC, WCC">j:Citation/j:CitationViolation/j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteCodeID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="The actual code in the book referenced above, typically a number, ex 9A.36.041">j:Citation/j:CitationViolation/j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteOffenseID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="A brief description of the offence from the code.">j:Citation/j:CitationViolation/j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteDescriptionText</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="ProtectionOrder"> <!-- Note: all orders are being considered ProtectionOrder -->
+		<supportedXPath showSummary="true">j:ProtectionOrder@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:ProtectionOrder@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:ProtectionOrder@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true">j:ProtectionOrder/j:CourtOrderStatus/j:StatusText</supportedXPath>
+		<supportedXPath showSummary="true" description="respondent, the bad guy">j:ProtectionOrder/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="false" description="">j:ProtectionOrder/j:CourtOrderDesignatedSubject@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="true">j:ProtectionOrder/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="true">j:ProtectionOrder/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="true">j:ProtectionOrder/j:CourtOrderDesignatedSubject/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:ProtectionOrder/j:CourtOrderDesignatedSubject/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="false">j:ProtectionOrder/j:CourtOrderIssuingCourt/j:CourtName</supportedXPath>
+		<supportedXPath showSummary="true" description="expiration date">j:ProtectionOrder/j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentExpirationDate</supportedXPath>
+		<supportedXPath showSummary="false" description="expiration date">j:ProtectionOrder/j:CourtOrderRecallDate</supportedXPath>
+		<supportedXPath showSummary="true" description="date order was delivered">j:ProtectionOrder/j:CourtOrderServiceDate</supportedXPath>
+		<supportedXPath showSummary="true" description="date order was issued">j:ProtectionOrder/j:CourtOrderIssuingDate</supportedXPath>
+		<supportedXPath showSummary="true" description="Court Cause Number">j:ProtectionOrder/j:ActivityDocket/j:DocumentDescriptiveMetadata/j:DocumentGroupID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="Petitioner, for those protecting a business put the org name here and DO NOT put the other name elements">j:ProtectionOrder/j:ProtectionOrderRestrictedPerson/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true" description="Petitioner, for those protecting a business put the org name here and DO NOT put the other name elements">j:ProtectionOrder/j:ProtectionOrderRestrictedPerson/j:PersonBirthDate</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Property">
+		<supportedXPath showSummary="true">j:Property@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Property@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Property@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Property/j:PropertyDescriptionText</supportedXPath>
+		<supportedXPath showSummary="true" description="Orginization (typcally LEA but sometimes towing company) that dealt with the property and caused it to be recorded in the database, does not track final disposition of item">j:Property/j:PropertyPossessor.Organization/j:OrganizationName</supportedXPath>
+		<supportedXPath showSummary="true">j:Property/j:PropertyDisposition/j:PropertyDispositionCode</supportedXPath>
+		<supportedXPath showSummary="true">j:Property/j:PropertyTypeText</supportedXPath>
+		<supportedXPath showSummary="true">j:Property/j:PropertyAssignedIDDetails/j:PropertySerialID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true">j:Property/j:PropertyStatus/j:StatusText</supportedXPath>
+		<supportedXPath showSummary="true" description="The item or tag number, barcode, etc.">j:Property/j:PropertyAssignedIDDetails/j:PropertyReceiptID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="The event number or case number.">j:Property/j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="brand">j:Property/j:PropertyPhysicalDetails/j:PropertyBrandName</supportedXPath>
+		<supportedXPath showSummary="true" description="make">j:Property/j:PropertyPhysicalDetails/j:PropertyMakeName</supportedXPath>
+		<supportedXPath showSummary="true" description="model">j:Property/j:PropertyPhysicalDetails/j:PropertyModelName</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Firearm">
+		<supportedXPath showSummary="true">j:Firearm@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Firearm@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Firearm@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Firearm/j:PropertyDescriptionText</supportedXPath>
+		<supportedXPath showSummary="true" description="Orginization (typcally LEA but sometimes towing company) that dealt with the property and caused it to be recorded in the database, does not track final disposition of item">j:Firearm/j:PropertyPossessor.Organization/j:OrganizationName</supportedXPath>
+		<supportedXPath showSummary="true">j:Firearm/j:PropertyDisposition/j:PropertyDispositionCode</supportedXPath>
+		<supportedXPath showSummary="true">j:Firearm/j:PropertyTypeText</supportedXPath>
+		<supportedXPath showSummary="true">j:Firearm/j:PropertyAssignedIDDetails/j:PropertySerialID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true">j:Firearm/j:PropertyStatus/j:StatusText</supportedXPath>
+		<supportedXPath showSummary="true" description="The item or tag number, barcode, etc.">j:Firearm/j:PropertyAssignedIDDetails/j:PropertyReceiptID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="The event number or case number.">j:Firearm/j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="brand">j:Firearm/j:PropertyPhysicalDetails/j:PropertyBrandName</supportedXPath>
+		<supportedXPath showSummary="true" description="make">j:Firearm/j:PropertyPhysicalDetails/j:PropertyMakeName</supportedXPath>
+		<supportedXPath showSummary="true" description="model">j:Firearm/j:PropertyPhysicalDetails/j:PropertyModelName</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Vehicle">
+		<supportedXPath showSummary="true">j:Vehicle@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Vehicle@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Vehicle@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Vehicle/j:PropertyDescriptionText</supportedXPath>
+		<supportedXPath showSummary="true" description="Orginization (typcally LEA but sometimes towing company) that dealt with the property and caused it to be recorded in the database, does not track final disposition of item">j:Vehicle/j:PropertyPossessor.Organization/j:OrganizationName</supportedXPath>
+		<supportedXPath showSummary="true">j:Vehicle/j:PropertyDisposition/j:PropertyDispositionCode</supportedXPath>
+		<supportedXPath showSummary="true">j:Vehicle/j:PropertyTypeText</supportedXPath>
+		<supportedXPath showSummary="true" description="VIN">j:Vehicle/j:VehicleID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true">j:Vehicle/j:PropertyStatus/j:StatusText</supportedXPath>
+		<supportedXPath showSummary="true" description="The item or tag number, barcode, etc.">j:Vehicle/j:PropertyAssignedIDDetails/j:PropertyReceiptID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="The event number or case number.">j:Vehicle/j:PropertyAssignedIDDetails/j:PropertyOtherID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="brand">j:Vehicle/j:PropertyPhysicalDetails/j:PropertyBrandName</supportedXPath>
+		<supportedXPath showSummary="true" description="make">j:Vehicle/j:PropertyPhysicalDetails/j:PropertyMakeName</supportedXPath>
+		<supportedXPath showSummary="true" description="model">j:Vehicle/j:PropertyPhysicalDetails/j:PropertyModelName</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Evidence">
+		<supportedXPath showSummary="true">j:Evidence@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Evidence@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Evidence@lastUpdatedTime</supportedXPath>
+		<supportedXPath showInSummary="true" description="EvidenceNumberID">j:Evidence/j:EvidenceNumberID/j:ID</supportedXPath> 
+		<supportedXPath showInSummary="false" description="ID">j:Evidence/j:EvidenceItem.Property/j:PropertyAssignedIDDetails/j:PropertyOwnerAppliedID/j:ID</supportedXPath> 
+		<supportedXPath showInSummary="false" description="ID">j:Evidence/j:EvidenceItem.Property/j:PropertyAssignedIDDetails/j:PropertySerialID/j:ID</supportedXPath> 
+		<supportedXPath showInSummary="true" description="PropertyDescriptionText">j:Evidence/j:EvidenceItem.Property/j:PropertyDescriptionText</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonFullName">j:Evidence/j:EvidenceItem.Property/j:PropertyOwner.Person@SourceIDText</supportedXPath>
+		<supportedXPath showInSummary="true" description="PersonFullName">j:Evidence/j:EvidenceItem.Property/j:PropertyOwner.Person/j:PersonName/j:PersonFullName</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonGivenName">j:Evidence/j:EvidenceItem.Property/j:PropertyOwner.Person/j:PersonName/j:PersonGivenName</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonMiddleName">j:Evidence/j:EvidenceItem.Property/j:PropertyOwner.Person/j:PersonName/j:PersonMiddleName</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonSurName">j:Evidence/j:EvidenceItem.Property/j:PropertyOwner.Person/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showInSummary="false" description="PersonBirthDate">j:Evidence/j:EvidenceItem.Property/j:PropertyOwner.Person/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showInSummary="true" description="PropertyMakeName">j:Evidence/j:EvidenceItem.Property/j:PropertyPhysicalDetails/j:PropertyMakeName</supportedXPath> 
+		<supportedXPath showInSummary="true" description="PropertyModelName">j:Evidence/j:EvidenceItem.Property/j:PropertyPhysicalDetails/j:PropertyModelName</supportedXPath> 
+		<supportedXPath showInSummary="true" description="StatusText">j:Evidence/j:EvidenceItem.Property/j:PropertyStatus/j:StatusText</supportedXPath> 
+		<supportedXPath showInSummary="true" description="PropertyTypeText">j:Evidence/j:EvidenceItem.Property/j:PropertyTypeText</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonFullName">j:Evidence/j:EvidenceTakenFrom.Person/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showInSummary="false" description="PersonFullName">j:Evidence/j:EvidenceTakenFrom.Person@SourceIDText</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonGivenName">j:Evidence/j:EvidenceTakenFrom.Person/j:PersonName/j:PersonGivenName</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonMiddleName">j:Evidence/j:EvidenceTakenFrom.Person/j:PersonName/j:PersonMiddleName</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonSurName">j:Evidence/j:EvidenceTakenFrom.Person/j:PersonName/j:PersonSurName</supportedXPath> 
+		<supportedXPath showInSummary="false" description="PersonBirthDate">j:Evidence/j:EvidenceTakenFrom.Person/j:PersonBirthDate</supportedXPath> 
+	</instanceRoot>
+
+	<instanceRoot root="Booking">
+		<supportedXPath showSummary="true">j:Booking@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Booking@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Booking@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true" description="Booking ID">j:Booking/j:BookingDocumentControlID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="the jail">j:Booking/j:BookingAgency</supportedXPath>
+		<supportedXPath showSummary="false" description="event number">j:Booking/j:BookingAgencyRecordID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="arresting agency">j:Booking/j:Arrest/j:ArrestAgency</supportedXPath>
+		<supportedXPath showSummary="true" description="event number">j:Booking/j:Arrest/j:ArrestAgencyRecordID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="booking date">j:Booking/j:ActivityDate</supportedXPath>
+		<supportedXPath showSummary="true" description="booking time">j:Booking/j:ActivityTime</supportedXPath>
+		<supportedXPath showSummary="false" description="charge desciption(s)">j:Booking/j:Arrest/j:ArrestCharge/j:ChargeDescriptionText</supportedXPath>
+		<supportedXPath showSummary="false" description="court">j:Booking/j:Arrest/j:ArrestCharge/j:ChargeModifier.Organization/j:OrganizationName</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject/j:PersonPhysicalDetails/j:PersonSexText</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingSubject/j:PersonPhysicalDetails/j:PersonRaceText</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:PersonAlias/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:PersonAlias/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:PersonAlias/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:PersonAlias/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingRelease/j:ActivityDate</supportedXPath>
+		<supportedXPath showSummary="true">j:/Booking/j:BookingRelease/j:ActivityTime</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:Residence/j:LocationAddress/j:LocationStreet/j:StreetFullText</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:Residence/j:LocationAddress/j:LocationCityName</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:Residence/j:LocationAddress/j:LocationStateCode.fips5-2Alpha</supportedXPath>
+		<supportedXPath showSummary="false">j:/Booking/j:BookingSubject/j:Residence/j:LocationAddress/j:LocationPostalCodeID/j:ID</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Case">
+		<supportedXPath showSummary="true">j:Case@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Case@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Case@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true" description="case initiation date">j:Case/j:ActivityDate</supportedXPath>
+		<supportedXPath showSummary="false" description="prosecutor log id as the combination of the MMDDYYYY[SequenceID, three characters]">j:Case/j:CaseTrackingID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="LEA event number">j:Case/j:CaseOtherID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="cause number">j:Case/j:CaseDocketID/j:ID</supportedXPath>
+		<supportedXPath showSummary="false" description="assigned prosecutor">j:Case/j:CaseParticipants/j:CaseProsecutionAttorney/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true" description="suspect">j:Case/j:ActivitySuspect@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="true">j:Case/j:ActivitySuspect/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true">j:Case/j:ActivitySuspect/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="true">j:Case/j:ActivitySuspect/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="true">j:Case/j:ActivitySuspect/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:Case/j:ActivitySuspect/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Case/j:ActivitySuspect/j:PersonPhysicalDetails/j:PersonSexText</supportedXPath>
+		<supportedXPath showSummary="true">j:Case/j:ActivitySuspect/j:PersonPhysicalDetails/j:PersonRaceText</supportedXPath>
+		<supportedXPath showSummary="false">j:Case/j:ActivitySuspect/j:PersonAlias/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="false">j:Case/j:ActivitySuspect/j:PersonAlias/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="false">j:Case/j:ActivitySuspect/j:PersonAlias/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="false">j:Case/j:ActivitySuspect/j:PersonAlias/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true" description="potential charge">j:Case/j:ActivityCrimePotentialCharge/j:ChargeDescriptionText</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Arrest">
+		<supportedXPath showSummary="true">j:Arrest@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Arrest@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Arrest@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true" description="LEA Event Number">j:Arrest/j:ArrestAgencyRecordID </supportedXPath>
+		<supportedXPath showSummary="true" description="The code book, ie. RCW, BMC, WAC, WCC">j:Arrest/j:ArrestCharge/j:ChargeStatute/j:StatuteCodeID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="The actual code in the book referenced above, typically a number, ex 9A.36.041">j:Arrest/j:ArrestCharge/j:ChargeStatute/j:StatuteOffenseID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="A brief description of the offence from the code.">j:Arrest/j:ArrestCharge/j:ChargeStatute/j:StatuteDescriptionText</supportedXPath>
+		<supportedXPath showSummary="true">j:Arrest/j:ArrestCharge/j:ChargeSequenceID/j:ID</supportedXPath>
+		<supportedXPath showInSummary="false" fieldName="OrganizationName" fieldDescription="">j:Arrest/j:ArrestAgency/j:OrganizationName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonID" fieldDescription="">j:Arrest/j:ArrestSubject@SourceIDText</supportedXPath>
+		<supportedXPath showInSummary="true" fieldName="PersonFullName" fieldDescription="">j:Arrest/j:ArrestSubject/j:PersonName/j:PersonFullName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonGivenName" fieldDescription="">j:Arrest/j:ArrestSubject/j:PersonName/j:PersonGivenName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonMiddleName" fieldDescription="">j:Arrest/j:ArrestSubject/j:PersonName/j:PersonMiddleName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonSurName" fieldDescription="">j:Arrest/j:ArrestSubject/j:PersonName/j:PersonSurName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonBirthDate" fieldDescription="">j:Arrest/j:ArrestSubject/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Arrest/j:ActivityDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Arrest/j:ActivityTime</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Infraction">
+		<supportedXPath showSummary="true">j:Infraction@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Infraction@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Infraction@lastUpdatedTime</supportedXPath>
+		<supportedXPath showSummary="true" description="Ticket Number">j:Infraction/j:ActivityID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="LEA Event Number">j:Infraction/j:ActivityCrimeCase/j:ActivityID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:ActivityDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:ActivityTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:ActivityPrimaryOrganization/j:OrganizationName</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:IncidentSubject/j:PersonName/j:PersonFullName</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:IncidentSubject/j:PersonName/j:PersonGivenName</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:IncidentSubject/j:PersonName/j:PersonMiddleName</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:IncidentSubject/j:PersonName/j:PersonSurName</supportedXPath>
+		<supportedXPath showSummary="true">j:Infraction/j:IncidentSubject/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="true" description="The code book, ie. RCW, BMC, WAC, WCC">j:Infraction/j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteCodeID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="The actual code in the book referenced above, typically a number, ex 9A.36.041">j:Infraction/j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteOffenseID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true" description="A brief description of the offence from the code.">j:Infraction/j:ActivityCrimePotentialCharge/j:ChargeStatute/j:StatuteDescriptionText</supportedXPath>
+	</instanceRoot>
+
+	<instanceRoot root="Incident">
+		<supportedXPath showSummary="true">j:Incident@SourceIDText</supportedXPath>
+		<supportedXPath showSummary="false">j:Incident@lastUpdatedDate</supportedXPath>
+		<supportedXPath showSummary="false">j:Incident@lastUpdatedTime</supportedXPath>
+		<supportedXPath showInSummary="true" fieldName="SubjectID, the sequence number or other ID relative to this Incident used to identify the person in the report." fieldDescription="">j:Incident/j:IncidentSubject/j:SubjectID/j:ID</supportedXPath>
+		<supportedXPath showInSummary="false" fieldName="PersonID" fieldDescription="">j:Incident/j:IncidentSubject@SourceIDText</supportedXPath>
+		<supportedXPath showInSummary="true" fieldName="PersonFullName" fieldDescription="">j:Incident/j:IncidentSubject/j:PersonName/j:PersonFullName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonGivenName" fieldDescription="">j:Incident/j:IncidentSubject/j:PersonName/j:PersonGivenName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonMiddleName" fieldDescription="">j:Incident/j:IncidentSubject/j:PersonName/j:PersonMiddleName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonSurName" fieldDescription="">j:Incident/j:IncidentSubject/j:PersonName/j:PersonSurName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonBirthDate" fieldDescription="">j:Incident/j:IncidentSubject/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Incident/j:ActivityDate</supportedXPath>
+		<supportedXPath showSummary="true">j:Incident/j:ActivityTime</supportedXPath>
+		<supportedXPath showSummary="true">j:Incident/j:ActivityID/j:ID</supportedXPath>
+		<supportedXPath showSummary="true">j:Incident/j:IncidentCategory/j:IncidentCategoryTypeText</supportedXPath>
+		<supportedXPath showSummary="false">j:Incident/j:IncidentLocation/j:LocationAddress/j:AddressFullText</supportedXPath>
+		<supportedXPath showInSummary="false" fieldName="VictimID, the sequence number or other ID relative to this Incident used to identify the person in the report." fieldDescription="">j:Incident/j:IncidentVictim/j:VictimID/j:ID</supportedXPath>
+		<supportedXPath showInSummary="false" fieldName="PersonID" fieldDescription="">j:Incident/j:IncidentVictim/j:Victim.Person@SourceIDText</supportedXPath>
+		<supportedXPath showInSummary="true" fieldName="PersonFullName" fieldDescription="">j:Incident/j:IncidentVictim/j:Victim.Person/j:PersonName/j:PersonFullName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonGivenName" fieldDescription="">j:Incident/j:IncidentVictim/j:Victim.Person/j:PersonName/j:PersonGivenName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonMiddleName" fieldDescription="">j:Incident/j:IncidentVictim/j:Victim.Person/j:PersonName/j:PersonMiddleName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonSurName" fieldDescription="">j:Incident/j:IncidentVictim/j:Victim.Person/j:PersonName/j:PersonSurName</supportedXPath> 
+		<supportedXPath showInSummary="true" fieldName="PersonBirthDate" fieldDescription="">j:Incident/j:IncidentVictim/j:Victim.Person/j:PersonBirthDate</supportedXPath>
+		<supportedXPath showInSummary="true" fieldName="Victim Organization" fieldDescription="">j:Incident/j:IncidentVictim/j:Victim.Organization/j:OrganizationName</supportedXPath>
+		<supportedXPath showInSummary="false" fieldName="VictimID, the sequence number or other ID relative to this Incident used to identify the person in the report." fieldDescription="">j:Incident/j:IncidentWitness/j:WitnessID/j:ID</supportedXPath>
+		<supportedXPath showInSummary="false" fieldName="PersonID" fieldDescription="">j:Incident/j:IncidentWitness@SourceIDText</supportedXPath>
+		<supportedXPath showInSummary="true" fieldName="PersonFullName" fieldDescription="">j:Incident/j:IncidentWitness/j:PersonName/j:PersonFullName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonGivenName" fieldDescription="">j:Incident/j:IncidentWitness/j:PersonName/j:PersonGivenName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonMiddleName" fieldDescription="">j:Incident/j:IncidentWitness/j:PersonName/j:PersonMiddleName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonSurName" fieldDescription="">j:Incident/j:IncidentWitness/j:PersonName/j:PersonSurName</supportedXPath> 
+		<supportedXPath showInSummary="false" fieldName="PersonBirthDate" fieldDescription="">j:Incident/j:IncidentWitness/j:PersonBirthDate</supportedXPath>
+	</instanceRoot>
+</instanceRoots>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Josh Nylander (Whatcom County Administrative Services) 20060113
+-->
+<xsd:schema version="1.2.2" xmlns="http://www.co.whatcom.wa.us/apps/wenet/schema/wenet/1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.co.whatcom.wa.us/apps/wenet/schema/wenet/1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:element name="service">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="serviceURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="serviceCertificate" type="certificateType" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="orgURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="owner" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="clusters" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="methods" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="instanceRoots" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+		<xsd:element name="instanceRoots">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="instanceRoot" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="namespace" type="namespaceType" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="instanceRoot">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="rootNode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="supportedXPath" type="supportedXPathType" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="namespaceType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" >
+				<xsd:attribute name="prefix" type="xsd:string" use="required" />
+				<xsd:attribute name="location" type="xsd:string" use="optional" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="supportedXPathType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" >
+				<xsd:attribute name="showInSummary" type="xsd:boolean" use="optional" />
+				<xsd:attribute name="fieldName" type="xsd:string" use="optional" />
+				<xsd:attribute name="fieldDescription" type="xsd:string" use="optional" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:element name="clusters">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="cluster" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="cluster">
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="clusterName" type="xsd:string"/>
+				<xsd:element name="clusterURI" type="xsd:anyURI"/>
+				<xsd:element name="myParentInCluster" type="xsd:anyURI"/>
+				<xsd:element ref="clusterMember" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="clusterMember" type="serviceIDType"/>
+	<xsd:complexType name="serviceIDType" mixed="false">
+		<xsd:sequence>
+			<xsd:element name="orgURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="serviceURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="serviceDescriptorURL" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="certificateType">
+		<xsd:sequence>
+			<xsd:element name="subjectDN" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="issuerDN" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="serialNumber" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="method">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="methodName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="methodURL" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="methodType" minOccurs="1" maxOccurs="1">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="GET"/>
+							<xsd:enumeration value="POST"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="methodDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="methodParameters" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+							<xsd:element name="methodParameter" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="methods">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element ref="method"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="owner" type="xsd:anyURI"/>
+	<xsd:element name="user">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="RFC822name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="userinfo" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="roles" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="authlist">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="URL" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="serviceURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="lastModified" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="orgURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="authorizingCertificates" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+							<xsd:element name="authorizingCertificate" type="certificateType"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="users" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+							<xsd:element ref="user"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="roles">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="role"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="role" type="xsd:string"/>
+	<xsd:element name="auditlog">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="orgURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="serviceURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="URL" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="logentries" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="logentry" minOccurs="0" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="logentry">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="userRFC822name" type="xsd:string"/>
+				<xsd:element name="userCertSubject" type="xsd:string"/>
+				<xsd:element name="when" type="xsd:dateTime"/>
+				<xsd:element name="requestIPAddress" type="xsd:string"/>
+				<xsd:element name="requestURL" type="xsd:string"/>
+				<xsd:element name="methodName" type="xsd:string"/>
+				<xsd:element name="POSTdata" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="instance">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="instanceElement">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:any />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="instanceURI" type="xsd:anyURI"/>
+				<xsd:element name="orgURI" type="xsd:anyURI"/>
+				<xsd:element name="serviceURI" type="xsd:anyURI"/>
+				<xsd:element name="lastModified" type="xsd:dateTime"/>
+				<xsd:element name="URL" type="xsd:anyURI"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="results">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="resultList">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="result" minOccurs="0" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="checkBackURL" type="xsd:anyURI" minOccurs="0"/>
+				<xsd:element name="serviceURI" type="xsd:anyURI"/>
+				<xsd:element name="URL" type="xsd:anyURI"/>
+				<xsd:element ref="error" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="error">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="errorNumber" type="xsd:integer" use="required"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="result">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="instanceURL" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="instanceURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="lastModified" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="orgURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="serviceURI" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="summary" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:any />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

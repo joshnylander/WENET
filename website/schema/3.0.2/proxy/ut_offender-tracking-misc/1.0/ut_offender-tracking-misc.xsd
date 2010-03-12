@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:ut_offender="http://www.it.ojp.gov/jxdm/ut_offender-tracking-misc/1.0" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/ut_offender-tracking-misc/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/ut_offender-tracking-misc/1.0" schemaLocation="../../../../ut_offender-tracking-misc/1.0/ut_offender-tracking-misc.xsd"/>
+<xsd:complexType name="CaseDispositionDecisionTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ut_offender:CaseDispositionDecisionTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="MilitaryDischargeTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ut_offender:MilitaryDischargeTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="PleaTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ut_offender:PleaTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="SupervisionLevelCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ut_offender:SupervisionLevelCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="SupervisionRestrictionCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ut_offender:SupervisionRestrictionCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

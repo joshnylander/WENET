@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/nonauthoritative-code/1.0">
+<xsd:simpleType name="ImagePoseCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="Frontal"/>
+<xsd:enumeration value="Oblique"/>
+<xsd:enumeration value="Side"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="PersonNameTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="aka"/>
+<xsd:enumeration value="alias"/>
+<xsd:enumeration value="call sign"/>
+<xsd:enumeration value="dba"/>
+<xsd:enumeration value="fka"/>
+<xsd:enumeration value="handle"/>
+<xsd:enumeration value="moniker"/>
+<xsd:enumeration value="nickname"/>
+<xsd:enumeration value="other"/>
+<xsd:enumeration value="provided"/>
+<xsd:enumeration value="pseudonym"/>
+<xsd:enumeration value="unknown"/>
+<xsd:enumeration value="user id"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

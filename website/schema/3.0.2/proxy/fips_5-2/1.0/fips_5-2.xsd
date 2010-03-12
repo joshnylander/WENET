@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fips_5-2="http://www.it.ojp.gov/jxdm/fips_5-2/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/fips_5-2/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/fips_5-2/1.0" schemaLocation="../../../../fips_5-2/1.0/fips_5-2.xsd"/>
+<xsd:complexType name="USStateCodeType">
+<xsd:simpleContent>
+<xsd:extension base="fips_5-2:USStateCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="USStateNumericCodeType">
+<xsd:simpleContent>
+<xsd:extension base="fips_5-2:USStateNumericCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

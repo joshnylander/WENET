@@ -1,0 +1,174 @@
+BODY {
+	BACKGROUND: white
+}
+A.wglobal {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.wglobal:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.wglobal:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.wglobal:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffcc; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.wglobal:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ccffff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.dglobal {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.dglobal:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: white; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.dglobal:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: white; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.dglobal:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ffffcc; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.dglobal:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ccffff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A.leftnav {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.leftnav:link {
+	FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.leftnav:visited {
+	FONT-SIZE: 10pt; COLOR: purple; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.leftnav:hover {
+	FONT-SIZE: 10pt; COLOR: navy; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.leftnav:active {
+	FONT-SIZE: 10pt; COLOR: red; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+P.leftnav {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TABLE.leftnav {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TR.leftnav {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TD.leftnav {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TABLE {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TR {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TD {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H1 {
+	COLOR: #000066; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H2 {
+	COLOR: #000066; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H3 {
+	COLOR: #000066; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H4 {
+	COLOR: #000066; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H5 {
+	COLOR: #000066; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H6 {
+	COLOR: #000066; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+P {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+DIV {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+SPAN {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+PRE {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TEXTAREA {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+BLOCKQUOTE {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+FORM {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+INPUT {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TH {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:link {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:visited {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:hover {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:active {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+UL {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+LI {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+OL {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+HR {
+	COLOR: #006699; HEIGHT: 1pt
+}
+P.important {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffcc
+}
+BLOCKQUOTE.important {
+	FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffcc
+}
+EM.important {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffff99
+}
+STRONG.important {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffff99
+}
+P.font10 {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.footer {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.footer {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.footer:link {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.footer:visited {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.footer:hover {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.footer:active {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+HR.footer {
+	COLOR: #006699; HEIGHT: 2pt
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/dod_jcs-pub2.0-misc/1.0">
+<xsd:simpleType name="DocumentIntelligenceTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="CI"/>
+<xsd:enumeration value="HUMINT"/>
+<xsd:enumeration value="IMINT"/>
+<xsd:enumeration value="MASINT"/>
+<xsd:enumeration value="OSINT"/>
+<xsd:enumeration value="SIGINT"/>
+<xsd:enumeration value="TECHINT"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

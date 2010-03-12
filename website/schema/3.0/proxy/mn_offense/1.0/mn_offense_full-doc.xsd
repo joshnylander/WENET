@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/mn_offense/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/mn_offense/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:mn_off='http://www.it.ojp.gov/jxdm/mn_offense/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+  <xsd:import schemaLocation='../../../../mn_offense/1.0/mn_offense_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/mn_offense/1.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='OffenseCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates criminal offenses within a code book.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='mn_off:OffenseCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='OffenseLevelCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates levels of an incident.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='mn_off:OffenseLevelCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='StatuteTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of statutes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='mn_off:StatuteTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

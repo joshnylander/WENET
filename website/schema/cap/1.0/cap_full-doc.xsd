@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/cap/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/cap/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+>
+
+<!--Define Types-->
+    <xsd:simpleType name='AlertCertaintyCodeType'>
+      <xsd:annotation>
+        <xsd:documentation>A code list that enumerates likelinesses of an occurrence of an event that raised an alert.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base='xsd:token'>
+        <xsd:enumeration value='High'>
+          <xsd:annotation>
+            <xsd:documentation>Highly likely (probability greater than around 85%) or certain</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Low'>
+          <xsd:annotation>
+            <xsd:documentation>Possible but not likely (probability less than or equal to around 50%)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Minimal'>
+          <xsd:annotation>
+            <xsd:documentation>Not expected to occur (probability around 0)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Moderate'>
+          <xsd:annotation>
+            <xsd:documentation>likely (probability greater than around 50%)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Unknown'>
+          <xsd:annotation>
+            <xsd:documentation>Certainty unknown</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+      </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name='AlertEventCategoryCodeType'>
+      <xsd:annotation>
+        <xsd:documentation>A code list that enumerates categories of an event that raised an alert.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base='xsd:token'>
+        <xsd:enumeration value='Env'>
+          <xsd:annotation>
+            <xsd:documentation>Pollution and other environmental</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Fire'>
+          <xsd:annotation>
+            <xsd:documentation>Fire suppression and rescue</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Geo'>
+          <xsd:annotation>
+            <xsd:documentation>Geophysical (inc. landslide)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Health'>
+          <xsd:annotation>
+            <xsd:documentation>Medical and public health</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Infra'>
+          <xsd:annotation>
+            <xsd:documentation>Utility, telecommunication, other non-transport infrastructure</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Met'>
+          <xsd:annotation>
+            <xsd:documentation>Meteorological (inc. flood)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Other'>
+          <xsd:annotation>
+            <xsd:documentation>Other events</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Rescue'>
+          <xsd:annotation>
+            <xsd:documentation>Rescue and recovery</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Safety'>
+          <xsd:annotation>
+            <xsd:documentation>General emergency and public safety</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Security'>
+          <xsd:annotation>
+            <xsd:documentation>Law enforcement, military, homeland and local/private security</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Transport'>
+          <xsd:annotation>
+            <xsd:documentation>Public and private transportation</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+      </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name='AlertSeverityCodeType'>
+      <xsd:annotation>
+        <xsd:documentation>A code list that enumerates severity levels of an event that raised an alert.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base='xsd:token'>
+        <xsd:enumeration value='Extreme'>
+          <xsd:annotation>
+            <xsd:documentation>Extraordinary threat to life or property</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Minor'>
+          <xsd:annotation>
+            <xsd:documentation>Minimal threat to life or property</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Moderate'>
+          <xsd:annotation>
+            <xsd:documentation>Possible threat to life or property</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Severe'>
+          <xsd:annotation>
+            <xsd:documentation>Significant threat to life or property</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Unknown'>
+          <xsd:annotation>
+            <xsd:documentation>Severity Unknown</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+      </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name='AlertUrgencyCodeType'>
+      <xsd:annotation>
+        <xsd:documentation>A code list that enumerates urgency levels of an event that raised an alert.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base='xsd:token'>
+        <xsd:enumeration value='Forecast'>
+          <xsd:annotation>
+            <xsd:documentation>Refers to an event that is moderately probable in the near future</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Impending'>
+          <xsd:annotation>
+            <xsd:documentation>Refers to an event that is imminent (within next hour)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Ongoing'>
+          <xsd:annotation>
+            <xsd:documentation>Refers to an actual event that has occurred recently or is occurring</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Past'>
+          <xsd:annotation>
+            <xsd:documentation>Refers to an event that occurred in the past (not requiring further action)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='Unknown'>
+          <xsd:annotation>
+            <xsd:documentation>Urgency not known</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+      </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

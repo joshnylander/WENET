@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dod_jcs-pub2.0="http://www.it.ojp.gov/jxdm/dod_jcs-pub2.0-misc/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/dod_jcs-pub2.0-misc/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/dod_jcs-pub2.0-misc/1.0" schemaLocation="../../../../dod_jcs-pub2.0-misc/1.0/dod_jcs-pub2.0-misc.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="DocumentIntelligenceTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="dod_jcs-pub2.0:DocumentIntelligenceTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>
