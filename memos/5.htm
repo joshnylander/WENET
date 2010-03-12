@@ -1,0 +1,65 @@
+<%@include file="/common/utils.jsp"%>
+<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+
+   <head>
+   
+   <title></title>
+   
+<link rel="stylesheet" href="/styles/masterstyle_fonts.css" type="text/css" />
+      </head>
+   <body bgcolor="#ffffff" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" >
+   
+  <table width="100%" border="0" cellspacing="1">
+    <tr valign="top">
+      <td colspan="2" width="64%"><font size="-1">WENET Working Group,<br />
+MIS Committee,<br />
+Whatcom County Law and Justice Council</font></td>
+      <td width="33%" rowspan="3" align="right"><font size="-1"><font size="-1">R.
+      Josh Nylander</font></font></td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Memo: 5</font></td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td><font size="-1">Status: DRAFT </font></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Obsoletes: none</font></td>
+      <td width="33%">&nbsp;</td>
+      <td width="33%"><div align="right"><font size="-1">March
+      17, 2004</font></div></td>
+    </tr>
+    <tr valign="top">
+      <td colspan="3" width="100%"><div align="center"><strong>WC
+      Jail Demo - WENET Service</strong></div></td>
+    </tr>
+  </table>
+  
+  <p>We have implemented a WENET service
+  point based on the limited data available through the <a href="http://www.whatcomcounty.us/sheriff/jail/roster.jsp">Jail
+  Roster</a> application.
+  Basing our demo service point on an existing public application means that
+  we can make the service publicly available for testing. This demo may not be
+  a complete implementation, see noted below. The Jail roster is a list of the
+  persons currently in the Whatcom County Jail. The service provides the person's
+  full name, booking number and date booked.</p>
+  <p>20040317 - Implemented query and document retrieval. To test, try the following
+    URLs:</p>
+  <ul>
+    <li>To find all bookings of persons currently in Jail: <a href="http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=">    http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=</a></li>
+    <li>To find a specific booking number based on BookingFileID: <a href="http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking/jxdd3:BookingFileID%5Bjxdd2:ID=%27154916%27%5D">http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking/jxdd3:BookingFileID[jxdd2:ID='154916']</a></li>
+    <li>To find a specific booking number based on ActivityID: <a href="http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking/jxdd3:ActivityID%5Bjxdd2:ID=%27154916%27%5D">http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking/jxdd3:ActivityID[jxdd2:ID='154916']</a></li>
+    <li>To find a booking by person name: <a href="http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking/jxdd3:BookingSubject/jxdd3:PersonName%5Bjxdd3:PersonFullName=%27ANASKAN%27%5D">http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking/jxdd3:BookingSubject/jxdd3:PersonName[jxdd3:PersonFullName='ANASKAN']</a></li>
+    <li>To find a bookings by date: <a href="http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking%5Bjxdd3:ActivityDate=%272004-03-08%27%5D">http://www.co.whatcom.wa.us/apps/wenet/wcjaildemo/query.jsp?query=/wenet:document/jxdd3:Booking[jxdd3:ActivityDate='2004-03-08']</a></li>
+  </ul>
+<!-- Footer -->   
+<a href="http://www.w3.org/WAI/WCAG1A-Conformance"
+      title="Explanation of Level A Conformance">&nbsp;&nbsp;</a> 
+   </body>
+</html>
+

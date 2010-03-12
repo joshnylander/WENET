@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+
+   <head>
+   
+   <title>WENET Memo 13</title>
+   
+<link rel="stylesheet" href="/styles/masterstyle_fonts.css" type="text/css" />
+      </head>
+   <body bgcolor="#ffffff" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" >
+   
+  <table width="100%" border="0" cellspacing="1">
+    <tr valign="top">
+      <td colspan="2" width="64%"><font size="-1">WENET Working Group,<br />
+MIS Committee,<br />
+Whatcom County Law and Justice Council</font></td>
+      <td width="33%" rowspan="3" align="right"><font size="-1"><font size="-1">R.
+              Josh Nylander</font></font></td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Memo: 13</font></td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td><font size="-1">Status: FINAL </font></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Obsoletes: <a href="10.htm">Memo
+            10, WENET Technical Policy v1</a></font></td>
+      <td width="33%">&nbsp;</td>
+      <td width="33%"><div align="right"><font size="-1">August 2nd,
+      2005</font></div></td>
+    </tr>
+    <tr valign="top">
+      <td colspan="3" width="100%"><div align="center"><strong>WENET
+      Technical Policy v1.1</strong></div></td>
+    </tr>
+  </table>
+  
+  <p>WENET Technical Policy v1.1:</p>
+  <ol>
+    <li>Services MUST refresh their combined authlist at least every 30 minutes.</li>
+    <li>Services MUST conduct service discovery at least every 24 hours.</li>
+    <li>The <em>wenet:owner</em> and <em>wenet:userinfo</em> elements MUST contain
+      URLs that point to a <em>wenet:instance</em> document with a data element
+      root of <em>gjxdm:ContactInformation</em>.</li>
+    <li>A result list is started within the 90 second timeout window does not
+      have to finish within the 90 seconds to be valid.</li>
+    <li>XPath root schemas (Protocol 6.3) and thus all data returned from WENET,
+      MUST be a subset of the Global JXDM v3.0.2.</li>
+    <li>Import statements used in the root schemas (Protocol 6.3) MAY use http://www.whatcomcounty.us/apps/wenet/schema/.</li>
+    <li>When not specified, the default namespace prefixes and coresponding namespaces
+      for Global JXDM queries SHALL be those used by the Global JXDM Schema Subset
+      Generation
+      Tool (http://gjxdmtools.gtri.gatech.edu/ssgt/viewer?changeMode=SEARCH_MODE).</li>
+    <li>Each service MUST support, at a minimum, the query of XPaths as defined
+      in the current <a href="26.htm">WENET
+      Minimum XPaths</a>. </li>
+    <li> If an element  derived from PersonType has alert code(s) then the attribute sensitivityText MUST be added with value &quot;HAS ALERTS&quot;.</li>
+    <li>If ROOT Person  has alert codes then these alert code(s) should be returned as a space seperated list of alert codes in the j:PersonDescriptionText element.</li>
+  </ol>
+  <p>Change Log:</p>
+  <ol>
+    <li>20061120 - modified by adding notes 9 and 10. </li>
+    <li>20050531 - modified draft v1.1 adding section on Minimum XPaths.</li>
+    <li>20050418 - released draft v1.1 with the following changes:
+      <ol>
+        <li>Simplified 2 to use the gjxdm:ContactInformation for both.</li>
+        <li>Added 5 through 7.</li>
+      </ol>
+    </li>
+    <li>20041123 - Finalized document
+      <ol>
+        <li>Changed status to FINAL</li>
+        <li>Updated date</li>
+        <li>Added Change Log</li>
+        <li>Changed title to from &quot;WENET Technical Policy&quot; to &quot;WENET Technical
+          Policy v1&quot;</li>
+      </ol>
+    </li>
+  </ol>
+<!-- Footer -->   
+<a href="http://www.w3.org/WAI/WCAG1A-Conformance"
+      title="Explanation of Level A Conformance">&nbsp;&nbsp;</a> 
+   </body>
+</html>
+
