@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/ut_offender-tracking-misc/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/ut_offender-tracking-misc/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:ut_offender='http://www.it.ojp.gov/jxdm/ut_offender-tracking-misc/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+  <xsd:import schemaLocation='../../../../ut_offender-tracking-misc/1.0/ut_offender-tracking-misc_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/ut_offender-tracking-misc/1.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='CaseDispositionDecisionTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates disposition decisions for a case.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ut_offender:CaseDispositionDecisionTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='MilitaryDischargeTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of discharges a person may receive from military service.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ut_offender:MilitaryDischargeTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='PleaTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of pleas.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ut_offender:PleaTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='SupervisionLevelCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code set that enumerates levels of supervision required for a person.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ut_offender:SupervisionLevelCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='SupervisionRestrictionCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code set that enumerates restrictions placed upon a person under supervision.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ut_offender:SupervisionRestrictionCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+
+   <head>
+   
+   <title>WENET Memo 24</title>
+   <link rel="stylesheet" href="/styles/masterstyle_fonts.css" type="text/css" />
+      </head>
+   <body bgcolor="#ffffff" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" >
+   
+  <table width="100%" border="0" cellspacing="1">
+    <tr valign="top">
+      <td colspan="2" width="64%"><font size="-1">WENET Working Group,<br />
+MIS Committee,<br />
+Whatcom County Law and Justice Council</font></td>
+      <td width="33%" rowspan="3" align="right"><font size="-1"><font size="-1">R.
+      Josh Nylander</font></font></td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Memo: 24</font></td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td><font size="-1">Status: FINAL </font></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Obsoletes: <a href="18.htm">Memo
+            18, WENET Protocol v1.2.2</a></font></td>
+      <td width="33%">&nbsp;</td>
+      <td width="33%"><div align="right"><font size="-1">June 22nd, 2009 </font></div></td>
+    </tr>
+    <tr valign="top">
+      <td colspan="3" width="100%"><div align="center"><strong>WENET
+      Protocol v1.2.3</strong></div></td>
+    </tr>
+  </table>
+  
+  <p>Status of this Memo</p>
+  <blockquote>
+    <p>This document specifies part of the WENET project standard. Distribution
+      of this document is unlimited. This memo obsoletes previous versions of
+      the WENET Protocol. This memo and the protocol it describes has been approved
+      by the <a href="http://www.whatcomcounty.us/boards/lawjustice/mis/">Management
+      Information Systems Committee</a>      of the <a href="http://www.whatcomcounty.us/boards/lawjustice/law_justice.jsp">Whatcom
+      County Law and Justice Council</a>.</p>
+  </blockquote>
+  <p>Copyright Notice</p>
+  <blockquote>
+    <p>This document is released as a government work into the public domain.</p>
+  </blockquote>
+  <p>Abstract</p>
+  <blockquote>
+    <p>This document specifies the basic framework needed for participating in
+      the WENET network. The purpose of the WENET project is to share law and
+      justice data from local, state, tribal and federal law enforcement and justice
+      agencies
+      using
+      a common
+      language.</p>
+  </blockquote>
+  <p>Table of Contents</p>
+  <ol>
+    <li><a href="#introduction">Introduction</a>
+        <ol>
+          <li><a href="#terminology">Requirements Terminology</a></li>
+        </ol>
+    </li>
+    <li><a href="#clientservice">Client / Service Model</a>
+      <ol>
+        <li><a href="#methods">Methods</a></li>
+      </ol>
+    </li>
+    <li><a href="#uri">URIs</a></li>
+    <li><a href="#http">HTTP</a>
+        <ol>
+          <li><a href="#securehttp">Secure HTTP</a></li>
+          <li><a href="#httpget">HTTP GET</a></li>
+          <li><a href="#httppost">HTTP POST</a></li>
+          <li><a href="#httperror">HTTP Error Messages</a></li>
+        </ol>
+    </li>
+    <li><a href="#schema">WENET Schema</a></li>
+    <li><a href="#discovery">Discovery</a>
+      <ol>
+        <li><a href="#clusters">Clusters</a>
+          <ol>
+            <li><a href="#hierarchy">Service Hierarchy</a></li>
+          </ol>
+        </li>
+        <li><a href="#service"><em>wenet:service</em></a></li>
+        <li><a href="#supportedxpaths">Supported XPaths</a></li>
+      </ol>
+    </li>
+    <li><a href="#security">Security</a>
+      <ol>
+        <li><a href="#authorization">Authorization</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#auditing">Auditing</a></li>
+      </ol>
+    </li>
+    <li><a href="#query">Query</a><ol>
+      <li><a href="#querymethod">Query Method</a></li>
+      <li><a href="#results">wenet:results</a></li>
+        <li><em><a href="#instance">wenet:instance</a></em></li>
+        </ol>
+    </li>
+      <li><a href="#datawharehouse">Data Wharehouse Support</a>
+        <ol>
+          <li><a href="#getchanged">Changed Instances</a></li>
+          <li><a href="#getdeleted">Deleted Instances</a></li>
+        </ol>
+      </li>
+    <li><a href="#tableofmethods">Table of Methods</a></li>
+    <li><a href="#servicetypes">Types of Services</a>
+    <ol>
+          <li><a href="#sharingservice">Sharing Service</a></li>
+      <li><a href="#sharingusersservice">Sharing with Users Service</a></li>
+      <li><a href="#charingchangesservice">Sharing with Changes Service</a></li>
+      <li><a href="#sharinguserschangesservice">Sharing with Users and Changes Service</a></li>
+      <li><a href="#usersservice">Users Only Service</a></li>
+      <li><a href="#proxyservice">Proxy Service</a></li>
+      </ol>
+      </li>
+    <li><a href="#changelog">Change Log</a></li>
+  </ol>
+  <p>1. Introduction<a name="introduction" id="introduction"></a></p>
+  <blockquote>
+    <p>This document defines
+      a standard protocol enabling inquiry of disparate law and justice data
+      systems. These data systems, called record management systems (RMS), are
+      built on
+      a variety
+      of platforms with an assortment of technologies. On the surface, these
+      RMS systems perform different tasks, but  all store common, yet discrete
+      pieces of data that are used throughout the law and justice
+      process. This protocol and its companion schema
+      document, define both a common data format
+      for exchange and a standard process to authenticate, query, and
+      retrieve commonly formatted data. This document builds on the concepts
+      in the November 2002 report by the MIS committee of the Whatcom County
+      Law and Justice Council entitled &quot;<a href="http://www.whatcomcounty.us/boards/lawjustice/pdf/mis_nov2002_report.pdf">Data
+      Integration &amp; The Criminal Justice System in Whatcom County </a>&quot;.
+      This document also builds on the presentation given July 10th of 2003 in
+      Bellingham to project members and vendors (<a href="http://www.whatcomcounty.us/apps/wenet/wenet_technical_plan-part_1.ppt">Power
+      Point portion of presentation is available</a>). However in some instances
+      it has been necessary to deviate from both the report and the presentation.</p>
+  </blockquote>
+  <p>1.1. Requirements Terminology<a name="terminology" id="terminology"></a></p>
+  <blockquote>
+    <p> Keywords &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHOULD&quot;, &quot;SHOULD
+      NOT&quot; and &quot;MAY&quot; that appear in this document are to be interpreted
+      as described in [<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>].</p>
+  </blockquote>
+  <p>2. Client / Service Model<a name="clientservice" id="clientservice"></a></p>
+  <blockquote>
+    <p>For the purpose of this protocol the term &quot;client&quot; refers to
+      an application, typically used by a person (&quot;user&quot;) that queries
+      a &quot;service&quot;. A &quot;service&quot; (also sometimes referred to
+      as a &quot;service point&quot;) is considered an implementation of this
+      protocol. A client typically makes requests and services typically provide
+      responses. A single agency may provide multiple services. It is expected
+      that a client will 
+      query against multiple services in order to compile the complete data
+      set. Both services and clients may exist on the same or different hosts
+      but must
+      be able
+      to
+      communicate
+      via HTTP
+      over TCP/IP to
+      the requested services.</p>
+  </blockquote>
+  <p>2.1. Methods<a name="methods" id="methods"></a></p>
+  <blockquote>
+    <p>This protocol defines a collection of methods available from a service.  Depending on the purpose of the service, different methods will be required.  Each method is defined throughout the rest of this protocol within the proper context.  Finally, a table of the methods and a definition of the different service types along with required methods is provided.</p>
+  </blockquote>
+  <p>3. URIs<a name="uri" id="uri"></a></p>
+  <blockquote>
+    <p>This protocol uses Uniform Resource Identifiers as specified by the IETF
+      [<a href="ftp://ftp.rfc-editor.org/in-notes/rfc2396.txt">RFC 2396</a>]
+      for both URLs and for URNs [<a href="ftp://ftp.rfc-editor.org/in-notes/rfc2141.txt">RFC
+      2141</a>]. URLs are used by this protocol to specify the technology (often
+      called protocol), the host, and the name of methods and data sources exposed
+      by services implementing this protocol. An example of a URL used to identify
+      the discovery method would be &quot;http://wenet.co.whatcom.wa.us/as400/discovery.jsp&quot;.
+      URNs are used to uniquely identify specific data sets such as a service
+      description, an agency's/RMS's information about a person or an agency's/RMS's
+      information about an event. An example of a URN identifying a person in
+      an RMS would be &quot;wenet.co.whatcom.wa.us/as400/person/johndoe&quot;.
+      Each agency MUST be identified with a unique URN. Each service MUST be
+      identified with a unique URN. Each unique data set, such as Person, Warrant,
+      and Arrest data sets from an RMS, MUST be identified with unique URNs.</p>
+  </blockquote>
+  <p>4. HTTP<a name="http" id="http"></a></p>
+  <p>4.1. Secure HTTP<a name="securehttp" id="securehttp"></a></p>
+  <blockquote>
+    <p>Clients and services MUST communicate via HTTP [<a href="http://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a>] over TLS [<a href="http://www.ietf.org/rfc/rfc2818.txt">RFC 2818</a>] or SSL. Services must authenticate for all requests. Except for retrieval of service descriptor, which only requires service authentication, both services and clients MUST authenticate each other with valid and authorized digital certificates. Services MUST present a digital certificate that matches the certificate listed in the service document. Clients SHOULD verify that the certificate received from the server during SSL authentication matches the certificate listed in the service document of that respective server. Services authenticate one another by ensuring the other's service certificate is derived from one of the common &ldquo;Service Signing Certificates&rdquo;.</p>
+  </blockquote>
+  <p>4.2. HTTP GET<a name="httpget" id="httpget"></a></p>
+  <blockquote>
+    <p>Most of the methods exposed by service points are accessed via the HTTP GET method.
+      Each service provides (in their service descriptor) a list of methods,
+      which includes their parameters and their corresponding
+      URLs. In most cases, additional parameters are required, for example, the
+      name of a person to search for. In this case this protocol specifies a
+      specific text string, which MUST exist in the URL that is to be replaced
+      with the appropriate parameter. In this way clients can, via simple string
+      replacement and HTTP GET requests; retrieve results and documents from
+    a service. All REQUIRED methods are implemented via HTTP GET. All HTTP GET URLs MUST be properly escaped. </p>
+  </blockquote>
+  <p>4.3. HTTP POST<a name="httppost" id="httppost"></a></p>
+  <blockquote>
+    <p>Services may implement methods not documented in this protocol via POST.  For each method requiring POST, the service document should specify the stream content and format expected by the service method.  If not specifically identified the default is to accept parameters as application/x-www-form-urlencoded.</p>
+  </blockquote>
+  <p>4.4. HTTP Error Messages<a name="httperror" id="httperror"></a></p>
+  <blockquote>
+    <p>Whenever possible the service SHOULD respond with the most appropriate
+      HTTP status code and SHOULD strive to extensively use status codes for
+      error, missing or not found information. Specifically all clients SHOULD
+      understand the following status codes: 200, 301, 305, 307, 400, 401, 404,
+      408, 410, 414, 500, 501, and 503.</p>
+  </blockquote>
+  <p>5. WENET Schema<a name="schema" id="schema"></a></p>
+  <blockquote>
+    <p>A companion document [<a href="26.htm">WENET
+      Schema</a>] to this one defines the schema for top level XML types used
+      by this protocol. For each request there is a corresponding type specified
+      in the schema that is returned by the service as a complete and properly
+      formatted XML document with HTTP content type text/xml. This document
+      will identify XML data types in italics with these custom types having
+      the namespace prefix of <em>wenet</em>. For example, the WENET service
+      document is of type <em>wenet:service</em>.</p>
+  </blockquote>
+  <p>6. Discovery<a name="discovery" id="discovery"></a></p>
+  <blockquote>
+    <p>Discovery allows for clients to discover and connect to all available
+      services and for services to connect to each other.</p>
+  </blockquote>
+  <p>6.1. Clusters<a name="clusters"></a></p>
+  <blockquote>
+    <p>Clients and services may belong to more then one cluster. While
+      outside of the scope of this document, it is anticipated that all agencies
+      within a single cluster will come to common agreement on security and
+      GJXDML rules. <br />
+    Client software may combine results from multiple clusters.</p>
+    <p>Each service
+        will include in its service descriptor the list of clusters it belongs
+        to. An example of a possible cluster configuration is with agencies A,
+        B, C, D. Agencies A, B, C could be grouped in a cluster, while agencies
+        B, C, D could be in another cluster. Users in agencies B and C can access
+        both agencies A and D's data while users in agency A cannot access data
+      from agency D and vice versus.</p>
+  </blockquote>
+  <p>6.1.1. Service Hierarchy <a name="hierarchy" id="hierarchy"></a></p>
+  <blockquote>
+    <p>Within clusters, services MAY be organized into a hierarchy. This hierarchy
+      allows for indexing services, proxies and other services in a priority
+      fashion. Each service defines which, if any, service is its parent within
+      a given cluster. Clients SHOULD first attempt queries against the services
+      without parents and then move down the hierarchy until their request is
+      met. A service that does not define a parent within a cluster is at the
+      top of the hierarchy. Multiple services may exist at the same level in
+    the hierarchy.</p>
+  </blockquote>
+  <p>6.2. <em>wenet:service</em><a name="service"></a></p>
+  <blockquote>
+    <p>Each service MUST provide the discover method using HTTP GET for the retrieval of a XML document
+      of type <em>wenet:service.</em> The service descriptor (a.k.a. service document)
+      contains information about the service such as contact information, disclaimers,
+      method access URLs, and digital certificate. The service descriptor
+      also contains a list of the clusters it belongs to and the services in
+      those clusters. In this way the client software SHOULD only need the URL
+      of one service descriptor in order to discover other services participating
+      in the data-sharing cluster. The service descriptor
+      MUST be available without the client authenticating and MUST not contain privileged
+    information.</p>
+    <p>Most methods, the URL and any parameters needed to execute them are defined in the service document. A few methods are intrinsic in the protocol and thus not listed in the <em>wenet:service</em> document, such as the discovery method itself or the result method which is listed in response to a query. The <em>wenet:service</em> document lists the methods supported by the service, the HTTP request type, a brief description, the URL to execute the method and the supported parameters. Only parameters which are optionally supported must be specified in the service document. Any required parameters MAY be specified but MUST be assumed if not present. In the case of HTTP GET methods, the parameters are applied to the URL with simple find/replace of the parameter name surrounded by exclamation points (!) found in the URL with the value. For HTTP POST parameters, they are applied as properly escaped form parameters.</p>
+  </blockquote>
+  <p>6.3. Supported XPaths<a name="supportedxpaths" id="supportedxpaths"></a></p>
+  <blockquote>
+    <p>Included in the service descriptor is a list of the xpath  elements
+      available to query against at that service. The client SHOULD verify that
+      the query elements are supported by the service. Elements returned in the
+      <em>wenet:summary</em> section of the <em>wenet:results</em> documents will be marked with
+      a showInSummary attribute of type boolean set to true. A friendly name and description may also be provided as attributes.</p>
+  </blockquote>
+  <p>7. Security<a name="security" id="security"></a></p>
+  <blockquote>
+    <p>Security in WENET is based on  trust relationships between
+      separate agencies. Agencies wishing to share data may enter
+      into written contracts specifying the security relationship. This includes
+      defining the types of users participating in each particular role. Such
+      contract specifics are outside the scope of this technical document.</p>
+    <p>Services establish a trust relationship amongst each other so that they
+      may directly query each other. As noted in <a href="#clusters">section
+      6.1</a>, it is anticipated
+      that agencies in trust relationships will be grouped together within a
+      cluster.</p>
+    <p>Authorization lists are
+        specified by service point at the user level and define the roles a
+      user belongs to. Since each agency is in the best position to
+      know
+        who of its users should have access to what type of data, it is expected
+      but not required that authorization lists be provided by and maintained
+      by each agency. The authorization
+        list contains all of the names, other identifying information and
+        what roles the agency says the users should be able
+      to use.</p>
+  </blockquote>
+  <p>7.1. Authorization<a name="authorization" id="authorization"></a></p>
+  <blockquote>
+    <p>    Services MAY<a name="authorization" id="authorization2"></a> provide for method authlist via HTTP  GET for the retrieval of a XML document of type <em>wenet:authlist</em> which contains the list of  authorizing certificates and a list of users that the service represents. The  document contains a list of users and the roles the users are a member of. Each  user is identified by an e-mail style username. This username SHOULD be a valid  e-mail address but at the least MUST be globally unique. The username must  match the username identified by the user&rsquo;s digital certificate(s). In addition  to a username, each user has a URL that MAY be used to retrieve  information about the user. This MAY be a XML document containing contact  information. Each service MUST from time to time contact the other services in  the clusters it belongs to in order to retrieve the latest copies of  authorization lists. The service MUST only allow other services to retrieve the  list. Services MUST identify themselves to each other by authenticating their  end of the connection with a the <em>wenet:serviceCertificate</em> and this certificate MUST be signed (or have a parent signed) by a certificate  trusted by the other service. It is anticipated that each service will have a  list of one or more certificates that it will use to establish trust of service  certificates.</p>
+  </blockquote>
+  <p>7.2. Authentication<a name="authentication" id="authentication"></a></p>
+  <blockquote>
+    <p>Each service implementing the authlist method MUST provide in their wenet:authlist a list of digital certificates which are authorized by the service to sign user certificates for the users it represents. In this way the client authenticates, on behalf of the user, with a user digital certificate signed by an authorized certificate. The user's digital certificate MUST contain the X.509 v3 extended attribute &quot;Subject Alternative Name&quot; which MUST contain the value &quot;RFC822 Name=username&quot; where username is an authorized username (see <a href="#authorization">section 7.1</a>). The service authenticated against uses the username to determine if the user is authorized to make the request and to log the request.</p>
+  </blockquote>
+  <p>7.3. Auditing<a name="auditing" id="auditing"></a></p>
+  <blockquote>
+    <p>Each service that provides query or instance methods MUST record the username, date, time,  request URL, and POST
+      content, if any, of each authenticated request made. This record MUST be
+      made available as method auditlog via HTTP GET as a
+      XML
+      document of type <em>wenet:auditlog</em>. The auditlog method takes two
+      parameters, &quot;!xpath!&quot; and &quot;!namespace!&quot;.
+      The client is to replace these strings with the XPath query statement and namespace respectively.  The XPath query MUST be a valid XPath rooted
+      in the <em>wenet:auditlog</em> element. This method MUST only be available
+      to other services in the same way as the authlist method. Services MAY
+      log unsuccessfully authenticated requests. If not logged here, services
+      SHOULD log all attempts at web server contact in a log available for review
+      by the local security auditors.</p>
+  </blockquote>
+  <p>8. Query</p>
+  <blockquote>
+    <p>The primary function of a service is to provide for querying of an agency&rsquo;s RMS system and retrieval of RMS data. Services make RMS data available in the form of XML documents of type <em>wenet:instance</em>.</p>
+  </blockquote>
+  <p>8.1. Query Method <a name="querymethod" id="querymethod"></a></p>
+  <blockquote>
+    <p>Services may provide a method to query via HTTP GET for the retrieval of a XML document of type <em>wenet:results</em>. This document contains a list of instances which match the XPath query passed via the GET URL. XPath v1.0 syntax SHALL be used to query the data sets made available by the service. The XPath statement is made against XML documents of type <em>wenet:instance</em> rooted in a root element supported by the service (see section 6.3). The service descriptor specifies a URL for this method. The URL is a standard URL except where the XPath statement should go the URL contains an unescaped string, &quot;!xpath!&quot;. The client is to replace this string with the XPath query statement.</p>
+    <p>In addition to the &quot;!xpath!&quot; parameter, the URL also contains the &quot;!namespaces!&quot; parameter. In this parameter MUST go the list of namespaces and namespace prefixes used in the XPath. The format for this is &quot;xmlns:[prefix]='[namespace]'&quot; (without the double quotes). For example, to map prefix j to namespace http://www.it.ojp.gov/jxdm/3.0.2 would look like (without double quotes) &quot;xmlns:j='http://www.it.ojp.gov/jxdm/3.0.2'&quot;. Multiple namespaces are to be seperated by a space character (properly escaped).</p>
+    <p>In this way the client may create an XPath statement, escape it if necessary, substitute it into the URL, authenticate to the service using a valid digital certificate, make an HTTP GET request with the URL and retrieve a collection of results in the form of a wenet:results document and then resolve that list to retrieve the requested data. </p>
+  </blockquote>
+  <p>8.2.<em> wenet:results <a name="results" id="results"></a></em></p>
+  <blockquote>
+    <p>The <em>wenet:results</em> document
+      contains a collection of result elements. Each result element contains
+      the instance URI, the agency URI, the service URI,  the
+      date/time last updated, a subset of the data, and most importantly the
+      URL that may be used to retrieve the instance document. If
+      there were no matching results then the collection will be empty. In addition
+      to the result elements, the <em>wenet:results</em> document
+      contains information identifying what service it comes from, the url used
+      to query it, a check back url and any errors. </p>
+    <p>In some instances the service
+      point may not be able to deliver results within a reasonable  HTTP time window.
+      In those cases the service point MAY queue the request, return an empty
+      result set and provide for retrieval of the result set later. In this
+      case, the check back url
+      element contains a URL that the client can use to check back with
+      the
+      service
+      to see if the 
+      processing is finished and if so retrieve the results. This feature is
+      OPTIONAL. The <em>wenet:checkBackURL</em> element
+      should only exist with an empty elements collection and when the check
+      back later feature is implemented by the service. The client MAY check
+      back
+      at the URL at any time. If the results are not ready then the service
+      will return an empty result set with a <em>wenet:checkBackURL</em> element
+      for the client to try again later. If the service implements the check
+      back
+      option, the service MUST keep check backs open until successfully retrieved
+      or 24 hours have expired from the time the results become available. The client MAY give up at any time.</p>
+    <p>If there were errors in processing the query and an HTTP error other then 500 is not
+      appropriate to describe the error, the <em>wenet:results</em> MAY contain
+      one or more <em>wenet:error</em> elements with the description of the error
+      and an attribute, <em>wenet:errorNumber</em>, which
+      is from the list below. HTTP error 500 should be sent when returning one of these errors.</p>
+    <table width="80%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <th width="18%">Error Number</th>
+        <th width="82%">Description</th>
+      </tr>
+      <tr>
+        <td height="21">1</td>
+        <td>invalid XPath</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><p>insufficient rights</p></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><p>unsupported node(s)</p></td>
+      </tr>
+    </table>
+  </blockquote>
+  <p>8.3. <em>wenet:instance</em><a name="instance" id="instance"></a></p>
+  <blockquote>
+    <p>Each service must provide via HTTP GET for the retrieval of a XML document
+      of type <em>wenet:instance</em>. The document identifies the unique URI
+      for this data, when the data was last updated in the RMS,
+      the unique URI for the agency owning
+      the the
+      data, the unique URI of the service providing
+      the data and a URL for retrieval. The <em>wenet:instanceElement</em> of
+      the document contains a top level data element from the list of supported
+      root elements (see Section <a href="#xpathroots">6.3</a>).</p>
+  </blockquote>
+  <p>9.1. Data Warehouse Support <a name="datawarehouse" id="datawarehouse"></a></p>
+  <blockquote>
+    <p>In support of data warehouse &ldquo;clients&rdquo;, two optional methods are defined to allow the updating of a data warehouse based on what instances have changed and which ones have been deleted.  Both methods should return a wenet:results document but without summary elements.  Services implementing these one or both of these methods may need adjustments to the underlying RMS to track record updates to the date/time and to track which records have been deleted.</p>
+  </blockquote>
+  <p>9.1. Changed Instances <a name="getchanged" id="getchanged"></a></p>
+  <blockquote>
+    <p>The getchanged method MAY be implemented by a service.  It takes three parameters, datesince, root and namespaces.  The root and namespaces parameters define which type of instances to return for.  The datesince parameter should specify a date and optionally time in the <em>xsd:dateTime</em> format to return the results list for.   Any records changed since the datesince parameter and matching the root/namespaces parameters MUST be returned in a <em>wenet:results</em> document, minus the <em>wenet:summary</em> element.</p>
+  </blockquote>
+  <p>9.2. Deleted Instances <a name="getdeleted" id="getdeleted"></a></p>
+  <blockquote>
+    <p>The getdeleted method MAY be implemented by a  service.&nbsp; It takes three parameters,  datesince, root and namespaces.&nbsp; The root  and namespaces parameters define which type of instances to return for.&nbsp; The datesince parameter should specify a date  and optionally time in the <em>xsd:dateTime</em> to return the results list for.&nbsp; Any records deleted since the datesince  parameter and matching the root/namespaces parameters MUST be returned in a <em>wenet:results</em> document, minus the <em>wenet:summary</em> element.</p>
+  </blockquote>
+  <p>10.0. Table of Methods <a name="tableofmethods" id="tableofmethods"></a></p>
+  <blockquote>
+    <table border="1" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td width="23%"><p align="center"><strong>Method</strong></p></td>
+        <td width="16%"><p align="center"><strong>In Methods List</strong></p></td>
+        <td width="16%"><p align="center"><strong>HTTP</strong></p></td>
+        <td width="43%"><p align="center"><strong>Parameters</strong></p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p><a href="#discovery">discover</a></p></td>
+        <td width="16%"><p>False</p></td>
+        <td width="16%"><p>GET</p></td>
+        <td width="43%"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p><a href="#authorization">authlist</a></p></td>
+        <td width="16%"><p>True</p></td>
+        <td width="16%"><p>GET</p></td>
+        <td width="43%"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p><a href="#auditing">auditlog</a></p></td>
+        <td width="16%"><p>True</p></td>
+        <td width="16%"><p>GET</p></td>
+        <td width="43%"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>xpath</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>namespaces</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p><a href="#query">query</a></p></td>
+        <td width="16%"><p>True</p></td>
+        <td width="16%"><p>GET</p></td>
+        <td width="43%"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>xpath</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>namespaces</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p><a href="#instance">result</a></p></td>
+        <td width="16%"><p>False</p></td>
+        <td width="16%"><p>GET</p></td>
+        <td width="43%"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p><a href="#getchanged">getchanged</a></p></td>
+        <td width="16%"><p>True</p></td>
+        <td width="16%"><p>GET</p></td>
+        <td width="43%"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>datesince</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>root</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>namespaces</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p><a href="#getdeleted">getdeleted</a></p></td>
+        <td width="16%"><p>True</p></td>
+        <td width="16%"><p>GET</p></td>
+        <td width="43%"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>datesince</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>root</p></td>
+      </tr>
+      <tr>
+        <td width="23%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="16%"><p>&nbsp;</p></td>
+        <td width="43%"><p>namespaces</p></td>
+      </tr>
+    </table>
+  </blockquote>
+  <p>11.0. Types of Services <a name="servicetypes" id="servicetypes"></a></p>
+  <blockquote>
+    <p>By mixing and matching methods different types of  services can be defined.&nbsp; This protocol  defines six named types of services.&nbsp; All  services MUST implement the discover method.&nbsp;  It is expected that most services will be Sharing with Users and Changes  Services.</p>
+  </blockquote>
+  <p>11.1. Sharing Service <a name="sharingservice" id="sharingservice"></a></p>
+  <blockquote>
+    <p>A Sharing Service implements the discover,  auditlog, query and result methods.<br />
+    </p>
+  </blockquote>
+  <p>11.2. Sharing with Users Service <a name="sharingusersservice" id="sharingusersservice"></a><br />
+    </p>
+  <blockquote>
+    <p>A Sharing with Users Service implements the  discover, auditlog, authlist, query and result methods.<br />
+    </p>
+  </blockquote>
+  <p>11.3. Sharing with Changes Service <a name="sharingchangesservice" id="sharingchangesservice"></a><br />
+    </p>
+  <blockquote>
+    <p>A Sharing Service implements the discover,  auditlog, query, result, getchanged, and getdeleted methods.<br />
+    </p>
+  </blockquote>
+  <p>11.4. Sharing with Users and Changes Service <a name="sharinguserschangesservice" id="sharinguserschangesservice"></a><br />
+    </p>
+  <blockquote>
+    <p>A Sharing with Users and Changes Service implements the discover, auditlog, authlist, query, result, getchanged, and  getdeleted methods.<br />
+    </p>
+  </blockquote>
+  <p>11.5. Users Only Service <a name="usersservice" id="usersservice"></a><br />
+    </p>
+  <blockquote>
+    <p>A Users Only Service implements the discover  and authlist methods.<br />
+    </p>
+  </blockquote>
+  <p>11.6. Proxy Service <a name="proxyservice" id="proxyservice"></a><br />
+    </p>
+  <blockquote>
+    <p>A proxy is a special type of service that doesn&rsquo;t  have to retrieve data from a local RMS. Rather it can choose where and how to  get the data to return.&nbsp; A Proxy Service  implements the discover and auditlog methods.&nbsp;  It may optionally implement any of the other methods.<br />
+      </p>
+    <p>One option would be to store a subset of data from  other service points in a local data warehouse to speed common searches.&nbsp; For example, to speed name searches it could  cache locally all the names available on the service points it proxies  for.&nbsp; If the XPath matches fields it  caches, it can present a wenet:results  document using local data but with instanceURLs pointing back to original  services.<br />
+      </p>
+    <p>Another option would be for it to add value to a  result list or instance document.&nbsp; An  example might be a Geographic Mapping proxy service that intercepts data  returned by other service points and builds a map based on all geographic  information contained in the results, and then includes the map data with the  returned results. This could involve GeoCoding the address and amending the  latitude and longitude to the XML of the result, instance or both prior to  returning the XML to the client.</p>
+  </blockquote>
+  <p>12. Change Log <a name="changelog" id="changelog"></a></p>
+  <blockquote>
+  <p>Changes made since initially published on October 30th of 2003.</p>
+  <ol>
+    <li>20090615 - final draft of v1.2.3
+      published
+      <ol>
+        <li>Included spelling and grammar fixes</li>
+        <li>Updated        table of contents</li>
+      </ol>
+    </li>
+    <ol start="1" type="1"><li>Restructured        document content for better flow and reading.</li>
+         <li>Fixed a        number of grammatical errors.</li>
+         <li>Improved        and renamed the two new methods, getchanged and getdeleted.</li>
+         <li>Added        concept that all methods except for discover are optional and that        different combinations define different types of services.</li>
+         <li>Defined 6        types of services including moving the proxy concept to these new        definitions.</li>
+         <li>Modified        the methods section to support the concept of a users only service point.&nbsp; Removed reference to a xpaths list        method that does not exist.</li>
+      <li>Added        authlist to list of methods in table in section 4.5.1.</li>
+      <li>Added two        new optional methods in table in section 4.5.1, getallkeys and        getdeletedkeys.</li>
+    </ol>
+    <li>20051201 - v1.2.2 initial draft
+      <ol>
+        <li> Modified sections 4.1 and 6.2 to reflect that retrieval of the discovery document shall be over HTTPS with server authentication only.        </li>
+      </ol>
+    </li>
+    <li>20050714 - v1.2.1 final draft
+      <ol>
+        <li>Removed namespace parameter from simple query</li>
+        <li>Added requirement that XPath use the namespace prefixes noted in the service document </li>
+      </ol>
+    </li>
+    <li>20050601 - Added note about existance of the wenet:summary data and replaced
+      instanceRoots with supportedXPaths.</li>
+    <li>20050418 - v1.2.1 released as initial draft, major changes include:
+      <ol>
+        <li>Removed support for complex xpath</li>
+        <li>fixed spelling, typos, and poor grammer</li>
+        <li>clarified that each service has ONE certificate</li>
+        <li>clarified clusters</li>
+        <li>removed further dependence on the GJXDM and transfered dependence
+          to the Technical Policy</li>
+        <li>clarified user information retrieval</li>
+        <li>clarified audit logging to require only authenticated requests and
+          what SHOULD be done with others</li>
+        <li>Added error number 3, for unsupported node(s) in a query</li>
+      </ol>
+    </li>
+    <li>20041123 - removed from DRAFT
+      <ol>
+        <li>Marked document as FINAL</li>
+        <li>Updated date</li>
+        <li>Changed order of &quot;Change Log&quot; to latest first</li>
+      </ol>
+    </li>
+    <li>20041104 - major changes
+      <ol>
+        <li>increased version number to 1.2</li>
+        <li>spelling and grammar fixes</li>
+        <li>defined methods, their names and parameters</li>
+        <li>added XPath roots method</li>
+        <li>fixed URI examples</li>
+        <li>enhanced services trust model</li>
+        <li>cleaned up cluster and hierarchy model</li>
+        <li>users belong to roles not groups</li>
+        <li>moved authorizing digital certificates to authlist</li>
+        <li>refined both instance and results definitions</li>
+        <li>improved results error handling and moved list of error messages
+          to protocol</li>
+        <li>added checkBackURL feature</li>
+        <li>defined XQuery and changed how they are sent</li>
+        <li>Made auditlog method only available to other services</li>
+        <li>Removed requirement that instances be based on the GJXDM</li>
+        <li>Enhanced auditlog method with an xpath query parameter</li>
+      </ol>
+    </li>
+    <li>20040514 - major changes
+      <ol>
+        <li>Increased version number to 1.1</li>
+        <li>spelling and grammar fixes</li>
+        <li>fixed name of Justice XML dictionary to GJXDM</li>
+        <li>added 404 and 414 HTTP error codes</li>
+        <li>service parent/child relationship within a cluster</li>
+        <li>removed inter-local agreement reference in cluster and replaced with
+          just agreements</li>
+        <li>created a section on wenet:results</li>
+        <li>added error messages to the wenet:results description to detail error
+          messages</li>
+        <li>added support for namespaces</li>
+        <li>added better support for complex queries, including XQuery</li>
+        <li>changed security model from method/document type to groups</li>
+      </ol>
+    </li>
+    <li>20040316 - Added XPath examples to 8.2.</li>
+    </ol>
+  </blockquote>
+<!-- Footer -->   
+<a href="http://www.w3.org/WAI/WCAG1A-Conformance"
+      title="Explanation of Level A Conformance">&nbsp;&nbsp;</a> 
+                                                   </body>
+</html>
+

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/nonauthoritative-code/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/nonauthoritative-code/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:nonauth='http://www.it.ojp.gov/jxdm/nonauthoritative-code/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+  <xsd:import schemaLocation='../../../../nonauthoritative-code/1.0/nonauthoritative-code_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/nonauthoritative-code/1.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='ImagePoseCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates angles of an entity&apos;s pose in a photograph.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nonauth:ImagePoseCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='PersonNameTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates possible types of names.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nonauth:PersonNameTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

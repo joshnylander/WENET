@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:nonauth="http://www.it.ojp.gov/jxdm/nonauthoritative-code/1.0" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/nonauthoritative-code/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/nonauthoritative-code/1.0" schemaLocation="../../../../nonauthoritative-code/1.0/nonauthoritative-code.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="ImagePoseCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nonauth:ImagePoseCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="PersonNameTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nonauth:PersonNameTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

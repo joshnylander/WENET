@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/nibrs_misc/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/nibrs_misc/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:nibrs='http://www.it.ojp.gov/jxdm/nibrs_misc/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+  <xsd:import schemaLocation='../../../../nibrs_misc/1.0/nibrs_misc_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/nibrs_misc/1.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='AggravatedAssaultHomicideFactorsCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates circumstances of either an aggravated assault or homicide.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:AggravatedAssaultHomicideFactorsCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='ArresteeWeaponCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list enumerating weapons with which a subject may be armed with upon apprehension.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:ArresteeWeaponCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='ArrestTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of arrests that can occur.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:ArrestTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='CriminalActivityTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of incidents.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:CriminalActivityTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DrugMeasurementCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates the types of measurements used to quantify an amount of drugs or narcotics.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:DrugMeasurementCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DrugTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of drugs.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:DrugTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='EthnicityCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of cultural lineages of a person.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:EthnicityCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='ForceTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of weapons or forces used by a subject in committing an offense.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:ForceTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='IncidentBiasMotivationCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates bias motivations for an incident.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:IncidentBiasMotivationCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='IncidentExceptionalClearanceCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates ways in which an incident may be cleared exceptionally.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:IncidentExceptionalClearanceCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='IncidentFactorCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates factors that may have been involved in or contributed to a subject committing an offense.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:IncidentFactorCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='InjuryTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates a general category or harm or injury.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:InjuryTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='JustifiableHomicideFactorsCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates circumstances of a justifiable homicide.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:JustifiableHomicideFactorsCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='LocationTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types or functional descriptions of a location.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:LocationTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='MethodOfEntryType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates methods of entry into a structure or premises.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:MethodOfEntryType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='MultipleArresteeSegmentsCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list the ways in which an arrested subject is counted or scored in a system so that a subject is counted only once despite potentially multiple arrests at a time.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:MultipleArresteeSegmentsCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='PropertyCategoryCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates categories or classifications of a property item.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:PropertyCategoryCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='PropertyLossCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates what happens to a property item.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:PropertyLossCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='ResidentCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code identifying whether or not a person was a resident of a town, city, or community in relation to some activity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:ResidentCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VictimTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of victims in an incident.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='nibrs:VictimTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/census/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/census/1.0' 
+    xmlns:census='http://www.it.ojp.gov/jxdm/census/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../census/1.0/census_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/census/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='OccupationCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates employments or occupations.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='census:OccupationCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='OccupationTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates general categories of employments or occupations.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='census:OccupationTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

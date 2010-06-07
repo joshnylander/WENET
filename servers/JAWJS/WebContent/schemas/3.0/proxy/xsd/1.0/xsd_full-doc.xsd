@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/xsd/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/xsd/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='base64Binary'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents Base64-encoded binary data.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:base64Binary'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='boolean'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents binary-valued logic (true/false).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:boolean'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='date'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents a calendar date with the format CCYY-MM-DD.  This structure has an optional time zone qualifier designated by appending -hh:00, where hh represent the number of hours the local time zone is behind Coordinated Universal Time (UTC).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:date'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='decimal'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents arbitrary precision decimal numbers.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:decimal'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='duration'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents a duration of time with the format PnYnMnDTnHnMnS, where nY is the number of years, nM is the number of months, nD is the number of days, nH is the number of hours, nM is the number of minutes, and nS is the number of seconds.  A preceding minus sign (-) may be used to indicate a negative duration.  If any portion of the duration is blank, the number and its designator may be omitted.  If there are no time portions present, the time designator (T) should be omitted.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:duration'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='gMonth'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents a Gregorian month with the format --MM--.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:gMonth'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='gYear'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents a Gregorian calendar year with the format CCYY.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:gYear'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='hexBinary'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents hex-encoded binary data.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:hexBinary'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='integer'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents the standard mathematical concept of integer numbers, e.g., -2, -1, 0, 1, 2.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:integer'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='nonNegativeInteger'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents an integer with a minumum value of 0.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:nonNegativeInteger'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='string'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents character strings in XML.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:string'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='time'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents an instant of time with the format hh:mm:ss.sss.  This structure has an optional time zone qualifier designated by appending -hh:00, where hh represent the number of hours the local time zone is behind Coordinated Universal Time (UTC).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:time'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='token'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy structure that represents tokenized strings.  Possible values may not include line feed or tab characters, leading or trailing spaces, or internal sequences of two or more spaces.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='xsd:token'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

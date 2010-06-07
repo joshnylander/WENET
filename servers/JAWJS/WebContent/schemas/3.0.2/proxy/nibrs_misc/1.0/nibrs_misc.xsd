@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:nibrs="http://www.it.ojp.gov/jxdm/nibrs_misc/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/nibrs_misc/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/nibrs_misc/1.0" schemaLocation="../../../../nibrs_misc/1.0/nibrs_misc.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="AggravatedAssaultHomicideFactorsCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:AggravatedAssaultHomicideFactorsCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="ArrestTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:ArrestTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="ArresteeWeaponCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:ArresteeWeaponCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="CriminalActivityTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:CriminalActivityTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DrugMeasurementCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:DrugMeasurementCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DrugTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:DrugTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="EthnicityCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:EthnicityCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="ForceTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:ForceTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="IncidentBiasMotivationCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:IncidentBiasMotivationCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="IncidentExceptionalClearanceCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:IncidentExceptionalClearanceCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="IncidentFactorCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:IncidentFactorCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="InjuryTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:InjuryTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="JustifiableHomicideFactorsCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:JustifiableHomicideFactorsCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="LocationTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:LocationTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="MethodOfEntryType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:MethodOfEntryType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="MultipleArresteeSegmentsCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:MultipleArresteeSegmentsCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="PropertyCategoryCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:PropertyCategoryCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="PropertyLossCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:PropertyLossCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="ResidentCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:ResidentCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="VictimTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="nibrs:VictimTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

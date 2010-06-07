@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/fips_10-4/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/fips_10-4/1.0' 
+    xmlns:fips_10-4='http://www.it.ojp.gov/jxdm/fips_10-4/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../fips_10-4/1.0/fips_10-4_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/fips_10-4/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='CountryCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates country, territory, or dependency codes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='fips_10-4:CountryCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='InternationalStateCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates states.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='fips_10-4:InternationalStateCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

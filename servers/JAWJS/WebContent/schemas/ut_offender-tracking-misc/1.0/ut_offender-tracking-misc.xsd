@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/ut_offender-tracking-misc/1.0">
+<xsd:simpleType name="CaseDispositionDecisionTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="201"/>
+<xsd:enumeration value="203"/>
+<xsd:enumeration value="204"/>
+<xsd:enumeration value="205"/>
+<xsd:enumeration value="206"/>
+<xsd:enumeration value="207"/>
+<xsd:enumeration value="208"/>
+<xsd:enumeration value="210"/>
+<xsd:enumeration value="211"/>
+<xsd:enumeration value="212"/>
+<xsd:enumeration value="213"/>
+<xsd:enumeration value="214"/>
+<xsd:enumeration value="215"/>
+<xsd:enumeration value="216"/>
+<xsd:enumeration value="217"/>
+<xsd:enumeration value="218"/>
+<xsd:enumeration value="219"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="MilitaryDischargeTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="B"/>
+<xsd:enumeration value="D"/>
+<xsd:enumeration value="G"/>
+<xsd:enumeration value="H"/>
+<xsd:enumeration value="M"/>
+<xsd:enumeration value="N"/>
+<xsd:enumeration value="O"/>
+<xsd:enumeration value="Q"/>
+<xsd:enumeration value="U"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="PleaTypeCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="A"/>
+<xsd:enumeration value="C"/>
+<xsd:enumeration value="G"/>
+<xsd:enumeration value="I"/>
+<xsd:enumeration value="M"/>
+<xsd:enumeration value="N"/>
+<xsd:enumeration value="U"/>
+<xsd:enumeration value="X"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="SupervisionLevelCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="1-LOW RISK"/>
+<xsd:enumeration value="2-MODERATE RISK"/>
+<xsd:enumeration value="3-HIGH RISK"/>
+<xsd:enumeration value="4-EXTREME RISK"/>
+<xsd:enumeration value="COMPACT OUT"/>
+<xsd:enumeration value="FUGITIVE"/>
+<xsd:enumeration value="ISP I"/>
+<xsd:enumeration value="ISP II"/>
+<xsd:enumeration value="RESID/IN-STATE CUSTD"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="SupervisionRestrictionCodeType">
+<xsd:restriction base="xsd:token">
+<xsd:enumeration value="ABSCONDING"/>
+<xsd:enumeration value="ALCOHOL"/>
+<xsd:enumeration value="ALCOHOL ESTABLISHMNT"/>
+<xsd:enumeration value="ARREST-CITATIONS"/>
+<xsd:enumeration value="ASSOCIATION"/>
+<xsd:enumeration value="CHEMICAL ANALYSIS"/>
+<xsd:enumeration value="CHILDREN CONGREGATE"/>
+<xsd:enumeration value="CHILDREN UNDER 18"/>
+<xsd:enumeration value="CONDUCT"/>
+<xsd:enumeration value="CURFEW"/>
+<xsd:enumeration value="DISCONNECT PHONE"/>
+<xsd:enumeration value="DNA"/>
+<xsd:enumeration value="DOCUMENTS/DATA/PHOTO"/>
+<xsd:enumeration value="DRIVER LICENSE/ID"/>
+<xsd:enumeration value="DRUGS"/>
+<xsd:enumeration value="ELECTRONIC MONITOR"/>
+<xsd:enumeration value="EMPLOYMENT"/>
+<xsd:enumeration value="EMPLOYMENT VERIFY"/>
+<xsd:enumeration value="ENTERTAIN/LURE"/>
+<xsd:enumeration value="EXPLOIT MATERIAL"/>
+<xsd:enumeration value="FEES"/>
+<xsd:enumeration value="FINANCIAL AGREEMENT"/>
+<xsd:enumeration value="FIREARM/AMMUITION"/>
+<xsd:enumeration value="FIREARMS USED"/>
+<xsd:enumeration value="FREQUENT GANG PLACES"/>
+<xsd:enumeration value="FREQUENT SCHOOLS"/>
+<xsd:enumeration value="GANG MEMBERS"/>
+<xsd:enumeration value="GED/DIPLOMA"/>
+<xsd:enumeration value="HMU ABUSE"/>
+<xsd:enumeration value="HMU MOVE"/>
+<xsd:enumeration value="HOME VISITS"/>
+<xsd:enumeration value="INSIGNIAS/EMBLEMS"/>
+<xsd:enumeration value="INTERSTATE COMPACT"/>
+<xsd:enumeration value="LAW ENFORCE CONTACT"/>
+<xsd:enumeration value="LEAVE COUNTY"/>
+<xsd:enumeration value="MONTHLY PAYMENTS"/>
+<xsd:enumeration value="NO ALCOHOL"/>
+<xsd:enumeration value="NO CONTACT W/VICTM"/>
+<xsd:enumeration value="NOT AT COURT"/>
+<xsd:enumeration value="NOT DATE"/>
+<xsd:enumeration value="PAGER"/>
+<xsd:enumeration value="PAINT/PENS"/>
+<xsd:enumeration value="PHONE SERVICES"/>
+<xsd:enumeration value="POLYGRAPH"/>
+<xsd:enumeration value="PORNOGRAPHY"/>
+<xsd:enumeration value="PROVIDE PHONE LINE"/>
+<xsd:enumeration value="REGISTRATION/DNA"/>
+<xsd:enumeration value="RELEASE"/>
+<xsd:enumeration value="REPORTING"/>
+<xsd:enumeration value="RESIDENCE"/>
+<xsd:enumeration value="SEARCHES"/>
+<xsd:enumeration value="SEX STIMULUS MATERIA"/>
+<xsd:enumeration value="SIGNS/GESTURES"/>
+<xsd:enumeration value="SPECIAL"/>
+<xsd:enumeration value="STOLEN VEHICLE"/>
+<xsd:enumeration value="SUBSTANCE TESTING"/>
+<xsd:enumeration value="SUPERVISION FEE"/>
+<xsd:enumeration value="THERAPY"/>
+<xsd:enumeration value="TREATMENT/COUNSELING"/>
+<xsd:enumeration value="TRUTHFULNESS"/>
+<xsd:enumeration value="UNEMPLOYED"/>
+<xsd:enumeration value="VEHICLE"/>
+<xsd:enumeration value="VICIOUS DOGS"/>
+<xsd:enumeration value="VICTIM CONTACT"/>
+<xsd:enumeration value="VISITS"/>
+<xsd:enumeration value="WEAPONS"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:schema>

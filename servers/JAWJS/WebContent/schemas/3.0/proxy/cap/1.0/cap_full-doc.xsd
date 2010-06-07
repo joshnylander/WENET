@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/cap/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/cap/1.0' 
+    xmlns:cap='http://www.it.ojp.gov/jxdm/cap/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../cap/1.0/cap_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/cap/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='AlertCertaintyCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates likelinesses of an occurrence of an event that raised an alert.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='cap:AlertCertaintyCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='AlertEventCategoryCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates categories of an event that raised an alert.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='cap:AlertEventCategoryCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='AlertSeverityCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates severity levels of an event that raised an alert.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='cap:AlertSeverityCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='AlertUrgencyCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates urgency levels of an event that raised an alert.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='cap:AlertUrgencyCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,367 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/ansi_d20/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/ansi_d20/1.0' 
+    xmlns:ansi_d20='http://www.it.ojp.gov/jxdm/ansi_d20/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../ansi_d20/1.0/ansi_d20_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/ansi_d20/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='AccidentSeverityCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A code list that enumerates severity levels of an accident.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:AccidentSeverityCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='BrandCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates information about a brand applied to a vehicle title or odometer.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:BrandCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='BrandDamagePercentageTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates information about the percentage of damage in a brand on a vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:BrandDamagePercentageTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='BranderTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of branders.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:BranderTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='BrandVehicleDispositionCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates vehicle dispositions.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:BrandVehicleDispositionCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='CMVCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates information about whether a person was operating a commercial motor vehicle in an incident.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:CMVCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='CourtTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of courts.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:CourtTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DecalPeriodCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates information that describes the lifespan of a decal.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DecalPeriodCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DriverLicenseClassCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of vehicles that a licensed driver may be approved to operate.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DriverLicenseClassCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DriverLicenseWithdrawalActionCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of driver license withdrawal actions.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DriverLicenseWithdrawalActionCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DriverLicenseWithdrawalBasisCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates bases for withdrawal action for a driver.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DriverLicenseWithdrawalBasisCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DriverLicenseWithdrawalDueProcessStatusCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates due process statuses of a withdrawal action.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DriverLicenseWithdrawalDueProcessStatusCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DriverLicenseWithdrawalEligibilityCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates when a driver may be eligible to apply for reinstatement of driving privileges that have been withdrawn.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DriverLicenseWithdrawalEligibilityCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DriverLicenseWithdrawalExtentCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates extents of withdrawals.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DriverLicenseWithdrawalExtentCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DrivingEndorsementCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates endorsements on a driver license or a driver license permit which authorizes the operation of specificied types of vehicles carrying specified loads.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DrivingEndorsementCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DrivingInsuranceStatusCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates the ways in which a driver of a vehicle may or may not be insured.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DrivingInsuranceStatusCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DrivingOffenseCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates ACD codes for a drivng offense.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DrivingOffenseCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DrivingRestrictionCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates categories of driving restrictions.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DrivingRestrictionCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='DrivingStatusCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates statuses of a driver&apos;s privilege type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:DrivingStatusCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='HazMatCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates whether a driver was operating a vehicle carrying hazardous materials.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:HazMatCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='InsuranceCoverageTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates categories of coverage provided by an insurance policy.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:InsuranceCoverageTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='JurisdictionAuthorityCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates an authority with jurisdiction over a particular area.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:JurisdictionAuthorityCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='LienReleaseReasonCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates reasons a legal encumbrance may be removed from a property.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:LienReleaseReasonCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='PassFailCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates whether something has passed or failed some sort of test.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:PassFailCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='RegistrationPlateColorCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates colors of a vehicle registration plate or license plate.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:RegistrationPlateColorCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='RegistrationStatusCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates activities recorded for a registration.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:RegistrationStatusCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='RegistrationStatusDetailCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates additional information regarding a registration status.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:RegistrationStatusDetailCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='SmogCertificateCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates whether or not a vehicle has a current smog certificate.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:SmogCertificateCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='TitleStatusCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates statuses for a title.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:TitleStatusCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VehicleEngineDisplacementUnitCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates units of measurement for the displacement of a vehicle engine.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:VehicleEngineDisplacementUnitCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VehicleFuelTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of fuel or motive powerr used to propel a vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:VehicleFuelTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VehicleOdometerReadingUnitCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerate the units of measurement associated with an odometer reading.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:VehicleOdometerReadingUnitCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VehicleTitleDocumentTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of an individual title document.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:VehicleTitleDocumentTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VehicleTransmissionTypeCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates types of transmission units in a vehicle.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:VehicleTransmissionTypeCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VehicleUseCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates ways in which a vehicle is used.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='ansi_d20:VehicleUseCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

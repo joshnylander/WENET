@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ansi_d20="http://www.it.ojp.gov/jxdm/ansi_d20/1.0" xmlns:j="http://www.it.ojp.gov/jxdm/3.0.2" xmlns:i="http://www.it.ojp.gov/jxdm/appinfo/1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.it.ojp.gov/jxdm/3.0.2/proxy/ansi_d20/1.0">
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/ansi_d20/1.0" schemaLocation="../../../../ansi_d20/1.0/ansi_d20.xsd"/>
+<xsd:import namespace="http://www.it.ojp.gov/jxdm/3.0.2" schemaLocation="../../../jxdm.xsd"/>
+<xsd:complexType name="AccidentSeverityCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:AccidentSeverityCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="BrandCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:BrandCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="BrandDamagePercentageTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:BrandDamagePercentageTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="BrandVehicleDispositionCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:BrandVehicleDispositionCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="BranderTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:BranderTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="CMVCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:CMVCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="CourtTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:CourtTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DecalPeriodCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DecalPeriodCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DriverLicenseClassCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DriverLicenseClassCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DriverLicenseWithdrawalActionCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DriverLicenseWithdrawalActionCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DriverLicenseWithdrawalBasisCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DriverLicenseWithdrawalBasisCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DriverLicenseWithdrawalDueProcessStatusCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DriverLicenseWithdrawalDueProcessStatusCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DriverLicenseWithdrawalEligibilityCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DriverLicenseWithdrawalEligibilityCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DriverLicenseWithdrawalExtentCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DriverLicenseWithdrawalExtentCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DrivingEndorsementCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DrivingEndorsementCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DrivingInsuranceStatusCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DrivingInsuranceStatusCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DrivingOffenseCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DrivingOffenseCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DrivingRestrictionCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DrivingRestrictionCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="DrivingStatusCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:DrivingStatusCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="HazMatCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:HazMatCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="InsuranceCoverageTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:InsuranceCoverageTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="JurisdictionAuthorityCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:JurisdictionAuthorityCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="LienReleaseReasonCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:LienReleaseReasonCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="PassFailCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:PassFailCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="RegistrationPlateColorCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:RegistrationPlateColorCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="RegistrationStatusCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:RegistrationStatusCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="RegistrationStatusDetailCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:RegistrationStatusDetailCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="SmogCertificateCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:SmogCertificateCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="TitleStatusCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:TitleStatusCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="VehicleEngineDisplacementUnitCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:VehicleEngineDisplacementUnitCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="VehicleFuelTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:VehicleFuelTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="VehicleOdometerReadingUnitCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:VehicleOdometerReadingUnitCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="VehicleTitleDocumentTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:VehicleTitleDocumentTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="VehicleTransmissionTypeCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:VehicleTransmissionTypeCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+<xsd:complexType name="VehicleUseCodeType">
+<xsd:simpleContent>
+<xsd:extension base="ansi_d20:VehicleUseCodeType">
+<xsd:attributeGroup ref="j:SuperTypeMetadata"/>
+<xsd:attribute ref="j:id"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:schema>

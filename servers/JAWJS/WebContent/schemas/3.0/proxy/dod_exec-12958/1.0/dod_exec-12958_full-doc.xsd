@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/dod_exec-12958/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/dod_exec-12958/1.0' 
+    xmlns:dod_exec-12958='http://www.it.ojp.gov/jxdm/dod_exec-12958/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../dod_exec-12958/1.0/dod_exec-12958_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/dod_exec-12958/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='SecurityClassificationCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates classifications of a Unites States documents.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='dod_exec-12958:SecurityClassificationCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

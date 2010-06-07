@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/dod_misc/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/dod_misc/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+>
+
+<!--Define Types-->
+    <xsd:simpleType name='SecurityLevelCodeType'>
+      <xsd:annotation>
+        <xsd:documentation>A code list that enumerates levels of security of information.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base='xsd:token'>
+        <xsd:enumeration value='00'>
+          <xsd:annotation>
+            <xsd:documentation>COMPANY NON-CLASSIFIED</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='01'>
+          <xsd:annotation>
+            <xsd:documentation>COMPANY INTERNAL USE ONLY</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='02'>
+          <xsd:annotation>
+            <xsd:documentation>COMPANY CONFIDENTIAL</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='03'>
+          <xsd:annotation>
+            <xsd:documentation>COMPANY CONFIDENTIAL, RESTRICTED (NEED TO KNOW)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='04'>
+          <xsd:annotation>
+            <xsd:documentation>COMPANY REGISTERED (SIGNATURE REQUIRED)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='05'>
+          <xsd:annotation>
+            <xsd:documentation>PERSONAL</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='06'>
+          <xsd:annotation>
+            <xsd:documentation>SUPPLIER PROPRIETARY</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='09'>
+          <xsd:annotation>
+            <xsd:documentation>COMPANY DEFINED (TRADING PARTNER LEVEL)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='11'>
+          <xsd:annotation>
+            <xsd:documentation>COMPETITION SENSITIVE</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='20'>
+          <xsd:annotation>
+            <xsd:documentation>COURT RESTRICTED</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='21'>
+          <xsd:annotation>
+            <xsd:documentation>JUVENILE RECORD RESTRICTED</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='90'>
+          <xsd:annotation>
+            <xsd:documentation>GOVERNMENT NON-CLASSIFIED</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='92'>
+          <xsd:annotation>
+            <xsd:documentation>GOVERNMENT CONFIDENTIAL</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='93'>
+          <xsd:annotation>
+            <xsd:documentation>GOVERNMENT SECRET</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='94'>
+          <xsd:annotation>
+            <xsd:documentation>GOVERNMENT TOP SECRET</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+        <xsd:enumeration value='99'>
+          <xsd:annotation>
+            <xsd:documentation>GOVERNMENT DEFINED (TRADING PARTNER LEVEL)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:enumeration>
+      </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

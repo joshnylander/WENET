@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/iso_639-2b/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/iso_639-2b/1.0' 
+    xmlns:iso_639-2b='http://www.it.ojp.gov/jxdm/iso_639-2b/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../iso_639-2b/1.0/iso_639-2b_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/iso_639-2b/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='LanguageCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates languages.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='iso_639-2b:LanguageCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

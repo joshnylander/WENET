@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/iso_3166/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/iso_3166/1.0' 
+    xmlns:iso_3166='http://www.it.ojp.gov/jxdm/iso_3166/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../../iso_3166/1.0/iso_3166_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/iso_3166/1.0' />
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='CountryAlpha2CodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates country, territory, or dependency codes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='iso_3166:CountryAlpha2CodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='CountryAlpha3CodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates country, territory, or dependency codes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='iso_3166:CountryAlpha3CodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='CountryNumericCodeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates country, territory, or dependency codes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='iso_3166:CountryNumericCodeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

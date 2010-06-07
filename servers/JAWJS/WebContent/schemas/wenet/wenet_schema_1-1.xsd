@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Josh Nylander (Whatcom County Administrative Services) -->
+<xs:schema targetNamespace="http://www.co.whatcom.wa.us/apps/wenet/schema/wenet/1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:unece="http://www.it.ojp.gov/jxdm/unece_rec20-misc/1.0" xmlns:nonauth="http://www.it.ojp.gov/jxdm/nonauthoritative-code/1.0" xmlns:nibrs="http://www.it.ojp.gov/jxdm/nibrs_misc/1.0" xmlns:ncic="http://www.it.ojp.gov/jxdm/ncic_2000/1.0" xmlns:j-xsd="http://www.it.ojp.gov/jxdm/3.0/proxy/xsd/1.0" xmlns:j-ut_offender="http://www.it.ojp.gov/jxdm/3.0/proxy/ut_offender-tracking-misc/1.0" xmlns:j-usps="http://www.it.ojp.gov/jxdm/3.0/proxy/usps_states/1.0" xmlns:j-ucr="http://www.it.ojp.gov/jxdm/3.0/proxy/ucr/1.0" xmlns:j-nonauth="http://www.it.ojp.gov/jxdm/3.0/proxy/nonauthoritative-code/1.0" xmlns:j-nibrs="http://www.it.ojp.gov/jxdm/3.0/proxy/nibrs_misc/1.0" xmlns:j-ncic="http://www.it.ojp.gov/jxdm/3.0/proxy/ncic_2000/1.0" xmlns:j-mn_off="http://www.it.ojp.gov/jxdm/3.0/proxy/mn_offense/1.0" xmlns:j-iso_639-2t="http://www.it.ojp.gov/jxdm/3.0/proxy/iso_639-2t/1.0" xmlns:j-iso_639-2b="http://www.it.ojp.gov/jxdm/3.0/proxy/iso_639-2b/1.0" xmlns:j-iso_3166="http://www.it.ojp.gov/jxdm/3.0/proxy/iso_3166/1.0" xmlns:j-fips_6-4="http://www.it.ojp.gov/jxdm/3.0/proxy/fips_6-4/1.0" xmlns:j-fips_5-2="http://www.it.ojp.gov/jxdm/3.0/proxy/fips_5-2/1.0" xmlns:j-fips_10-4="http://www.it.ojp.gov/jxdm/3.0/proxy/fips_10-4/1.0" xmlns:j-dod_jcs-pub2.0="http://www.it.ojp.gov/jxdm/3.0/proxy/dod_jcs-pub2.0-misc/1.0" xmlns:j-dod_exec-12958="http://www.it.ojp.gov/jxdm/3.0/proxy/dod_exec-12958/1.0" xmlns:j-dod="http://www.it.ojp.gov/jxdm/3.0/proxy/dod_misc/1.0" xmlns:j-census="http://www.it.ojp.gov/jxdm/3.0/proxy/census/1.0" xmlns:j-cap="http://www.it.ojp.gov/jxdm/3.0/proxy/cap/1.0" xmlns:j-can="http://www.it.ojp.gov/jxdm/3.0/proxy/post-canada/1.0" xmlns:j-ansi_d20="http://www.it.ojp.gov/jxdm/3.0/proxy/ansi_d20/1.0" xmlns:iso_639-2t="http://www.it.ojp.gov/jxdm/iso_639-2t/1.0" xmlns:iso_4217="http://www.it.ojp.gov/jxdm/iso_4217/1.0" xmlns:ansi_d20="http://www.it.ojp.gov/jxdm/ansi_d20/1.0" xmlns:jxdd3="http://www.it.ojp.gov/jxdm/3.0" xmlns="http://www.co.whatcom.wa.us/apps/wenet/schema/wenet/1" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/ansi_d20/1.0" schemaLocation="../ansi_d20/1.0/ansi_d20_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/iso_4217/1.0" schemaLocation="../iso_4217/1.0/iso_4217_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/iso_639-2t/1.0" schemaLocation="../iso_639-2t/1.0/iso_639-2t_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/ansi_d20/1.0" schemaLocation="../3.0/proxy/ansi_d20/1.0/ansi_d20_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/post-canada/1.0" schemaLocation="../3.0/proxy/post-canada/1.0/post-canada_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/cap/1.0" schemaLocation="../3.0/proxy/cap/1.0/cap_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/census/1.0" schemaLocation="../3.0/proxy/census/1.0/census_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/dod_misc/1.0" schemaLocation="../3.0/proxy/dod_misc/1.0/dod_misc_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/dod_exec-12958/1.0" schemaLocation="../3.0/proxy/dod_exec-12958/1.0/dod_exec-12958_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/dod_jcs-pub2.0-misc/1.0" schemaLocation="../3.0/proxy/dod_jcs-pub2.0-misc/1.0/dod_jcs-pub2.0-misc_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/fips_10-4/1.0" schemaLocation="../3.0/proxy/fips_10-4/1.0/fips_10-4_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/fips_5-2/1.0" schemaLocation="../3.0/proxy/fips_5-2/1.0/fips_5-2_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/fips_6-4/1.0" schemaLocation="../3.0/proxy/fips_6-4/1.0/fips_6-4_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/iso_3166/1.0" schemaLocation="../3.0/proxy/iso_3166/1.0/iso_3166_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/iso_639-2b/1.0" schemaLocation="../3.0/proxy/iso_639-2b/1.0/iso_639-2b_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/iso_639-2t/1.0" schemaLocation="../3.0/proxy/iso_639-2t/1.0/iso_639-2t_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/mn_offense/1.0" schemaLocation="../3.0/proxy/mn_offense/1.0/mn_offense_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/ncic_2000/1.0" schemaLocation="../3.0/proxy/ncic_2000/1.0/ncic_2000_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/nibrs_misc/1.0" schemaLocation="../3.0/proxy/nibrs_misc/1.0/nibrs_misc_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/nonauthoritative-code/1.0" schemaLocation="../3.0/proxy/nonauthoritative-code/1.0/nonauthoritative-code_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/ucr/1.0" schemaLocation="../3.0/proxy/ucr/1.0/ucr_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/usps_states/1.0" schemaLocation="../3.0/proxy/usps_states/1.0/usps_states_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/ut_offender-tracking-misc/1.0" schemaLocation="../3.0/proxy/ut_offender-tracking-misc/1.0/ut_offender-tracking-misc_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0/proxy/xsd/1.0" schemaLocation="../3.0/proxy/xsd/1.0/xsd_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/ncic_2000/1.0" schemaLocation="../ncic_2000/1.0/ncic_2000_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/nibrs_misc/1.0" schemaLocation="../nibrs_misc/1.0/nibrs_misc_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/nonauthoritative-code/1.0" schemaLocation="../nonauthoritative-code/1.0/nonauthoritative-code_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/unece_rec20-misc/1.0" schemaLocation="../unece_rec20-misc/1.0/unece_rec20-misc_full-doc.xsd"/>
+	<xs:import namespace="http://www.it.ojp.gov/jxdm/3.0" schemaLocation="../3.0/jxdm_full-doc.xsd"/>
+	<xs:element name="service">
+		<xs:annotation>
+			<xs:documentation>Describes the service</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="clusters"/>
+				<xs:element ref="authCertificates"/>
+				<xs:element ref="serviceCertificate"/>
+				<xs:element ref="methods"/>
+				<xs:element ref="owner"/>
+				<xs:element ref="discription"/>
+			</xs:all>
+			<xs:attribute name="orgURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="serviceURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="lastModified" type="xs:dateTime" use="required"/>
+			<xs:attribute name="URL" type="xs:anyURI" use="required">
+				<xs:annotation>
+					<xs:documentation>This is the URL used to retrieve the wenet:service document.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="discription" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>A discription of the service.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="clusters">
+		<xs:annotation>
+			<xs:documentation>A collection of clustors</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="cluster"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cluster">
+		<xs:annotation>
+			<xs:documentation>A cluster or services</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="clusterMember"/>
+			</xs:choice>
+			<xs:attribute name="myParentInCluster" type="xs:anyURI" use="optional">
+				<xs:annotation>This attribute defines the URI of the server which is the parent of the service described in this document.  If no parent, leave out attribute.</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="clusterURI" type="xs:anyURI" use="required">
+				<xs:annotation>Each cluster MUST be defined by a unique URI.</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="clusterMember">
+		<xs:annotation>
+			<xs:documentation>A service that is a member of a cluster</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="serviceIDType">
+					<xs:attribute name="priority" type="xs:integer" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="serviceIDType" mixed="false">
+		<xs:annotation>
+			<xs:documentation>A serviceID defines the serviceURI, orgURI and most importantly a URL where the service descriptor (wenet:service) can be retrieved from.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:anyURI">
+				<xs:attribute name="orgURI" type="xs:anyURI" use="required"/>
+				<xs:attribute name="serviceURI" type="xs:anyURI" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="authCertificates">
+		<xs:annotation>
+			<xs:documentation>A collection of digital certificates that this service will use to sign user authentication cerfificates.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="authCertificate"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="certificateType" mixed="false">
+		<xs:annotation>
+			<xs:documentation>Identifies a digital certificate.  The body contains the Base64 encoded certificate.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:attribute name="issuer" type="xs:string" use="required"/>
+				<xs:attribute name="subject" type="xs:string" use="required"/>
+				<xs:attribute name="URL" type="xs:anyURI" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="authCertificate" type="certificateType">
+		<xs:annotation>
+			<xs:documentation>One of the digital certificates that this service will sign user authentication digital certificates with.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="serviceCertificate" type="certificateType">
+		<xs:annotation>
+			<xs:documentation>The digital certificate</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="method">
+		<xs:annotation>
+			<xs:documentation>The URL of a method, if not supported then content URL is blank. TO DO - add elements or attributes that define the type or method and the query priority.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:anyURI">
+					<xs:attribute name="methodname" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="methods">
+		<xs:annotation>
+			<xs:documentation>The collection of methods supported by the protocol.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="method"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="owner" type="jxdd3:OrganizationType">
+		<xs:annotation>
+			<xs:documentation>The owner of the service, including contact information.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="authlist">
+		<xs:annotation>
+			<xs:documentation>A collection of users that this service is vouching for.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="user"/>
+			</xs:choice>
+			<xs:attribute name="orgURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="serviceURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="lastModified" type="xs:dateTime" use="required"/>
+			<xs:attribute name="URL" type="xs:anyURI" use="required">
+				<xs:annotation>
+					<xs:documentation>This is the URL used to retrieve the wenet:service document.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="user">
+		<xs:annotation>
+			<xs:documentation>A user that is on the authlist.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="userinfo"/>
+				<xs:element ref="roles"/>
+			</xs:all>
+			<xs:attribute name="RFC822Name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="roles">
+		<xs:annotation>
+			<xs:documentation>A list of roles that a user belongs to.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice ref="role" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="role">
+		<xs:annotation>
+			<xs:documentation>A role that a user belongs to.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string"/>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="userinfo" type="jxdd3:ContactInformationType">
+		<xs:annotation>
+			<xs:documentation>Contact information for the user.  It is not expected that the contact information be complete.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="authMethod">
+		<xs:annotation>
+			<xs:documentation>A method supported by the WENET protocol and whether or not a user is authorized to use that method.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:boolean">
+					<xs:attribute name="methodname" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="auditlog">
+		<xs:annotation>
+			<xs:documentation>A collection of logged queries made against this service.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="orgURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="serviceURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="URL" type="xs:anyURI" use="required">
+				<xs:annotation>
+					<xs:documentation>This is the URL used to retrieve the wenet:service document.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="startDate" type="xs:dateTime" use="required"/>
+			<xs:attribute name="endDate" type="xs:dateTime" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="logentry">
+		<xs:annotation>
+			<xs:documentation>A log entry about an inquiry made against this service.  Body contains the URL passed.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="userRFC822Name" type="xs:string" use="required"/>
+					<xs:attribute name="userCertSubject" type="xs:string" use="required"/>
+					<xs:attribute name="when" type="xs:dateTime" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="instance">
+		<xs:annotation>
+			<xs:documentation>A single document returned by a serivce.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="jxdd3:Person"/>
+				<xs:element ref="jxdd3:Warrant"/>
+				<xs:element ref="jxdd3:Booking"/>
+				<xs:element ref="jxdd3:Arrest"/>
+				<xs:element ref="jxdd3:Document"/>
+				<xs:element ref="jxdd3:Incident"/>
+				<xs:element ref="jxdd3:Case"/>
+				<xs:element ref="jxdd3:Evidence"/>
+			</xs:choice>
+			<xs:attribute name="orgURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="serviceURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="lastModified" type="xs:dateTime" use="required"/>
+			<xs:attribute name="URL" type="xs:anyURI" use="required">
+				<xs:annotation>
+					<xs:documentation>This is the URL used to retrieve the document.  The URL may point to one of many locations for the document but must point to the location that this specific document was retrieved from.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dataURI" type="xs:anyURI" use="required">
+				<xs:annotation>
+					<xs:documentation>The dataURI is a unique URI used to identify each data set.  For example, each Person in a RMS will have a unique URI which would match the dataURI returned for the document of type Person that describes that person.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="results">
+		<xs:annotation>
+			<xs:documentation>A collection of indentifiers to documents that match a query.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="result"/>
+			</xs:choice>
+			<xs:attribute name="serviceURI" type="xs:anyURI" use="required"/>
+			<xs:attribute name="lastModified" type="xs:dateTime" use="required"/>
+			<xs:attribute name="URL" type="xs:anyURI" use="required">
+				<xs:annotation>
+					<xs:documentation>This is the URL used to generate the results.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="errorNumber" use="optional">
+				<xs:annotation>
+					<xs:documentation>TO DO - need to define the type and the restriction.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="errorDescription" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>A user friendly error message defining why the result set is empty or limited.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="result">
+		<xs:annotation>
+			<xs:documentation>A pointer to a document that matches the query.  The body contains a URL that can be used to retrieve the matching document.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:anyURI">
+					<xs:attribute name="dataURI" type="xs:anyURI" use="required">
+						<xs:annotation>
+							<xs:documentation>The dataURI is a unique URI used to identify each data set.  For example, each Person in a RMS will have a unique URI which would match the dataURI returned for the document of type Person that describes that person.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="orgURI" type="xs:anyURI" use="required"/>
+					<xs:attribute name="serviceURI" type="xs:anyURI" use="required"/>
+					<xs:attribute name="lastModified" type="xs:dateTime" use="required"/>
+					<xs:attribute name="documentType" type="xs:string" use="required">
+						<xs:annotation>
+							<xs:documentation>The documentType attributes defines the type of data returned and must match one of the documentTypes defined in the service descriptor as supported.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="query">
+		<xs:annotation>
+			<xs:documentation>This is a top level element POSTed to a service to describe a complex query.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="join"/>
+			</xs:choice>
+			<xs:attribute name="queryMethod" use="required">
+				<xs:annotation>
+					<xs:documentation>TO DO - defines the query method - need to set the restriction to 'XPath' and 'XQuery'.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="join">
+		<xs:annotation>
+			<xs:documentation>A join contains 2 or more statements and joins them with either an AND or an OR.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="join" maxOccurs="unbounded"/>
+				<xs:element ref="statement" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="or" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If the join is an OR join then the value is TRUE.  If the join is an AND join then the value is FALSE.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="statement" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>A XPath statement to query against.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

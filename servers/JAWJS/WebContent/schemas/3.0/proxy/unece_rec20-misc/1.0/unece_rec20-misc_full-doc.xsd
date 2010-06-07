@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xsd:schema 
+    attributeFormDefault='unqualified'
+    elementFormDefault='qualified' 
+    targetNamespace='http://www.it.ojp.gov/jxdm/3.0/proxy/unece_rec20-misc/1.0' 
+    xmlns='http://www.it.ojp.gov/jxdm/3.0/proxy/unece_rec20-misc/1.0' 
+    xmlns:j='http://www.it.ojp.gov/jxdm/3.0' 
+    xmlns:unece='http://www.it.ojp.gov/jxdm/unece_rec20-misc/1.0' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  >
+
+  <xsd:import schemaLocation='../../../jxdm_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/3.0' />
+  <xsd:import schemaLocation='../../../../unece_rec20-misc/1.0/unece_rec20-misc_full-doc.xsd' namespace='http://www.it.ojp.gov/jxdm/unece_rec20-misc/1.0' />
+
+<!--Define Types-->
+  <xsd:complexType name='LengthType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates units of measurements for a length value.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='unece:LengthType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='MassType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates units of measurement for a weight value.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='unece:MassType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='TimeType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates units of time.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='unece:TimeType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name='VelocityType'>
+    <xsd:annotation>
+      <xsd:documentation>A proxy code list that enumerates units of measurement for a speed or velocity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base='unece:VelocityType'>
+          <xsd:attributeGroup ref='j:SuperTypeMetadata' />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>
