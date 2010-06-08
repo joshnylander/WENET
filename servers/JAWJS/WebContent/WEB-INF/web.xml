@@ -96,7 +96,7 @@
 		</description>
 		<display-name>FilterFileLogger</display-name>
 		<filter-name>FilterFileLogger</filter-name>
-		<filter-class>us.wenet.jawjs.adams.file.FilterFileLogger</filter-class>
+		<filter-class>us.wenet.jawjs.adams.file.FilterLogger</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>wrapasWENETRequest</filter-name>
@@ -126,6 +126,18 @@
 		<filter-name>FilterFileLogger</filter-name>
 		<url-pattern>/FilterFileLogger</url-pattern>
 	</filter-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Service</display-name>
+		<servlet-name>Service</servlet-name>
+		<servlet-class>
+		us.wenet.jawjs.adams.xslt.SimpleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Service</servlet-name>
+		<url-pattern>/Service</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

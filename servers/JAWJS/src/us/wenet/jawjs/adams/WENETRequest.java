@@ -23,7 +23,7 @@ public class WENETRequest extends HttpServletRequestWrapper {
 		if (userPrincipal != null && userPrincipal.getClientType() == WENETPrincipal.CLIENT_USER) {
 			return userPrincipal.getName();
 		} else {
-			return null;
+			return "";
 		}
 	}
 
