@@ -105,14 +105,14 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name="methods" minOccurs="1" maxOccurs="1">
+	<xsd:element name="methods">
 		<xsd:complexType>
 			<xsd:sequence maxOccurs="unbounded">
 				<xsd:element ref="method"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name="owner" type="xsd:anyURI" minOccurs="1" maxOccurs="1"/>
+	<xsd:element name="owner" type="xsd:anyURI"/>
 	<xsd:element name="user">
 		<xsd:complexType>
 			<xsd:sequence>

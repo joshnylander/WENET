@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet Filter implementation class FilterWrapAsWENETrequest
@@ -33,8 +34,9 @@ public class FilterWrapAsWENETrequest implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest wrappedRequest = new WENETRequest((HttpServletRequest)request);
+		HttpServletResponse wrappedResponse = new WENETResponse((HttpServletResponse)response);
 		// pass the request along the filter chain
-		chain.doFilter(wrappedRequest, response);
+		chain.doFilter(wrappedRequest, wrappedResponse);
 	}
 
 	/**
