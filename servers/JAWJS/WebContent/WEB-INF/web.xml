@@ -72,6 +72,32 @@
 			<param-value>role1;role2</param-value>
 		</init-param>
 	</filter>
+	<filter>
+		<description>
+		This filter take a path and roles required and forwards the request/response to the path if the user has any one of the required roles.</description>
+		<display-name>FilterPathChooserByRole</display-name>
+		<filter-name>FilterPathChooserByRole</filter-name>
+		<filter-class>us.wenet.jawjs.adams.FilterPathChooserByRole</filter-class>
+		<init-param>
+			<description>
+			The relative path to forward to if user has role(s).</description>
+			<param-name>resource</param-name>
+			<param-value></param-value>
+		</init-param>
+		<init-param>
+			<description>
+			A semi-colon seperated list of role names that this filter should forward based on.</description>
+			<param-name>role-names</param-name>
+			<param-value></param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>FilterFileLogger</display-name>
+		<filter-name>FilterFileLogger</filter-name>
+		<filter-class>us.wenet.jawjs.adams.file.FilterFileLogger</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>wrapasWENETRequest</filter-name>
 		<url-pattern>/do/*</url-pattern>
@@ -91,6 +117,14 @@
 	<filter-mapping>
 		<filter-name>FilterSSLAuthenticatorUserSimple</filter-name>
 		<url-pattern>/user</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>FilterPathChooserByRole</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>FilterFileLogger</filter-name>
+		<url-pattern>/FilterFileLogger</url-pattern>
 	</filter-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
