@@ -55,9 +55,6 @@ public class FilterSSLAuthenticatorBase implements Filter {
 			// No, need to build a new principal
 			// TODO Add cache support
 			
-			// No, then start to build principal
-			WENETPrincipal regPrincipal = new WENETPrincipal();
-
 			// Get certificates from request
 			X509Certificate[] certs;
 			certs = (X509Certificate[]) request.getAttribute("javax.servlet.request.X509Certificate");
@@ -65,7 +62,7 @@ public class FilterSSLAuthenticatorBase implements Filter {
 			// Parse and validate certificates
 			CertPath cp = buildCertChain(certs, revocationValidation);
 			
-			this.buildPrincipal(cp, regPrincipal);
+			req.setUserPrincipal(this.buildPrincipal(cp));
 			
 			// TODO Add cache support
 		}
@@ -75,8 +72,9 @@ public class FilterSSLAuthenticatorBase implements Filter {
 		chain.doFilter(request, response);
 	}
 	
-	private void buildPrincipal(CertPath certsAsPath, WENETPrincipal retPrincipal) throws ServletException {
+	private WENETPrincipal buildPrincipal(CertPath certsAsPath) throws ServletException {
 		// This method must be overridden and implemented by subclasses
+		return new WENETPrincipal();
 	}
 	
 	private CertPath buildCertChain(X509Certificate[] certs, boolean checkRevocation) throws ServletException {

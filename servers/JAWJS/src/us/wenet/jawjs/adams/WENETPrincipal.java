@@ -4,14 +4,26 @@ import java.security.Principal;
 import java.util.Arrays;
 
 public class WENETPrincipal implements Principal {
-	static int CLIENT_SP = 1;
-	static int CLIENT_USER = 2;
+	public static int CLIENT_SP = 1;
+	public static int CLIENT_USER = 2;
 
 	protected String name = null;
 	protected String roles[] = new String[0];
 	protected String certSubjectDN = new String("");
 	protected int clientType;
 	
+	public WENETPrincipal() {
+		//do nothing
+	}
+	
+	public WENETPrincipal(String name, String[] roles, String certSubjectDN, int clientType) {
+		super();
+		this.name = name;
+		this.roles = roles;
+		this.certSubjectDN = certSubjectDN;
+		this.clientType = clientType;
+	}
+
 	public int getClientType() {
 		return clientType;
 	}
@@ -74,5 +86,5 @@ public class WENETPrincipal implements Principal {
         return (sb.toString());
 
     }
-
+    
 }

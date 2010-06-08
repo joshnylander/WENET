@@ -1,6 +1,5 @@
-package us.wenet.jawjs.adams;
+package us.wenet.jawjs.adams.file;
 
-import java.io.IOException;
 import java.security.cert.CertPath;
 import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
@@ -10,11 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.Filter;
-import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+
+import us.wenet.jawjs.adams.FilterSSLAuthenticatorBase;
+import us.wenet.jawjs.adams.WENETPrincipal;
 
 /**
  * Servlet Filter implementation class FilterSSLAuthenticatorUserSimple
@@ -32,30 +31,37 @@ public class FilterSSLAuthenticatorUserSimple extends FilterSSLAuthenticatorBase
         super();
     }
 
-    private void buildPrincipal(CertPath certsAsPath, WENETPrincipal retPrincipal) throws ServletException{
+    private WENETPrincipal buildPrincipal(CertPath certsAsPath) throws ServletException{
+    	String name = null;
+    	String roles[] = new String[0];
+    	String certSubjectDN = new String("");
+    	int clientType;
+    	
     	// This is creating a user principal
-    	retPrincipal.clientType = WENETPrincipal.CLIENT_USER;
+    	clientType = WENETPrincipal.CLIENT_USER;
     	
     	// Extract info from certificate
 		X509Certificate userCert;
 		userCert = (X509Certificate) certsAsPath.getCertificates().get(0);
-		retPrincipal.certSubjectDN = userCert.getSubjectDN().getName();
+		certSubjectDN = userCert.getSubjectDN().getName();
 		try {
-			retPrincipal.name = extractRFC822Name(userCert);
+			name = extractRFC822Name(userCert);
 		} catch (CertificateParsingException e) {
 			e.printStackTrace();
 			throw new ServletException("Authentication failure, problem finding RFC822Name.");
 		}
 		
 		// Check user against valid list
-		if (!Arrays.asList(validUsers).contains(retPrincipal.getName())) {
+		if (!Arrays.asList(validUsers).contains(name)) {
 			// Invalid user
 			throw new ServletException("Authentication failure, not a valid user.");
 		}
 		
 		// Set roles
-		retPrincipal.roles = defaultRoles;
+		roles = defaultRoles;
 		
+		//Return new principal
+		return new WENETPrincipal(name, roles, certSubjectDN, clientType);		
 	}
     
     private String extractRFC822Name(X509Certificate cert) throws CertificateParsingException {

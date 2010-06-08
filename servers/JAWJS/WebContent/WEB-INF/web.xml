@@ -58,7 +58,7 @@
 		</description>
 		<display-name>FilterSSLAuthenticatorUserSimple</display-name>
 		<filter-name>FilterSSLAuthenticatorUserSimple</filter-name>
-		<filter-class>us.wenet.jawjs.adams.FilterSSLAuthenticatorUserSimple</filter-class>
+		<filter-class>us.wenet.jawjs.adams.file.FilterSSLAuthenticatorUserSimple</filter-class>
 		<init-param>
 			<description>
 			Semicolon seperated list of valid users.</description>
