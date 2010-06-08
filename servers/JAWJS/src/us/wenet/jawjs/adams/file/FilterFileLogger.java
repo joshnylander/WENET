@@ -57,7 +57,7 @@ public class FilterFileLogger implements Filter {
 		// Open file and writer
 		String fileName = new String(filePath + File.separator + dff.format(req.getWhen()));
 		int i = 0;
-		// TODO determine file name
+		// determine file name
 		File fl = new File(fileName + "-" + String.valueOf(i));
 		while (!fl.createNewFile()) {
 			//Need a new name
