@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<job-scheduling-data xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData job_scheduling_data_1_8.xsd"
+  version="1.8">
+
+    <schedule>
+        <job>
+            <name>discovery</name>
+            <group>JAWJS_JOB_GROUP</group>
+
+            <description>The job description</description>
+            <job-class>com.acme.scheduler.job.CleverJob</job-class>
+            <job-data-map>
+                <entry>
+                    <key>burger-type</key>
+                    <value>hotdog</value>
+                </entry>
+                <entry>
+                    <key>dressing-list</key>
+                    <value>ketchup,mayo</value>
+                </entry>
+            </job-data-map>
+        </job>
+       <job>
+            <name>authlistretrieval</name>
+            <group>JAWJS_JOB_GROUP</group>
+
+            <description>The job description</description>
+            <job-class>com.acme.scheduler.job.CleverJob</job-class>
+            <job-data-map>
+                <entry>
+                    <key>burger-type</key>
+                    <value>hotdog</value>
+                </entry>
+                <entry>
+                    <key>dressing-list</key>
+                    <value>ketchup,mayo</value>
+                </entry>
+            </job-data-map>
+        </job>
+
+        <trigger>
+            <simple>
+                <name>every90-discovery</name>
+                <group>JAWJS_TRIGGER_GROUP</group>
+                
+                <job-name>discovery</job-name>
+                <job-group>JAWJS_JOB_GROUP</job-group>
+                
+                <repeat-count>-1</repeat-count>
+                <repeat-interval>5400000</repeat-interval>
+                <!-- trigger at startup and then every 90 minutes -->
+
+            </simple>
+         </trigger>
+         <trigger>
+             <simple>
+                <name>every90-authlistretrieval</name>
+                <group>JAWJS_TRIGGER_GROUP</group>
+                
+                <job-name>authlistretrieval</job-name>
+                <job-group>JAWJS_JOB_GROUP</job-group>
+                
+                <repeat-count>-1</repeat-count>
+                <repeat-interval>5400000</repeat-interval>
+                <!-- trigger at startup and then every 90 minutes -->
+
+            </simple>
+         </trigger>
+    </schedule>
+</job-scheduling-data>
