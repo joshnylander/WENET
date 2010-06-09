@@ -20,7 +20,7 @@ import javax.xml.xpath.XPathException;
 
 import net.sf.saxon.value.StringValue;
 
-public class XSLTBaseServlet extends HttpServlet {
+public class ServletXSLTbase extends HttpServlet {
 
 	/**
 	 * 
@@ -122,7 +122,7 @@ public class XSLTBaseServlet extends HttpServlet {
 			    return x;
 			}
 
-	public XSLTBaseServlet() {
+	public ServletXSLTbase() {
 		super();
 	}
 

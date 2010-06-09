@@ -14,9 +14,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Servlet Filter implementation class FilterPathChooserByRole
+ * Servlet Filter implementation class FilterForwardByRole
  */
-public class FilterPathChooserByRole implements Filter {
+public class FilterForwardByRole implements Filter {
 	
 	private List roles;
 	private String path;
@@ -24,7 +24,7 @@ public class FilterPathChooserByRole implements Filter {
     /**
      * Default constructor. 
      */
-    public FilterPathChooserByRole() {
+    public FilterForwardByRole() {
         // TODO Auto-generated constructor stub
     }
 
