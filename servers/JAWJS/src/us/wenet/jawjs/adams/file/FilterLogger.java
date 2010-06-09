@@ -58,10 +58,10 @@ public class FilterLogger implements Filter {
 		String fileName = new String(filePath + File.separator + dff.format(req.getWhen()));
 		int i = 0;
 		// determine file name
-		File fl = new File(fileName + "-" + String.valueOf(i));
+		File fl = new File(fileName + "-" + String.valueOf(i) + ".xml");
 		while (!fl.createNewFile()) {
 			//Need a new name
-			fl = new File(fileName +  "-" + String.valueOf(i++));
+			fl = new File(fileName +  "-" + String.valueOf(i++) + ".xml");
 		}
 		
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fl.getPath())));

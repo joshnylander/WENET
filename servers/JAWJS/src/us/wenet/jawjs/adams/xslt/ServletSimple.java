@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SimpleServlet
+ * Servlet implementation class ServletSimple
  */
-public class SimpleServlet extends XSLTBaseServlet {
+public class ServletSimple extends XSLTBaseServlet {
 	private static final long serialVersionUID = 1L;
 	String pathXML;
 	String pathXSLT;
@@ -19,7 +19,7 @@ public class SimpleServlet extends XSLTBaseServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SimpleServlet() {
+    public ServletSimple() {
         super();
         // Nothing to do here
     }

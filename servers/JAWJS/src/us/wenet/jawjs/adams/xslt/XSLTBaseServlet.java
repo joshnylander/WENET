@@ -78,7 +78,14 @@ public class XSLTBaseServlet extends HttpServlet {
 			        while (p.hasMoreElements()) {
 			            String name = (String)p.nextElement();
 			            if (!(name.equals("style") || name.equals("source"))) {
-			                String value = req.getParameter(name);
+			            	String value;
+			            	if (req.getParameter(name) != null) {
+			            		value = req.getParameter(name);
+			            	}else if (req.getAttribute(name) != null) {
+			            		value = (String) req.getAttribute(name);
+			            	}else {
+			            		value = new String("");
+			            	}
 			                transformer.setParameter(name, new StringValue(value));
 			            }
 			        }

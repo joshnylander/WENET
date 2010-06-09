@@ -132,11 +132,23 @@
 		<display-name>Service</display-name>
 		<servlet-name>Service</servlet-name>
 		<servlet-class>
-		us.wenet.jawjs.adams.xslt.SimpleServlet</servlet-class>
+		us.wenet.jawjs.adams.xslt.ServletSimple</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ServletTaskScheduler</display-name>
+		<servlet-name>ServletTaskScheduler</servlet-name>
+		<servlet-class>
+		us.wenet.jawjs.adams.ServletTaskScheduler</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Service</servlet-name>
 		<url-pattern>/Service</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletTaskScheduler</servlet-name>
+		<url-pattern>/ServletTaskScheduler</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
