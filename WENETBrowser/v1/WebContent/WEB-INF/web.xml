@@ -1,0 +1,109 @@
+
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/webapp_2_3.dtd">
+<web-app>
+	<servlet>
+		<servlet-name> WENETBrowserServlet </servlet-name>
+		<servlet-class> us.wa.whatcom.co.wenet.client.browser.WENETBrowserServlet </servlet-class>
+		<load-on-startup>  1 </load-on-startup>
+
+		<init-param>
+			<param-name>UserSessionDataPath</param-name>
+			<param-value>[**]</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ServicePointListXMLFile</param-name>
+			<param-value></param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>WENETPublicCertificatesStore</param-name> 
+		  	<param-value>[**]</param-value>
+	        </init-param>
+
+		<init-param>
+			<param-name>BrowserCAFile</param-name> 
+		  	<param-value>[**]</param-value>
+	        </init-param>
+
+		<init-param>
+			<param-name>BrowserCAType</param-name> 
+		  	<param-value>[**]</param-value> 
+	  	</init-param>
+	  	
+		<init-param>
+			<param-name>BrowserCAProvider</param-name> 
+		  	<param-value>[**]</param-value> 
+	  	</init-param>
+		<init-param>
+			<param-name>BrowserCAPassword</param-name> 
+		  	<param-value>[**]</param-value>		  	
+	  	</init-param>	  	
+		<init-param>
+			<param-name>BrowserCACertificateAlias</param-name> 
+		  	<param-value>[**]</param-value>		  	
+	  	</init-param>	  		  	
+		<init-param>
+			<param-name>BrowserCAPrivateKeyAlias</param-name> 
+		  	<param-value>[**]</param-value>		  	
+	  	</init-param>	  		  		
+		<init-param>
+			<param-name>BrowserCAPrivateKeyPassword</param-name> 
+		  	<param-value>[**]</param-value>		  	
+	  	</init-param>
+		<init-param>
+			<param-name>BrowserCAPrivateKeyFile</param-name> 
+		  	<param-value>[**]</param-value>		  	
+	  	</init-param>	  		  		
+		<init-param>
+			<param-name>BrowserCAPrivateKeyType</param-name> 
+		  	<param-value>[**]</param-value> 
+	  	</init-param>
+	  	
+		<init-param>
+			<param-name>BrowserCAPrivateKeyProvider</param-name> 
+		  	<param-value>[**]</param-value> 
+	  	</init-param>
+	  	
+		<init-param>
+			<param-name>UserSessionExpirationMinutes</param-name> 
+		  	<param-value>30</param-value> 
+	  	</init-param>
+	  	
+	  	<init-param>
+	  		<param-name>SaveProxyCertificatesDirectory</param-name> 
+		  	<param-value></param-value> 
+	  	</init-param>
+	  	<init-param>
+	  		<param-name>SaveProxyCertificatesPassword</param-name> 
+		  	<param-value></param-value> 
+	  	</init-param>	  	
+	  		  	
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name> WENETBrowserServlet </servlet-name>
+		<url-pattern> /servlet/WENETBrowserServlet </url-pattern>
+	</servlet-mapping>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Browser</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>wenet</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<!-- 
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/login.jsp</form-error-page>
+		</form-login-config>
+	 -->
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	
+</web-app>
