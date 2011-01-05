@@ -1,0 +1,584 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>WENET Memo 21</title></head><body topmargin="0" leftmargin="0" style="background-color: rgb(255, 255, 255);" marginheight="0" marginwidth="0">
+<table border="0" cellspacing="1" width="100%">
+
+  <tbody>
+    <tr valign="top">
+      <td colspan="2" width="64%"><font size="-1">WENET Working Group,<br>
+MIS Committee,<br>
+Whatcom County Law and Justice Council</font></td>
+      <td rowspan="3" align="right" width="33%"><font size="-1">R. Josh Nylander<br>
+</font></td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Memo: 21</font></td>
+      <td width="33%">&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td><font size="-1">Status: DRAFT<br>
+ </font></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="top">
+      <td width="33%"><font size="-1">Obsoletes: none</font></td>
+      <td width="33%">&nbsp;</td>
+      <td width="33%">
+      <div align="right"><font size="-1">January 4th, 2011
+      </font></div>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td colspan="3" width="100%">
+      <div align="center"><strong>WENET Digital Certificate Management</strong></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><font size="3">Status
+of this Memo</font></p>
+
+<p>
+<font size="3">Distribution of this
+document is unlimited. This memo has been approved by the <u><a href="http://www/boards/lawjustice/mis/" target="_top">Management
+Information Systems Committee</a></u></font> of the <u><a href="http://www/boards/lawjustice/law_justice.jsp" target="_top">Whatcom
+County Law and Justice Council</a></u>.</p>
+
+<p><font size="3">Copyright
+Notice</font></p>
+
+<p>
+<font size="3">This document is released
+as a government work into the public domain.</font></p>
+
+<p><font size="3">Abstract</font></p>
+
+<p>
+<font size="3">This document specifies
+the policies and procedures used to manage, create, distribute, and
+revoke digital certificates used to secure the Whatcom County WENET
+network, specifically the http://www.wcljc.org/wenet/cluster/whatcom/
+cluster. This document focuses on the certificates needed to
+implement <u><a href="http://www/apps/wenet/memos/12.jsp#security" target="_top">section
+7</a></u></font> of the <u><a href="http://www/apps/wenet/memos/12.jsp" target="_top">WENET
+Protocol</a></u>.</p>
+
+<p><font size="3">Table
+of Contents</font></p>
+
+<ol>
+
+  <li>
+    <p><font size="3"><u><a href="http://www/apps/wenet/memos/#ca" target="_top">Certificate Authority</a></u></font>  </p>
+  </li>
+  <li>
+    <p><font size="3"><u><a href="http://www/apps/wenet/memos/#types" target="_top">Types of Certificates</a></u></font>  </p>
+    <ol>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#caroot" target="_top">CA Root</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3">Whatcom County WENET Cluster
+Root</font></p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#sproot" target="_top">Service Points Root</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#spcerts" target="_top">Service Point Certificates</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="#approots" target="_top">Application Roots</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="#applications" target="_top">Application Certificates</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3">Web Root</font></p>
+      </li>
+      <li>
+        <p><font size="3">Web Sites</font></p>
+      </li>
+      <li>
+        <p><font size="3">Organization Root</font></p>
+      </li>
+      <li>
+        <p><font size="3">Organization Certificates</font></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><font size="3"><u><a href="http://www/apps/wenet/memos/#management" target="_top">Certificate Management</a></u></font>  </p>
+    <ol>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#storage" target="_top">Storage, Authentication, and Management of CA</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#establishment" target="_top">Establishment of Roots</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#requests" target="_top">Requesting Certificates</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#creating" target="_top">Creating and Authorizing Certificates</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#publishing" target="_top">Publishing Certificates</a></u></font>  </p>
+      </li>
+      <li>
+        <p><font size="3"><u><a href="http://www/apps/wenet/memos/#revoking" target="_top">Revoking Certificate</a></u></font>  </p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<p><font size="3">1.
+Certificate Authority </font>
+</p>
+
+<p>
+<font size="3">The <u><a href="http://www/boards/lawjustice/mis/" target="_top">Management
+Information Systems Committee</a></u></font> (MIS) under the
+authority of the <u><a href="http://www/boards/lawjustice/law_justice.jsp" target="_top">Whatcom
+County Law and Justice Council</a></u> herby acts as the
+Certificate Authority Subcommittee (CA). This subcommittee is solely
+responsible for management of digital certificates issued by the MIS
+committee.</p>
+
+<p>
+<font size="3">This subcommittee is
+granted authority to establish a set of root certificates for the
+Whatcom County WENET Cluster
+(http://www.wcljc.org/wenet/cluster/whatcom/), sign certificate
+requests for establishment of a service point within the cluster,
+revoke service point certificates and establish any necessary
+application certificates. The subcommittee SHALL meet as appropriate
+or at the direction of the MIS committee.</font></p>
+
+<p>
+<font size="3">The MIS committee hereby
+establishes itself, the Management Information Systems Committee of
+the Whatcom County Law and Justice Council, Whatcom County, WA, USA
+as the organization unit of record for the Certificate Authority. </font>
+</p>
+
+<p><font size="3">2.
+Types of Certificates </font>
+</p>
+
+<p>
+<font size="3">The Certificate Authority
+Subcommittee establishes and recognizes seven types of certificates. </font>
+</p>
+
+<p><font size="3">2.1
+CA Root </font>
+</p>
+
+<p><a name="_Hlt121044205"></a><a name="_Hlt121044206"></a>
+<font size="3">The Certificate Authority
+Root is a digital certificate and public/private key combo used to
+sign all other signing (sub roots) certificates issued by the CA.
+This SHALL be a self-signed certificate. The RSA key length SHALL be
+1024 bits. It SHALL be valid for 20 years from the time of creation.
+Its common name SHALL be "WCLJC Root". The organization of
+record SHALL be &#8221;Whatcom County Law and Justice Council&#8221; with MIS
+as the organization unit. No e-mail address. Path length of 10. The
+certificate SHALL be used for Certificate Sign and CRL Sign. The path
+length for the certificate SHALL be ten. CRL distribution points
+SHALL be those defined in <a href="http://www/apps/wenet/memos/#revoking" target="_top"><u>sectio</u></a></font><a href="http://www/apps/wenet/memos/#revoking" target="_top"><u>n
+3.6</u></a>. 
+</p>
+
+<p><font size="3">2.2
+Whatcom County WENET Cluster Root</font></p>
+
+
+
+<p style="margin-left: 0.5in; margin-bottom: 0in;"><font size="3">The
+Whatcom County WENET Cluster Root is a digital certificate and
+public/private key combo used to sign service point root and
+application root certificates that are participating in the <u><a href="file:///D:/localstuff/My%20Dropbox/WENET/shared/17.jsp" target="_top">Whatcom
+County WENET Cluster</a></u></font>. This SHALL be signed by the CA
+Root (WCLJC Root). The RSA key length SHALL be 1024 bits. It SHALL
+be valid for 10 years from the time of creation. Its common name
+SHALL be "Whatcom County WENET Cluster Root". The
+organization of record SHALL be MIS. The certificate SHALL be used
+for Certificate Sign and CRL Sign. The path length for the
+certificate SHALL be nine. CRL distribution points SHALL be those
+defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u>.</p>
+
+<p><br>
+</p>
+
+<p><font size="3">2.3
+Service Points Root </font>
+</p>
+
+<p>
+<font size="3">The Service Point Root is
+a digital certificate and public/private key combo used to sign
+service point certificates. This SHALL be signed by the Whatcom
+County WENET Cluster Root. The RSA key length SHALL be 1024 bits. It
+SHALL be valid for 10 years from the time of creation. Its common
+name SHALL be "WENET Whatcom Cluster Service Points Root. The
+organization of record SHALL be MIS. The certificate SHALL be used
+for Certificate Sign and CRL Sign. The path length for the
+certificate SHALL be eight. CRL distribution points SHALL be those
+defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p><font size="3">2.4
+Service Point Certificates </font>
+</p>
+
+<p>
+<font size="3">The Service Point
+certificates are digital certificates and public/private key combos
+issued to service points so as they my identify themselves. This
+SHALL be signed by the Whatcom County WENET Cluster Service Point
+Root. The RSA key length SHALL be 1024 bits. They SHALL be valid for
+10 years from the time of creation.</font></p>
+
+<p>
+<font size="3">The common names SHALL be
+the fully qualified domain name (FQDN) of the service point.</font></p>
+
+<p>
+<font size="3">The organization of
+record SHALL be service point owner. The certificate SHALL be used
+for TLS/Web Server Authentication AND Client Authentication (for
+discovery). The path length for the certificate SHALL be zero. CRL
+distribution points SHALL be those defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p style="margin-right: 0.5in; margin-top: 0.07in; margin-bottom: 0.07in;">
+<font size="3">2.5 Application Roots</font></p>
+
+<p>
+<font size="3">The Application Root is a
+digital certificate and public/private key combo used to sign
+application certificates. This SHALL be signed by the Whatcom County
+WENET Cluster Root. The RSA key length SHALL be 1024 bits. It SHALL
+be valid for 10 years from the time of creation. Its common name
+SHALL be "Whatcom County WENET Cluster Application Root&#8221;. The
+organization of record SHALL be MIS. The certificate SHALL be used
+for Certificate Sign and CRL Sign. The path length for the
+certificate SHALL be eight. CRL distribution points SHALL be those
+defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p><font size="3">2.6
+Application Certificates </font>
+</p>
+
+<p><br>
+</p>
+
+<p><font size="3">2.6.1
+Impersonating Application Certificates</font></p>
+
+<p>
+<font size="3">Impersonating
+applications are WENET clients, which act on behalf of users.
+Applications authenticate the users using their own processes and
+then generate a temporary user certificate on behalf of the user.
+Because the application impersonates the user, the application must
+meet certain requirements. Applications MUST:</font></p>
+
+<ul>
+
+  <li>
+    <p style="margin-right: 0.5in; margin-top: 0.07in; margin-bottom: 0.07in;">
+    <font size="3">Implement two factor
+authentication</font></p>
+  </li>
+  <li>
+    <p style="margin-right: 0.5in; margin-top: 0.07in; margin-bottom: 0.07in;">
+    <font size="3">Create temporary user
+that expires as soon as possible</font></p>
+  </li>
+  <li>
+    <p style="margin-right: 0.5in; margin-top: 0.07in; margin-bottom: 0.07in;">
+    <font size="3">Implements secure
+storage of both application certificate and temporary certificates</font></p>
+  </li>
+  <li>
+    <p style="margin-right: 0.5in; margin-top: 0.07in; margin-bottom: 0.07in;">
+    <font size="3">Uses best practices
+to prevent unauthorized use</font></p>
+  </li>
+</ul>
+
+<p>
+<font size="3">The Application
+certificates are digital certificates and public/private key combos
+issued to applications. These SHALL be signed by the Whatcom County
+WENET Cluster Application Root. The RSA key length SHALL be 1024
+bits. The certificates SHALL be used for Certificate Sign and CRL
+Sign. They SHALL be valid for 1 year from the time of creation.</font></p>
+
+<p>
+<font size="3">Application certificate
+common names SHALL consist of "WENET Application - " and
+the name of the application. The organization of record SHALL be the
+organization hosting the application. CRL distribution points SHALL
+be those defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p style="margin-right: 0.5in; margin-top: 0.07in; margin-bottom: 0.07in;">
+<font size="3">2.6.2 User Certificates</font></p>
+
+<p>
+<font size="3">These certificates are
+digital certificates and public/private key combos issued to
+individual users who directly authenticate to the service points. These
+SHALL be signed by the Whatcom County WENET Cluster Application
+Root. The RSA key length SHALL be 1024 bits. The certificate SHALL
+be used for Certificate Sign and CRL Sign. They SHALL be valid for
+1 year from the time of creation.</font></p>
+
+<p>
+<font size="3">User certificate common
+names SHALL consist of the RFC822 name of the individual. The
+organization of record SHALL be the organization of the individual. CRL
+distribution points SHALL be those defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p><font size="3">2.7
+Web Root </font>
+</p>
+
+<p>
+<font size="3">In some instances the MIS
+Committee may wish to establish a web site with a privately signed
+certificate rather then paying for a public certificate authority.
+Therefore, the CA SHALL establish a Web Root and ability to sign web
+site certificates as directed by the MIS Committee.</font></p>
+
+<p>
+<font size="3">The Web Root is a digital
+certificate and public/private key combo used to sign web site
+certificates. This SHALL be signed by the CA Root. The RSA key
+length SHALL be 1024 bits. It SHALL be valid for 10 years from the
+time of creation. Its common name SHALL be "WCLJC Web Root. The
+organization of record SHALL be MIS. The certificate SHALL be used
+for Certificate Sign and CRL Sign. The path length for the
+certificate SHALL be eight. CRL distribution points SHALL be those
+defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p><font size="3">2.8
+Web Site Certificates </font>
+</p>
+
+<p>
+<font size="3">Web Site certificates are
+digital certificates and public/private key combos issued to websites
+so as they my identify themselves. This SHALL be signed by the WCLJC
+Web Root. The RSA key length SHALL be 1024 bits. they SHALL be valid
+for 1 years from the time of creation.</font></p>
+
+<p>
+<font size="3">The common names SHALL be
+the fully qualified domain name (FQDN) of the web site.</font></p>
+
+<p>
+<font size="3">The organization of
+record SHALL be the owner/site manager. The certificate SHALL be used
+for TLS/Web Server Authentication. The path length for the
+certificate SHALL be zero. CRL distribution points SHALL be those
+defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p><font size="3">2.9
+Organization Root </font>
+</p>
+
+<p>
+<font size="3">The Organization Root is
+a digital certificate and public/private key combo used to sign
+organization certificates. This SHALL be signed by the CA Root. The
+RSA key length SHALL be 1024 bits. It SHALL be valid for 10 years
+from the time of creation. Its common name SHALL be "WCLJC
+Organization Root&#8221;. The organization of record SHALL be MIS. The
+certificate SHALL be used for Certificate Sign and CRL Sign. The path
+length for the certificate SHALL be eight. CRL distribution points
+SHALL be those defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>.</p>
+
+<p><font size="3">2.10
+Organization Certificates </font>
+</p>
+
+<p>
+<font size="3">Web Site certificates are
+digital certificates and public/private key combos issued to websites
+so as they my identify themselves. This SHALL be signed by the WCLJC
+Web Root. The RSA key length SHALL be 1024 bits. They SHALL be
+valid for 5 years up to the expiration of the Organization Root from
+the time of creation.</font></p>
+
+<p>
+<font size="3">The common names SHALL be
+the fully qualified domain name (FQDN) of the web site.</font></p>
+
+<p>
+<font size="3">The organization of
+record SHALL be the owner/site manager. The certificate SHALL be used
+for TLS/Web Server Authentication. The path length for the
+certificate SHALL be zero. CRL distribution points SHALL be those
+defined in <u><a href="http://www/apps/wenet/memos/#revoking" target="_top">section
+3.6</a></u></font>. 
+</p>
+
+<p><br>
+</p>
+
+<p><font size="3">3.
+Certificate Management </font>
+</p>
+
+<p>
+<font size="3">The Certificate Authority
+is responsible for storing, issuing and revoking certificates.</font></p>
+
+<p><font size="3">3.1
+Storage, Authentication, and Management of CA </font>
+</p>
+
+<p>
+<font size="3">The Certificate Authority
+SHALL use the software called XCA, version 0.5.1 to manage the
+digital certificates. The software SHALL store the certificates in
+an encrypted database file called &#8220;wenetcerts.xdb&#8221;, stored with a
+password of assigned by a CA member and shared with half of the CA
+members.</font></p>
+
+<p>
+<font size="3">The certificates storage
+file will be stored on a USB jump/thumb drive secured by the project
+manager or other designee of the CA members. On this drive SHALL be
+a TrueCrypt virtual drive of size 50MB. A TrueCrypt virtual drive is
+a file that when loaded by the TrueCrypt software (version 4.0) and
+appears as a computer drive. This drive/file is stored, un-mounted,
+as an AES encrypted file with a single pass phrase on the USB drive.
+This pass phrase for this encrypted virtual SHALL be assigned by a CA
+member and shared with the other half of the CA members such that no
+one CA members knows both passwords.</font></p>
+
+<p>
+<font size="3">The &#8220;wenetcerts.db&#8221;
+SHALL be stored ONLY on the encrypted virtual drive. No copy of
+&#8220;wenetcerts.db&#8221; or any unsecured private keys or certificates
+shall be stored outside of the encrypted virtual drive.</font></p>
+
+<p>
+<font size="3">Also stored on this
+virtual drive SHALL be a file called &#8220;ledger.txt&#8221; whose first
+line SHALL be &#8220;.LOG&#8221; and in which is to be recorded a log of all
+transactions, meetings and actions of the CA.</font></p>
+
+<p><font size="3">3.2
+Establishment of Roots </font>
+</p>
+
+<p>
+<font size="3">The first act of the CA
+SHALL be to establish the certificate roots as defined in section 2.</font></p>
+
+<p><font size="3">3.3
+Requesting Certificates </font>
+</p>
+
+<p>
+<font size="3">Persons or organizations
+MAY request certificates from the CA by requesting the certificate
+from a CA member. It is preferred that requesting party submit a
+certificate signing request (CSR) file, however one is not required.</font></p>
+
+<p><font size="3">3.4
+Creating and Authorizing Certificates </font>
+</p>
+
+<p>
+<font size="3">If a Certificate Signing
+Request (CSR) was not submitted as part of the request, the CA first
+gathers such information as to generate a CSR.</font></p>
+
+<p>
+<font size="3">Prior to signing a CSR,
+the CA SHALL receive approval from the MIS Committee and record the
+action in the log.</font></p>
+
+<p><font size="3">3.5
+Publishing Certificates </font>
+</p>
+
+<p>
+<font size="3">[TODO] The collection of
+issued certificate roots SHALL be published as a PKCS12 file at
+<u><a href="https://www.wcljc.org/certificates/certs.p12" target="_top">https://www.wcljc.org/certificates/certs.p12</a></u></font>
+without the private keys.</p>
+
+<p><font size="3">3.6
+Revoking Certificates </font>
+</p>
+
+<p>
+<font size="3">[TODO] A list of revoked
+certificates SHALL be published at
+<u><a href="https://www.wcljc.org/certificates/%5Broot%20type%5D/%5Broot%20name%5Drevoked.crl" target="_top">https://www.wcljc.org/certificates/[root
+type]/[root name]revoked.crl</a></u></font> .</p>
+
+<p><font size="3">3.7
+Renewing Certificates </font>
+</p>
+
+<p style="margin-left: 0.5in; margin-bottom: 0in;"><font size="3">[TODO]</font></p>
+
+<p><br>
+</p>
+
+<p><font size="3">3.9
+Common Settings</font></p>
+
+<p style="margin-left: 0.5in; margin-bottom: 0in;"><font size="3">All
+certificates will have their expiration rounded down to expire
+January 31</font><sup>st</sup>
+at midnight of given year. When not otherwise specified, the
+following values shall be used:</p>
+
+<ul>
+
+  <ul>
+    <li>
+      <p><font size="3">Signature Algorithm = MD5</font></p>
+    </li>
+    <li>
+      <p><font size="3">County code = US</font></p>
+    </li>
+    <li>
+      <p><font size="3">State or Province = WA</font></p>
+    </li>
+    <li>
+      <p><font size="3">Locality = Whatcom County</font></p>
+    </li>
+  </ul>
+</ul>
+
+<p style="margin-left: 0.5in; margin-bottom: 0in;"><font size="3">When
+working with a certificate signing request, do not copy extensions
+from request.</font></p>
+
+</body></html>
