@@ -2,44 +2,16 @@
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>JAWJS</display-name>
 	<filter>
-		<description>
-		This wraps the ServletRequest object in a WENETRequest object.</description>
+		<description>This wraps the ServletRequest object in a WENETRequest object.</description>
 		<display-name>wrapasWENETRequest</display-name>
 		<filter-name>wrapasWENETRequest</filter-name>
 		<filter-class>us.wenet.jawjs.adams.FilterWrapAsWENETrequest</filter-class>
 	</filter>
 	<filter>
-		<description>
-		This filter parses the client provided certificate, verifing chain against trusttore and extracting authentication information.</description>
-		<display-name>FilterSSLSecurity</display-name>
-		<filter-name>FilterSSLSecurity</filter-name>
-		<filter-class>us.wenet.jawjs.adams.FilterSSLSecurity</filter-class>
-		<init-param>
-			<description>
-			This is the location of the client truststore file as a java keystore.</description>
-			<param-name>clientTruststore</param-name>
-			<param-value>TODO</param-value>
-		</init-param>
-		<init-param>
-			<description>
-			Password for the client truststore java keystore.</description>
-			<param-name>clientTruststorePassword</param-name>
-			<param-value>PASSWORD</param-value>
-		</init-param>
-	</filter>
-	<filter>
-		<description>
-		</description>
-		<display-name>FilterSSLAuthenticationBase</display-name>
-		<filter-name>FilterSSLAuthenticationBase</filter-name>
-		<filter-class>us.wenet.jawjs.adams.FilterSSLAuthenticationBase</filter-class>
-	</filter>
-	<filter>
-		<description>
-		</description>
-		<display-name>FilterSSLAuthenticatorBase</display-name>
-		<filter-name>FilterSSLAuthenticatorBase</filter-name>
-		<filter-class>us.wenet.jawjs.adams.FilterSSLAuthenticatorBase</filter-class>
+		<description>Filter requests and and generate WENETPincipal from parameter lists</description>
+		<display-name>FilterSSLAuthenticatorUserParameter</display-name>
+		<filter-name>FilterSSLAuthenticatorUserParameter</filter-name>
+		<filter-class>us.wenet.jawjs.adams.file.FilterSSLAuthenticatorUserParameter</filter-class>
 		<init-param>
 			<description>
 			Password for trust store.</description>
@@ -52,13 +24,6 @@
 			<param-name>clientTruststore</param-name>
 			<param-value>truststore.jks</param-value>
 		</init-param>
-	</filter>
-	<filter>
-		<description>
-		</description>
-		<display-name>FilterSSLAuthenticatorUserSimple</display-name>
-		<filter-name>FilterSSLAuthenticatorUserSimple</filter-name>
-		<filter-class>us.wenet.jawjs.adams.file.FilterSSLAuthenticatorUserSimple</filter-class>
 		<init-param>
 			<description>
 			Semicolon seperated list of valid users.</description>
@@ -73,8 +38,7 @@
 		</init-param>
 	</filter>
 	<filter>
-		<description>
-		This filter take a path and roles required and forwards the request/response to the path if the user has any one of the required roles.</description>
+		<description>This filter take a path and roles required and forwards the request/response to the path if the user has any one of the required roles.</description>
 		<display-name>FilterPathChooserByRole</display-name>
 		<filter-name>FilterPathChooserByRole</filter-name>
 		<filter-class>us.wenet.jawjs.adams.FilterForwardByRole</filter-class>
@@ -85,22 +49,29 @@
 			<param-value></param-value>
 		</init-param>
 		<init-param>
-			<description>
-			A semi-colon seperated list of role names that this filter should forward based on.</description>
+			<description>A semi-colon seperated list of role names that this filter should forward based on.</description>
 			<param-name>role-names</param-name>
 			<param-value></param-value>
 		</init-param>
 	</filter>
 	<filter>
-		<description>
-		</description>
+		<description>This filter will log each request to a new XML file.</description>
 		<display-name>FilterFileLogger</display-name>
 		<filter-name>FilterFileLogger</filter-name>
 		<filter-class>us.wenet.jawjs.adams.file.FilterLogger</filter-class>
+		<init-param>
+			<description>Directory to store log files in</description>
+			<param-name>file-path</param-name>
+			<param-value>TODO</param-value>
+		</init-param>
+		<init-param>
+			<description>true/false to include XML header at top of file</description>
+			<param-name>includeXMLHeader</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</filter>
 	<filter>
-		<description>
-		</description>
+		<description>This filter will control access to the filtered path by role.</description>
 		<display-name>FilterAccessByRole</display-name>
 		<filter-name>FilterAccessByRole</filter-name>
 		<filter-class>us.wenet.jawjs.adams.FilterAccessByRole</filter-class>
@@ -108,9 +79,20 @@
 			<description>
 			A semi-colin seperated list of role names to check against.</description>
 			<param-name>role-names</param-name>
-			<param-value>*</param-value>
+			<param-value></param-value>
 		</init-param>
 	</filter>
+	<servlet>
+		<description>A simple servlet to return an XML file at the mapped request.</description>
+		<display-name>ServletXMLFile</display-name>
+		<servlet-name>ServletXMLFile</servlet-name>
+		<servlet-class>us.wenet.jawjs.adams.xslt.ServletXMLFile</servlet-class>
+		<init-param>
+			<description>File to return with this filter.</description>
+			<param-name>path-xml</param-name>
+			<param-value>TODO</param-value>
+		</init-param>
+	</servlet>
 
 	<!-- Begin Quartz Scheduler -->
 	<context-param>
