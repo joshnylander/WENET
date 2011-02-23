@@ -1,4 +1,4 @@
-package us.wenet.jawjs.adams.file;
+package us.wenet.jawjs.adams;
 
 import java.security.cert.CertPath;
 import java.security.cert.CertificateParsingException;
@@ -12,13 +12,11 @@ import javax.servlet.Filter;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 
-import us.wenet.jawjs.adams.FilterSSLAuthenticatorBase;
-import us.wenet.jawjs.adams.WENETPrincipal;
 
 /**
  * Servlet Filter implementation class FilterSSLAuthenticatorUserSimple
  */
-public class FilterSSLAuthenticatorUserSimple extends FilterSSLAuthenticatorBase implements Filter {
+public class FilterSSLAuthenticatorUserParameter extends FilterSSLAuthenticatorBase implements Filter {
     
 	private String validUsers[];
 	private String defaultRoles[];
@@ -27,7 +25,7 @@ public class FilterSSLAuthenticatorUserSimple extends FilterSSLAuthenticatorBase
     /**
      * @see FilterSSLAuthenticatorBase#FilterSSLAuthenticatorBase()
      */
-    public FilterSSLAuthenticatorUserSimple() {
+    public FilterSSLAuthenticatorUserParameter() {
         super();
     }
 
@@ -63,22 +61,6 @@ public class FilterSSLAuthenticatorUserSimple extends FilterSSLAuthenticatorBase
 		//Return new principal
 		return new WENETPrincipal(name, roles, certSubjectDN, clientType);		
 	}
-    
-    private String extractRFC822Name(X509Certificate cert) throws CertificateParsingException {
-    	Collection names = null;
-		names = cert.getSubjectAlternativeNames();
-		Iterator iterator = names.iterator();
-		// Loop until we find RFC822Name
-		while (iterator.hasNext()){
-			List namesList = (List)iterator.next();
-			if (namesList != null && namesList.size() > 0){
-				if (((Integer)namesList.get(0)).intValue() == 1){	
-					return (String)namesList.get(1); 
-				}
-			} 
-		}
-		return null;
-    }
 
 	/**
 	 * @see Filter#init(FilterConfig)

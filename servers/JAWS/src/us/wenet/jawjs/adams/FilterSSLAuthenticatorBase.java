@@ -5,10 +5,14 @@ import java.security.KeyStore;
 import java.security.cert.CertPath;
 import java.security.cert.CertPathValidator;
 import java.security.cert.CertificateFactory;
+import java.security.cert.CertificateParsingException;
 import java.security.cert.PKIXParameters;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -40,7 +44,7 @@ public class FilterSSLAuthenticatorBase implements Filter {
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO clean up cache
+		// do nothing
 	}
 
 	/**
@@ -53,8 +57,7 @@ public class FilterSSLAuthenticatorBase implements Filter {
 		// Does the principal already exist?
 		if (req.getUserPrincipal() == null) {
 			// No, need to build a new principal
-			// TODO Add cache support
-			
+
 			// Get certificates from request
 			X509Certificate[] certs;
 			certs = (X509Certificate[]) request.getAttribute("javax.servlet.request.X509Certificate");
@@ -63,8 +66,6 @@ public class FilterSSLAuthenticatorBase implements Filter {
 			CertPath cp = buildCertChain(certs, revocationValidation);
 			
 			req.setUserPrincipal(this.buildPrincipal(cp));
-			
-			// TODO Add cache support
 		}
 
 
@@ -108,6 +109,22 @@ public class FilterSSLAuthenticatorBase implements Filter {
 			throw new ServletException("Authentication failure, error parsing certificates, see stack trace.");
 		}
 	}
+	
+	protected String extractRFC822Name(X509Certificate cert) throws CertificateParsingException {
+    	Collection names = null;
+		names = cert.getSubjectAlternativeNames();
+		Iterator iterator = names.iterator();
+		// Loop until we find RFC822Name
+		while (iterator.hasNext()){
+			List namesList = (List)iterator.next();
+			if (namesList != null && namesList.size() > 0){
+				if (((Integer)namesList.get(0)).intValue() == 1){	
+					return (String)namesList.get(1); 
+				}
+			} 
+		}
+		return null;
+    }
 
 	/**
 	 * @see Filter#init(FilterConfig)

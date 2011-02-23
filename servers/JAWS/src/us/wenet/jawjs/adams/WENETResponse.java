@@ -17,7 +17,6 @@ public class WENETResponse extends HttpServletResponseWrapper {
 	 */
 	public WENETResponse(HttpServletResponse response) {
 		super(response);
-		// TODO Auto-generated constructor stub
 	}
 
 }
