@@ -1,4 +1,4 @@
-package us.wenet.jawjs.adams;
+package us.wenet.jawjs.server;
 
 import java.security.Principal;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package us.wenet.jawjs.adams;
+package us.wenet.jawjs.server;
 
 import java.io.IOException;
 import java.security.KeyStore;

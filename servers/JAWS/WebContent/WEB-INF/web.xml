@@ -5,13 +5,13 @@
 		<description>This wraps the ServletRequest object in a WENETRequest object.</description>
 		<display-name>wrapasWENETRequest</display-name>
 		<filter-name>wrapasWENETRequest</filter-name>
-		<filter-class>us.wenet.jawjs.adams.FilterWrapAsWENETrequest</filter-class>
+		<filter-class>us.wenet.jawjs.server.FilterWrapAsWENETrequest</filter-class>
 	</filter>
 	<filter>
 		<description>Filter requests and and generate WENETPincipal from parameter lists</description>
 		<display-name>FilterSSLAuthenticatorUserParameter</display-name>
 		<filter-name>FilterSSLAuthenticatorUserParameter</filter-name>
-		<filter-class>us.wenet.jawjs.adams.file.FilterSSLAuthenticatorUserParameter</filter-class>
+		<filter-class>us.wenet.jawjs.server.file.FilterSSLAuthenticatorUserParameter</filter-class>
 		<init-param>
 			<description>
 			Password for trust store.</description>
@@ -41,7 +41,7 @@
 		<description>This filter take a path and roles required and forwards the request/response to the path if the user has any one of the required roles.</description>
 		<display-name>FilterPathChooserByRole</display-name>
 		<filter-name>FilterPathChooserByRole</filter-name>
-		<filter-class>us.wenet.jawjs.adams.FilterForwardByRole</filter-class>
+		<filter-class>us.wenet.jawjs.server.FilterForwardByRole</filter-class>
 		<init-param>
 			<description>
 			The relative path to forward to if user has role(s).</description>
@@ -58,7 +58,7 @@
 		<description>This filter will log each request to a new XML file.</description>
 		<display-name>FilterFileLogger</display-name>
 		<filter-name>FilterFileLogger</filter-name>
-		<filter-class>us.wenet.jawjs.adams.file.FilterLogger</filter-class>
+		<filter-class>us.wenet.jawjs.server.file.FilterLogger</filter-class>
 		<init-param>
 			<description>Directory to store log files in</description>
 			<param-name>file-path</param-name>
@@ -74,7 +74,7 @@
 		<description>This filter will control access to the filtered path by role.</description>
 		<display-name>FilterAccessByRole</display-name>
 		<filter-name>FilterAccessByRole</filter-name>
-		<filter-class>us.wenet.jawjs.adams.FilterAccessByRole</filter-class>
+		<filter-class>us.wenet.jawjs.server.FilterAccessByRole</filter-class>
 		<init-param>
 			<description>
 			A semi-colin seperated list of role names to check against.</description>
@@ -86,7 +86,7 @@
 		<description>A simple servlet to return an XML file at the mapped request.</description>
 		<display-name>ServletXMLFile</display-name>
 		<servlet-name>ServletXMLFile</servlet-name>
-		<servlet-class>us.wenet.jawjs.adams.xslt.ServletXMLFile</servlet-class>
+		<servlet-class>us.wenet.jawjs.server.xslt.ServletXMLFile</servlet-class>
 		<init-param>
 			<description>File to return with this filter.</description>
 			<param-name>path-xml</param-name>

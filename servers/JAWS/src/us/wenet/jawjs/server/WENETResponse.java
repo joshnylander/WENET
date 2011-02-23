@@ -1,7 +1,7 @@
 /**
  * 
  */
-package us.wenet.jawjs.adams;
+package us.wenet.jawjs.server;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
