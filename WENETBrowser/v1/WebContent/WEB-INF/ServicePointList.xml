@@ -5,4 +5,7 @@
 <ServicePointURL>https://wenet.cob.org:2443/wenet-cobpd/discover.aspx</ServicePointURL>
 <ServicePointURL>https://wenet.cityofblaine.com:2443/wenet.blainepd/discover.aspx</ServicePointURL>
 <ServicePointURL>https://wenet.ferndalepd.org/WENET.FerndalePD/discover.aspx</ServicePointURL>
+<ServicePointURL>https://www.ps.wwu.edu:8443/wenet-wwupd/service</ServicePointURL>
+<ServicePointURL>https://wenet.thecityofeverson.com:2443/WENET.EversonPD/discover.aspx</ServicePointURL>
+<ServicePointURL>https://wenet.cityofsumas.com:3443/WENET.SumasPD/discover.aspx</ServicePointURL>
 </ServicePointList>

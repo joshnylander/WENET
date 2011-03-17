@@ -99,6 +99,24 @@
 			<serviceURI>http://wenet.ferndalepd.org/</serviceURI>
 			<friendlyName>FPD</friendlyName>
 			<displayName>Ferndale</displayName>
+			<defaultStatus></defaultStatus>
+		</alias>
+		<alias>
+			<serviceURI>http://www.wwupd.edu/</serviceURI>
+			<friendlyName>WWUPD</friendlyName>
+			<displayName>WWU</displayName>
+			<defaultStatus>disabled</defaultStatus>
+		</alias>
+		<alias>
+			<serviceURI>http://wenet.cityofsumas.com/</serviceURI>
+			<friendlyName>SPD</friendlyName>
+			<displayName>Sumas</displayName>
+			<defaultStatus>disabled</defaultStatus>
+		</alias>
+		<alias>
+			<serviceURI>http://wenet.thecityofeverson.com/</serviceURI>
+			<friendlyName>EPD</friendlyName>
+			<displayName>Everson</displayName>
 			<defaultStatus>disabled</defaultStatus>
 		</alias>
 	</servicePointAliases>
@@ -110,6 +128,9 @@
 		<seedURL>https://wenet.cob.org:2443/wenet-cobpd/discover.aspx</seedURL>
 		<seedURL>https://wenet.cityofblaine.com:2443/wenet.blainepd/discover.aspx</seedURL>
 		<seedURL>https://wenet.ferndalepd.org/WENET.FerndalePD/discover.aspx</seedURL>
+		<seedURL>https://www.ps.wwu.edu:8443/wenet-wwupd/service</seedURL>
+		<seedURL>https://wenet.cityofsumas.com:3443/WENET.SumasPD/discover.aspx</seedURL>
+		<seedURL>https://wenet.thecityofeverson.com:2443/WENET.EversonPD/discover.aspx</seedURL>
 	</seedServicePoints>
 	
 	<columnAliasMappings>
