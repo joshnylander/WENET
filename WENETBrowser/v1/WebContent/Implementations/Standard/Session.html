@@ -11,6 +11,7 @@
 <!--
 	//List of friendlyName, displayName, and serviceUR semi-colon seperated in an array [this is a big hack!]
 	var spChooserList = new Array();
+	/*
 	spChooserList[0] = "BELSO;Sheriff;http://wenet-wcso.co.whatcom.wa.us/";
 	spChooserList[1] = "BELPA;Prosecutor;http://wenet-wcpa.co.whatcom.wa.us/";
 	spChooserList[2] = "BELCJ;Jail;http://wenet-wcsojl.co.whatcom.wa.us/";
@@ -20,7 +21,9 @@
 	spChooserList[6] = "WWUPD;WWU;http://www.wwupd.edu/;disabled";
 	spChooserList[7] = "SPD;Sumas;http://wenet.cityofsumas.com/;disabled";
 	spChooserList[8] = "EPD;Everson;http://wenet.thecityofeverson.com/;disabled";
-
+	*/
+	
+	
 
 var sessionWaiting = false;
 var queryWaiting = false;
@@ -177,6 +180,51 @@ var sessionURL = "../../servlet/WENETBrowserServlet?act=GetSession";
 var sessionDataText;
 var sessionDocument;
 var xmlhttp;
+
+var xmlhttpSPs;
+xmlhttpSPs = new ActiveXObject("Microsoft.XMLHTTP");
+xmlhttpSPs.onreadystatechange=parseSPList;
+xmlhttpSPs.open("GET", "../../browserImplementations.xml", true);
+xmlhttpSPs.send();
+
+function parseSPList()
+{
+	var strSPInfo
+	var strServiceURI
+	var strFriendlyName
+	var strDisplayName
+	var strDefaultStatus
+	if (xmlhttpSPs.readyState==4 && xmlhttpSPs.status == 200) {
+		browserImpl = xmlhttpSPs.responseXML;
+		objNodeList = browserImpl.documentElement.getElementsByTagName("alias");
+		//alert("Found " + objNodeList.length + " service points.");
+		for (var i=0; i < objNodeList.length; i++) {
+		      objNode = objNodeList.item(i);
+		      for (var j=0; j < objNode.childNodes.length; j++) {
+		    	  objNodeValue = objNode.childNodes.item(j);
+		    	  //alert(objNodeValue.nodeName + "=" + objNodeValue.text);
+		    	  if (objNodeValue.nodeName == "serviceURI") {
+		    		  strServiceURI = objNodeValue.text;
+		    	  }
+		    	  if (objNodeValue.nodeName == "friendlyName") {
+		    		  strFriendlyName = objNodeValue.text;
+		    	  }
+		    	  if (objNodeValue.nodeName == "displayName") {
+		    		  strDisplayName = objNodeValue.text;
+		    	  }
+		    	  if (objNodeValue.nodeName == "defaultStatus") {
+		    		  if (objNodeValue.text=="") {
+		    			  strDefaultStatus = "";
+		    		  } else {
+		    			  strDefaultStatus = ";" + objNodeValue.text;
+		    		  }
+		    	  }
+		      }
+		      strSPInfo = strFriendlyName + ";" + strDisplayName + ";" + strServiceURI + strDefaultStatus
+		      spChooserList.push(strSPInfo);
+		}
+	}
+}
 
 function reloadSyncSession()
 {
